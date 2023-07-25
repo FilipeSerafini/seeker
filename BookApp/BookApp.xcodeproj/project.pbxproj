@@ -23,6 +23,7 @@
 		B1D861CF2A7045AF00CAD142 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B1D861D12A7045AF00CAD142 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B1D861D42A7045AF00CAD142 /* BookApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookApp.xcdatamodel; sourceTree = "<group>"; };
+		B1D861DD2A705F4400CAD142 /* BookApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +41,9 @@
 			isa = PBXGroup;
 			children = (
 				B1D861C72A7045AD00CAD142 /* BookApp */,
+				B1D861DE2A70623A00CAD142 /* Model */,
+				B1D861E02A70624800CAD142 /* Flows */,
+				B1D861DF2A70624000CAD142 /* Service */,
 				B1D861C62A7045AD00CAD142 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +59,7 @@
 		B1D861C72A7045AD00CAD142 /* BookApp */ = {
 			isa = PBXGroup;
 			children = (
+				B1D861DD2A705F4400CAD142 /* BookApp.entitlements */,
 				B1D861C82A7045AE00CAD142 /* BookAppApp.swift */,
 				B1D861CA2A7045AE00CAD142 /* ContentView.swift */,
 				B1D861CC2A7045AF00CAD142 /* Assets.xcassets */,
@@ -71,6 +76,27 @@
 				B1D861CF2A7045AF00CAD142 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B1D861DE2A70623A00CAD142 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B1D861DF2A70624000CAD142 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		B1D861E02A70624800CAD142 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +298,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BookApp/BookApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BookApp/Preview Content\"";
@@ -301,6 +328,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BookApp/BookApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BookApp/Preview Content\"";
