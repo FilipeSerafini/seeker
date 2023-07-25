@@ -42,5 +42,5 @@ feature
 
 Exemplo:
 ```bash
-git commit -m "feature: adicionado o menu na aplicação"
+git commit -m "adicionado o menu na aplicação"
 ```
