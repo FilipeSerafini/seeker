@@ -9,8 +9,8 @@ import Foundation
 import CloudKit
 
 struct Book: CKProtocol {
-    var record: CKRecord
     
+    var record: CKRecord
     var id: String = UUID().uuidString
     var author: String
     var genre: String
