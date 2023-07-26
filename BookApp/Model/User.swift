@@ -10,6 +10,7 @@ import CloudKit
 
 struct User: CKProtocol {
     
+    var record: CKRecord
     var id: String = UUID().uuidString
     var name: String
     var username: String
@@ -95,8 +96,4 @@ struct User: CKProtocol {
         
         self.record = record
     }
-    
-    var record: CKRecord
-    
-    
 }

@@ -3,6 +3,7 @@ import CloudKit
 
 struct Badge: CKProtocol {
     
+    var record: CKRecord
     var id: String = UUID().uuidString
     var name: String
     //    var image: String
@@ -54,7 +55,5 @@ struct Badge: CKProtocol {
         
         self.record = record
     }
-    
-    var record: CKRecord
     
 }

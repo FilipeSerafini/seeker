@@ -3,6 +3,7 @@ import CloudKit
 
 struct Review: CKProtocol {
     
+    var record: CKRecord
     var id: String = UUID().uuidString
     var book: String
     var comment: String
@@ -53,7 +54,5 @@ struct Review: CKProtocol {
         
         self.record = record
     }
-    
-    var record: CKRecord
     
 }
