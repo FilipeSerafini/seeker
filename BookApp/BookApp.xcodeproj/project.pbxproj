@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B108B8052A7193EF006D6F1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8042A7193EF006D6F1C /* User.swift */; };
+		B108B8072A719406006D6F1C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8062A719406006D6F1C /* Badge.swift */; };
+		B108B8092A719415006D6F1C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8082A719415006D6F1C /* Book.swift */; };
+		B108B80C2A71942A006D6F1C /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B80B2A71942A006D6F1C /* Review.swift */; };
+		B108B80E2A719431006D6F1C /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B80D2A719431006D6F1C /* Goal.swift */; };
+		B108B8102A71943F006D6F1C /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B80F2A71943F006D6F1C /* Folder.swift */; };
+		B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8122A7194CC006D6F1C /* CKProtocol.swift */; };
 		B1D861C92A7045AE00CAD142 /* BookAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D861C82A7045AE00CAD142 /* BookAppApp.swift */; };
 		B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D861CA2A7045AE00CAD142 /* ContentView.swift */; };
 		B1D861CD2A7045AF00CAD142 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1D861CC2A7045AF00CAD142 /* Assets.xcassets */; };
@@ -16,6 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B108B8042A7193EF006D6F1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B108B8062A719406006D6F1C /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		B108B8082A719415006D6F1C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		B108B80B2A71942A006D6F1C /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		B108B80D2A719431006D6F1C /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		B108B80F2A71943F006D6F1C /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
+		B108B8122A7194CC006D6F1C /* CKProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKProtocol.swift; sourceTree = "<group>"; };
 		B1D861C52A7045AD00CAD142 /* BookApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D861C82A7045AE00CAD142 /* BookAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAppApp.swift; sourceTree = "<group>"; };
 		B1D861CA2A7045AE00CAD142 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,12 +51,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B108B8112A7194B9006D6F1C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				B108B8122A7194CC006D6F1C /* CKProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		B1D861BC2A7045AD00CAD142 = {
 			isa = PBXGroup;
 			children = (
 				B1D861C72A7045AD00CAD142 /* BookApp */,
 				B1D861DE2A70623A00CAD142 /* Model */,
 				B1D861E02A70624800CAD142 /* Flows */,
+				B108B8112A7194B9006D6F1C /* Protocol */,
 				B1D861DF2A70624000CAD142 /* Service */,
 				B1D861C62A7045AD00CAD142 /* Products */,
 			);
@@ -81,6 +104,12 @@
 		B1D861DE2A70623A00CAD142 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B108B8042A7193EF006D6F1C /* User.swift */,
+				B108B8062A719406006D6F1C /* Badge.swift */,
+				B108B8082A719415006D6F1C /* Book.swift */,
+				B108B80B2A71942A006D6F1C /* Review.swift */,
+				B108B80D2A719431006D6F1C /* Goal.swift */,
+				B108B80F2A71943F006D6F1C /* Folder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,8 +199,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1D861D52A7045AF00CAD142 /* BookApp.xcdatamodeld in Sources */,
+				B108B8102A71943F006D6F1C /* Folder.swift in Sources */,
+				B108B80C2A71942A006D6F1C /* Review.swift in Sources */,
+				B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */,
+				B108B8072A719406006D6F1C /* Badge.swift in Sources */,
+				B108B8092A719415006D6F1C /* Book.swift in Sources */,
 				B1D861D22A7045AF00CAD142 /* Persistence.swift in Sources */,
 				B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */,
+				B108B8052A7193EF006D6F1C /* User.swift in Sources */,
+				B108B80E2A719431006D6F1C /* Goal.swift in Sources */,
 				B1D861C92A7045AE00CAD142 /* BookAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
