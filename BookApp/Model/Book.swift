@@ -9,6 +9,7 @@ import Foundation
 import CloudKit
 
 struct Book: CKProtocol {
+    var record: CKRecord
     
     var id: String = UUID().uuidString
     var author: String
@@ -84,7 +85,5 @@ struct Book: CKProtocol {
         
         self.record = record
     }
-    
-    var record: CKRecord
-    
+
 }
