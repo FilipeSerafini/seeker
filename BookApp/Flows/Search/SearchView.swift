@@ -11,7 +11,7 @@ struct SearchView: View {
     @State private var searchBooks = ""
     @State private var showSearchResults = false
     @State private var showDefaultList = true
-        
+
     var body: some View {
         NavigationStack {
             ScrollView{
@@ -89,7 +89,7 @@ struct SearchView: View {
                                 ItemSearch()
                             }
                         }
-
+                        
                     }
                 }
                 else {
@@ -97,7 +97,16 @@ struct SearchView: View {
                 }
             }
 
+            .navigationBarTitle("Search")
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                           HStack {
+//                               Text("Title").font(.headline)
+//                           }
+//                       }
+//                   }
 //            .navigationTitle("Search")
+
         }
         .searchable(text: $searchBooks, prompt: "Search for books, authors and genres")
     }
