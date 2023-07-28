@@ -15,7 +15,7 @@ struct ItemSearch: View {
         NavigationView{
             NavigationLink(destination: BookView(), isActive: $isLinkActive, label: {
                 VStack{
-                    Image("pequeno")
+                    Image("bookImage")
                         .resizable()
                         .scaledToFill()
                         .onTapGesture {
