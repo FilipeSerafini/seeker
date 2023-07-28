@@ -15,7 +15,7 @@ struct ItemSearchad: View {
             NavigationLink(destination: BookView(), isActive: $isLinkActive) {
                 HStack{
                     VStack{
-                        Image("pequeno")
+                        Image("bookImage")
                             .resizable()
                             .scaledToFill()
                     }

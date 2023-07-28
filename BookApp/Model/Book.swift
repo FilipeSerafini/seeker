@@ -6,27 +6,53 @@
 //
 
 import Foundation
+import UIKit
 import CloudKit
 
-struct Book: CKProtocol {
+enum CKRecordNames: String {
+    case id
+    case authors
+    case genres
+    case image
+    case isbns
+    case rating
+    case sinopsis
+    case title
     
-    var record: CKRecord
+    var description : String {
+        switch self {
+        case .id: return "id"
+        case .authors: return "authors"
+        case .genres: return "genres"
+        case .image: return "image"
+        case .isbns: return "isbns"
+        case .rating: return "rating"
+        case .sinopsis: return "sinopsis"
+        case .title: return "title"
+        }
+    }
+}
+
+struct Book {
+    
+    var record: CKRecord?
     var id: String = UUID().uuidString
-    var author: String
-    var genre: String
+    var authors: [String]
+    var genres: [String]
     var image: String
-    var isbn: String
+    var isbns: [String]
     var rating: String
     var sinopsis: String
     var title: String
-
+    var imageCover: UIImage?
+    
     //init para inicializar os atributos
     init() {
         id = UUID().uuidString
-        author = ""
-        genre = ""
+        authors = []
+        genres = []
         image = ""
-        isbn = ""
+        isbns = []
         rating = ""
         sinopsis = ""
         title = ""
@@ -37,26 +63,26 @@ struct Book: CKProtocol {
     //init para transformar os atributos em records para o banco, e determinar o recordType do usuario
     init?(
         id: String = UUID().uuidString,
-        author: String,
-        genre: String,
-        //image: String
-        isbn: String,
+        authors: [String],
+        genres: [String],
+        image: String,
+        isbns: [String],
         rating: String,
         sinopsis: String,
-        title: String
-        
+        title: String,
+        imageCover: UIImage?
     ) {
         
         let record = CKRecord(recordType: "Book")
         
-        record["id"] = id
-        record["author"] = author
-        record["genre"] = genre
-        //record["image"] = image
-        record["isbn"] = isbn
-        record["rating"] = rating
-        record["sinopsis"] = sinopsis
-        record["title"] = title
+        record[CKRecordNames.id.description] = id
+        record[CKRecordNames.authors.description] = authors
+        record[CKRecordNames.genres.description] = genres
+        record[CKRecordNames.image.description] = image
+        record[CKRecordNames.isbns.description] = isbns
+        record[CKRecordNames.rating.description] = rating
+        record[CKRecordNames.sinopsis.description] = sinopsis
+        record[CKRecordNames.title.description] = title
         
         self.init(record: record)
     }
@@ -64,26 +90,65 @@ struct Book: CKProtocol {
     //init para criar o objeto e atribuir o record a ele
     init?(record: CKRecord) {
         
-        guard let id = record["id"] as? String else {return nil}
-        guard let author = record["author"] as? String else {return nil}
-        guard let genre = record["genre"] as? String else {return nil}
-        guard let image = record["image"] as? String else {return nil}
-        guard let isbn = record["isbn"] as? String else {return nil}
-        guard let rating = record["rating"] as? String else {return nil}
-        guard let sinopsis = record["sinopsis"] as? String else {return nil}
-        guard let title = record["title"] as? String else {return nil}
+        guard let id = record[CKRecordNames.id.description] as? String else {return nil}
+        guard let authors = record[CKRecordNames.authors.description] as? [String] else {return nil}
+        guard let genres = record[CKRecordNames.genres.description] as? [String] else {return nil}
+        guard let image = record[CKRecordNames.image.description] as? String else {return nil}
+        guard let isbns = record[CKRecordNames.isbns.description] as? [String] else {return nil}
+        guard let rating = record[CKRecordNames.rating.description] as? String else {return nil}
+        guard let sinopsis = record[CKRecordNames.sinopsis.description] as? String else {return nil}
+        guard let title = record[CKRecordNames.title.description] as? String else {return nil}
         
         self.id = id
-        self.author = author
-        self.genre = genre
-        self.image = ""
-        self.isbn = isbn
+        self.authors = authors
+        self.genres = genres
+        self.image = image
+        self.isbns = isbns
         self.rating = rating
         self.sinopsis = sinopsis
         self.title = title
- 
-        
         self.record = record
     }
+}
 
+struct APIBookResponse: Decodable {
+    var items: [BookItemResponse]
+}
+
+struct BookItemResponse: Decodable {
+    var volumeInfo: APIBook
+}
+
+struct APIBook: Decodable {
+    struct APIImage: Decodable {
+        var smallThumbnail: String
+        var thumbnail: String
+    }
+    
+    struct APIISBN: Decodable {
+        var type: String
+        var identifier: String
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case authors
+        case genres = "categories"
+        case image = "imageLinks"
+        case isbns = "industryIdentifiers"
+        case rating = "averageRating"
+        case sinopsis = "description"
+        case title
+        
+        
+    }
+    
+    var id: String? = UUID().uuidString
+    var authors: [String]
+    var genres: [String]
+    var image: APIImage
+    var isbns: [APIISBN]
+    var rating: Double?
+    var sinopsis: String?
+    var title: String
 }

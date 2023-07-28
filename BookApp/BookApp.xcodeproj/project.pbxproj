@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42633AE42A7443EE00401B5F /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42633AE32A7443EE00401B5F /* BookService.swift */; };
 		4C7234852A743DE9006740F6 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234842A743DE9006740F6 /* CommentView.swift */; };
 		4CDD3BA82A730790001519C3 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BA72A730790001519C3 /* BookView.swift */; };
 		4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42633AE32A7443EE00401B5F /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
 		4C7234842A743DE9006740F6 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		4CDD3BA72A730790001519C3 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewApp.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42633AE22A7443C800401B5F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				42633AE32A7443EE00401B5F /* BookService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		4CDD3BA62A730785001519C3 /* Book */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +172,7 @@
 				B1D861DE2A70623A00CAD142 /* Model */,
 				B1D861E02A70624800CAD142 /* Flows */,
 				B108B8112A7194B9006D6F1C /* Protocol */,
-				B1D861DF2A70624000CAD142 /* Service */,
+				42633AE22A7443C800401B5F /* Service */,
 				B1D861C62A7045AD00CAD142 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -209,13 +219,6 @@
 				B108B80F2A71943F006D6F1C /* Folder.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		B1D861DF2A70624000CAD142 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		B1D861E02A70624800CAD142 /* Flows */ = {
@@ -318,6 +321,7 @@
 				B108B8092A719415006D6F1C /* Book.swift in Sources */,
 				7C281A842A73255500A58E96 /* SearchView.swift in Sources */,
 				7C281A8F2A742AE200A58E96 /* ItemSearchad.swift in Sources */,
+				42633AE42A7443EE00401B5F /* BookService.swift in Sources */,
 				4CDD3BB72A7308FD001519C3 /* OracleView.swift in Sources */,
 				B1D861D22A7045AF00CAD142 /* Persistence.swift in Sources */,
 				B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */,
