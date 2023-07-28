@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct TabViewApp: View {
+    
+    init() {
+        UINavigationBar.appearance()
+            .largeTitleTextAttributes = [.font : UIFont(name: "Georgia-Bold", size: 34)!]
+        }
+    
     /* para colocar imagem no background da tab
      
     init() {
