@@ -1,10 +1,3 @@
-//
-//  BookService.swift
-//  BookApp
-//
-//  Created by Waldyr Schneider on 28/07/23.
-//
-
 import Foundation
 import UIKit
 import Combine
