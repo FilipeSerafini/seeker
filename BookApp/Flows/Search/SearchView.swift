@@ -96,6 +96,7 @@ struct SearchView: View {
                     ItemSearchad()
                 }
             }
+
             .navigationBarTitle("Search")
 //            .toolbar {
 //                ToolbarItem(placement: .navigationBarLeading) {
@@ -104,6 +105,8 @@ struct SearchView: View {
 //                           }
 //                       }
 //                   }
+//            .navigationTitle("Search")
+
         }
         .searchable(text: $searchBooks, prompt: "Search for books, authors and genres")
     }
