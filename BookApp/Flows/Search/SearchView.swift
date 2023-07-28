@@ -96,7 +96,8 @@ struct SearchView: View {
                     ItemSearchad()
                 }
             }
-            .navigationTitle("Search")
+
+//            .navigationTitle("Search")
         }
         .searchable(text: $searchBooks, prompt: "Search for books, authors and genres")
     }
