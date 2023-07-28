@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4CDD3BA82A730790001519C3 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BA72A730790001519C3 /* BookView.swift */; };
-		4CDD3BAA2A7307AB001519C3 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BA92A7307AB001519C3 /* BookViewModel.swift */; };
 		4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */; };
 		4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */; };
 		4CDD3BB22A7308CD001519C3 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BB12A7308CD001519C3 /* LibraryViewModel.swift */; };
@@ -18,6 +17,11 @@
 		4CDD3BBC2A730920001519C3 /* ChallengesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BBB2A730920001519C3 /* ChallengesViewModel.swift */; };
 		4CDD3BBF2A730931001519C3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BBE2A730931001519C3 /* ProfileViewModel.swift */; };
 		4CDD3BC12A730938001519C3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BC02A730938001519C3 /* ProfileView.swift */; };
+		7C281A842A73255500A58E96 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281A832A73255500A58E96 /* SearchView.swift */; };
+		7C281A862A73255F00A58E96 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281A852A73255F00A58E96 /* SearchViewModel.swift */; };
+		7C281A8D2A742A7700A58E96 /* ItemSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281A8C2A742A7700A58E96 /* ItemSearch.swift */; };
+		7C281A8F2A742AE200A58E96 /* ItemSearchad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281A8E2A742AE200A58E96 /* ItemSearchad.swift */; };
+		7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281A902A743F3A00A58E96 /* ContentCoreData.swift */; };
 		B108B8052A7193EF006D6F1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8042A7193EF006D6F1C /* User.swift */; };
 		B108B8072A719406006D6F1C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8062A719406006D6F1C /* Badge.swift */; };
 		B108B8092A719415006D6F1C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8082A719415006D6F1C /* Book.swift */; };
@@ -35,7 +39,6 @@
 
 /* Begin PBXFileReference section */
 		4CDD3BA72A730790001519C3 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
-		4CDD3BA92A7307AB001519C3 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookViewModel.swift; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/bookapp/BookApp/Flows/Book/BookViewModel.swift"; sourceTree = "<group>"; };
 		4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewApp.swift; sourceTree = "<group>"; };
 		4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		4CDD3BB12A7308CD001519C3 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
@@ -45,6 +48,11 @@
 		4CDD3BBB2A730920001519C3 /* ChallengesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesViewModel.swift; sourceTree = "<group>"; };
 		4CDD3BBE2A730931001519C3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		4CDD3BC02A730938001519C3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		7C281A832A73255500A58E96 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		7C281A852A73255F00A58E96 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		7C281A8C2A742A7700A58E96 /* ItemSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearch.swift; sourceTree = "<group>"; };
+		7C281A8E2A742AE200A58E96 /* ItemSearchad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchad.swift; sourceTree = "<group>"; };
+		7C281A902A743F3A00A58E96 /* ContentCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCoreData.swift; sourceTree = "<group>"; };
 		B108B8042A7193EF006D6F1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B108B8062A719406006D6F1C /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		B108B8082A719415006D6F1C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -77,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				4CDD3BA72A730790001519C3 /* BookView.swift */,
-				4CDD3BA92A7307AB001519C3 /* BookViewModel.swift */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -126,6 +133,17 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		7C281A872A73256500A58E96 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				7C281A8E2A742AE200A58E96 /* ItemSearchad.swift */,
+				7C281A852A73255F00A58E96 /* SearchViewModel.swift */,
+				7C281A8C2A742A7700A58E96 /* ItemSearch.swift */,
+				7C281A832A73255500A58E96 /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		B108B8112A7194B9006D6F1C /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +177,7 @@
 			children = (
 				B1D861DD2A705F4400CAD142 /* BookApp.entitlements */,
 				B1D861C82A7045AE00CAD142 /* BookAppApp.swift */,
+				7C281A902A743F3A00A58E96 /* ContentCoreData.swift */,
 				B1D861CA2A7045AE00CAD142 /* ContentView.swift */,
 				B1D861CC2A7045AF00CAD142 /* Assets.xcassets */,
 				B1D861D12A7045AF00CAD142 /* Persistence.swift */,
@@ -199,6 +218,7 @@
 		B1D861E02A70624800CAD142 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				7C281A872A73256500A58E96 /* Search */,
 				4CDD3BAB2A7307FB001519C3 /* TabBar */,
 				4CDD3BAE2A7308B4001519C3 /* Library */,
 				4CDD3BB32A7308D0001519C3 /* Oracle */,
@@ -279,12 +299,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CDD3BAA2A7307AB001519C3 /* BookViewModel.swift in Sources */,
 				B1D861D52A7045AF00CAD142 /* BookApp.xcdatamodeld in Sources */,
 				4CDD3BB22A7308CD001519C3 /* LibraryViewModel.swift in Sources */,
 				B108B8102A71943F006D6F1C /* Folder.swift in Sources */,
+				7C281A8D2A742A7700A58E96 /* ItemSearch.swift in Sources */,
 				4CDD3BBA2A730917001519C3 /* ChallengesView.swift in Sources */,
 				B108B80C2A71942A006D6F1C /* Review.swift in Sources */,
+				7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */,
 				4CDD3BBF2A730931001519C3 /* ProfileViewModel.swift in Sources */,
 				4CDD3BBC2A730920001519C3 /* ChallengesViewModel.swift in Sources */,
 				4CDD3BA82A730790001519C3 /* BookView.swift in Sources */,
@@ -292,10 +313,13 @@
 				4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */,
 				B108B8072A719406006D6F1C /* Badge.swift in Sources */,
 				B108B8092A719415006D6F1C /* Book.swift in Sources */,
+				7C281A842A73255500A58E96 /* SearchView.swift in Sources */,
+				7C281A8F2A742AE200A58E96 /* ItemSearchad.swift in Sources */,
 				4CDD3BB72A7308FD001519C3 /* OracleView.swift in Sources */,
 				B1D861D22A7045AF00CAD142 /* Persistence.swift in Sources */,
 				B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */,
 				4CDD3BB52A7308F7001519C3 /* OracleViewModel.swift in Sources */,
+				7C281A862A73255F00A58E96 /* SearchViewModel.swift in Sources */,
 				B108B8052A7193EF006D6F1C /* User.swift in Sources */,
 				B108B80E2A719431006D6F1C /* Goal.swift in Sources */,
 				4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */,

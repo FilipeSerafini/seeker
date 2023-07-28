@@ -8,32 +8,42 @@
 import SwiftUI
 
 struct TabViewApp: View {
+    /* para colocar imagem no background da tab
+     
+    init() {
+           let appearance = UITabBarAppearance()
+           appearance.configureWithOpaqueBackground()
+           appearance.backgroundImage = UIImage(named: "")
+           UITabBar.appearance().scrollEdgeAppearance = appearance
+       }
+     
+     */
     var body: some View {
         
         HStack{
             TabView {
-                ProfileView()
+                LibraryView()
                     .tabItem {
                         Label("", systemImage: "books.vertical")
                     }
-            #warning("mudar para search")
-                LibraryView()
+                SearchView()
                     .tabItem {
                         Label("", systemImage: "magnifyingglass")
                     }
                 OracleView()
                     .tabItem {
-                        Label("", systemImage: "magnifyingglass")
+                        Label("", systemImage: "scribble.variable")
                     }
                 ChallengesView()
                     .tabItem {
-                        Label("", systemImage: "magnifyingglass")
+                        Label("", systemImage: "circlebadge.2")
                     }
                 ProfileView()
                     .tabItem {
                         Label("", systemImage: "person")
                     }
             }
+            .accentColor(.purple)
         }
     }
 }
