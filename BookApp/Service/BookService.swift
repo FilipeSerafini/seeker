@@ -3,12 +3,15 @@ import UIKit
 import Combine
 
 class BookService {
-    private let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=subject:fiction")!
+    //    private let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=")!
 }
 
 //MARK: - Fetch Books with combine API
 extension BookService {
-    func fetchBooks() -> AnyPublisher<[APIBook], Error> {
+    func fetchBooks(searchedText: String) -> AnyPublisher<[APIBook], Error> {
+        
+        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=\(searchedText)")!
+        
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(\.data)
             .decode(type: APIBookResponse.self, decoder: JSONDecoder())

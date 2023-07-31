@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SearchView: View {
-    @State private var searchBooks = ""
     @State private var showSearchResults = false
     @State private var showDefaultList = true
-
+    @State private var searchViewModel = SearchViewModel()
+    
     var body: some View {
         NavigationStack {
             ScrollView{
@@ -96,19 +96,19 @@ struct SearchView: View {
                     ItemSearchad()
                 }
             }
-
+            
             .navigationBarTitle("Search")
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                           HStack {
-//                               Text("Title").font(.headline)
-//                           }
-//                       }
-//                   }
-//            .navigationTitle("Search")
-
+            //            .toolbar {
+            //                ToolbarItem(placement: .navigationBarLeading) {
+            //                           HStack {
+            //                               Text("Title").font(.headline)
+            //                           }
+            //                       }
+            //                   }
+            //            .navigationTitle("Search")
+            
         }
-        .searchable(text: $searchBooks, prompt: "Search for books, authors and genres")
+        .searchable(text: $searchViewModel.searchedText, prompt: "Search for books, authors and genres")
     }
 }
 
