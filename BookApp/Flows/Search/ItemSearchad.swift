@@ -11,8 +11,9 @@ struct ItemSearchad: View {
     @State private var isLinkActive = false
     
     var body: some View {
-        NavigationView{
-            NavigationLink(destination: BookView(), isActive: $isLinkActive) {
+        NavigationStack{
+            // NavigationLink(destination: BookView(), isActive: $isLinkActive) {
+            ZStack{
                 HStack{
                     VStack{
                         Image("bookImage")
@@ -35,6 +36,9 @@ struct ItemSearchad: View {
                     isLinkActive = true
                 }
             }
+            .navigationDestination(isPresented: $isLinkActive, destination: { BookView() })
+            
+            // }
         }
         .foregroundColor(.black)
         .frame(width: 250, height: 140, alignment: .topLeading)
