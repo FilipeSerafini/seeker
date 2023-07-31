@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-
+import SwiftUI
 
 class SearchViewModel: ObservableObject {
     @Published var books: [Book] = []
@@ -19,8 +19,8 @@ class SearchViewModel: ObservableObject {
             .flatMap({ apiBooks in
                 apiBooks.publisher
             })
-            .compactMap({ apiBook -> Book in
-                let newBook = Book(authors: apiBook.authors, genres: apiBook.genres, image: apiBook.image.thumbnail, isbns: apiBook.isbns.map(\.identifier), rating: apiBook.rating?.description ?? "", sinopsis: apiBook.sinopsis ?? "", title: apiBook.title, imageCover: nil)
+            .compactMap({ apiBook -> Book in #warning("substituir image por imagem default dos assets")
+                let newBook = Book(authors: apiBook.authors, genres: apiBook.genres ?? [], image: apiBook.image?.thumbnail ?? "image", isbns: apiBook.isbns.map(\.identifier), rating: apiBook.rating?.description ?? "", sinopsis: apiBook.sinopsis ?? "", title: apiBook.title, imageCover: nil)
                 return newBook!
             })
             .collect()
@@ -31,7 +31,7 @@ class SearchViewModel: ObservableObject {
                 return self.service.fetchBookCover(forURL: book.image)
                     .map({ data in
                         var newBook = book
-//                        newBook.imageCover = UIImage(data: data)!
+                        newBook.imageCover = Image(UIImage(data: data))
                         return newBook
                     })
                     .catch({ _ in Just(book) })
