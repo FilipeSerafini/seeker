@@ -10,13 +10,15 @@ import SwiftUI
 struct ItemSearchad: View {
     @State private var isLinkActive = false
     
+    let book: Book
+    
     var body: some View {
         NavigationStack{
             // NavigationLink(destination: BookView(), isActive: $isLinkActive) {
             ZStack{
                 HStack{
                     VStack{
-                        Image("bookImage")
+                        Image(book.image)
                             .resizable()
                             .scaledToFill()
                     }
@@ -24,11 +26,11 @@ struct ItemSearchad: View {
                     .cornerRadius(8)
                     
                     VStack(alignment: .leading){
-                        Text("Book Author")
+                        Text(book.authors[0])
                             .font(.system(size: 13))
-                        Text("Book Title")
+                        Text(book.title)
                             .font(.system(size: 22, weight: .medium, design: .serif))
-                        Text("Sinopse")
+                        Text(book.sinopsis)
                             .font(.system(size: 15))
                     }
                 }
@@ -45,8 +47,8 @@ struct ItemSearchad: View {
     }
 }
 
-struct ItemSearchad_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemSearchad()
-    }
-}
+//struct ItemSearchad_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ItemSearchad()
+//    }
+//}

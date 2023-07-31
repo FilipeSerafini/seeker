@@ -26,7 +26,7 @@ enum CKRecordNames: String {
     }
 }
 
-struct Book {
+struct Book: Identifiable {
     
     var record: CKRecord?
     var id: String = UUID().uuidString
@@ -138,8 +138,8 @@ struct APIBook: Decodable {
     
     var id: String? = UUID().uuidString
     var authors: [String]
-    var genres: [String]
-    var image: APIImage
+    var genres: [String]?
+    var image: APIImage?
     var isbns: [APIISBN]
     var rating: Double?
     var sinopsis: String?
