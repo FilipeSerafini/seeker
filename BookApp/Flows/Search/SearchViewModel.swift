@@ -9,13 +9,12 @@ import Foundation
 import Combine
 
 
-class SearchViewModel {
-    private var books: [Book] = []
+class SearchViewModel: ObservableObject {
+    @Published var books: [Book] = []
     private let service: BookService = BookService()
     private var subscriptions = Set<AnyCancellable>()
-    var searchedText = ""
 
-    func fetchBooks() {
+    func fetchBooks(searchedText: String) {
         self.service.fetchBooks(searchedText: searchedText)
             .flatMap({ apiBooks in
                 apiBooks.publisher
@@ -47,6 +46,7 @@ class SearchViewModel {
                 }
             }, receiveValue: { books in
                 self.books = books
+                print(self.books)
 //                self.reloadData()
             })
             .store(in: &subscriptions)

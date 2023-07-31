@@ -26,7 +26,7 @@ enum CKRecordNames: String {
     }
 }
 
-struct Book {
+struct Book: Identifiable {
     
     var record: CKRecord?
     var id: String = UUID().uuidString

@@ -10,6 +10,7 @@ import SwiftUI
 struct TabViewApp: View {
     
     @State private var selectedTab = 0
+    @StateObject var searchViewModel = SearchViewModel()
 
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes =
@@ -71,6 +72,7 @@ struct TabViewApp: View {
             .tag(4)
         }
         .tint(Color(red: 0.514, green: 0.574, blue: 0.856))
+        .environmentObject(searchViewModel)
     }
 }
 

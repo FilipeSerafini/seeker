@@ -10,7 +10,7 @@ class BookService {
 extension BookService {
     func fetchBooks(searchedText: String) -> AnyPublisher<[APIBook], Error> {
         
-        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=\(searchedText)")!
+        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=subject:fiction")!
         
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(\.data)

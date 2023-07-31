@@ -10,7 +10,8 @@ import SwiftUI
 struct SearchView: View {
     @State private var showSearchResults = false
     @State private var showDefaultList = true
-    @State private var searchViewModel = SearchViewModel()
+    @EnvironmentObject private var searchViewModel: SearchViewModel
+    
     
     var body: some View {
         NavigationStack {
@@ -19,6 +20,14 @@ struct SearchView: View {
                 if !showSearchResults {
                     
                     VStack {
+                        SearchableView()
+                        
+                        
+                        
+                        ForEach(searchViewModel.books) { book in
+                            ItemSearchad(book: book)
+                        }
+                    
                         HStack{
                             Text("You might like")
                                 .font(.system(size: 17, weight: .semibold, design: .serif))
@@ -93,7 +102,7 @@ struct SearchView: View {
                     }
                 }
                 else {
-                    ItemSearchad()
+//                    ItemSearchad()
                 }
             }
             
@@ -108,7 +117,7 @@ struct SearchView: View {
             //            .navigationTitle("Search")
             
         }
-        .searchable(text: $searchViewModel.searchedText, prompt: "Search for books, authors and genres")
+//        .searchable(text: $searchViewModel.searchedText, prompt: "Search for books, authors and genres")
     }
 }
 
