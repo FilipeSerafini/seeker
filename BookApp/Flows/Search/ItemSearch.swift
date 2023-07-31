@@ -12,8 +12,7 @@ struct ItemSearch: View {
     @State private var isLinkActive = false
     
     var body: some View {
-        NavigationView{
-            NavigationLink(destination: BookView(), isActive: $isLinkActive, label: {
+        NavigationStack{
                 VStack{
                     Image("bookImage")
                         .resizable()
@@ -24,10 +23,9 @@ struct ItemSearch: View {
                 }
                 .frame(width: 95, height: 136)
                 .cornerRadius(8)
+                .navigationDestination(isPresented: $isLinkActive, destination: { BookView() })
             }
-            )
-        }
-        .frame(width: 100, height: 136)
+       // .frame(width: 100, height: 136)
     }
 }
 struct ItemSearch_Previews: PreviewProvider {

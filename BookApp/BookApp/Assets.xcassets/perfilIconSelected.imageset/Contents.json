@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "selected1.png",
+      "filename" : "1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "selected2.png",
+      "filename" : "2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "selected3.png",
+      "filename" : "3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,8 +19,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "compression-type" : "automatic"
   }
 }

@@ -19,14 +19,14 @@ struct SearchView: View {
                 if !showSearchResults {
                     
                     VStack {
-                        HStack {
+                        HStack{
                             Text("You might like")
                                 .font(.system(size: 17, weight: .semibold, design: .serif))
                                 .padding(.leading)
                             Spacer()
                         }
                         ScrollView(.horizontal, showsIndicators: false){
-                            HStack{
+                            HStack(spacing: 16){
                                 ItemSearch()
                                     .padding(.leading)
                                 ItemSearch()
@@ -51,7 +51,7 @@ struct SearchView: View {
                             Spacer()
                         }
                         ScrollView(.horizontal, showsIndicators: false){
-                            HStack{
+                            HStack(spacing: 16){
                                 ItemSearch()
                                     .padding(.leading)
                                 ItemSearch()
@@ -76,7 +76,7 @@ struct SearchView: View {
                         }
                         
                         ScrollView(.horizontal, showsIndicators: false){
-                            HStack{
+                            HStack(spacing: 16){
                                 ItemSearch()
                                     .padding(.leading)
                                 ItemSearch()
