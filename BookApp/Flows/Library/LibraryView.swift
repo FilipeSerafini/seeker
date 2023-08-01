@@ -13,12 +13,6 @@ struct LibraryView: View {
                     
                     Text("My bookshelf")
                         .font(.system(size: 34, design: .serif))
-                    Button("Pesquisa") {
-                        searchViewModel.fetchBooks(searchedText: "")
-                    }
-                    ForEach(searchViewModel.books) { book in
-                        ItemSearchad(book: book)
-                    }
                 }
                 Spacer()
                 Image("profileImage")

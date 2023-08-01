@@ -8,116 +8,72 @@
 import SwiftUI
 
 struct SearchView: View {
-    @State private var showSearchResults = false
-    @State private var showDefaultList = true
     @EnvironmentObject private var searchViewModel: SearchViewModel
     
     
     var body: some View {
         NavigationStack {
             ScrollView{
-                
-                if !showSearchResults {
-                    
-                    VStack {
-                        SearchableView()
-                        
-                        
-                        
-                        ForEach(searchViewModel.books) { book in
-                            ItemSearchad(book: book)
-                        }
-                    
-                        HStack{
-                            Text("You might like")
-                                .font(.system(size: 17, weight: .semibold, design: .serif))
-                                .padding(.leading)
-                            Spacer()
-                        }
-                        ScrollView(.horizontal, showsIndicators: false){
-                            HStack(spacing: 16){
-                                ItemSearch()
-                                    .padding(.leading)
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                            }
-                        }
+                VStack {
+                    SearchableView()
+                }
+                VStack {
+                    HStack{
+                        Text("You might like")
+                            .font(.system(size: 17, weight: .semibold, design: .serif))
+                            .padding(.leading)
+                        Spacer()
                     }
-                    .padding(.bottom)
-                    
-                    VStack{
-                        HStack {
-                            Text("Romance books")
-                                .font(.system(size: 17, weight: .semibold, design: .serif))
-                                .padding(.leading)
-                            Spacer()
-                        }
-                        ScrollView(.horizontal, showsIndicators: false){
-                            HStack(spacing: 16){
-                                ItemSearch()
-                                    .padding(.leading)
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack(spacing: 0){
+                            ForEach(searchViewModel.books) { book in
+                                ItemSearch(book: book)
                             }
+                            .padding(.leading)
                         }
-                    }
-                    .padding(.bottom)
-                    
-                    VStack(alignment: .leading){
-                        HStack {
-                            Text("More from Rupi Kaur")
-                                .font(.system(size: 17, weight: .semibold, design: .serif))
-                                .padding(.leading)
-                            Spacer()
-                        }
-                        
-                        ScrollView(.horizontal, showsIndicators: false){
-                            HStack(spacing: 16){
-                                ItemSearch()
-                                    .padding(.leading)
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                                ItemSearch()
-                            }
-                        }
-                        
                     }
                 }
-                else {
-//                    ItemSearchad()
+                .padding(.bottom)
+                
+                VStack{
+                    HStack {
+                        Text("Romance books")
+                            .font(.system(size: 17, weight: .semibold, design: .serif))
+                            .padding(.leading)
+                        Spacer()
+                    }
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack(spacing: 0){
+                            ForEach(searchViewModel.books) { book in
+                                ItemSearch(book: book)
+                            }
+                            .padding(.leading)
+                        }
+                    }
+                }
+                .padding(.bottom)
+                
+                VStack(alignment: .leading){
+                    HStack {
+                        Text("More from Rupi Kaur")
+                            .font(.system(size: 17, weight: .semibold, design: .serif))
+                            .padding(.leading)
+                        Spacer()
+                    }
+                    
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack(spacing: 0){
+                            ForEach(searchViewModel.books) { book in
+                                ItemSearch(book: book)
+                            }
+                            .padding(.leading)
+                        }
+                    }
+                    
                 }
             }
-            
             .navigationBarTitle("Search")
-            //            .toolbar {
-            //                ToolbarItem(placement: .navigationBarLeading) {
-            //                           HStack {
-            //                               Text("Title").font(.headline)
-            //                           }
-            //                       }
-            //                   }
-            //            .navigationTitle("Search")
-            
         }
-//        .searchable(text: $searchViewModel.searchedText, prompt: "Search for books, authors and genres")
     }
 }
 
