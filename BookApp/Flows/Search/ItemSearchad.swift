@@ -14,7 +14,6 @@ struct ItemSearchad: View {
     
     var body: some View {
         NavigationStack{
-            // NavigationLink(destination: BookView(), isActive: $isLinkActive) {
             ZStack{
                 HStack{
                     VStack{
@@ -39,11 +38,11 @@ struct ItemSearchad: View {
                 }
             }
             .navigationDestination(isPresented: $isLinkActive, destination: { BookView() })
-            
-            // }
         }
         .foregroundColor(.black)
-        .frame(width: 250, height: 140, alignment: .topLeading)
+        .frame(maxWidth: .infinity, maxHeight: 140, alignment: .topLeading)
+        .padding([.leading, .trailing])
+        .padding(.bottom, 5)
     }
 }
 
