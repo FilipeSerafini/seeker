@@ -12,12 +12,8 @@ struct SearchableView: View {
     @State private var filteredData: [String] = []
     @EnvironmentObject private var searchViewModel: SearchViewModel
     
-    var clicked: Bool = false
-
-    
     var body: some View {
-        NavigationView {
-            VStack {
+            VStack(alignment: .leading) {
                 // Search Bar
                 HStack {
                     TextField("Procure por livros, autores e gêneros", text: $searchText)
@@ -36,8 +32,7 @@ struct SearchableView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-//                            performSearch()
-//                            searchViewModel.fetchBooks(searchedText: searchText)
+                            searchViewModel.fetchBooks(searchedText: searchText)
                             
                             print("Pesquisar...")
                         }) {
@@ -48,8 +43,11 @@ struct SearchableView: View {
                         .opacity(searchText == "" ? 0.6 : 1)
                     }
                 )
+                
+                ForEach(searchViewModel.books) { book in
+                    ItemSearchad(book: book)
+                }
             }
-        }
     }
     
     /*
