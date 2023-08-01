@@ -19,12 +19,9 @@ struct BookView: View {
                 VStack{
                     
                     HStack{
-                        Button {
-                            ShareInstagramView()
-                        }
-                    label: {
-                        Image("shareButton")
-                    }
+                        NavigationLink(destination: ShareInstagramView(), label: {
+                            Image("shareButton")
+                        })
                     }
                     .padding(.leading, 300)
                     
@@ -48,7 +45,7 @@ struct BookView: View {
                         Text("  Avaliação geral: \(bookRating)  ")
                             .background(Rectangle().fill(Color.black).cornerRadius(20).frame(height: 30))
                             .foregroundColor(.white)
-
+                        
                         HStack{
                             Button {
                                 //completar
