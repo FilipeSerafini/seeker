@@ -18,7 +18,7 @@ struct ItemSearchad: View {
             ZStack{
                 HStack{
                     VStack{
-                        Image(book.image)
+                        Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
                             .resizable()
                             .scaledToFill()
                     }
