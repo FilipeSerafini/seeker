@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		42633AE42A7443EE00401B5F /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42633AE32A7443EE00401B5F /* BookService.swift */; };
 		4C7234852A743DE9006740F6 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234842A743DE9006740F6 /* CommentView.swift */; };
+		4C7234892A797723006740F6 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234882A797723006740F6 /* Preview.swift */; };
+		4C72348C2A797991006740F6 /* ShareInstagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72348B2A797991006740F6 /* ShareInstagramView.swift */; };
 		4CDD3BA82A730790001519C3 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BA72A730790001519C3 /* BookView.swift */; };
 		4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */; };
 		4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */; };
@@ -44,6 +46,8 @@
 		422E89BB2A788F1600FADC5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42633AE32A7443EE00401B5F /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
 		4C7234842A743DE9006740F6 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		4C7234882A797723006740F6 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
+		4C72348B2A797991006740F6 /* ShareInstagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareInstagramView.swift; path = ../../../../../ShareInstagramView.swift; sourceTree = "<group>"; };
 		4CDD3BA72A730790001519C3 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewApp.swift; sourceTree = "<group>"; };
 		4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -94,6 +98,14 @@
 				42633AE32A7443EE00401B5F /* BookService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		4C72348A2A79797D006740F6 /* ShareInstagram */ = {
+			isa = PBXGroup;
+			children = (
+				4C72348B2A797991006740F6 /* ShareInstagramView.swift */,
+			);
+			path = ShareInstagram;
 			sourceTree = "<group>";
 		};
 		4CDD3BA62A730785001519C3 /* Book */ = {
@@ -196,6 +208,7 @@
 				B1D861DD2A705F4400CAD142 /* BookApp.entitlements */,
 				B1D861C82A7045AE00CAD142 /* BookAppApp.swift */,
 				7C281A902A743F3A00A58E96 /* ContentCoreData.swift */,
+				4C7234882A797723006740F6 /* Preview.swift */,
 				B1D861CA2A7045AE00CAD142 /* ContentView.swift */,
 				B1D861CC2A7045AF00CAD142 /* Assets.xcassets */,
 				B1D861D12A7045AF00CAD142 /* Persistence.swift */,
@@ -229,6 +242,7 @@
 		B1D861E02A70624800CAD142 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				4C72348A2A79797D006740F6 /* ShareInstagram */,
 				7C281A872A73256500A58E96 /* Search */,
 				4CDD3BAB2A7307FB001519C3 /* TabBar */,
 				4CDD3BAE2A7308B4001519C3 /* Library */,
@@ -310,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C72348C2A797991006740F6 /* ShareInstagramView.swift in Sources */,
 				B1D861D52A7045AF00CAD142 /* BookApp.xcdatamodeld in Sources */,
 				4CDD3BB22A7308CD001519C3 /* LibraryViewModel.swift in Sources */,
 				B108B8102A71943F006D6F1C /* Folder.swift in Sources */,
@@ -332,6 +347,7 @@
 				B1D861D22A7045AF00CAD142 /* Persistence.swift in Sources */,
 				B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */,
 				4CDD3BB52A7308F7001519C3 /* OracleViewModel.swift in Sources */,
+				4C7234892A797723006740F6 /* Preview.swift in Sources */,
 				7C281A862A73255F00A58E96 /* SearchViewModel.swift in Sources */,
 				B108B8052A7193EF006D6F1C /* User.swift in Sources */,
 				B108B80E2A719431006D6F1C /* Goal.swift in Sources */,

@@ -1,16 +1,24 @@
-//
-//  ContentView.swift
-//  BookApp
-//
-//  Created by Filipe Serafini on 25/07/23.
-//
 
 import SwiftUI
 
 struct ContentView: View {
-
+@State private var isActive = false
+    
     var body: some View {
-       TabViewApp()
+        ZStack {
+            if self.isActive {
+                TabViewApp()
+            } else {
+                Preview()
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                withAnimation {
+                    self.isActive = true
+                }
+            }
+        }
     }
 }
 
