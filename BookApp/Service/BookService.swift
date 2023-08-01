@@ -11,7 +11,9 @@ extension BookService {
     func fetchBooks(searchedText: String) -> AnyPublisher<[APIBook], Error> {
         //
         //https://www.googleapis.com/books/v1/volumes?q=subject:fiction
-        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=\(searchedText)")!
+        let inputWithSpace: String = "https://www.googleapis.com/books/v1/volumes?q=\(searchedText)"
+        
+        let url = URL(string: inputWithSpace.replacingOccurrences(of: " ", with: ""))!
         
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(\.data)
