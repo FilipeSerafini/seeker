@@ -17,18 +17,21 @@ struct BookView: View {
                     .ignoresSafeArea()
                 
                 VStack{
-                    Button {
-                        //completar
+                    
+                    HStack{
+                        Button {
+                            ShareInstagramView()
+                        }
+                    label: {
+                        Image("shareButton")
                     }
-                label: {
-                    Image("shareButton")
-                }
-                .frame(alignment: .trailing)
+                    }
+                    .padding(.leading, 300)
                     
                     ZStack {
                         Image(bookImage)
                             .resizable()
-                            .frame(width: 170, height: 245)
+                            .frame(width: 170, height: 244)
                             .cornerRadius(15)
                     }
                     .padding(.top, 60)
@@ -42,6 +45,10 @@ struct BookView: View {
                             .padding(.bottom, 5)
                             .padding(.top, 2)
                         
+                        Text("  Avaliação geral: \(bookRating)  ")
+                            .background(Rectangle().fill(Color.black).cornerRadius(20).frame(height: 30))
+                            .foregroundColor(.white)
+
                         HStack{
                             Button {
                                 //completar
@@ -49,6 +56,8 @@ struct BookView: View {
                         label: {
                             VStack{
                                 Image("addBookToFolder")
+                                    .resizable()
+                                    .frame(width: 43, height: 43)
                                 Text("Adicionar")
                                     .foregroundColor(.black)
                             }
@@ -60,6 +69,8 @@ struct BookView: View {
                         label: {
                             VStack{
                                 Image("bookReadCheckbox")
+                                    .resizable()
+                                    .frame(width: 43, height: 43)
                                 Text("Lido")
                                     .foregroundColor(.black)
                             }
@@ -73,14 +84,24 @@ struct BookView: View {
                             VStack{
                                 HStack{
                                     Image("heart")
-                                        .padding(.trailing, -12)
+                                        .resizable()
+                                        .frame(width: 37, height: 36)
                                     Image("heart")
-                                        .padding(.trailing, -12)
+                                        .resizable()
+                                        .frame(width: 37, height: 36)
+                                        .padding(.leading, -2)
                                     Image("heart")
-                                        .padding(.trailing, -12)
+                                        .resizable()
+                                        .frame(width: 37, height: 36)
+                                        .padding(.leading, -4)
                                     Image("heart")
-                                        .padding(.trailing, -12)
+                                        .resizable()
+                                        .frame(width: 37, height: 36)
+                                        .padding(.leading, -4)
                                     Image("heart")
+                                        .resizable()
+                                        .frame(width: 37, height: 36)
+                                        .padding(.leading, -4)
                                 }
                                 .padding(.top, 10)
                                 Text("Minha avaliação")
