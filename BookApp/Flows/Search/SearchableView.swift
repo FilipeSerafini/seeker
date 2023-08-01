@@ -1,17 +1,9 @@
-//
-//  SwiftUIView.swift
-//  testesparaoBooks
-//
-//  Created by Sabrina Souza on 30/07/23.
-//
-
 import SwiftUI
 
 struct SearchableView: View {
     @State private var searchText = ""
     @State private var filteredData: [String] = []
     @EnvironmentObject private var searchViewModel: SearchViewModel
-    
     
     let spaceName = "scroll"
     @State var scrollViewSize: CGSize = .zero
@@ -51,7 +43,7 @@ struct SearchableView: View {
                     )
                     
                     ForEach(searchViewModel.books) { book in
-                        ItemSearchad(book: book)
+                        ResearchedBookView(book: book)
                     }
                 }
                 .background(

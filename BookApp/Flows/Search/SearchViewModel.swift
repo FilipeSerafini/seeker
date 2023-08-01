@@ -1,10 +1,3 @@
-//
-//  SearchViewModel.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 27/07/23.
-//
-
 import Foundation
 import Combine
 import SwiftUI
@@ -20,7 +13,7 @@ class SearchViewModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     private var currentState: State = .alreadyLoaded
     private var currentPag: Int = 1
-
+    
     func fetchBooks(searchedText: String) {
         
         if currentState == .isLoading {

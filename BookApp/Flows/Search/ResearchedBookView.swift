@@ -1,16 +1,8 @@
-//
-//  ItemSearchad.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 28/07/23.
-//
-
 import SwiftUI
 
-struct ItemSearchad: View {
-    @State private var isLinkActive = false
-    
-    let book: Book
+struct ResearchedBookView: View {
+    @State private var startConfirm = false
+    @State var book: Book
     
     var body: some View {
         NavigationStack{
@@ -34,10 +26,16 @@ struct ItemSearchad: View {
                     }
                 }
                 .onTapGesture {
-                    isLinkActive = true
+                    startConfirm.toggle()
                 }
             }
-            .navigationDestination(isPresented: $isLinkActive, destination: { BookView() })
+            .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible) {
+                NavigationLink("Ver detalhes") { BookView()  }
+#warning("Mudar para a página de adicionar a uma lista")
+                NavigationLink("Adicionar a uma lista") { BookView() }
+            } message: {
+                Text (book.authors[0])
+            }
         }
         .foregroundColor(.black)
         .frame(maxWidth: .infinity, maxHeight: 140, alignment: .topLeading)

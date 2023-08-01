@@ -1,13 +1,6 @@
-//
-//  sea.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 28/07/23.
-//
-
 import SwiftUI
 
-struct ItemSearch: View {
+struct BookResearchedCover: View {
     
     @State private var isLinkActive = false
     let book: Book
