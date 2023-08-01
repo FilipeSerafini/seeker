@@ -9,13 +9,30 @@ import Foundation
 import Combine
 import SwiftUI
 
+private enum State: Comparable {
+    case isLoading
+    case alreadyLoaded
+}
+
 class SearchViewModel: ObservableObject {
     @Published var books: [Book] = []
     private let service: BookService = BookService()
     private var subscriptions = Set<AnyCancellable>()
+    private var currentState: State = .alreadyLoaded
+    private var currentPag: Int = 1
 
     func fetchBooks(searchedText: String) {
-        self.service.fetchBooks(searchedText: searchedText)
+        
+        if currentState == .isLoading {
+            print("ja carregando")
+            return
+        }
+        
+        print("vou chamar")
+        print("pag: \(currentPag)")
+        currentState = .isLoading
+        
+        self.service.fetchBooks(searchedText: searchedText, page: currentPag)
             .flatMap({ apiBooks in
                 apiBooks.publisher
             })
@@ -45,9 +62,9 @@ class SearchViewModel: ObservableObject {
                     return
                 }
             }, receiveValue: { books in
-                self.books = books
-                print(self.books)
-//                self.reloadData()
+                self.books = self.books + books
+                self.currentPag += 1
+                self.currentState = .alreadyLoaded
             })
             .store(in: &subscriptions)
     }
