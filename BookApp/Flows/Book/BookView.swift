@@ -12,24 +12,27 @@ struct BookView: View {
         VStack{
             ZStack{
                 RoundedRectangle(cornerRadius: 30)
-                    .fill(.gray)
+                    .fill(.white)
                     .padding(.top, 300)
                     .ignoresSafeArea()
                 
                 VStack{
+                    
+                    HStack{
+                        Button {
+                            ShareInstagramView()
+                        }
+                    label: {
+                        Image("shareButton")
+                    }
+                    }
+                    .padding(.leading, 300)
+                    
                     ZStack {
                         Image(bookImage)
                             .resizable()
-                            .frame(width: 170, height: 245)
+                            .frame(width: 170, height: 244)
                             .cornerRadius(15)
-                        ZStack{
-                            Circle()
-                                .foregroundColor(.green)
-                                .frame(width: 50, height: 50)
-                            Text(bookRating)
-                        }
-                        .padding(.leading, 160)
-                        .padding(.top, -150)
                     }
                     .padding(.top, 60)
                     VStack {
@@ -42,20 +45,81 @@ struct BookView: View {
                             .padding(.bottom, 5)
                             .padding(.top, 2)
                         
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(.red)
-                            .frame(width: 358, height: 64)
+                        Text("  Avaliação geral: \(bookRating)  ")
+                            .background(Rectangle().fill(Color.black).cornerRadius(20).frame(height: 30))
+                            .foregroundColor(.white)
+
+                        HStack{
+                            Button {
+                                //completar
+                            }
+                        label: {
+                            VStack{
+                                Image("addBookToFolder")
+                                    .resizable()
+                                    .frame(width: 43, height: 43)
+                                Text("Adicionar")
+                                    .foregroundColor(.black)
+                            }
+                        }
+                            
+                            Button {
+                                //completar
+                            }
+                        label: {
+                            VStack{
+                                Image("bookReadCheckbox")
+                                    .resizable()
+                                    .frame(width: 43, height: 43)
+                                Text("Lido")
+                                    .foregroundColor(.black)
+                            }
+                        }
+                        .padding(.trailing, 15)
+                            
+                            Button {
+                                //completar
+                            }
+                        label: {
+                            VStack{
+                                HStack{
+                                    Image("heart")
+                                        .resizable()
+                                        .frame(width: 37, height: 36)
+                                    Image("heart")
+                                        .resizable()
+                                        .frame(width: 37, height: 36)
+                                        .padding(.leading, -2)
+                                    Image("heart")
+                                        .resizable()
+                                        .frame(width: 37, height: 36)
+                                        .padding(.leading, -4)
+                                    Image("heart")
+                                        .resizable()
+                                        .frame(width: 37, height: 36)
+                                        .padding(.leading, -4)
+                                    Image("heart")
+                                        .resizable()
+                                        .frame(width: 37, height: 36)
+                                        .padding(.leading, -4)
+                                }
+                                .padding(.top, 10)
+                                Text("Minha avaliação")
+                                    .foregroundColor(.black)
+                            }
+                        }
+                        }
                         
                         ScrollView{
                             Text (bookSinopsis)
                                 .font(.system(size: 17, weight: .regular))
-                            
                         }
                         .padding()
                     }
                 }
             }
         }
+        .background(.black)
     }
 }
 
