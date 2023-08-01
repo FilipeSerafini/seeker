@@ -23,7 +23,6 @@ struct LibraryView: View {
             .padding()
             .padding(.bottom, 500)
         }
-//        .navigationTitle("My bookshelf")
     }
 }
 

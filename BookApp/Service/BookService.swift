@@ -8,12 +8,9 @@ class BookService {
 
 //MARK: - Fetch Books with combine API
 extension BookService {
-    func fetchBooks(searchedText: String) -> AnyPublisher<[APIBook], Error> {
-        //
-        //https://www.googleapis.com/books/v1/volumes?q=subject:fiction
-        let inputWithSpace: String = "https://www.googleapis.com/books/v1/volumes?q=\(searchedText)"
+    func fetchBooks(searchedText: String, page: Int) -> AnyPublisher<[APIBook], Error> {
         
-        let url = URL(string: inputWithSpace.replacingOccurrences(of: " ", with: ""))!
+        let url: URL = buildAPIURL(searchedText: searchedText, page: page)
         
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(\.data)
@@ -26,6 +23,18 @@ extension BookService {
             .subscribe(on: DispatchQueue.global(qos: .userInitiated))
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
+    }
+    
+    private func buildAPIURL(searchedText: String, page: Int) -> URL {
+        let baseURL: String = "https://www.googleapis.com/books/v1/volumes?q="
+        let searchURL: String = baseURL + searchedText
+        let pageURL: String = searchURL + "&startIndex=\(page)"
+        
+        guard let url = URL(string: pageURL.replacingOccurrences(of: " ", with: "")) else {
+            return URL(string: "https://www.googleapis.com/books/v1/volumes?q=Books")!
+        }
+        
+        return url
     }
 }
 
