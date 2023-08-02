@@ -1,13 +1,6 @@
-//
-//  sea.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 28/07/23.
-//
-
 import SwiftUI
 
-struct ItemSearch: View {
+struct BookResearchedCover: View {
     
     @State private var isLinkActive = false
     let book: Book
@@ -24,7 +17,8 @@ struct ItemSearch: View {
             }
             .frame(width: 95, height: 136)
             .cornerRadius(8)
-            .navigationDestination(isPresented: $isLinkActive, destination: { BookView() })
+            #warning("Fazer essa navegação funcionar")
+//            .navigationDestination(isPresented: $isLinkActive, destination: { BookView() })
         }
     }
 }
