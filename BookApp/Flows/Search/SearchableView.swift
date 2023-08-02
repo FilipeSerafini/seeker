@@ -6,7 +6,7 @@ struct SearchableView: View {
     @State private var wholeSize: CGSize = .zero
     @State private var searchText = ""
     @State private var isEditing: Bool = false
-
+    
     @EnvironmentObject private var searchViewModel: SearchViewModel
     
     var body: some View {
@@ -19,14 +19,14 @@ struct SearchableView: View {
                             TextField("Procure por livros, autores e gêneros", text: $searchText, onEditingChanged: { editing in
                                 isEditing = editing
                             })
-                                .onSubmit {
-                                    if searchText != ""{
-                                        searchViewModel.fetchBooks(searchedText: searchText)
-                                    }
+                            .onSubmit {
+                                if searchText != ""{
+                                    searchViewModel.fetchBooks(searchedText: searchText)
                                 }
-                                .padding(15)
-                                .font(.system(size: 15))
-                                .foregroundColor(Color(red: 0.255, green: 0.255, blue: 0.255))
+                            }
+                            .padding(15)
+                            .font(.system(size: 15))
+                            .foregroundColor(Color(red: 0.255, green: 0.255, blue: 0.255))
                         }
                         .padding(.trailing, 20)
                         .background(Color(red: 0.851, green: 0.851, blue: 0.851))
@@ -47,62 +47,7 @@ struct SearchableView: View {
                         )
                         
                         if !isEditing && searchText == "" {
-                            VStack {
-                                VStack {
-                                    HStack{
-                                        Text("You might like")
-                                            .font(.system(size: 17, weight: .semibold, design: .serif))
-                                            .padding(.leading)
-                                        Spacer()
-                                    }
-                                    ScrollView(.horizontal, showsIndicators: false){
-                                        HStack(spacing: 0){
-                                            ForEach(searchViewModel.books) { book in
-                                                BookResearchedCover(book: book)
-                                            }
-                                            .padding(.leading)
-                                        }
-                                    }
-                                }
-                                .padding(.bottom)
-                                
-                                VStack{
-                                    HStack {
-                                        Text("Romance books")
-                                            .font(.system(size: 17, weight: .semibold, design: .serif))
-                                            .padding(.leading)
-                                        Spacer()
-                                    }
-                                    ScrollView(.horizontal, showsIndicators: false){
-                                        HStack(spacing: 0){
-                                            ForEach(searchViewModel.books) { book in
-                                                BookResearchedCover(book: book)
-                                            }
-                                            .padding(.leading)
-                                        }
-                                    }
-                                }
-                                .padding(.bottom)
-                                
-                                VStack(alignment: .leading){
-                                    HStack {
-                                        Text("More from Rupi Kaur")
-                                            .font(.system(size: 17, weight: .semibold, design: .serif))
-                                            .padding(.leading)
-                                        Spacer()
-                                    }
-                                    
-                                    ScrollView(.horizontal, showsIndicators: false){
-                                        HStack(spacing: 0){
-                                            ForEach(searchViewModel.books) { book in
-                                                BookResearchedCover(book: book)
-                                            }
-                                            .padding(.leading)
-                                        }
-                                    }
-                                    
-                                }
-                            }
+                            RecommendedView()
                         } else if !isEditing {
                             ForEach(searchViewModel.books) { book in
                                 ResearchedBookView(book: book)
