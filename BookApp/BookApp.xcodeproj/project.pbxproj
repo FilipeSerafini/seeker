@@ -28,6 +28,7 @@
 		7C281A8F2A742AE200A58E96 /* ResearchedBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281A8E2A742AE200A58E96 /* ResearchedBookView.swift */; };
 		7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281A902A743F3A00A58E96 /* ContentCoreData.swift */; };
 		7C281AB72A78312B00A58E96 /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281AB62A78312B00A58E96 /* SearchableView.swift */; };
+		7C4245E42A7AE98800241A98 /* BookFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4245E32A7AE98800241A98 /* BookFilterButton.swift */; };
 		B108B8052A7193EF006D6F1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8042A7193EF006D6F1C /* User.swift */; };
 		B108B8072A719406006D6F1C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8062A719406006D6F1C /* Badge.swift */; };
 		B108B8092A719415006D6F1C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8082A719415006D6F1C /* Book.swift */; };
@@ -69,6 +70,7 @@
 		7C281A8E2A742AE200A58E96 /* ResearchedBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchedBookView.swift; sourceTree = "<group>"; };
 		7C281A902A743F3A00A58E96 /* ContentCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCoreData.swift; sourceTree = "<group>"; };
 		7C281AB62A78312B00A58E96 /* SearchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableView.swift; sourceTree = "<group>"; };
+		7C4245E32A7AE98800241A98 /* BookFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFilterButton.swift; sourceTree = "<group>"; };
 		B108B8042A7193EF006D6F1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B108B8062A719406006D6F1C /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		B108B8082A719415006D6F1C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		B1D861BC2A7045AD00CAD142 = {
 			isa = PBXGroup;
 			children = (
+				7C4245E32A7AE98800241A98 /* BookFilterButton.swift */,
 				B1D861C72A7045AD00CAD142 /* BookApp */,
 				B1D861DE2A70623A00CAD142 /* Model */,
 				B1D861E02A70624800CAD142 /* Flows */,
@@ -350,6 +353,7 @@
 				4CDD3BA82A730790001519C3 /* BookView.swift in Sources */,
 				B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */,
 				4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */,
+				7C4245E42A7AE98800241A98 /* BookFilterButton.swift in Sources */,
 				B108B8072A719406006D6F1C /* Badge.swift in Sources */,
 				B1D5C0DC2A7AA3BB007CA7C7 /* CloudKitUtility.swift in Sources */,
 				B108B8092A719415006D6F1C /* Book.swift in Sources */,
