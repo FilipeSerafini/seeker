@@ -8,17 +8,16 @@ struct LibraryView: View {
         ZStack{
             HStack{
                 VStack (alignment: .leading){
-                    Text("What's up, \(userName)?")
+                    Text("E aí, \(userName)?")
                         .font(.system(size: 15, design: .serif))
                     
-                    Text("My bookshelf")
+                    Text("Minha Estante")
                         .font(.system(size: 34, design: .serif))
                 }
                 Spacer()
-                Image("profileImage")
+                Image("addFolders")
                     .resizable()
-                    .frame(width: 60, height: 60)
-                    .clipShape(Circle())
+                    .frame(width: 46, height: 34)
             }
             .padding()
             .padding(.bottom, 500)
