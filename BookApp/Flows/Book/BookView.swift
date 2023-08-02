@@ -14,12 +14,12 @@ struct BookView: View {
                 
                 VStack{
                     
-                    HStack{
-                        NavigationLink(destination: ShareInstagramView(), label: {
-                            Image("shareButton")
-                        })
-                    }
-                    .padding(.leading, 300)
+                    //                    HStack{
+                    //                        NavigationLink(destination: ShareInstagramView(), label: {
+                    //                            Image("shareButton")
+                    //                        })
+                    //                    }
+                    //                    .padding(.leading, 300)
                     
                     ZStack {
                         Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
@@ -27,9 +27,10 @@ struct BookView: View {
                             .frame(width: 170, height: 244)
                             .cornerRadius(15)
                     }
-                    .padding(.top, 60)
+                    //                    .padding(.top, 60)
                     VStack {
                         Text (book.authors[0])
+                            .textCase(.uppercase)
                             .font(.system(size: 17, weight: .regular))
                             .padding(.bottom, 2)
                             .padding(.top, 2)
@@ -108,6 +109,7 @@ struct BookView: View {
                                 .font(.system(size: 17, weight: .regular))
                         }
                         .padding()
+                        
                     }
                 }
             }
@@ -116,11 +118,11 @@ struct BookView: View {
     }
 }
 
-struct BookView_Previews: PreviewProvider {
-    static var previews: some View {
-        BookView(book: bookTeste!)
-    }
-}
+//struct BookView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BookView(book: bookTeste!)
+//    }
+//}
 
-var bookTeste = Book(authors: ["BOOK AUTHOR"], genres: ["Genero do livro"], image: "bookImage", isbns: ["12345"], rating: "4,5", sinopsis: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", title: "Book Title", imageCover: UIImage(systemName: "bookImage")!)
+//var bookTeste = Book(authors: ["BOOK AUTHOR"], genres: ["Genero do livro"], image: "bookImage", isbns: ["12345"], rating: "4,5", sinopsis: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", title: "Book Title", imageCover: UIImage(systemName: "bookImage")!)
 
