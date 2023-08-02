@@ -17,7 +17,8 @@ struct BookResearchedCover: View {
             }
             .frame(width: 95, height: 136)
             .cornerRadius(8)
-            .navigationDestination(isPresented: $isLinkActive, destination: { BookView() })
+            #warning("Fazer essa navegação funcionar")
+//            .navigationDestination(isPresented: $isLinkActive, destination: { BookView() })
         }
     }
 }

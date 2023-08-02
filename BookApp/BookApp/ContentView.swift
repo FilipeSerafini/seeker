@@ -13,6 +13,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
+            #warning("mudar tempo para 1.5")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation {
                     self.isActive = true

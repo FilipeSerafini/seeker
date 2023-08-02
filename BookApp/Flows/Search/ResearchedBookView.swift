@@ -18,9 +18,18 @@ struct ResearchedBookView: View {
                     
                     VStack(alignment: .leading){
                         Text(book.authors[0])
+                            .textCase(.uppercase)
                             .font(.system(size: 13))
+                            .padding(.bottom, -4)
                         Text(book.title)
                             .font(.system(size: 22, weight: .medium, design: .serif))
+                            .padding(.bottom, 3)
+                        #warning("fazer validação se avaliação vier vazia")
+                        Text("  Avaliação geral: \(book.rating)  ")
+                            .background(Rectangle().fill(Color.black).cornerRadius(20).frame(height: 25))
+                            .font(.system(size: 13))
+                            .foregroundColor(.white)
+                            .padding(.bottom, 3)
                         Text(book.sinopsis)
                             .font(.system(size: 15))
                     }
@@ -30,9 +39,9 @@ struct ResearchedBookView: View {
                 }
             }
             .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible) {
-                NavigationLink("Ver detalhes") { BookView()  }
+                NavigationLink("Ver detalhes") { BookView(book: book)  }
 #warning("Mudar para a página de adicionar a uma lista")
-                NavigationLink("Adicionar a uma lista") { BookView() }
+                NavigationLink("Adicionar a uma lista") { BookView(book: book) }
             } message: {
                 Text (book.authors[0])
             }
@@ -44,8 +53,8 @@ struct ResearchedBookView: View {
     }
 }
 
-//struct ItemSearchad_Previews: PreviewProvider {
+//struct ResearchedBookView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ItemSearchad()
+//        ResearchedBookView(book: <#T##Book#>)
 //    }
 //}
