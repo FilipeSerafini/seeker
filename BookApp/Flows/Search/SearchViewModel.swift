@@ -1,10 +1,3 @@
-//
-//  SearchViewModel.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 27/07/23.
-//
-
 import Foundation
 import Combine
 import SwiftUI
@@ -20,15 +13,20 @@ class SearchViewModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     private var currentState: State = .alreadyLoaded
     private var currentPag: Int = 1
-
+    private var currentSearch: String = ""
+    
     func fetchBooks(searchedText: String) {
         
         if currentState == .isLoading {
-            print("ja carregando")
             return
         }
         
-        print("vou chamar")
+        if searchedText != currentSearch {
+            currentSearch = searchedText
+            currentPag = 1
+            books = []
+        }
+        
         print("pag: \(currentPag)")
         currentState = .isLoading
         
@@ -44,6 +42,10 @@ class SearchViewModel: ObservableObject {
             .flatMap({ apiBooks in
                 apiBooks.publisher
             })
+//            .filter({ book in
+//                if book.image == "image" { return false }
+//                else { return true }
+//            })
             .flatMap({ book in
                 return self.service.fetchBookCover(forURL: book.image)
                     .map({ data in

@@ -28,10 +28,12 @@ extension BookService {
     private func buildAPIURL(searchedText: String, page: Int) -> URL {
         let baseURL: String = "https://www.googleapis.com/books/v1/volumes?q="
         let searchURL: String = baseURL + searchedText
-        let pageURL: String = searchURL + "&startIndex=\(page)"
+        let pageURL: String = searchURL + "&startIndex=\(page)&orderBy=relevance"
         
-        guard let url = URL(string: pageURL.replacingOccurrences(of: " ", with: "")) else {
-            return URL(string: "https://www.googleapis.com/books/v1/volumes?q=Books")!
+        let finalURL = pageURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        guard let url = URL(string: finalURL) else {
+            return URL(string: "https://www.googleapis.com/books/v1/volumes?q=a")!
         }
         
         return url
