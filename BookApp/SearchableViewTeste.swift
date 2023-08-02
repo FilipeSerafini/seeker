@@ -60,7 +60,7 @@ struct SearchableViewTeste: View {
                                 ScrollView(.horizontal, showsIndicators: false){
                                     HStack(spacing: 0){
                                         ForEach(searchViewModel.books) { book in
-                                            ItemSearch(book: book)
+                                            BookResearchedCover(book: book)
                                         }
                                         .padding(.leading)
                                     }
@@ -78,7 +78,7 @@ struct SearchableViewTeste: View {
                                 ScrollView(.horizontal, showsIndicators: false){
                                     HStack(spacing: 0){
                                         ForEach(searchViewModel.books) { book in
-                                            ItemSearch(book: book)
+                                            BookResearchedCover(book: book)
                                         }
                                         .padding(.leading)
                                     }
@@ -97,7 +97,7 @@ struct SearchableViewTeste: View {
                                 ScrollView(.horizontal, showsIndicators: false){
                                     HStack(spacing: 0){
                                         ForEach(searchViewModel.books) { book in
-                                            ItemSearch(book: book)
+                                            BookResearchedCover(book: book)
                                         }
                                         .padding(.leading)
                                     }
@@ -114,7 +114,7 @@ struct SearchableViewTeste: View {
                         
                     } else if !isEditing {
                         ForEach(searchViewModel.books) { book in
-                            ItemSearchad(book: book)
+                            ResearchedBookView(book: book)
                         }
                     }
                 }
@@ -124,7 +124,6 @@ struct SearchableViewTeste: View {
             }
         }
         .navigationBarTitle("Search")
-        
     }
     
     func zerarPesquisa() {
