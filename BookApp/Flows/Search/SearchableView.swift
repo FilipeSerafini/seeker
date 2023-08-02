@@ -5,7 +5,8 @@ struct SearchableView: View {
     @State private var scrollViewSize: CGSize = .zero
     @State private var wholeSize: CGSize = .zero
     @State private var searchText = ""
-    @State private var filteredData: [String] = []
+    @State private var isEditing: Bool = false
+
     @EnvironmentObject private var searchViewModel: SearchViewModel
     
     var body: some View {
@@ -15,9 +16,13 @@ struct SearchableView: View {
                     VStack(alignment: .leading) {
                         // Search Bar
                         HStack {
-                            TextField("Procure por livros, autores e gêneros", text: $searchText)
+                            TextField("Procure por livros, autores e gêneros", text: $searchText, onEditingChanged: { editing in
+                                isEditing = editing
+                            })
                                 .onSubmit {
-                                    searchViewModel.fetchBooks(searchedText: searchText)
+                                    if searchText != ""{
+                                        searchViewModel.fetchBooks(searchedText: searchText)
+                                    }
                                 }
                                 .padding(15)
                                 .font(.system(size: 15))
@@ -41,8 +46,67 @@ struct SearchableView: View {
                             }
                         )
                         
-                        ForEach(searchViewModel.books) { book in
-                            ResearchedBookView(book: book)
+                        if !isEditing && searchText == "" {
+                            VStack {
+                                VStack {
+                                    HStack{
+                                        Text("You might like")
+                                            .font(.system(size: 17, weight: .semibold, design: .serif))
+                                            .padding(.leading)
+                                        Spacer()
+                                    }
+                                    ScrollView(.horizontal, showsIndicators: false){
+                                        HStack(spacing: 0){
+                                            ForEach(searchViewModel.books) { book in
+                                                BookResearchedCover(book: book)
+                                            }
+                                            .padding(.leading)
+                                        }
+                                    }
+                                }
+                                .padding(.bottom)
+                                
+                                VStack{
+                                    HStack {
+                                        Text("Romance books")
+                                            .font(.system(size: 17, weight: .semibold, design: .serif))
+                                            .padding(.leading)
+                                        Spacer()
+                                    }
+                                    ScrollView(.horizontal, showsIndicators: false){
+                                        HStack(spacing: 0){
+                                            ForEach(searchViewModel.books) { book in
+                                                BookResearchedCover(book: book)
+                                            }
+                                            .padding(.leading)
+                                        }
+                                    }
+                                }
+                                .padding(.bottom)
+                                
+                                VStack(alignment: .leading){
+                                    HStack {
+                                        Text("More from Rupi Kaur")
+                                            .font(.system(size: 17, weight: .semibold, design: .serif))
+                                            .padding(.leading)
+                                        Spacer()
+                                    }
+                                    
+                                    ScrollView(.horizontal, showsIndicators: false){
+                                        HStack(spacing: 0){
+                                            ForEach(searchViewModel.books) { book in
+                                                BookResearchedCover(book: book)
+                                            }
+                                            .padding(.leading)
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        } else if !isEditing {
+                            ForEach(searchViewModel.books) { book in
+                                ResearchedBookView(book: book)
+                            }
                         }
                     }
                     .background(
@@ -64,6 +128,9 @@ struct SearchableView: View {
                         }
                     )
                 }
+            }
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) //teclado some ao clicar na tela
             }
             .coordinateSpace(name: spaceName)
         }
