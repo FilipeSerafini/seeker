@@ -9,7 +9,7 @@ struct ResearchedBookView: View {
             ZStack{
                 HStack{
                     VStack{
-                        Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
+                        Image(uiImage: book.imageCover!)
                             .resizable()
                             .scaledToFill()
                     }
