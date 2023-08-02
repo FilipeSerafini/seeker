@@ -3,10 +3,11 @@ import SwiftUI
 struct Preview: View {
     var body: some View {
         VStack{
-            Image("previewImage")
-                .resizable()
-                .frame(width: 340, height: 340)
-            Text("Welcome to Skeeper")
+//            Image("bookImage")
+//                .resizable()
+//                .frame(width: 340, height: 340)
+            Text("Welcome!")
+//            Text("Welcome to Seeker")
                 .font(.system(size: 34, design: .serif))
                 .padding(.bottom,4)
                 .padding(.top, -80)

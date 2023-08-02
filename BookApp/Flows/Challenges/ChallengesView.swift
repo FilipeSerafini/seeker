@@ -3,6 +3,7 @@ import SwiftUI
 struct ChallengesView: View {
     var body: some View {
         Text("Challenges")
+            .font(.system(size: 34, design: .serif))
     }
 }
 
