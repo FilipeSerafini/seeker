@@ -8,12 +8,12 @@ struct User: CKProtocol {
     var name: String
     var username: String
     var bio: String
-    var badges: [String]
+    var badges: [CKRecord.Reference]
     var favoriteGenres: [String]
-    var folders: [String]
-    var goals: [String]
+    var folders: [CKRecord.Reference]
+    var goals: [CKRecord.Reference]
     var image: String
-    var reviews: [String]
+    var reviews: [CKRecord.Reference]
     
     //init para inicializar os atributos
     init() {
@@ -38,12 +38,12 @@ struct User: CKProtocol {
         name: String,
         username: String,
         bio: String,
-        badges: [String],
+        badges: [CKRecord.Reference],
         favoriteGenres: [String],
-        folders: [String],
-        goals: [String],
+        folders: [CKRecord.Reference],
+        goals: [CKRecord.Reference],
 //        image:,
-        reviews: [String]
+        reviews: [CKRecord.Reference]
     ) {
         
         let record = CKRecord(recordType: "User")
@@ -69,12 +69,12 @@ struct User: CKProtocol {
         guard let name = record["name"] as? String else {return nil}
         guard let username = record["username"] as? String else {return nil}
         guard let bio = record["bio"] as? String else {return nil}
-        guard let badges = record["badges"] as? [String] else {return nil}
+        guard let badges = record["badges"] as? [CKRecord.Reference] else {return nil}
         guard let favoriteGenres = record["favoriteGenres"] as? [String] else {return nil}
-        guard let folders = record["folders"] as? [String] else {return nil}
-        guard let goals = record["goals"] as? [String] else {return nil}
-        guard let image = record["image"] as? String else {return nil}
-        guard let reviews = record["reviews"] as? [String] else {return nil}
+        guard let folders = record["folders"] as? [CKRecord.Reference] else {return nil}
+        guard let goals = record["goals"] as? [CKRecord.Reference] else {return nil}
+//        guard let image = record["image"] as? String else {return nil}
+        guard let reviews = record["reviews"] as? [CKRecord.Reference] else {return nil}
         
         self.id = id
         self.name = name

@@ -13,19 +13,7 @@ struct BookView: View {
                     .ignoresSafeArea()
                 
                 VStack{
-                    
-                    HStack{
-//                        NavigationLink(destination: ShareInstagramView(), label: {
-//                            Image("shareButton")
-//                        })
-                        Button {
-//                            ShareInstagramView()
-                        }
-                    label: {
-                        Image("shareButton")
-                    }
-                    }
-                    .padding(.leading, 300)
+   
                     
                     ZStack {
                         Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
