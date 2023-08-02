@@ -18,12 +18,12 @@ struct BookView: View {
                 
                 VStack{
                     
-                    HStack{
-                        NavigationLink(destination: ShareInstagramView(), label: {
-                            Image("shareButton")
-                        })
-                    }
-                    .padding(.leading, 300)
+//                    HStack{
+//                        NavigationLink(destination: ShareInstagramView(), label: {
+//                            Image("shareButton")
+//                        })
+//                    }
+//                    .padding(.leading, 300)
                     
                     ZStack {
                         Image(bookImage)

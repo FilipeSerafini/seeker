@@ -10,7 +10,6 @@
 		42633AE42A7443EE00401B5F /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42633AE32A7443EE00401B5F /* BookService.swift */; };
 		4C7234852A743DE9006740F6 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234842A743DE9006740F6 /* CommentView.swift */; };
 		4C7234892A797723006740F6 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234882A797723006740F6 /* Preview.swift */; };
-		4C72348C2A797991006740F6 /* ShareInstagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72348B2A797991006740F6 /* ShareInstagramView.swift */; };
 		4CDD3BA82A730790001519C3 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BA72A730790001519C3 /* BookView.swift */; };
 		4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */; };
 		4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */; };
@@ -34,6 +33,9 @@
 		B108B80E2A719431006D6F1C /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B80D2A719431006D6F1C /* Goal.swift */; };
 		B108B8102A71943F006D6F1C /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B80F2A71943F006D6F1C /* Folder.swift */; };
 		B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8122A7194CC006D6F1C /* CKProtocol.swift */; };
+		B1D5C0DC2A7AA3BB007CA7C7 /* CloudKitUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0DB2A7AA3BB007CA7C7 /* CloudKitUtility.swift */; };
+		B1D5C0DF2A7AA416007CA7C7 /* UserCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0DE2A7AA416007CA7C7 /* UserCRUD.swift */; };
+		B1D5C0E12A7ABB47007CA7C7 /* FolderCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0E02A7ABB47007CA7C7 /* FolderCRUD.swift */; };
 		B1D861C92A7045AE00CAD142 /* BookAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D861C82A7045AE00CAD142 /* BookAppApp.swift */; };
 		B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D861CA2A7045AE00CAD142 /* ContentView.swift */; };
 		B1D861CD2A7045AF00CAD142 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1D861CC2A7045AF00CAD142 /* Assets.xcassets */; };
@@ -47,7 +49,6 @@
 		42633AE32A7443EE00401B5F /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
 		4C7234842A743DE9006740F6 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		4C7234882A797723006740F6 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
-		4C72348B2A797991006740F6 /* ShareInstagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareInstagramView.swift; path = ../../../../../ShareInstagramView.swift; sourceTree = "<group>"; };
 		4CDD3BA72A730790001519C3 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewApp.swift; sourceTree = "<group>"; };
 		4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -71,6 +72,9 @@
 		B108B80D2A719431006D6F1C /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		B108B80F2A71943F006D6F1C /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		B108B8122A7194CC006D6F1C /* CKProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKProtocol.swift; sourceTree = "<group>"; };
+		B1D5C0DB2A7AA3BB007CA7C7 /* CloudKitUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUtility.swift; sourceTree = "<group>"; };
+		B1D5C0DE2A7AA416007CA7C7 /* UserCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCRUD.swift; sourceTree = "<group>"; };
+		B1D5C0E02A7ABB47007CA7C7 /* FolderCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCRUD.swift; sourceTree = "<group>"; };
 		B1D861C52A7045AD00CAD142 /* BookApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D861C82A7045AE00CAD142 /* BookAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAppApp.swift; sourceTree = "<group>"; };
 		B1D861CA2A7045AE00CAD142 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,17 +99,10 @@
 		42633AE22A7443C800401B5F /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				B1D5C0DD2A7AA3FE007CA7C7 /* CloudKit */,
 				42633AE32A7443EE00401B5F /* BookService.swift */,
 			);
 			path = Service;
-			sourceTree = "<group>";
-		};
-		4C72348A2A79797D006740F6 /* ShareInstagram */ = {
-			isa = PBXGroup;
-			children = (
-				4C72348B2A797991006740F6 /* ShareInstagramView.swift */,
-			);
-			path = ShareInstagram;
 			sourceTree = "<group>";
 		};
 		4CDD3BA62A730785001519C3 /* Book */ = {
@@ -181,6 +178,16 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		B1D5C0DD2A7AA3FE007CA7C7 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				B1D5C0DB2A7AA3BB007CA7C7 /* CloudKitUtility.swift */,
+				B1D5C0DE2A7AA416007CA7C7 /* UserCRUD.swift */,
+				B1D5C0E02A7ABB47007CA7C7 /* FolderCRUD.swift */,
+			);
+			path = CloudKit;
+			sourceTree = "<group>";
+		};
 		B1D861BC2A7045AD00CAD142 = {
 			isa = PBXGroup;
 			children = (
@@ -242,7 +249,6 @@
 		B1D861E02A70624800CAD142 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				4C72348A2A79797D006740F6 /* ShareInstagram */,
 				7C281A872A73256500A58E96 /* Search */,
 				4CDD3BAB2A7307FB001519C3 /* TabBar */,
 				4CDD3BAE2A7308B4001519C3 /* Library */,
@@ -324,7 +330,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C72348C2A797991006740F6 /* ShareInstagramView.swift in Sources */,
 				B1D861D52A7045AF00CAD142 /* BookApp.xcdatamodeld in Sources */,
 				4CDD3BB22A7308CD001519C3 /* LibraryViewModel.swift in Sources */,
 				B108B8102A71943F006D6F1C /* Folder.swift in Sources */,
@@ -333,11 +338,13 @@
 				B108B80C2A71942A006D6F1C /* Review.swift in Sources */,
 				7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */,
 				4CDD3BBF2A730931001519C3 /* ProfileViewModel.swift in Sources */,
+				B1D5C0E12A7ABB47007CA7C7 /* FolderCRUD.swift in Sources */,
 				4CDD3BBC2A730920001519C3 /* ChallengesViewModel.swift in Sources */,
 				4CDD3BA82A730790001519C3 /* BookView.swift in Sources */,
 				B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */,
 				4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */,
 				B108B8072A719406006D6F1C /* Badge.swift in Sources */,
+				B1D5C0DC2A7AA3BB007CA7C7 /* CloudKitUtility.swift in Sources */,
 				B108B8092A719415006D6F1C /* Book.swift in Sources */,
 				7C281A842A73255500A58E96 /* SearchView.swift in Sources */,
 				7C281A8F2A742AE200A58E96 /* ItemSearchad.swift in Sources */,
@@ -346,6 +353,7 @@
 				4CDD3BB72A7308FD001519C3 /* OracleView.swift in Sources */,
 				B1D861D22A7045AF00CAD142 /* Persistence.swift in Sources */,
 				B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */,
+				B1D5C0DF2A7AA416007CA7C7 /* UserCRUD.swift in Sources */,
 				4CDD3BB52A7308F7001519C3 /* OracleViewModel.swift in Sources */,
 				4C7234892A797723006740F6 /* Preview.swift in Sources */,
 				7C281A862A73255F00A58E96 /* SearchViewModel.swift in Sources */,
@@ -481,10 +489,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BookApp/BookApp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BookApp/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3BP9463775;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookApp/Info.plist;
@@ -501,6 +511,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.filipeserafini.BookApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "BookApp certificate";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -516,10 +528,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BookApp/BookApp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BookApp/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3BP9463775;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookApp/Info.plist;
@@ -536,6 +550,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.filipeserafini.BookApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "BookApp certificate";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

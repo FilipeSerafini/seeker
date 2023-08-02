@@ -2,21 +2,21 @@ import Foundation
 import CloudKit
 
 struct Folder: CKProtocol {
-    
     var record: CKRecord
     var id: String = UUID().uuidString
-    var books: [String]
+    var books: [CKRecord.Reference]
     var description: String
     var name: String
     
-    init() {
-        id = UUID().uuidString
-        books = []
-        description = ""
-        name = ""
-        
-        self.record = CKRecord(recordType: "Folder")
-    }
+//    init() {
+//        id = UUID().uuidString
+//        books = []
+//        description = ""
+//        name = ""
+////        owner = CKRecord.Reference.
+//
+//        self.record = CKRecord(recordType: "Folder")
+//    }
     
     init?(
         id: String,
@@ -36,11 +36,10 @@ struct Folder: CKProtocol {
     }
     
     init?(record: CKRecord) {
-        
-        guard let id = record["id"] as? String else { return nil }
-        guard let books = record["books"] as? [String] else { return nil }
-        guard let description = record["description"] as? String else { return nil }
-        guard let name = record["name"] as? String else { return nil }
+        let id = record["id"] as? String ?? ""
+        let books = record["books"] as? [CKRecord.Reference] ?? []
+        let description = record["description"] as? String ?? ""
+        let name = record["name"] as? String ?? ""
         
         self.id = id
         self.books = books
