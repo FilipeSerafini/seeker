@@ -17,9 +17,15 @@ struct LibraryView: View {
                         .font(.system(size: 34, design: .serif))
                 }
                 Spacer()
+                
+                Button {
+                    //completar
+                }
+            label: {
                 Image("addFolders")
                     .resizable()
                     .frame(width: 46, height: 34)
+            }
             }
             .padding()
             .padding(.bottom, 500)
