@@ -12,7 +12,7 @@ class SearchViewModel: ObservableObject {
     private let service: BookService = BookService()
     private var subscriptions = Set<AnyCancellable>()
     private var currentState: State = .alreadyLoaded
-    private var currentPag: Int = 1
+    private var currentPag: Int = 0
     private var currentSearch: String = ""
     
     func fetchBooks(searchedText: String) {
@@ -42,18 +42,22 @@ class SearchViewModel: ObservableObject {
             .flatMap({ apiBooks in
                 apiBooks.publisher
             })
-//            .filter({ book in
-//                if book.image == "image" { return false }
-//                else { return true }
-//            })
             .flatMap({ book in
-                return self.service.fetchBookCover(forURL: book.image)
-                    .map({ data in
-                        var newBook = book
-                        newBook.imageCover = UIImage(data: data)
-                        return newBook
-                    })
-                    .catch({ _ in Just(book) })
+                if book.image != "image" {
+                    return self.service.fetchBookCover(forURL: book.image)
+                        .map({ data in
+                            var newBook = book
+                            newBook.imageCover = UIImage(data: data)
+                            return newBook
+                        })
+                        .replaceError(with: book)
+                        .eraseToAnyPublisher()
+                }
+                else {
+                    var newBook = book
+                    newBook.imageCover = UIImage(named: "bookImage")
+                    return Just(newBook).eraseToAnyPublisher()
+                }
             })
             .collect()
             .sink(receiveCompletion: { completion in
@@ -65,7 +69,7 @@ class SearchViewModel: ObservableObject {
                 }
             }, receiveValue: { books in
                 self.books = self.books + books
-                self.currentPag += 1
+                self.currentPag += 10
                 self.currentState = .alreadyLoaded
             })
             .store(in: &subscriptions)
