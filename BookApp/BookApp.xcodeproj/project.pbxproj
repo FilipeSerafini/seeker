@@ -35,6 +35,9 @@
 		B108B80E2A719431006D6F1C /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B80D2A719431006D6F1C /* Goal.swift */; };
 		B108B8102A71943F006D6F1C /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B80F2A71943F006D6F1C /* Folder.swift */; };
 		B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8122A7194CC006D6F1C /* CKProtocol.swift */; };
+		B1D5C0DC2A7AA3BB007CA7C7 /* CloudKitUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0DB2A7AA3BB007CA7C7 /* CloudKitUtility.swift */; };
+		B1D5C0DF2A7AA416007CA7C7 /* UserCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0DE2A7AA416007CA7C7 /* UserCRUD.swift */; };
+		B1D5C0E12A7ABB47007CA7C7 /* FolderCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0E02A7ABB47007CA7C7 /* FolderCRUD.swift */; };
 		B1D861C92A7045AE00CAD142 /* BookAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D861C82A7045AE00CAD142 /* BookAppApp.swift */; };
 		B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D861CA2A7045AE00CAD142 /* ContentView.swift */; };
 		B1D861CD2A7045AF00CAD142 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1D861CC2A7045AF00CAD142 /* Assets.xcassets */; };
@@ -73,6 +76,9 @@
 		B108B80D2A719431006D6F1C /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		B108B80F2A71943F006D6F1C /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		B108B8122A7194CC006D6F1C /* CKProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKProtocol.swift; sourceTree = "<group>"; };
+		B1D5C0DB2A7AA3BB007CA7C7 /* CloudKitUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUtility.swift; sourceTree = "<group>"; };
+		B1D5C0DE2A7AA416007CA7C7 /* UserCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCRUD.swift; sourceTree = "<group>"; };
+		B1D5C0E02A7ABB47007CA7C7 /* FolderCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCRUD.swift; sourceTree = "<group>"; };
 		B1D861C52A7045AD00CAD142 /* BookApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D861C82A7045AE00CAD142 /* BookAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAppApp.swift; sourceTree = "<group>"; };
 		B1D861CA2A7045AE00CAD142 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +103,7 @@
 		42633AE22A7443C800401B5F /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				B1D5C0DD2A7AA3FE007CA7C7 /* CloudKit */,
 				42633AE32A7443EE00401B5F /* BookService.swift */,
 			);
 			path = Service;
@@ -175,6 +182,16 @@
 				B108B8122A7194CC006D6F1C /* CKProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		B1D5C0DD2A7AA3FE007CA7C7 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				B1D5C0DB2A7AA3BB007CA7C7 /* CloudKitUtility.swift */,
+				B1D5C0DE2A7AA416007CA7C7 /* UserCRUD.swift */,
+				B1D5C0E02A7ABB47007CA7C7 /* FolderCRUD.swift */,
+			);
+			path = CloudKit;
 			sourceTree = "<group>";
 		};
 		B1D861BC2A7045AD00CAD142 = {
@@ -328,11 +345,13 @@
 				B108B80C2A71942A006D6F1C /* Review.swift in Sources */,
 				7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */,
 				4CDD3BBF2A730931001519C3 /* ProfileViewModel.swift in Sources */,
+				B1D5C0E12A7ABB47007CA7C7 /* FolderCRUD.swift in Sources */,
 				4CDD3BBC2A730920001519C3 /* ChallengesViewModel.swift in Sources */,
 				4CDD3BA82A730790001519C3 /* BookView.swift in Sources */,
 				B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */,
 				4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */,
 				B108B8072A719406006D6F1C /* Badge.swift in Sources */,
+				B1D5C0DC2A7AA3BB007CA7C7 /* CloudKitUtility.swift in Sources */,
 				B108B8092A719415006D6F1C /* Book.swift in Sources */,
 				7C281A842A73255500A58E96 /* SearchView.swift in Sources */,
 				7C281A8F2A742AE200A58E96 /* ResearchedBookView.swift in Sources */,
@@ -342,6 +361,7 @@
 				4CDD3BB72A7308FD001519C3 /* OracleView.swift in Sources */,
 				B1D861D22A7045AF00CAD142 /* Persistence.swift in Sources */,
 				B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */,
+				B1D5C0DF2A7AA416007CA7C7 /* UserCRUD.swift in Sources */,
 				4CDD3BB52A7308F7001519C3 /* OracleViewModel.swift in Sources */,
 				4C7234892A797723006740F6 /* Preview.swift in Sources */,
 				7C281A862A73255F00A58E96 /* SearchViewModel.swift in Sources */,

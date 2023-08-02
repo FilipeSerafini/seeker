@@ -8,6 +8,7 @@ struct ContentView: View {
         ZStack {
             if self.isActive {
                 TabViewApp()
+                    .environmentObject(UserCRUD())
             } else {
                 Preview()
             }
