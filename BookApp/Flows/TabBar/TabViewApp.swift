@@ -68,6 +68,7 @@ struct TabViewApp: View {
         .tint(Color(red: 0.514, green: 0.574, blue: 0.856))
         .environmentObject(searchViewModel)
         .environmentObject(recommendedViewModel)
+
     }
 }
 
