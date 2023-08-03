@@ -3,8 +3,10 @@ import SwiftUI
 struct LibraryView: View {
     
     var userName: String = ""
-    @EnvironmentObject private var searchViewModel: SearchViewModel
-    @ObservedObject private var viewModel: LibraryViewModel = LibraryViewModel()
+//    @EnvironmentObject private var searchViewModel: SearchViewModel
+    @EnvironmentObject private var userManager: UserManager
+    
+    @StateObject private var viewModel: LibraryViewModel = LibraryViewModel()
     @State private var isPresented: Bool = false
     @State private var folderName: String = ""
 
@@ -32,7 +34,8 @@ struct LibraryView: View {
                 TextField(folderName, text: $folderName)
                 Button("Cancelar",action: {})
                 Button("Salvar",action: {
-                    viewModel.createFolder(folderName: folderName)
+//                    viewModel.createFolder(folderName: folderName)
+                    userManager.createFolder(folderName: folderName)
                 })
             }message: {
                 Text("Insira o nome desejado para a pasta.")
@@ -42,15 +45,24 @@ struct LibraryView: View {
             
             NavigationStack {
                 ScrollView {
-                    ForEach(viewModel.folders.indices, id: \.self) { index in
+                    ForEach(userManager.folders, id: \.id) { folder in
                         VStack {
-                            
-                            Text(viewModel.folders[index].name)
-                            
-                            Text(viewModel.folders[index].description)
+
+                            Text(folder.name)
+
+//                            Text(folder.description)
                         }
                         .padding()
                         .background(Color.teal)
+//                    ForEach(viewModel.folders.indices, id: \.self) { index in
+//                        VStack {
+//
+//                            Text(viewModel.folders[index].name)
+//
+//                            Text(viewModel.folders[index].description)
+//                        }
+//                        .padding()
+//                        .background(Color.teal)
                     }
                 }
                 .navigationBarTitle("TESTE PASTAS")

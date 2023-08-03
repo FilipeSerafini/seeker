@@ -7,8 +7,10 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if self.isActive {
+//                FolderRow(folder: Folder(books: [], description: "a", name: "Livros que quero ler")!, imageName: "folderSelected")
                 TabViewApp()
                     .environmentObject(UserCRUD())
+                    .environmentObject( UserManager())
             } else {
                 Preview()
             }

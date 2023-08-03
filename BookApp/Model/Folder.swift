@@ -1,9 +1,9 @@
 import Foundation
 import CloudKit
 
-struct Folder: CKProtocol {
+struct Folder: CKProtocol, Identifiable {
     var record: CKRecord
-    var id: String = UUID().uuidString
+    let id: String
     var books: [CKRecord.Reference]
     var description: String
     var name: String
@@ -19,7 +19,6 @@ struct Folder: CKProtocol {
 //    }
     
     init?(
-        id: String,
         books: [String],
         description: String,
         name: String
@@ -27,7 +26,7 @@ struct Folder: CKProtocol {
         
         let record = CKRecord(recordType: "Folder")
         
-        record["id"] = id
+        record["id"] = UUID().uuidString
         record["books"] = books
         record["description"] = description
         record["name"] = name

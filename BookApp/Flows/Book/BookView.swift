@@ -4,6 +4,8 @@ struct BookView: View {
     
     @State var book: Book
     
+    @State var showSheet: Bool = false
+    
     var body: some View {
         VStack{
             ZStack{
@@ -39,7 +41,7 @@ struct BookView: View {
                         HStack {
                             
                             Button {
-                                //completar
+                                showSheet.toggle()
                             }
                         label: {
                             VStack{
@@ -51,6 +53,13 @@ struct BookView: View {
                                     .foregroundColor(.black)
                             }
                         }
+                            
+                        .sheet(isPresented: $showSheet) {
+                            addToFolderView()
+                                
+                        }
+                        
+                            
                             Spacer()
                             Button {
                                 //completar
@@ -127,4 +136,17 @@ struct BookView: View {
 //    static var previews: some View {
 //        BookView(book: bookTeste!)
 //    }
+//}
+
+
+
+//NavigationLink {
+//    addToFolderView()
+//} label: {
+//    Image("addBookToFolder")
+//        .resizable()
+//        .frame(width: 40, height: 40)
+//    Text("Adicionar")
+//        .font(.system(size: 13))
+//        .foregroundColor(.black)
 //}

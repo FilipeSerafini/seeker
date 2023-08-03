@@ -42,6 +42,10 @@
 		B1D5C0DF2A7AA416007CA7C7 /* UserCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0DE2A7AA416007CA7C7 /* UserCRUD.swift */; };
 		B1D5C0E12A7ABB47007CA7C7 /* FolderCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0E02A7ABB47007CA7C7 /* FolderCRUD.swift */; };
 		B1D5C0E32A7B2DCB007CA7C7 /* FolderDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0E22A7B2DCB007CA7C7 /* FolderDetails.swift */; };
+		B1D5C0E52A7C139F007CA7C7 /* addToFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0E42A7C139F007CA7C7 /* addToFolderView.swift */; };
+		B1D5C0E72A7C20CD007CA7C7 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0E62A7C20CD007CA7C7 /* UserManager.swift */; };
+		B1D5C0E92A7C2A3E007CA7C7 /* addToFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0E82A7C2A3E007CA7C7 /* addToFolderViewModel.swift */; };
+		B1D5C0ED2A7C2ACA007CA7C7 /* FolderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0EC2A7C2ACA007CA7C7 /* FolderRow.swift */; };
 		B1D861C92A7045AE00CAD142 /* BookAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D861C82A7045AE00CAD142 /* BookAppApp.swift */; };
 		B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D861CA2A7045AE00CAD142 /* ContentView.swift */; };
 		B1D861CD2A7045AF00CAD142 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1D861CC2A7045AF00CAD142 /* Assets.xcassets */; };
@@ -87,6 +91,10 @@
 		B1D5C0DE2A7AA416007CA7C7 /* UserCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCRUD.swift; sourceTree = "<group>"; };
 		B1D5C0E02A7ABB47007CA7C7 /* FolderCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCRUD.swift; sourceTree = "<group>"; };
 		B1D5C0E22A7B2DCB007CA7C7 /* FolderDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDetails.swift; sourceTree = "<group>"; };
+		B1D5C0E42A7C139F007CA7C7 /* addToFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addToFolderView.swift; sourceTree = "<group>"; };
+		B1D5C0E62A7C20CD007CA7C7 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		B1D5C0E82A7C2A3E007CA7C7 /* addToFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addToFolderViewModel.swift; sourceTree = "<group>"; };
+		B1D5C0EC2A7C2ACA007CA7C7 /* FolderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderRow.swift; sourceTree = "<group>"; };
 		B1D861C52A7045AD00CAD142 /* BookApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D861C82A7045AE00CAD142 /* BookAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAppApp.swift; sourceTree = "<group>"; };
 		B1D861CA2A7045AE00CAD142 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				4CDD3BA72A730790001519C3 /* BookView.swift */,
+				B1D5C0EA2A7C2A45007CA7C7 /* AddBookToFolder */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -205,6 +214,23 @@
 			path = CloudKit;
 			sourceTree = "<group>";
 		};
+		B1D5C0EA2A7C2A45007CA7C7 /* AddBookToFolder */ = {
+			isa = PBXGroup;
+			children = (
+				B1D5C0E42A7C139F007CA7C7 /* addToFolderView.swift */,
+				B1D5C0E82A7C2A3E007CA7C7 /* addToFolderViewModel.swift */,
+			);
+			path = AddBookToFolder;
+			sourceTree = "<group>";
+		};
+		B1D5C0EB2A7C2AA6007CA7C7 /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				B1D5C0EC2A7C2ACA007CA7C7 /* FolderRow.swift */,
+			);
+			path = Folder;
+			sourceTree = "<group>";
+		};
 		B1D861BC2A7045AD00CAD142 = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +265,7 @@
 				B1D861D12A7045AF00CAD142 /* Persistence.swift */,
 				B1D861D32A7045AF00CAD142 /* BookApp.xcdatamodeld */,
 				B1D861CE2A7045AF00CAD142 /* Preview Content */,
+				B1D5C0E62A7C20CD007CA7C7 /* UserManager.swift */,
 			);
 			path = BookApp;
 			sourceTree = "<group>";
@@ -267,6 +294,7 @@
 		B1D861E02A70624800CAD142 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				B1D5C0EB2A7C2AA6007CA7C7 /* Folder */,
 				7C281A872A73256500A58E96 /* Search */,
 				4CDD3BA62A730785001519C3 /* Book */,
 				4CDD3BAB2A7307FB001519C3 /* TabBar */,
@@ -350,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1D861D52A7045AF00CAD142 /* BookApp.xcdatamodeld in Sources */,
+				B1D5C0E52A7C139F007CA7C7 /* addToFolderView.swift in Sources */,
 				4CDD3BB22A7308CD001519C3 /* LibraryViewModel.swift in Sources */,
 				4C0F0DAB2A7AD599003932C0 /* FolderInfo.swift in Sources */,
 				B108B8102A71943F006D6F1C /* Folder.swift in Sources */,
@@ -366,6 +395,7 @@
 				B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */,
 				4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */,
 				B108B8072A719406006D6F1C /* Badge.swift in Sources */,
+				B1D5C0E92A7C2A3E007CA7C7 /* addToFolderViewModel.swift in Sources */,
 				B1D5C0DC2A7AA3BB007CA7C7 /* CloudKitUtility.swift in Sources */,
 				B108B8092A719415006D6F1C /* Book.swift in Sources */,
 				7C281A842A73255500A58E96 /* SearchView.swift in Sources */,
@@ -385,7 +415,9 @@
 				B108B80E2A719431006D6F1C /* Goal.swift in Sources */,
 				4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */,
 				4CDD3BC12A730938001519C3 /* ProfileView.swift in Sources */,
+				B1D5C0ED2A7C2ACA007CA7C7 /* FolderRow.swift in Sources */,
 				4C7234852A743DE9006740F6 /* CommentView.swift in Sources */,
+				B1D5C0E72A7C20CD007CA7C7 /* UserManager.swift in Sources */,
 				B1D861C92A7045AE00CAD142 /* BookAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
