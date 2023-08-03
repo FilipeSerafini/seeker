@@ -5,7 +5,9 @@ struct LibraryView: View {
     var userName: String = ""
     @EnvironmentObject private var searchViewModel: SearchViewModel
     @ObservedObject private var viewModel: LibraryViewModel = LibraryViewModel()
-    
+    @State private var isPresented: Bool = false
+    @State private var folderName: String = ""
+
     var body: some View {
         VStack{
             HStack{
@@ -19,27 +21,39 @@ struct LibraryView: View {
                 Spacer()
                 
                 Button {
-                    //completar
+                    isPresented.toggle()
                 }
             label: {
                 Image("addFolders")
                     .resizable()
                     .frame(width: 46, height: 34)
             }
+            .alert("Criar nova pasta", isPresented: $isPresented) {
+                TextField(folderName, text: $folderName)
+                Button("Cancelar",action: {})
+                Button("Salvar",action: {
+                    viewModel.createFolder(folderName: folderName)
+                })
+            }message: {
+                Text("Insira o nome desejado para a pasta.")
+            }
             }
             .padding()
-            .padding(.bottom, 500)
             
-            ScrollView {
-                ForEach(viewModel.folders.indices, id: \.self) { index in
-                    VStack {
-                        Text(viewModel.folders[index].name)
-                        
-                        Text(viewModel.folders[index].description)
+            NavigationStack {
+                ScrollView {
+                    ForEach(viewModel.folders.indices, id: \.self) { index in
+                        VStack {
+                            
+                            Text(viewModel.folders[index].name)
+                            
+                            Text(viewModel.folders[index].description)
+                        }
+                        .padding()
+                        .background(Color.teal)
                     }
-                    .padding()
-                    .background(Color.teal)
                 }
+                .navigationBarTitle("TESTE PASTAS")
             }
         }
     }
