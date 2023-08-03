@@ -21,7 +21,7 @@ struct SearchableView: View {
                             })
                             .onSubmit {
                                 if searchText != ""{
-                                    searchViewModel.fetchBooks(searchedText: searchText)
+                                    searchViewModel.fetchBooks(searchedText: searchText, filter: .empty)
                                 }
                             }
                             .padding(15)
@@ -36,7 +36,7 @@ struct SearchableView: View {
                             HStack {
                                 Spacer()
                                 Button(action: {
-                                    searchViewModel.fetchBooks(searchedText: searchText)
+                                    searchViewModel.fetchBooks(searchedText: searchText, filter: .empty)
                                 }) {
                                     Image("searchIconSelected")
                                         .padding(.trailing, 25)
@@ -67,7 +67,7 @@ struct SearchableView: View {
                         perform: { value in
                             if value > scrollViewSize.height - wholeSize.height {
                                 if !searchText.isEmpty {
-                                    searchViewModel.fetchBooks(searchedText: searchText)
+                                    searchViewModel.fetchBooks(searchedText: searchText, filter: .empty)
                                 }
                             }
                         }

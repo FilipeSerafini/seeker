@@ -4,6 +4,7 @@ struct TabViewApp: View {
     
     @State private var selectedTab = 0
     @StateObject var searchViewModel = SearchViewModel()
+    @StateObject var recommendedViewModel = RecommendedViewModel()
 
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes =
@@ -66,6 +67,7 @@ struct TabViewApp: View {
         }
         .tint(Color(red: 0.514, green: 0.574, blue: 0.856))
         .environmentObject(searchViewModel)
+        .environmentObject(recommendedViewModel)
     }
 }
 
