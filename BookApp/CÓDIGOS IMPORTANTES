@@ -16,3 +16,14 @@ CÓDIGOS IMPORTANTES
 
 
 -- Alert (popUp Nativo)
+
+    /* para colocar imagem no background da tab
+     
+     init() {
+     let appearance = UITabBarAppearance()
+     appearance.configureWithOpaqueBackground()
+     appearance.backgroundImage = UIImage(named: "")
+     UITabBar.appearance().scrollEdgeAppearance = appearance
+     }
+     
+     */
