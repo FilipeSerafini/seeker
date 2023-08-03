@@ -17,6 +17,15 @@ CÓDIGOS IMPORTANTES
 
 -- Alert (popUp Nativo)
 
+            .alert("Criar nova pasta", isPresented: $isPresented) {
+                TextField(folderName, text: $folderName)
+                Button("Cancelar",action: {})
+                Button("Salvar",action: {
+                    viewModel.createFolder(folderName: folderName)
+                })
+            }message: {
+                Text("Insira o nome desejado para a pasta.")
+            }
     /* para colocar imagem no background da tab
      
      init() {

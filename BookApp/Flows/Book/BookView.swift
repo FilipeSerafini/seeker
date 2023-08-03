@@ -4,6 +4,8 @@ struct BookView: View {
     
     @State var book: Book
     
+    @State var showSheet: Bool = false
+    
     var body: some View {
         VStack{
             NavigationStack{
