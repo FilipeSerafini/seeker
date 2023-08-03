@@ -176,6 +176,7 @@
 		7C281A872A73256500A58E96 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				7C4245E32A7AE98800241A98 /* StyleFilterButton.swift */,
 				7C281AB62A78312B00A58E96 /* SearchableView.swift */,
 				7C281A8E2A742AE200A58E96 /* ResearchedBookView.swift */,
 				7C281A8C2A742A7700A58E96 /* BookResearchedCover.swift */,
@@ -208,7 +209,6 @@
 		B1D861BC2A7045AD00CAD142 = {
 			isa = PBXGroup;
 			children = (
-				7C4245E32A7AE98800241A98 /* StyleFilterButton.swift */,
 				B1D861C72A7045AD00CAD142 /* BookApp */,
 				B1D861DE2A70623A00CAD142 /* Model */,
 				B1D861E02A70624800CAD142 /* Flows */,

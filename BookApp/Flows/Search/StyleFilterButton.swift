@@ -1,53 +1,49 @@
 import SwiftUI
 
 struct FilterButton: View {
-    enum FilterType {
-        case genero, titulo, autor, geral
-    }
-    
-    @State private var selectedFilter: FilterType?
+    @State var selectedFilter: Filter = .empty
     
     var body: some View {
         HStack {
             Button(action: {
-                selectedFilter = .genero
+                selectedFilter = .genre
             }) {
                 Text("Gênero")
             }.buttonStyle(
                 StyleFilterButton(
-                    isFilled: Binding(get: { selectedFilter == .genero },
+                    isFilled: Binding(get: { selectedFilter == .genre },
                                       set: { newValue in
                                           if newValue {
-                                              selectedFilter = .genero
+                                              selectedFilter = .genre
                                           } else {
-                                              selectedFilter = .geral
+                                              selectedFilter = .genre
                                           }
                                       })))
             
             Button(action: {
-                selectedFilter = .titulo
+                selectedFilter = .title
             }) {
                 Text("Título")
             }.buttonStyle(
                 StyleFilterButton(
-                    isFilled: Binding(get: { selectedFilter == .titulo },
+                    isFilled: Binding(get: { selectedFilter == .title },
                                       set: { newValue in
                                           if newValue {
-                                              selectedFilter = .titulo
+                                              selectedFilter = .title
                                           } else {
-                                              selectedFilter = .geral
+                                              selectedFilter = .title
                                           }
                                       })))
             
             Button(action: {
-                selectedFilter = .autor
+                selectedFilter = .author
             }) {
                 Text("Autor")
-            }.buttonStyle(StyleFilterButton(isFilled: Binding(get: { selectedFilter == .autor }, set: { newValue in
+            }.buttonStyle(StyleFilterButton(isFilled: Binding(get: { selectedFilter == .author }, set: { newValue in
                 if newValue {
-                    selectedFilter = .autor
+                    selectedFilter = .author
                 } else {
-                    selectedFilter = .geral
+                    selectedFilter = .author
                 }
             })))
         }

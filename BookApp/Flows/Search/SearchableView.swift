@@ -7,6 +7,9 @@ struct SearchableView: View {
     @State private var searchText = ""
     @State private var isEditing: Bool = false
     
+    @State var selectedFilter: Filter = .empty
+    
+    @Environment(\.colorScheme) var scheme
     @EnvironmentObject private var searchViewModel: SearchViewModel
     
     var body: some View {
@@ -21,22 +24,22 @@ struct SearchableView: View {
                             })
                             .onSubmit {
                                 if searchText != ""{
-                                    searchViewModel.fetchBooks(searchedText: searchText, filter: .empty)
+                                    searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
                                 }
                             }
                             .padding(15)
-                            .font(.system(size: 15))
+                            .font(.system(size: 17))
                             .foregroundColor(Color(red: 0.255, green: 0.255, blue: 0.255))
                         }
                         .padding(.trailing, 20)
-                        .background(Color(red: 0.851, green: 0.851, blue: 0.851))
+                        .background(scheme == .light ? Color(red: 0.8509803921568627, green: 0.8509803921568627, blue: 0.8509803921568627) : Color(red: 0.14901960784313725, green: 0.14901960784313725, blue: 0.14901960784313725))
                         .cornerRadius(30)
-                        .padding()
+                        .padding(.horizontal)
                         .overlay(
                             HStack {
                                 Spacer()
                                 Button(action: {
-                                    searchViewModel.fetchBooks(searchedText: searchText, filter: .empty)
+                                    searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
                                 }) {
                                     Image("searchIconSelected")
                                         .padding(.trailing, 25)
@@ -45,6 +48,56 @@ struct SearchableView: View {
                                 .opacity(searchText == "" ? 0.6 : 1)
                             }
                         )
+                        .padding(.vertical, 5)
+                        
+                        VStack{
+                            HStack {
+                                Button(action: {
+                                    selectedFilter = .title
+                                }) {
+                                    Text("Título")
+                                }.buttonStyle(
+                                    StyleFilterButton(
+                                        isFilled: Binding(get: { selectedFilter == .title },
+                                                          set: { newValue in
+                                                              if newValue {
+                                                                  selectedFilter = .title
+                                                              } else {
+                                                                  selectedFilter = .title
+                                                              }
+                                                          })))
+                                
+                                Button(action: {
+                                    selectedFilter = .author
+                                }) {
+                                    Text("Autor")
+                                }.buttonStyle(StyleFilterButton(isFilled: Binding(get: { selectedFilter == .author }, set: { newValue in
+                                    if newValue {
+                                        selectedFilter = .author
+                                    } else {
+                                        selectedFilter = .author
+                                    }
+                                })))
+                                
+                                Button(action: {
+                                    selectedFilter = .genre
+                                }) {
+                                    Text("Gênero")
+                                }.buttonStyle(
+                                    StyleFilterButton(
+                                        isFilled: Binding(get: { selectedFilter == .genre },
+                                                          set: { newValue in
+                                                              if newValue {
+                                                                  selectedFilter = .genre
+                                                              } else {
+                                                                  selectedFilter = .genre
+                                                              }
+                                                          })))
+                            }
+                        }
+                        .padding(.bottom, 40)
+                        .padding([.leading, .trailing])
+                        
                         
                         if !isEditing && searchText == "" {
                             RecommendedView()
