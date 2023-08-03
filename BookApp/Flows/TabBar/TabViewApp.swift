@@ -33,35 +33,30 @@ struct TabViewApp: View {
             LibraryView()
                 .tabItem {
                 selectedTab == 0 ? Image("libraryIconSelected") : Image(systemName: "books.vertical")
-                Text("Library")
             }
             .tag(0)
             
             SearchView()
             .tabItem {
                 selectedTab == 1 ? Image("searchIconSelected") : Image(systemName: "magnifyingglass")
-                Text("Search")
             }
             .tag(1)
             
             OracleView()
             .tabItem {
                 selectedTab == 2 ? Image("oracleIconSelected") : Image("oracleIcon")
-                Text("Oracle")
             }
             .tag(2)
             
             ChallengesView()
             .tabItem {
                 selectedTab == 3 ? Image("challengeIconSelected") : Image(systemName: "rosette")
-                Text("Challenges")
             }
             .tag(3)
             
             ProfileView()
             .tabItem {
                 selectedTab == 4 ? Image("perfilIconSelected") : Image(systemName: "person")
-                Text("Perfil")
             }
             .tag(4)
         }
