@@ -67,5 +67,6 @@ struct RecommendedView: View {
                 }
             }
         }
+        .padding(.bottom)
     }
 }

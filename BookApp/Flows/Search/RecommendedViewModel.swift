@@ -11,6 +11,11 @@ class RecommendedViewModel: ObservableObject {
     private var currentPag: Int = 0
     
     func fetchAll(searchedText: String..., filter: Filter...) {
+        
+        let defaults = UserDefaults.standard
+        self.currentPag = defaults.integer(forKey: "currentPag")
+        print("antes: \(defaults.integer(forKey: "currentPag"))")
+        
         let list1 = self.service.fetchBooks(searchedText: searchedText[0], page: self.currentPag, filter: filter[0])
             .mapAPIBookToBook()
             .setBookImages(withService: self.service)
@@ -29,6 +34,12 @@ class RecommendedViewModel: ObservableObject {
                 self.firstList = list1
                 self.secondList = list2
                 self.thirdList = list3
+                if self.currentPag > 70 {
+                    defaults.set(0, forKey: "currentPag")
+                } else {
+                    defaults.set(self.currentPag + 10, forKey: "currentPag")
+                }
+                print("depois: \(defaults.integer(forKey: "currentPag"))")
             })
             .store(in: &subscriptions)
     }
