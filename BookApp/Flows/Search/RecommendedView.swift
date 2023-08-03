@@ -22,7 +22,7 @@ struct RecommendedView: View {
                 }
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(spacing: 0){
-                        ForEach(recommendedViewModel.books) { book in
+                        ForEach(recommendedViewModel.firstList) { book in
                             BookResearchedCover(book: book)
                         }
                         .padding(.leading)
@@ -40,7 +40,7 @@ struct RecommendedView: View {
                 }
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(spacing: 0){
-                        ForEach(recommendedViewModel.books) { book in
+                        ForEach(recommendedViewModel.secondList) { book in
                             BookResearchedCover(book: book)
                         }
                         .padding(.leading)
@@ -51,7 +51,7 @@ struct RecommendedView: View {
             
             VStack(alignment: .leading){
                 HStack {
-                    Text("Terror books")
+                    Text("Education books")
                         .font(.system(size: 17, weight: .semibold, design: .serif))
                         .padding(.leading)
                     Spacer()
@@ -59,7 +59,7 @@ struct RecommendedView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(spacing: 0){
-                        ForEach(recommendedViewModel.books) { book in
+                        ForEach(recommendedViewModel.thirdList) { book in
                             BookResearchedCover(book: book)
                         }
                         .padding(.leading)
@@ -67,6 +67,10 @@ struct RecommendedView: View {
                 }
                 
             }
-        }
+        }.onAppear(perform: {
+            recommendedViewModel.fetchBooksFirst(searchedGenre: "fiction", filter: .genre)
+            recommendedViewModel.fetchBooksSecond(searchedGenre: "romance", filter: .genre)
+            recommendedViewModel.fetchBooksThird(searchedGenre: "education", filter: .genre)
+        })
     }
 }

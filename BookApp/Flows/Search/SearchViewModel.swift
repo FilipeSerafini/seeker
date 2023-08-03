@@ -15,7 +15,7 @@ class SearchViewModel: ObservableObject {
     private var currentPag: Int = 0
     private var currentSearch: String = ""
     
-    func fetchBooks(searchedText: String) {
+    func fetchBooks(searchedText: String, filter: Filter) {
         
         if currentState == .isLoading {
             return
@@ -23,19 +23,28 @@ class SearchViewModel: ObservableObject {
         
         if searchedText != currentSearch {
             currentSearch = searchedText
-            currentPag = 1
+            currentPag = 0
             books = []
         }
         
         print("pag: \(currentPag)")
         currentState = .isLoading
         
-        self.service.fetchBooks(searchedText: searchedText, page: currentPag)
+        self.service.fetchBooks(searchedText: searchedText, page: currentPag, filter: filter)
             .flatMap({ apiBooks in
                 apiBooks.publisher
             })
+//            .filter ({ apiBook in
+//                if apiBook.sinopsis == nil || apiBook.title == nil {
+//                    print("false")
+//                    return false
+//                } else {
+//                    print("true")
+//                    return true
+//                }
+//            })
             .compactMap({ apiBook -> Book in
-                let newBook = Book(authors: apiBook.authors, genres: apiBook.genres ?? [], image: apiBook.image?.thumbnail ?? "image", isbns: apiBook.isbns.map(\.identifier), rating: apiBook.rating?.description ?? "", sinopsis: apiBook.sinopsis ?? "", title: apiBook.title, imageCover: nil)
+                let newBook = Book(authors: apiBook.authors ?? ["N/A"], genres: apiBook.genres ?? ["N/A"], image: apiBook.image?.thumbnail ?? "image", isbns: apiBook.isbns?.map(\.identifier) ?? ["N/A"], rating: apiBook.rating?.description ?? "N/A", sinopsis: apiBook.sinopsis ?? "N/A", title: apiBook.title ?? "N/A", imageCover: nil)
                 return newBook!
             })
             .collect()

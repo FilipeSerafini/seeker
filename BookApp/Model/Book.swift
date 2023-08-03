@@ -105,7 +105,7 @@ struct Book: Identifiable {
 }
 
 struct APIBookResponse: Decodable {
-    var items: [BookItemResponse]
+    var items: [BookItemResponse]?
 }
 
 struct BookItemResponse: Decodable {
@@ -137,11 +137,11 @@ struct APIBook: Decodable {
     }
     
     var id: String? = UUID().uuidString
-    var authors: [String]
+    var authors: [String]?
     var genres: [String]?
     var image: APIImage?
-    var isbns: [APIISBN]
+    var isbns: [APIISBN]?
     var rating: Double?
     var sinopsis: String?
-    var title: String
+    var title: String?
 }
