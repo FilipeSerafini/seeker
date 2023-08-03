@@ -10,7 +10,7 @@ class LibraryViewModel: ObservableObject {
     
     @Published var books: [Book] = []
     @Published var folders: [Folder] = []
-    var userRecordID: CKRecord.ID? 
+    var userRecordID: CKRecord.ID?
     
     @EnvironmentObject var userManager: UserManager
     
