@@ -16,7 +16,7 @@ class UserManager: ObservableObject {
     @Published var folders: [Folder] = []
     
     // MARK: - Init
-    
+     
     init() {
         fetchFolders()
     }
