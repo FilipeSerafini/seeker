@@ -5,6 +5,9 @@ class LibraryViewModel: ObservableObject {
     
     // MARK: - Variables
     
+    @State var presentAlert = false
+    @State var newFolderName = ""
+    
     @Published var folders: [Folder] = []
     var userRecordID: CKRecord.ID?
     
@@ -49,7 +52,14 @@ class LibraryViewModel: ObservableObject {
         }
     }
     
-    func createFolder() {
+    func createFolder(folderName: String) {
         
+        guard let newFolder = Folder(id: "1", books: [], description: "", name: folderName) else { return }
+        
+        CloudKitUtility.add(item: newFolder) { result in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.fetchAllFolders()
+            }
+        }
     }
 }

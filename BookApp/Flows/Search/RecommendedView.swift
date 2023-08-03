@@ -15,14 +15,14 @@ struct RecommendedView: View {
         VStack {
             VStack {
                 HStack{
-                    Text("Fiction books")
+                    Text("Livros de Ficção")
                         .font(.system(size: 17, weight: .semibold, design: .serif))
                         .padding(.leading)
                     Spacer()
                 }
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(spacing: 0){
-                        ForEach(recommendedViewModel.books) { book in
+                        ForEach(recommendedViewModel.firstList) { book in
                             BookResearchedCover(book: book)
                         }
                         .padding(.leading)
@@ -33,14 +33,14 @@ struct RecommendedView: View {
             
             VStack{
                 HStack {
-                    Text("Romance books")
+                    Text("Livros de Romance")
                         .font(.system(size: 17, weight: .semibold, design: .serif))
                         .padding(.leading)
                     Spacer()
                 }
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(spacing: 0){
-                        ForEach(recommendedViewModel.books) { book in
+                        ForEach(recommendedViewModel.secondList) { book in
                             BookResearchedCover(book: book)
                         }
                         .padding(.leading)
@@ -51,7 +51,7 @@ struct RecommendedView: View {
             
             VStack(alignment: .leading){
                 HStack {
-                    Text("Terror books")
+                    Text("Mais de Rupi Kaur")
                         .font(.system(size: 17, weight: .semibold, design: .serif))
                         .padding(.leading)
                     Spacer()
@@ -59,13 +59,12 @@ struct RecommendedView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(spacing: 0){
-                        ForEach(recommendedViewModel.books) { book in
+                        ForEach(recommendedViewModel.thirdList) { book in
                             BookResearchedCover(book: book)
                         }
                         .padding(.leading)
                     }
                 }
-                
             }
         }
     }

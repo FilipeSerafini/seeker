@@ -15,7 +15,7 @@ class SearchViewModel: ObservableObject {
     private var currentPag: Int = 0
     private var currentSearch: String = ""
     
-    func fetchBooks(searchedText: String) {
+    func fetchBooks(searchedText: String, filter: Filter) {
         
         if currentState == .isLoading {
             return
@@ -23,43 +23,16 @@ class SearchViewModel: ObservableObject {
         
         if searchedText != currentSearch {
             currentSearch = searchedText
-            currentPag = 1
+            currentPag = 0
             books = []
         }
         
         print("pag: \(currentPag)")
         currentState = .isLoading
         
-        self.service.fetchBooks(searchedText: searchedText, page: currentPag)
-            .flatMap({ apiBooks in
-                apiBooks.publisher
-            })
-            .compactMap({ apiBook -> Book in
-                let newBook = Book(authors: apiBook.authors, genres: apiBook.genres ?? [], image: apiBook.image?.thumbnail ?? "image", isbns: apiBook.isbns.map(\.identifier), rating: apiBook.rating?.description ?? "", sinopsis: apiBook.sinopsis ?? "", title: apiBook.title, imageCover: nil)
-                return newBook!
-            })
-            .collect()
-            .flatMap({ apiBooks in
-                apiBooks.publisher
-            })
-            .flatMap({ book in
-                if book.image != "image" {
-                    return self.service.fetchBookCover(forURL: book.image)
-                        .map({ data in
-                            var newBook = book
-                            newBook.imageCover = UIImage(data: data)
-                            return newBook
-                        })
-                        .replaceError(with: book)
-                        .eraseToAnyPublisher()
-                }
-                else {
-                    var newBook = book
-                    newBook.imageCover = UIImage(named: "bookImage")
-                    return Just(newBook).eraseToAnyPublisher()
-                }
-            })
-            .collect()
+        self.service.fetchBooks(searchedText: searchedText, page: currentPag, filter: filter)
+            .mapAPIBookToBook()
+            .setBookImages(withService: self.service)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
