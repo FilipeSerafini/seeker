@@ -1,8 +1,7 @@
 import SwiftUI
 
 struct BookResearchedCover: View {
-    
-    @State private var isLinkActive = false
+    @State private var startConfirm = false
     let book: Book
     
     var body: some View {
@@ -12,13 +11,12 @@ struct BookResearchedCover: View {
                     .resizable()
                     .scaledToFill()
                     .onTapGesture {
-                        isLinkActive = true
+                        startConfirm.toggle()
                     }
             }
             .frame(width: 95, height: 136)
             .cornerRadius(8)
-            #warning("Fazer essa navegação funcionar")
-//            .navigationDestination(isPresented: $isLinkActive, destination: { BookView() })
+            .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book) })
         }
     }
 }

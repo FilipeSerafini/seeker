@@ -9,7 +9,7 @@ class LibraryViewModel: ObservableObject {
     @State var newFolderName = ""
     
     @Published var folders: [Folder] = []
-    var userRecordID: CKRecord.ID?
+    var userRecordID: CKRecord.ID? 
     
     // MARK: - Init
     

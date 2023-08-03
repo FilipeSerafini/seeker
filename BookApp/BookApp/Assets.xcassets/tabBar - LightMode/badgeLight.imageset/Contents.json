@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "heart-2.png",
+      "filename" : "circlebadge.2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "circlebadge.2 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "circlebadge.2 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
