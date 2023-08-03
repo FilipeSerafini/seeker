@@ -6,6 +6,7 @@ enum Filter: String {
     case title
     case genre
     case author
+    case isbn
     case empty
     
     var url: String {
@@ -13,6 +14,7 @@ enum Filter: String {
         case .title: return "volumes?q=intitle:"
         case .genre: return "volumes?q=subject:"
         case .author: return "volumes?q=inauthor:"
+        case .isbn: return "volumes?q=isbn:"
         case .empty: return "volumes?q="
         }
     }

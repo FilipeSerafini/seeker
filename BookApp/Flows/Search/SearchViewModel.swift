@@ -14,6 +14,7 @@ class SearchViewModel: ObservableObject {
     private var currentState: State = .alreadyLoaded
     private var currentPag: Int = 0
     private var currentSearch: String = ""
+    private var currentFilter: Filter = .empty
     
     func fetchBooks(searchedText: String, filter: Filter) {
         
@@ -21,8 +22,9 @@ class SearchViewModel: ObservableObject {
             return
         }
         
-        if searchedText != currentSearch {
+        if searchedText != currentSearch || currentFilter != filter {
             currentSearch = searchedText
+            currentFilter = filter
             currentPag = 0
             books = []
         }
