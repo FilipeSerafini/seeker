@@ -24,7 +24,6 @@ struct ResearchedBookView: View {
                         Text(book.title)
                             .font(.system(size: 22, weight: .medium, design: .serif))
                             .padding(.bottom, 3)
-                        #warning("fazer validação se avaliação vier vazia")
                         Text("  Avaliação geral: \(book.rating)  ")
                             .background(Rectangle().fill(Color.black).cornerRadius(20).frame(height: 22))
                             .font(.system(size: 13))

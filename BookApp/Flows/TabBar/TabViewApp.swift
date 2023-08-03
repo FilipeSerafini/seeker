@@ -22,31 +22,31 @@ struct TabViewApp: View {
         TabView(selection: $selectedTab) {
             LibraryView()
                 .tabItem {
-                    selectedTab == 0 ? Image("libraryIconSelected") : Image(systemName: "books.vertical")
+                    selectedTab == 0 ? Image("booksColors") : Image("booksLight")
                 }
                 .tag(0)
             
             SearchView()
                 .tabItem {
-                    selectedTab == 1 ? Image("searchIconSelected") : Image(systemName: "magnifyingglass")
+                    selectedTab == 1 ? Image("magnifyingGlassColors") : Image("magnifyingGlassLight")
                 }
                 .tag(1)
             
             OracleView()
                 .tabItem {
-                    selectedTab == 2 ? Image("oracleIconSelected") : Image("oracleIcon")
+                    selectedTab == 2 ? Image("zoeColors") : Image("zoeLight")
                 }
                 .tag(2)
             
             ChallengesView()
                 .tabItem {
-                    selectedTab == 3 ? Image("challengeIconSelected") : Image(systemName: "rosette")
+                    selectedTab == 3 ? Image("badgeColors") : Image("badgeLight")
                 }
                 .tag(3)
             
             ProfileView()
                 .tabItem {
-                    selectedTab == 4 ? Image("perfilIconSelected") : Image(systemName: "person")
+                    selectedTab == 4 ? Image("profileColors") : Image("profileLight")
                 }
                 .tag(4)
         }

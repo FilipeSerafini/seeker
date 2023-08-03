@@ -2,7 +2,7 @@ import SwiftUI
 
 struct OracleView: View {
     var body: some View {
-        Text("Oracle")
+        Text("Em breve...")
             .font(.system(size: 34, design: .serif))
     }
 }

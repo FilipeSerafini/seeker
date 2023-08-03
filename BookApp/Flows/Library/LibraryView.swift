@@ -12,8 +12,10 @@ struct LibraryView: View {
         VStack{
             HStack{
                 VStack (alignment: .leading){
-                    Text("E aí, \(userName)?")
-                        .font(.system(size: 15, design: .serif))
+                    // Text("E aí, \(userName)?")
+
+                    Text("E aí, Manu?")
+                        .font(.system(size: 15))
                     
                     Text("Minha Estante")
                         .font(.system(size: 34, design: .serif))
@@ -38,6 +40,8 @@ struct LibraryView: View {
                 Text("Insira o nome desejado para a pasta.")
             }
             }
+            .padding(.top, 20)
+
             .padding()
             
             NavigationStack {
@@ -58,6 +62,7 @@ struct LibraryView: View {
         }
     }
 }
+
 //
 //struct LibraryView_Previews: PreviewProvider {
 //    static var previews: some View {
