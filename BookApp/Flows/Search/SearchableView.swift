@@ -99,13 +99,13 @@ struct SearchableView: View {
                         .padding([.leading, .trailing])
                         
                         
-//                        if !isEditing && searchText == "" {
-//                            RecommendedView()
-//                        } else if !isEditing {
+                        if !isEditing && searchText == "" {
+                            RecommendedView()
+                        } else if !isEditing {
                             ForEach(searchViewModel.books) { book in
                                 ResearchedBookView(book: book)
                             }
-//                        }
+                        }
                     }
                     .background(
                         GeometryReader { proxy in
