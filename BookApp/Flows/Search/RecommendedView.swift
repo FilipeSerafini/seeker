@@ -15,7 +15,7 @@ struct RecommendedView: View {
         VStack {
             VStack {
                 HStack{
-                    Text("Fiction books")
+                    Text("Livros de Ficção")
                         .font(.system(size: 17, weight: .semibold, design: .serif))
                         .padding(.leading)
                     Spacer()
@@ -33,7 +33,7 @@ struct RecommendedView: View {
             
             VStack{
                 HStack {
-                    Text("Romance books")
+                    Text("Livros de Romance")
                         .font(.system(size: 17, weight: .semibold, design: .serif))
                         .padding(.leading)
                     Spacer()
@@ -51,7 +51,7 @@ struct RecommendedView: View {
             
             VStack(alignment: .leading){
                 HStack {
-                    Text("Education books")
+                    Text("Mais de Rupi Kaur")
                         .font(.system(size: 17, weight: .semibold, design: .serif))
                         .padding(.leading)
                     Spacer()
@@ -65,12 +65,8 @@ struct RecommendedView: View {
                         .padding(.leading)
                     }
                 }
-                
             }
-        }.onAppear(perform: {
-            recommendedViewModel.fetchBooksFirst(searchedGenre: "fiction", filter: .genre)
-            recommendedViewModel.fetchBooksSecond(searchedGenre: "romance", filter: .genre)
-            recommendedViewModel.fetchBooksThird(searchedGenre: "education", filter: .genre)
-        })
+        }
+        .padding(.bottom)
     }
 }

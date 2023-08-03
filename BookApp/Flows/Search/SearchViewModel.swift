@@ -14,6 +14,7 @@ class SearchViewModel: ObservableObject {
     private var currentState: State = .alreadyLoaded
     private var currentPag: Int = 0
     private var currentSearch: String = ""
+    private var currentFilter: Filter = .empty
     
     func fetchBooks(searchedText: String, filter: Filter) {
         
@@ -21,8 +22,9 @@ class SearchViewModel: ObservableObject {
             return
         }
         
-        if searchedText != currentSearch {
+        if searchedText != currentSearch || currentFilter != filter {
             currentSearch = searchedText
+            currentFilter = filter
             currentPag = 0
             books = []
         }
@@ -31,44 +33,8 @@ class SearchViewModel: ObservableObject {
         currentState = .isLoading
         
         self.service.fetchBooks(searchedText: searchedText, page: currentPag, filter: filter)
-            .flatMap({ apiBooks in
-                apiBooks.publisher
-            })
-//            .filter ({ apiBook in
-//                if apiBook.sinopsis == nil || apiBook.title == nil {
-//                    print("false")
-//                    return false
-//                } else {
-//                    print("true")
-//                    return true
-//                }
-//            })
-            .compactMap({ apiBook -> Book in
-                let newBook = Book(authors: apiBook.authors ?? ["N/A"], genres: apiBook.genres ?? ["N/A"], image: apiBook.image?.thumbnail ?? "image", isbns: apiBook.isbns?.map(\.identifier) ?? ["N/A"], rating: apiBook.rating?.description ?? "N/A", sinopsis: apiBook.sinopsis ?? "N/A", title: apiBook.title ?? "N/A", imageCover: nil)
-                return newBook!
-            })
-            .collect()
-            .flatMap({ apiBooks in
-                apiBooks.publisher
-            })
-            .flatMap({ book in
-                if book.image != "image" {
-                    return self.service.fetchBookCover(forURL: book.image)
-                        .map({ data in
-                            var newBook = book
-                            newBook.imageCover = UIImage(data: data)
-                            return newBook
-                        })
-                        .replaceError(with: book)
-                        .eraseToAnyPublisher()
-                }
-                else {
-                    var newBook = book
-                    newBook.imageCover = UIImage(named: "bookImage")
-                    return Just(newBook).eraseToAnyPublisher()
-                }
-            })
-            .collect()
+            .mapAPIBookToBook()
+            .setBookImages(withService: self.service)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):

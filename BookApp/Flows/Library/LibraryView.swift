@@ -9,13 +9,15 @@ struct LibraryView: View {
     @StateObject private var viewModel: LibraryViewModel = LibraryViewModel()
     @State private var isPresented: Bool = false
     @State private var folderName: String = ""
-
+    
     var body: some View {
         VStack{
             HStack{
                 VStack (alignment: .leading){
-                    Text("E aí, \(userName)?")
-                        .font(.system(size: 15, design: .serif))
+                    // Text("E aí, \(userName)?")
+
+                    Text("E aí, Manu?")
+                        .font(.system(size: 15))
                     
                     Text("Minha Estante")
                         .font(.system(size: 34, design: .serif))
@@ -41,6 +43,8 @@ struct LibraryView: View {
                 Text("Insira o nome desejado para a pasta.")
             }
             }
+            .padding(.top, 20)
+
             .padding()
             
             NavigationStack {
@@ -65,14 +69,41 @@ struct LibraryView: View {
 //                        .background(Color.teal)
                     }
                 }
-                .navigationBarTitle("TESTE PASTAS")
+                VStack {
+                    Button {
+                        //isPresented.toggle()
+                    }
+                label: {
+                    Image("Leituras realizadas")
+                        .resizable()
+                        .padding(.bottom, -60)
+                        .frame(height: 100)
+
+                }
+                    
+                    Button {
+                        //isPresented.toggle()
+                    }
+                label: {
+                    Image("Livros que quero ter")
+                        .resizable()
+                        .padding(.bottom, -60)
+                        .frame(height: 100)
+                    
+                }
+                    Button {
+                        //isPresented.toggle()
+                    }
+                label: {
+                    Image("Lendo agora")
+                        .resizable()
+                        .padding(.bottom, -60)
+                        .frame(height: 100)
+                }
+                }
+                .navigationBarTitle("")
             }
         }
     }
 }
-//
-//struct LibraryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LibraryView(userName: "Schar")
-//    }
-//}
+
