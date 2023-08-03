@@ -38,13 +38,8 @@ struct ResearchedBookView: View {
                     startConfirm.toggle()
                 }
             }
-            .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible) {
-                NavigationLink("Ver detalhes") { BookView(book: book)  }
-#warning("Mudar para a página de adicionar a uma lista")
-                NavigationLink("Adicionar a uma lista") { BookView(book: book) }
-            } message: {
-                Text (book.authors[0])
-            }
+            .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book) })
+
         }
         .foregroundColor(.black)
         .frame(maxWidth: .infinity, maxHeight: 140, alignment: .topLeading)

@@ -1,0 +1,18 @@
+CÓDIGOS IMPORTANTES
+
+-- Confirmatio Dialog (Barra nativa de cima pra baixo)
+
+
+    @State private var startConfirm = false
+
+            .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible) {
+                NavigationLink("Ver detalhes") { BookView(book: book)  }
+#warning("Mudar para a página de adicionar a uma lista")
+                NavigationLink("Adicionar a uma lista") { BookView(book: book) }
+            } message: {
+                Text (book.authors[0])
+            }
+
+
+
+-- Alert (popUp Nativo)
