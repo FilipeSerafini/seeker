@@ -7,7 +7,7 @@ struct LibraryView: View {
     @ObservedObject private var viewModel: LibraryViewModel = LibraryViewModel()
     @State private var isPresented: Bool = false
     @State private var folderName: String = ""
-
+    
     var body: some View {
         VStack{
             HStack{
@@ -53,14 +53,46 @@ struct LibraryView: View {
                         .background(Color.teal)
                     }
                 }
-                .navigationBarTitle("TESTE PASTAS")
+                VStack {
+                    Button {
+                        //isPresented.toggle()
+                    }
+                label: {
+                    Image("Leituras realizadas")
+                        .resizable()
+                        .padding(.bottom, -60)
+                        .frame(height: 100)
+
+                }
+                    
+                    Button {
+                        //isPresented.toggle()
+                    }
+                label: {
+                    Image("Livros que quero ter")
+                        .resizable()
+                        .padding(.bottom, -60)
+                        .frame(height: 100)
+                    
+                }
+                    Button {
+                        //isPresented.toggle()
+                    }
+                label: {
+                    Image("Lendo agora")
+                        .resizable()
+                        .padding(.bottom, -60)
+                        .frame(height: 100)
+                }
+                }
+                .navigationBarTitle("")
             }
         }
     }
 }
-//
-//struct LibraryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LibraryView(userName: "Schar")
-//    }
-//}
+
+struct LibraryView_Previews: PreviewProvider {
+    static var previews: some View {
+        LibraryView(userName: "Schar")
+    }
+}
