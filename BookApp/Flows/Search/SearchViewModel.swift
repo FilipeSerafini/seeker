@@ -15,6 +15,7 @@ class SearchViewModel: ObservableObject {
     private var currentPag: Int = 0
     private var currentSearch: String = ""
     private var currentFilter: Filter = .empty
+    @Published var returnEmpty: Bool = false
     
     func fetchBooks(searchedText: String, filter: Filter) {
         
@@ -27,6 +28,7 @@ class SearchViewModel: ObservableObject {
             currentFilter = filter
             currentPag = 0
             books = []
+            returnEmpty = false
         }
         
         print("pag: \(currentPag)")
@@ -43,10 +45,27 @@ class SearchViewModel: ObservableObject {
                     return
                 }
             }, receiveValue: { books in
-                self.books = self.books + books
-                self.currentPag += 10
+                if books.isEmpty {
+                    self.returnEmpty = true
+                } else {
+                    self.books = self.books + self.sortBooks(books: books)
+                    self.currentPag += 10
+                }
                 self.currentState = .alreadyLoaded
             })
             .store(in: &subscriptions)
+    }
+    
+    func sortBooks(books: [Book]) -> [Book] {
+        let sortedBooks = books.sorted { (book1, book2) in
+            if book1.image.contains("image") && !book2.image.contains("image") {
+                return false // book2 tem capa, então book1 vai depois
+            } else if !book1.image.contains("image") && book2.image.contains("image") {
+                return true // book1 tem capa, então book1 vai antes
+            } else {
+                return book1.title < book2.title // ambos têm ou não têm capa, ordene por título
+            }
+        }
+        return sortedBooks
     }
 }

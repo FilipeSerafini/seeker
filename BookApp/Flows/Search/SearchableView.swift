@@ -14,7 +14,7 @@ struct SearchableView: View {
     
     var body: some View {
         ChildSizeReader(size: $wholeSize) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 ChildSizeReader(size: $scrollViewSize) {
                     VStack(alignment: .leading) {
                         // Search Bar
@@ -23,7 +23,7 @@ struct SearchableView: View {
                                 isEditing = editing
                             })
                             .onSubmit {
-                                if searchText != ""{
+                                if searchText != "" {
                                     searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
                                 }
                             }
@@ -102,8 +102,12 @@ struct SearchableView: View {
                         if !isEditing && searchText == "" {
                             RecommendedView()
                         } else if !isEditing {
-                            ForEach(searchViewModel.books) { book in
-                                ResearchedBookView(book: book)
+                            if searchViewModel.returnEmpty == true {
+                                Text("retorno vazio")
+                            } else {
+                                ForEach(searchViewModel.books) { book in
+                                    ResearchedBookView(book: book)
+                                }
                             }
                         }
                     }
@@ -120,7 +124,7 @@ struct SearchableView: View {
                         perform: { value in
                             if value > scrollViewSize.height - wholeSize.height {
                                 if !searchText.isEmpty {
-                                    searchViewModel.fetchBooks(searchedText: searchText, filter: .empty)
+                                    searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
                                 }
                             }
                         }
@@ -132,12 +136,6 @@ struct SearchableView: View {
             }
             .coordinateSpace(name: spaceName)
         }
-        .onChange(
-            of: scrollViewSize,
-            perform: { value in
-                print(value)
-            }
-        )
     }
 }
 
