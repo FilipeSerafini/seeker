@@ -3,6 +3,7 @@ import SwiftUI
 struct ResearchedBookView: View {
     @State private var startConfirm = false
     @State var book: Book
+    @Environment(\.colorScheme) var scheme
     
     var body: some View {
         NavigationStack{
@@ -25,13 +26,14 @@ struct ResearchedBookView: View {
                             .font(.system(size: 22, weight: .medium, design: .serif))
                             .padding(.bottom, 3)
                         Text("  Avaliação geral: \(book.rating)  ")
-                            .background(Rectangle().fill(Color.black).cornerRadius(20).frame(height: 22))
+                            .foregroundColor(scheme == .light ? .white : .black)
+                            .background(Rectangle().fill(scheme == .light ? Color.black : Color.white).cornerRadius(20).frame(height: 22))
                             .font(.system(size: 13))
-                            .foregroundColor(.white)
                             .padding(.bottom, 3)
                         Text(book.sinopsis)
                             .font(.system(size: 15))
                     }
+                    .foregroundColor(scheme == .light ? .black : .white)
                 }
                 .onTapGesture {
                     startConfirm.toggle()
