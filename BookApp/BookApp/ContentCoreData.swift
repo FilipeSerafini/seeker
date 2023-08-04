@@ -1,10 +1,3 @@
-//
-//  ContentCoreData.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 28/07/23.
-//
-
 import SwiftUI
 import CoreData
 

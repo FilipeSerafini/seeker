@@ -1,10 +1,3 @@
-//
-//  BookAppApp.swift
-//  BookApp
-//
-//  Created by Filipe Serafini on 25/07/23.
-//
-
 import SwiftUI
 
 @main

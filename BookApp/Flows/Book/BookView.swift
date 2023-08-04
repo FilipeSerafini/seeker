@@ -50,8 +50,10 @@ struct BookView: View {
                                 // MARK: Barra de adicionar, lido e avaliação
                                 
                                 HStack{
-                                    //.navigationBarBackButtonHidden(true)
-                                    NavigationLink(destination: OracleView(), label: {
+                                    Button {
+                                        showSheet.toggle()
+                                    }
+                                label: {
                                         VStack{
                                             Image("addBookToFolder")
                                                 .resizable()
@@ -59,7 +61,7 @@ struct BookView: View {
                                             Text("Adicionar")
                                                 .font(.system(size: 13))
                                             .foregroundColor(scheme == .light ? .black : .white)                                        }
-                                    })
+                                    }
                                     Spacer()
                                     
                                     Button {
@@ -122,6 +124,9 @@ struct BookView: View {
                                         Text("Minha avaliação")
                                             .font(.system(size: 13))
                                         .foregroundColor(scheme == .light ? .black : .white)                                    }
+                                }
+                                .sheet(isPresented: $showSheet) {
+                                    addToFolderView()
                                 }
                                 .padding(.bottom, 10)
                                 

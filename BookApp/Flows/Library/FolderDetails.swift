@@ -1,10 +1,3 @@
-//
-//  FolderDetails.swift
-//  BookApp
-//
-//  Created by Filipe Serafini on 02/08/23.
-//
-
 import SwiftUI
 
 struct FolderDetails: View {

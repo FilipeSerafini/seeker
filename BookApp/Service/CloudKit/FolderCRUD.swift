@@ -1,10 +1,3 @@
-//
-//  FolderCRUD.swift
-//  BookApp
-//
-//  Created by Filipe Serafini on 02/08/23.
-//
-
 import Foundation
 import CloudKit
 import Combine

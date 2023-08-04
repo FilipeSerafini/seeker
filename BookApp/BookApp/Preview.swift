@@ -6,7 +6,7 @@ struct Preview: View {
 //            Image("bookImage")
 //                .resizable()
 //                .frame(width: 340, height: 340)
-            Text("Welcome!")
+            Text("Bem-vindos :)")
 //            Text("Welcome to Seeker")
                 .font(.system(size: 34, design: .serif))
                 .padding(.bottom,4)

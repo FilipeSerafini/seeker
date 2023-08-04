@@ -1,9 +1,3 @@
-//
-//  RecommendedView.swift
-//  BookApp
-//
-//  Created by Waldyr Schneider on 02/08/23.
-//
 import SwiftUI
 import Foundation
 
