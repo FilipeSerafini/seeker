@@ -76,7 +76,7 @@ struct LibraryView: View {
                     Spacer()
                     
                         ZStack{
-                            Image("Sheets1")
+                            Image(scheme == . light ? "Sheets1" : "Sheets1Dark")
                                 .resizable()
                                 .frame(width: 382, height: 140)
                                 .onTapGesture {
@@ -87,7 +87,7 @@ struct LibraryView: View {
                             HStack{
                                 Text("Leituras realizadas")
                                     .font(.system(size: 22, design: .serif))
-                                    .foregroundColor(scheme == .light ? .black : .white)
+                                    .foregroundColor(.black)
                                     .padding(.leading, 25)
                                     .padding(.bottom, 50)
                                 Spacer()
@@ -99,7 +99,7 @@ struct LibraryView: View {
 
                     
                         ZStack{
-                            Image("Sheets2")
+                            Image(scheme == . light ? "Sheets2" : "Sheets2Dark")
                                 .resizable()
                                 .frame(width: 382, height: 140)
                                 .onTapGesture {
@@ -108,7 +108,7 @@ struct LibraryView: View {
                             HStack{
                                 Text("Livros que quero ler")
                                     .font(.system(size: 22, design: .serif))
-                                    .foregroundColor(scheme == .light ? .black : .white)
+                                    .foregroundColor(.black)
                                     .padding(.leading, 25)
                                     .padding(.bottom, 50)
                                 Spacer()
@@ -121,7 +121,7 @@ struct LibraryView: View {
             
 
                         ZStack{
-                            Image("Sheets1")
+                            Image(scheme == . light ? "Sheets1" : "Sheets1Dark")
                                 .resizable()
                                 .frame(width: 382, height: 140)
                                 .onTapGesture {
@@ -130,7 +130,7 @@ struct LibraryView: View {
                             HStack{
                                 Text("Lendo agora")
                                     .font(.system(size: 22, design: .serif))
-                                    .foregroundColor(scheme == .light ? .black : .white)
+                                    .foregroundColor(.black)
                                     .padding(.leading, 25)
                                     .padding(.bottom, 50)
                                 Spacer()
