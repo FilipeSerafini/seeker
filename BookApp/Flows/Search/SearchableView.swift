@@ -29,7 +29,7 @@ struct SearchableView: View {
                             }
                             .padding(15)
                             .font(.system(size: 17))
-                            .foregroundColor(Color(red: 0.255, green: 0.255, blue: 0.255))
+                            .foregroundColor(scheme == .light ? Color(red: 0.255, green: 0.255, blue: 0.255) : Color(red: 0.7490196078431373, green: 0.7490196078431373, blue: 0.7490196078431373))
                         }
                         .padding(.trailing, 20)
                         .background(scheme == .light ? Color(red: 0.8509803921568627, green: 0.8509803921568627, blue: 0.8509803921568627) : Color(red: 0.14901960784313725, green: 0.14901960784313725, blue: 0.14901960784313725))
@@ -41,7 +41,7 @@ struct SearchableView: View {
                                 Button(action: {
                                     searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
                                 }) {
-                                    Image("searchIconSelected")
+                                    Image("magnifyingGlassColors")
                                         .padding(.trailing, 25)
                                 }
                                 .disabled(searchText == "")
@@ -63,7 +63,7 @@ struct SearchableView: View {
                                                               if newValue {
                                                                   selectedFilter = .title
                                                               } else {
-                                                                  selectedFilter = .title
+                                                                  selectedFilter = .empty
                                                               }
                                                           })))
                                 
@@ -75,7 +75,7 @@ struct SearchableView: View {
                                     if newValue {
                                         selectedFilter = .author
                                     } else {
-                                        selectedFilter = .author
+                                        selectedFilter = .empty
                                     }
                                 })))
                                 
@@ -90,7 +90,7 @@ struct SearchableView: View {
                                                               if newValue {
                                                                   selectedFilter = .genre
                                                               } else {
-                                                                  selectedFilter = .genre
+                                                                  selectedFilter = .empty
                                                               }
                                                           })))
                             }

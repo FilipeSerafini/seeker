@@ -10,8 +10,12 @@ struct LibraryView: View {
     @State private var isPresented: Bool = false
     @State private var folderName: String = ""
     
+    @Environment(\.colorScheme) var scheme
+    @State private var startConfirm = false
+    
     var body: some View {
         VStack{
+            NavigationStack {
             HStack{
                 VStack (alignment: .leading){
                     // Text("E aí, \(userName)?")
@@ -44,10 +48,8 @@ struct LibraryView: View {
             }
             }
             .padding(.top, 20)
-
             .padding()
             
-            NavigationStack {
                 ScrollView {
                     ForEach(userManager.folders, id: \.id) { folder in
                         VStack {
@@ -69,38 +71,76 @@ struct LibraryView: View {
 //                        .background(Color.teal)
                     }
                 }
+                
                 VStack {
-                    Button {
-                        //isPresented.toggle()
-                    }
-                label: {
-                    Image("Leituras realizadas")
-                        .resizable()
-                        .padding(.bottom, -60)
-                        .frame(height: 100)
+                    Spacer()
+                    
+                        ZStack{
+                            Image("Sheets1")
+                                .resizable()
+                                .frame(width: 382, height: 140)
+                                .onTapGesture {
+                                    startConfirm.toggle()
+                                }
+                            
 
-                }
+                            HStack{
+                                Text("Leituras realizadas")
+                                    .font(.system(size: 22, design: .serif))
+                                    .foregroundColor(scheme == .light ? .black : .white)
+                                    .padding(.leading, 25)
+                                    .padding(.bottom, 50)
+                                Spacer()
+                            }
+                            
+                        }
+                        .padding(.bottom, -50)
+                        .navigationDestination(isPresented: $startConfirm, destination: {OracleView()})
+
                     
-                    Button {
-                        //isPresented.toggle()
-                    }
-                label: {
-                    Image("Livros que quero ter")
-                        .resizable()
-                        .padding(.bottom, -60)
-                        .frame(height: 100)
-                    
-                }
-                    Button {
-                        //isPresented.toggle()
-                    }
-                label: {
-                    Image("Lendo agora")
-                        .resizable()
-                        .padding(.bottom, -60)
-                        .frame(height: 100)
-                }
-                }
+                        ZStack{
+                            Image("Sheets2")
+                                .resizable()
+                                .frame(width: 382, height: 140)
+                                .onTapGesture {
+                                    startConfirm.toggle()
+                                }
+                            HStack{
+                                Text("Livros que quero ler")
+                                    .font(.system(size: 22, design: .serif))
+                                    .foregroundColor(scheme == .light ? .black : .white)
+                                    .padding(.leading, 25)
+                                    .padding(.bottom, 50)
+                                Spacer()
+                            }
+                            
+                        }
+                        .padding(.bottom, -50)
+                        .navigationDestination(isPresented: $startConfirm, destination: {OracleView()})
+
+            
+
+                        ZStack{
+                            Image("Sheets1")
+                                .resizable()
+                                .frame(width: 382, height: 140)
+                                .onTapGesture {
+                                    startConfirm.toggle()
+                                }
+                            HStack{
+                                Text("Lendo agora")
+                                    .font(.system(size: 22, design: .serif))
+                                    .foregroundColor(scheme == .light ? .black : .white)
+                                    .padding(.leading, 25)
+                                    .padding(.bottom, 50)
+                                Spacer()
+                            }
+                            
+                        }
+                        .padding(.bottom, -30)
+                        .navigationDestination(isPresented: $startConfirm, destination: {OracleView()})
+               }
+
                 .navigationBarTitle("")
             }
         }
