@@ -98,9 +98,12 @@ struct SearchableView: View {
                         if searchViewModel.isSearching == true && searchViewModel.books.isEmpty {
                             HStack {
                                 Spacer()
-                               Text("CARREGANDO...")
+                                Loading()
+                                    .frame(width: 200, height: 200)
+                                    .foregroundColor(Color("primary"))
                                 Spacer()
                             }
+                            .padding(.top, 70)
                         } else if !isEditing && searchText == "" {
                             RecommendedView()
                         } else if !isEditing {
