@@ -7,8 +7,9 @@ struct SearchableView: View {
     @State private var searchText = ""
     @State private var isEditing: Bool = false
     @State var selectedFilter: Filter = .empty
+    @State private var isShowingProgressView = false
     @EnvironmentObject private var searchViewModel: SearchViewModel
-    
+        
     var body: some View {
         ChildSizeReader(size: $wholeSize) {
             ScrollView(showsIndicators: false) {
@@ -123,6 +124,16 @@ struct SearchableView: View {
                                 }
                             }
                         }
+                        
+                        if isShowingProgressView {
+                            HStack{
+                                Spacer()
+                                ProgressView()
+                                    .tint(Color("primary"))
+                                Spacer()
+                            }
+                            .padding(.bottom)
+                        }
                     }
                     .background(
                         GeometryReader { proxy in
@@ -132,12 +143,17 @@ struct SearchableView: View {
                             )
                         }
                     )
+                    
+                    
                     .onPreferenceChange(
                         ViewOffsetKey.self,
                         perform: { value in
                             if value > scrollViewSize.height - wholeSize.height {
                                 if !searchText.isEmpty {
                                     searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
+                                    isShowingProgressView = true
+                                } else {
+                                    isShowingProgressView = false
                                 }
                             }
                         }
