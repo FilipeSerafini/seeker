@@ -19,6 +19,7 @@ struct SearchableView: View {
                         HStack {
                             TextField("Procure por livros, autores e gêneros", text: $searchText, onEditingChanged: { editing in
                                 isEditing = editing
+                                isShowingProgressView = false
                             })
                             .onSubmit {
                                 if searchText != "" {
@@ -125,7 +126,7 @@ struct SearchableView: View {
                             }
                         }
                         
-                        if isShowingProgressView {
+                        if isShowingProgressView && !searchViewModel.books.isEmpty{
                             HStack{
                                 Spacer()
                                 ProgressView()
