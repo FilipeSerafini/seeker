@@ -7,14 +7,19 @@ struct TabViewApp: View {
     @EnvironmentObject private var recommendedViewModel: RecommendedViewModel
     
     init() {
-        UINavigationBar.appearance().largeTitleTextAttributes =
-        [.font: UIFont(descriptor:
-                        UIFontDescriptor.preferredFontDescriptor(withTextStyle: .largeTitle)
-            .withDesign(.serif)!, size: 34)]
-        
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         UITabBar.appearance().scrollEdgeAppearance = appearance
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        let backButtonAppearance = UIBarButtonItemAppearance(style: .done)
+        backButtonAppearance.focused.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        backButtonAppearance.disabled.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        backButtonAppearance.highlighted.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        navigationBarAppearance.backButtonAppearance = backButtonAppearance
+        navigationBarAppearance.largeTitleTextAttributes = [.font: UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: .largeTitle).withDesign(.serif)!, size: 34)]
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
     }
     
     var body: some View {

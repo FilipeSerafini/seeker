@@ -16,9 +16,10 @@ class SearchViewModel: ObservableObject {
     private var currentSearch: String = ""
     private var currentFilter: Filter = .empty
     @Published var returnEmpty: Bool = false
+    @Published var isSearching: Bool = false
     
     func fetchBooks(searchedText: String, filter: Filter) {
-        
+        isSearching = true
         if currentState == .isLoading {
             return
         }
@@ -54,6 +55,10 @@ class SearchViewModel: ObservableObject {
                 self.currentState = .alreadyLoaded
             })
             .store(in: &subscriptions)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.isSearching = false
+        }
     }
     
     func sortBooks(books: [Book]) -> [Book] {

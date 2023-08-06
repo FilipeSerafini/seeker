@@ -6,10 +6,7 @@ struct SearchableView: View {
     @State private var wholeSize: CGSize = .zero
     @State private var searchText = ""
     @State private var isEditing: Bool = false
-    
     @State var selectedFilter: Filter = .empty
-    
-    @Environment(\.colorScheme) var scheme
     @EnvironmentObject private var searchViewModel: SearchViewModel
     
     var body: some View {
@@ -17,7 +14,7 @@ struct SearchableView: View {
             ScrollView(showsIndicators: false) {
                 ChildSizeReader(size: $scrollViewSize) {
                     VStack(alignment: .leading) {
-                        // Search Bar
+                        //MARK: Search Bar
                         HStack {
                             TextField("Procure por livros, autores e gêneros", text: $searchText, onEditingChanged: { editing in
                                 isEditing = editing
@@ -29,10 +26,10 @@ struct SearchableView: View {
                             }
                             .padding(15)
                             .font(.system(size: 17))
-                            .foregroundColor(scheme == .light ? Color(red: 0.255, green: 0.255, blue: 0.255) : Color(red: 0.7490196078431373, green: 0.7490196078431373, blue: 0.7490196078431373))
+                            .foregroundColor(Color("foregroundSearch"))
                         }
                         .padding(.trailing, 20)
-                        .background(scheme == .light ? Color(red: 0.8509803921568627, green: 0.8509803921568627, blue: 0.8509803921568627) : Color(red: 0.14901960784313725, green: 0.14901960784313725, blue: 0.14901960784313725))
+                        .background(Color("backgroundSearch"))
                         .cornerRadius(30)
                         .padding(.horizontal)
                         .overlay(
@@ -40,6 +37,7 @@ struct SearchableView: View {
                                 Spacer()
                                 Button(action: {
                                     searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
+                                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                                 }) {
                                     Image("magnifyingGlassColors")
                                         .padding(.trailing, 25)
@@ -58,26 +56,26 @@ struct SearchableView: View {
                                     Text("Título")
                                 }.buttonStyle(
                                     StyleFilterButton(
-                                        isFilled: Binding(get: { selectedFilter == .title },
-                                                          set: { newValue in
-                                                              if newValue {
-                                                                  selectedFilter = .title
-                                                              } else {
-                                                                  selectedFilter = .empty
-                                                              }
-                                                          })))
+                                        isFilled: Binding(get: { selectedFilter == .title }, set: { newValue in
+                                            if newValue {
+                                                selectedFilter = .title
+                                            } else {
+                                                selectedFilter = .empty
+                                            }
+                                        })))
                                 
                                 Button(action: {
                                     selectedFilter = .author
                                 }) {
                                     Text("Autor")
-                                }.buttonStyle(StyleFilterButton(isFilled: Binding(get: { selectedFilter == .author }, set: { newValue in
-                                    if newValue {
-                                        selectedFilter = .author
-                                    } else {
-                                        selectedFilter = .empty
-                                    }
-                                })))
+                                }.buttonStyle(StyleFilterButton(
+                                    isFilled: Binding(get: { selectedFilter == .author }, set: { newValue in
+                                        if newValue {
+                                            selectedFilter = .author
+                                        } else {
+                                            selectedFilter = .empty
+                                        }
+                                    })))
                                 
                                 Button(action: {
                                     selectedFilter = .genre
@@ -85,25 +83,37 @@ struct SearchableView: View {
                                     Text("Gênero")
                                 }.buttonStyle(
                                     StyleFilterButton(
-                                        isFilled: Binding(get: { selectedFilter == .genre },
-                                                          set: { newValue in
-                                                              if newValue {
-                                                                  selectedFilter = .genre
-                                                              } else {
-                                                                  selectedFilter = .empty
-                                                              }
-                                                          })))
+                                        isFilled: Binding(get: { selectedFilter == .genre }, set: { newValue in
+                                            if newValue {
+                                                selectedFilter = .genre
+                                            } else {
+                                                selectedFilter = .empty
+                                            }
+                                        })))
                             }
                         }
                         .padding(.bottom, 40)
                         .padding([.leading, .trailing])
                         
-                        
-                        if !isEditing && searchText == "" {
+                        if searchViewModel.isSearching == true && searchViewModel.books.isEmpty {
+                            HStack {
+                                Spacer()
+                               Text("CARREGANDO...")
+                                Spacer()
+                            }
+                        } else if !isEditing && searchText == "" {
                             RecommendedView()
                         } else if !isEditing {
                             if searchViewModel.returnEmpty == true {
-                                Text("retorno vazio")
+                                VStack(alignment: .center){
+                                    Image("emptyStateSearch")
+                                        .resizable()
+                                        .frame(width: 350, height: 225)
+                                    Text("Infelizmente não encontramos resultados para a sua busca. Que tal procurar por algo diferente?")
+                                        .font(.system(size: 15))
+                                        .multilineTextAlignment(.center)
+                                }
+                                .padding()
                             } else {
                                 ForEach(searchViewModel.books) { book in
                                     ResearchedBookView(book: book)
@@ -130,9 +140,6 @@ struct SearchableView: View {
                         }
                     )
                 }
-            }
-            .onTapGesture {
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) //teclado some ao clicar na tela
             }
             .coordinateSpace(name: spaceName)
         }
@@ -174,11 +181,5 @@ struct SizePreferenceKey: PreferenceKey {
     
     static func reduce(value _: inout Value, nextValue: () -> Value) {
         _ = nextValue()
-    }
-}
-
-struct Searchable_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchableView()
     }
 }
