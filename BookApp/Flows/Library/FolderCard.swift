@@ -12,7 +12,7 @@ struct FolderCard: Identifiable {
 
 var book = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "bookImage", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "bookImage")!)
 
-var books: [Book] = [book!, book!, book!]
+var books: [Book] = [book!, book!, book!, book!, book!, book!]
 
 var folders: [FolderCard] = [
     FolderCard (name: "Leituras realizadas", image: "folderShapePurple", books: books),
