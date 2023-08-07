@@ -97,6 +97,8 @@ struct LibraryView: View {
             let offset = CGFloat(getIndex(folder: folder) * (expandFolder ? 10 : 70))
             let background = getIndex(folder: folder).isMultiple(of: 2) ? Color("Primary") : Color("Secondary")
             
+            let data = (1...100).map { "Item \($0)" }
+
             let columns = [
                 GridItem(.flexible()),
                 GridItem(.flexible()),
@@ -109,15 +111,19 @@ struct LibraryView: View {
 //                    .stroke(.white, lineWidth: 20)
                     .frame(width: 362, height: 647)
                 
-                Text("Livros lidos")
-                    .font(.system(size: 24, design: .serif))
-                    .padding(.bottom, 590)
-                
                 ScrollView {
+                    Text("Livros lidos")
+                        .font(.system(size: 24, design: .serif))
+                        .padding(.top, 10)
+                    
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(folder.books) { folderBook in
-                            BookResearchedCover(book: folderBook)
+                        
+                        ForEach(data, id: \.self) { item in
+                            Text(item)
                         }
+//                        ForEach(folder.books) { folderBook in
+//                            BookResearchedCover(book: folderBook)
+//                        }
                     }
                     .padding(.horizontal)
                 }
@@ -128,6 +134,7 @@ struct LibraryView: View {
             //MARK: Making it as a stack
             .offset(y: expandFolder ? offset : -rect.minY + offset)
         }
+        // aqui muda o quanto abre a pasta
         .padding(.bottom,120)
     }
     

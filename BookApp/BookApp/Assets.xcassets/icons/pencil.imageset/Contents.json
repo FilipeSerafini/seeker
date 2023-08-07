@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Sheets.png",
+      "filename" : "pencil.line 2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "pencil.line 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "pencil.line.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

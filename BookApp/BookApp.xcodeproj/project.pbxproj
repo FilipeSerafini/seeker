@@ -14,7 +14,12 @@
 		428ECC612A815F1000DA4B66 /* Oracle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ECC602A815F1000DA4B66 /* Oracle.swift */; };
 		4C45AA862A8137BE00DD5FB0 /* FolderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */; };
 		4C45AA882A81783400DD5FB0 /* TESTE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45AA872A81783400DD5FB0 /* TESTE.swift */; };
+		4C45AA8C2A817B0E00DD5FB0 /* FolderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45AA8B2A817B0E00DD5FB0 /* FolderCardView.swift */; };
 		4C4782772A7B29340014F611 /* CÓDIGOS IMPORTANTES in Resources */ = {isa = PBXBuildFile; fileRef = 4C4782762A7B29340014F611 /* CÓDIGOS IMPORTANTES */; };
+		4C5849D52A81887800C7AF97 /* TabBarOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5849D42A81887800C7AF97 /* TabBarOnboarding.swift */; };
+		4C5849D72A81889400C7AF97 /* OnBoarding1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5849D62A81889400C7AF97 /* OnBoarding1.swift */; };
+		4C5849D92A81894100C7AF97 /* OnBoarding2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5849D82A81894100C7AF97 /* OnBoarding2.swift */; };
+		4C5849DB2A818A3B00C7AF97 /* OnBoarding3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5849DA2A818A3A00C7AF97 /* OnBoarding3.swift */; };
 		4C7234852A743DE9006740F6 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234842A743DE9006740F6 /* CommentView.swift */; };
 		4C7234892A797723006740F6 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234882A797723006740F6 /* Preview.swift */; };
 		4CDD3BA82A730790001519C3 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BA72A730790001519C3 /* BookView.swift */; };
@@ -68,7 +73,12 @@
 		428ECC602A815F1000DA4B66 /* Oracle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oracle.swift; sourceTree = "<group>"; };
 		4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCard.swift; sourceTree = "<group>"; };
 		4C45AA872A81783400DD5FB0 /* TESTE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TESTE.swift; sourceTree = "<group>"; };
+		4C45AA8B2A817B0E00DD5FB0 /* FolderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCardView.swift; sourceTree = "<group>"; };
 		4C4782762A7B29340014F611 /* CÓDIGOS IMPORTANTES */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CÓDIGOS IMPORTANTES"; sourceTree = "<group>"; };
+		4C5849D42A81887800C7AF97 /* TabBarOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOnboarding.swift; sourceTree = "<group>"; };
+		4C5849D62A81889400C7AF97 /* OnBoarding1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding1.swift; sourceTree = "<group>"; };
+		4C5849D82A81894100C7AF97 /* OnBoarding2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding2.swift; sourceTree = "<group>"; };
+		4C5849DA2A818A3A00C7AF97 /* OnBoarding3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding3.swift; sourceTree = "<group>"; };
 		4C7234842A743DE9006740F6 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		4C7234882A797723006740F6 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		4CDD3BA72A730790001519C3 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
@@ -136,6 +146,17 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		4C5849D32A81884C00C7AF97 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				4C5849D42A81887800C7AF97 /* TabBarOnboarding.swift */,
+				4C5849D62A81889400C7AF97 /* OnBoarding1.swift */,
+				4C5849D82A81894100C7AF97 /* OnBoarding2.swift */,
+				4C5849DA2A818A3A00C7AF97 /* OnBoarding3.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
 		4CDD3BA62A730785001519C3 /* Book */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +177,7 @@
 		4CDD3BAE2A7308B4001519C3 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				4C45AA8B2A817B0E00DD5FB0 /* FolderCardView.swift */,
 				4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */,
 				4CDD3BB12A7308CD001519C3 /* LibraryViewModel.swift */,
 				4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */,
@@ -316,6 +338,7 @@
 		B1D861E02A70624800CAD142 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				4C5849D32A81884C00C7AF97 /* OnBoarding */,
 				B1D5C0EB2A7C2AA6007CA7C7 /* Folder */,
 				7C281A872A73256500A58E96 /* Search */,
 				4CDD3BA62A730785001519C3 /* Book */,
@@ -400,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C5849D92A81894100C7AF97 /* OnBoarding2.swift in Sources */,
 				B1D861D52A7045AF00CAD142 /* BookApp.xcdatamodeld in Sources */,
 				B1D5C0E52A7C139F007CA7C7 /* addToFolderView.swift in Sources */,
 				4CDD3BB22A7308CD001519C3 /* LibraryViewModel.swift in Sources */,
@@ -416,6 +440,7 @@
 				420FF5442A7AE73C006F4D0E /* RecommendedView.swift in Sources */,
 				4CDD3BBC2A730920001519C3 /* ChallengesViewModel.swift in Sources */,
 				4CDD3BA82A730790001519C3 /* BookView.swift in Sources */,
+				4C45AA8C2A817B0E00DD5FB0 /* FolderCardView.swift in Sources */,
 				4C45AA882A81783400DD5FB0 /* TESTE.swift in Sources */,
 				B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */,
 				4C45AA862A8137BE00DD5FB0 /* FolderCard.swift in Sources */,
@@ -435,6 +460,7 @@
 				4CDD3BB72A7308FD001519C3 /* OracleView.swift in Sources */,
 				B1D861D22A7045AF00CAD142 /* Persistence.swift in Sources */,
 				B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */,
+				4C5849D72A81889400C7AF97 /* OnBoarding1.swift in Sources */,
 				B1D5C0DF2A7AA416007CA7C7 /* UserCRUD.swift in Sources */,
 				4CDD3BB52A7308F7001519C3 /* OracleViewModel.swift in Sources */,
 				4C7234892A797723006740F6 /* Preview.swift in Sources */,
@@ -443,7 +469,9 @@
 				B108B80E2A719431006D6F1C /* Goal.swift in Sources */,
 				4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */,
 				4CDD3BC12A730938001519C3 /* ProfileView.swift in Sources */,
+				4C5849DB2A818A3B00C7AF97 /* OnBoarding3.swift in Sources */,
 				B1D5C0ED2A7C2ACA007CA7C7 /* FolderRow.swift in Sources */,
+				4C5849D52A81887800C7AF97 /* TabBarOnboarding.swift in Sources */,
 				4C7234852A743DE9006740F6 /* CommentView.swift in Sources */,
 				B1D5C0E72A7C20CD007CA7C7 /* UserManager.swift in Sources */,
 				B1D861C92A7045AE00CAD142 /* BookAppApp.swift in Sources */,
