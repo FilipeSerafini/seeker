@@ -95,30 +95,27 @@ struct LibraryView: View {
         GeometryReader {proxy in
             
             let rect = proxy.frame(in: .named("SCROLL"))
-            
             // display some portion of each folder
             let offset = CGFloat(getIndex(folder: folder) * (expandFolder ? 10 : 70))
             
             ZStack {
-                Image(folder.image)
-                    .resizable()
-                    .frame(width: 362, height: 647)
-                //                    .aspectRatio(contentMode: .fit)
-                
-                // MARK: nome da pasta
-                //            Text("Livros lidos")
-                //                .font(.system(size: 24, design: .serif))
-                //                .padding(.bottom, 570)
-                //            }
-                //        }
+                ZStack{
+                    Image(folder.image)
+                        .resizable()
+                        .frame(width: 362, height: 647)
+                    Text("Livros lidos")
+                        .font(.system(size: 24, design: .serif))
+                        .padding(.bottom, 570)
+                    
+//                    ForEach(folder.books) { folderBook in
+//                        BookResearchedCover(book: folderBook)
+//                    }
+                    
+                }
                 //MARK: Making it as a stack
-                    .offset(y: expandFolder ? offset : -rect.minY + offset)
+                .offset(y: expandFolder ? offset : -rect.minY + offset)
             }
         }
-        //        .padding()
-        //        .padding(.bottom,10)
-        //    }
-        //}
         .padding(.bottom,120)
     }
     
