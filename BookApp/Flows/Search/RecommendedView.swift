@@ -9,10 +9,12 @@ struct RecommendedView: View {
         VStack {
             VStack {
                 HStack{
-                    Text("Livros de Ficção")
-                        .font(.system(size: 17, weight: .semibold, design: .serif))
-                        .padding(.leading)
-                    Spacer()
+                    if !recommendedViewModel.firstList.isEmpty {
+                        Text("Livros de Ficção")
+                            .font(.system(size: 17, weight: .semibold, design: .serif))
+                            .padding(.leading)
+                        Spacer()
+                    }
                 }
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(spacing: 0){
@@ -27,10 +29,12 @@ struct RecommendedView: View {
             
             VStack{
                 HStack {
-                    Text("Livros de Romance")
-                        .font(.system(size: 17, weight: .semibold, design: .serif))
-                        .padding(.leading)
-                    Spacer()
+                    if !recommendedViewModel.secondList.isEmpty{
+                        Text("Livros de Romance")
+                            .font(.system(size: 17, weight: .semibold, design: .serif))
+                            .padding(.leading)
+                        Spacer()
+                    }
                 }
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(spacing: 0){
@@ -45,10 +49,12 @@ struct RecommendedView: View {
             
             VStack(alignment: .leading){
                 HStack {
-                    Text("Mais de Rupi Kaur")
-                        .font(.system(size: 17, weight: .semibold, design: .serif))
-                        .padding(.leading)
-                    Spacer()
+                    if !recommendedViewModel.thirdList.isEmpty {
+                        Text("Mais de Rupi Kaur")
+                            .font(.system(size: 17, weight: .semibold, design: .serif))
+                            .padding(.leading)
+                        Spacer()
+                    }
                 }
                 
                 ScrollView(.horizontal, showsIndicators: false){

@@ -10,6 +10,8 @@
 		420FF5442A7AE73C006F4D0E /* RecommendedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420FF5432A7AE73C006F4D0E /* RecommendedView.swift */; };
 		420FF5462A7AEE92006F4D0E /* RecommendedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420FF5452A7AEE92006F4D0E /* RecommendedViewModel.swift */; };
 		42633AE42A7443EE00401B5F /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42633AE32A7443EE00401B5F /* BookService.swift */; };
+		428ECC5F2A815EE500DA4B66 /* OracleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ECC5E2A815EE500DA4B66 /* OracleService.swift */; };
+		428ECC612A815F1000DA4B66 /* Oracle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ECC602A815F1000DA4B66 /* Oracle.swift */; };
 		4C45AA862A8137BE00DD5FB0 /* FolderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */; };
 		4C4782772A7B29340014F611 /* CÓDIGOS IMPORTANTES in Resources */ = {isa = PBXBuildFile; fileRef = 4C4782762A7B29340014F611 /* CÓDIGOS IMPORTANTES */; };
 		4C7234852A743DE9006740F6 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234842A743DE9006740F6 /* CommentView.swift */; };
@@ -32,6 +34,7 @@
 		7C281A8F2A742AE200A58E96 /* ResearchedBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281A8E2A742AE200A58E96 /* ResearchedBookView.swift */; };
 		7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281A902A743F3A00A58E96 /* ContentCoreData.swift */; };
 		7C281AB72A78312B00A58E96 /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281AB62A78312B00A58E96 /* SearchableView.swift */; };
+		7C31DBA32A7F63A3002FB8F8 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBA22A7F63A3002FB8F8 /* Loading.swift */; };
 		7C4245E42A7AE98800241A98 /* StyleFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4245E32A7AE98800241A98 /* StyleFilterButton.swift */; };
 		B108B8052A7193EF006D6F1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8042A7193EF006D6F1C /* User.swift */; };
 		B108B8072A719406006D6F1C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8062A719406006D6F1C /* Badge.swift */; };
@@ -60,6 +63,8 @@
 		420FF5452A7AEE92006F4D0E /* RecommendedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedViewModel.swift; sourceTree = "<group>"; };
 		422E89BB2A788F1600FADC5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42633AE32A7443EE00401B5F /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
+		428ECC5E2A815EE500DA4B66 /* OracleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleService.swift; sourceTree = "<group>"; };
+		428ECC602A815F1000DA4B66 /* Oracle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oracle.swift; sourceTree = "<group>"; };
 		4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCard.swift; sourceTree = "<group>"; };
 		4C4782762A7B29340014F611 /* CÓDIGOS IMPORTANTES */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CÓDIGOS IMPORTANTES"; sourceTree = "<group>"; };
 		4C7234842A743DE9006740F6 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
@@ -76,12 +81,15 @@
 		4CDD3BC02A730938001519C3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		7C281A7F2A73069900A58E96 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		7C281A812A7306C500A58E96 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		7C281A7F2A73069900A58E96 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		7C281A812A7306C500A58E96 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		7C281A832A73255500A58E96 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		7C281A852A73255F00A58E96 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		7C281A8C2A742A7700A58E96 /* BookResearchedCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResearchedCover.swift; sourceTree = "<group>"; };
 		7C281A8E2A742AE200A58E96 /* ResearchedBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchedBookView.swift; sourceTree = "<group>"; };
 		7C281A902A743F3A00A58E96 /* ContentCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCoreData.swift; sourceTree = "<group>"; };
 		7C281AB62A78312B00A58E96 /* SearchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableView.swift; sourceTree = "<group>"; };
+		7C31DBA22A7F63A3002FB8F8 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		7C4245E32A7AE98800241A98 /* StyleFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFilterButton.swift; sourceTree = "<group>"; };
 		B108B8042A7193EF006D6F1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B108B8062A719406006D6F1C /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
@@ -123,6 +131,7 @@
 			children = (
 				B1D5C0DD2A7AA3FE007CA7C7 /* CloudKit */,
 				42633AE32A7443EE00401B5F /* BookService.swift */,
+				428ECC5E2A815EE500DA4B66 /* OracleService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -191,9 +200,19 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		7C281A7E2A73065000A58E96 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				7C281A812A7306C500A58E96 /* SearchViewModel.swift */,
+				7C281A7F2A73069900A58E96 /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		7C281A872A73256500A58E96 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				7C31DBA22A7F63A3002FB8F8 /* Loading.swift */,
 				7C4245E32A7AE98800241A98 /* StyleFilterButton.swift */,
 				7C281AB62A78312B00A58E96 /* SearchableView.swift */,
 				7C281A8E2A742AE200A58E96 /* ResearchedBookView.swift */,
@@ -297,6 +316,7 @@
 				B108B80B2A71942A006D6F1C /* Review.swift */,
 				B108B80D2A719431006D6F1C /* Goal.swift */,
 				B108B80F2A71943F006D6F1C /* Folder.swift */,
+				428ECC602A815F1000DA4B66 /* Oracle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -391,12 +411,15 @@
 				B1D861D52A7045AF00CAD142 /* BookApp.xcdatamodeld in Sources */,
 				B1D5C0E52A7C139F007CA7C7 /* addToFolderView.swift in Sources */,
 				4CDD3BB22A7308CD001519C3 /* LibraryViewModel.swift in Sources */,
+				428ECC5F2A815EE500DA4B66 /* OracleService.swift in Sources */,
 				B108B8102A71943F006D6F1C /* Folder.swift in Sources */,
 				7C281A8D2A742A7700A58E96 /* BookResearchedCover.swift in Sources */,
 				4CDD3BBA2A730917001519C3 /* ChallengesView.swift in Sources */,
 				B108B80C2A71942A006D6F1C /* Review.swift in Sources */,
 				7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */,
+				7C31DBA32A7F63A3002FB8F8 /* Loading.swift in Sources */,
 				4CDD3BBF2A730931001519C3 /* ProfileViewModel.swift in Sources */,
+				428ECC612A815F1000DA4B66 /* Oracle.swift in Sources */,
 				B1D5C0E12A7ABB47007CA7C7 /* FolderCRUD.swift in Sources */,
 				420FF5442A7AE73C006F4D0E /* RecommendedView.swift in Sources */,
 				4CDD3BBC2A730920001519C3 /* ChallengesViewModel.swift in Sources */,
