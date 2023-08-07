@@ -10,6 +10,8 @@
 		420FF5442A7AE73C006F4D0E /* RecommendedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420FF5432A7AE73C006F4D0E /* RecommendedView.swift */; };
 		420FF5462A7AEE92006F4D0E /* RecommendedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420FF5452A7AEE92006F4D0E /* RecommendedViewModel.swift */; };
 		42633AE42A7443EE00401B5F /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42633AE32A7443EE00401B5F /* BookService.swift */; };
+		428ECC5F2A815EE500DA4B66 /* OracleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ECC5E2A815EE500DA4B66 /* OracleService.swift */; };
+		428ECC612A815F1000DA4B66 /* Oracle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ECC602A815F1000DA4B66 /* Oracle.swift */; };
 		4C0F0DA92A7ACDC1003932C0 /* BookFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F0DA82A7ACDC1003932C0 /* BookFolder.swift */; };
 		4C0F0DAB2A7AD599003932C0 /* FolderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F0DAA2A7AD599003932C0 /* FolderInfo.swift */; };
 		4C4782772A7B29340014F611 /* CÓDIGOS IMPORTANTES in Resources */ = {isa = PBXBuildFile; fileRef = 4C4782762A7B29340014F611 /* CÓDIGOS IMPORTANTES */; };
@@ -63,6 +65,8 @@
 		420FF5452A7AEE92006F4D0E /* RecommendedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedViewModel.swift; sourceTree = "<group>"; };
 		422E89BB2A788F1600FADC5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42633AE32A7443EE00401B5F /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
+		428ECC5E2A815EE500DA4B66 /* OracleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleService.swift; sourceTree = "<group>"; };
+		428ECC602A815F1000DA4B66 /* Oracle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oracle.swift; sourceTree = "<group>"; };
 		4C0F0DA82A7ACDC1003932C0 /* BookFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFolder.swift; sourceTree = "<group>"; };
 		4C0F0DAA2A7AD599003932C0 /* FolderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderInfo.swift; sourceTree = "<group>"; };
 		4C4782762A7B29340014F611 /* CÓDIGOS IMPORTANTES */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CÓDIGOS IMPORTANTES"; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 			children = (
 				B1D5C0DD2A7AA3FE007CA7C7 /* CloudKit */,
 				42633AE32A7443EE00401B5F /* BookService.swift */,
+				428ECC5E2A815EE500DA4B66 /* OracleService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				B108B80B2A71942A006D6F1C /* Review.swift */,
 				B108B80D2A719431006D6F1C /* Goal.swift */,
 				B108B80F2A71943F006D6F1C /* Folder.swift */,
+				428ECC602A815F1000DA4B66 /* Oracle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,6 +407,7 @@
 				B1D5C0E52A7C139F007CA7C7 /* addToFolderView.swift in Sources */,
 				4CDD3BB22A7308CD001519C3 /* LibraryViewModel.swift in Sources */,
 				4C0F0DAB2A7AD599003932C0 /* FolderInfo.swift in Sources */,
+				428ECC5F2A815EE500DA4B66 /* OracleService.swift in Sources */,
 				B108B8102A71943F006D6F1C /* Folder.swift in Sources */,
 				7C281A8D2A742A7700A58E96 /* BookResearchedCover.swift in Sources */,
 				4CDD3BBA2A730917001519C3 /* ChallengesView.swift in Sources */,
@@ -409,6 +416,7 @@
 				B1D5C0E32A7B2DCB007CA7C7 /* FolderDetails.swift in Sources */,
 				7C31DBA32A7F63A3002FB8F8 /* Loading.swift in Sources */,
 				4CDD3BBF2A730931001519C3 /* ProfileViewModel.swift in Sources */,
+				428ECC612A815F1000DA4B66 /* Oracle.swift in Sources */,
 				B1D5C0E12A7ABB47007CA7C7 /* FolderCRUD.swift in Sources */,
 				420FF5442A7AE73C006F4D0E /* RecommendedView.swift in Sources */,
 				4CDD3BBC2A730920001519C3 /* ChallengesViewModel.swift in Sources */,
