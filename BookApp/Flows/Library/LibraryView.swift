@@ -2,6 +2,9 @@ import SwiftUI
 
 struct LibraryView: View {
     
+    //MARK: Animation Properties
+    @State var expandFolder: Bool = false
+    
     var userName: String = ""
     //    @EnvironmentObject private var searchViewModel: SearchViewModel
     @EnvironmentObject private var userManager: UserManager
@@ -58,8 +61,24 @@ struct LibraryView: View {
                     VStack(spacing: 0) {
                         
                         ForEach(folders) {folder in
-                            FolderView(folder: folders[1])
+                            FolderView(folder: folder)
                         }
+                    }
+                    .overlay {
+                        //Avoid scrolling
+                        Rectangle()
+                            .fill(.black.opacity(expandFolder ? 0.01 : 0.01))
+                            .onTapGesture {
+                                if expandFolder {
+                                    withAnimation(.easeOut(duration: 0.35)){
+                                        expandFolder = false
+                                    }
+                                } else {
+                                    withAnimation(.easeInOut(duration: 0.35)){
+                                        expandFolder = true
+                                    }
+                                }
+                            }
                     }
                 }
                 .coordinateSpace(name: "SCROLL")
@@ -68,8 +87,48 @@ struct LibraryView: View {
             .navigationBarTitle("")
         }
     }
+    
+    // MARK: Folder View
+    @ViewBuilder
+    func FolderView(folder: FolderCard)->some View{
+        
+        GeometryReader {proxy in
+            
+            let rect = proxy.frame(in: .named("SCROLL"))
+            
+            // display some portion of each folder
+            let offset = CGFloat(getIndex(folder: folder) * (expandFolder ? 10 : 70))
+            
+            ZStack {
+                Image(folder.image)
+                    .resizable()
+                    .frame(width: 362, height: 647)
+                //                    .aspectRatio(contentMode: .fit)
+                
+                // MARK: nome da pasta
+                //            Text("Livros lidos")
+                //                .font(.system(size: 24, design: .serif))
+                //                .padding(.bottom, 570)
+                //            }
+                //        }
+                //MARK: Making it as a stack
+                    .offset(y: expandFolder ? offset : -rect.minY + offset)
+            }
+        }
+        //        .padding()
+        //        .padding(.bottom,10)
+        //    }
+        //}
+        .padding(.bottom,120)
+    }
+    
+    //Retreiving Index
+    func getIndex(folder: FolderCard)->Int{
+        return folders.firstIndex { currentFolder in
+            return currentFolder.id == folder.id
+        } ?? 0
+    }
 }
-
 
 
 struct Previews_LibraryView_Previews: PreviewProvider {

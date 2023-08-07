@@ -150,9 +150,9 @@
 			isa = PBXGroup;
 			children = (
 				4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */,
-				4C096D402A812C3600BC3D3D /* FolderLibrary.swift */,
 				4CDD3BB12A7308CD001519C3 /* LibraryViewModel.swift */,
 				4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */,
+				4C096D402A812C3600BC3D3D /* FolderLibrary.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
