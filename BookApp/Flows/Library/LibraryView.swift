@@ -22,10 +22,8 @@ struct LibraryView: View {
                 HStack{
                     VStack (alignment: .leading){
                         // Text("E aí, \(userName)?")
-                        
                         Text("E aí, Manu?")
                             .font(.system(size: 15))
-                        
                         Text("Minha Estante")
                             .font(.system(size: 34, design: .serif))
                     }
@@ -50,7 +48,7 @@ struct LibraryView: View {
                     Text("Insira o nome desejado para a pasta.")
                 }
                 }
-                .padding(.top, 20)
+                .padding(.bottom, 250)
                 .padding()
             }
             
@@ -60,7 +58,7 @@ struct LibraryView: View {
                     
                     VStack(spacing: 0) {
                         
-                        ForEach(folders) {folder in
+                        ForEach(folders) { folder in
                             FolderView(folder: folder)
                         }
                     }
@@ -97,24 +95,38 @@ struct LibraryView: View {
             let rect = proxy.frame(in: .named("SCROLL"))
             // display some portion of each folder
             let offset = CGFloat(getIndex(folder: folder) * (expandFolder ? 10 : 70))
+            let background = getIndex(folder: folder).isMultiple(of: 2) ? Color("Primary") : Color("Secondary")
+            
+            let columns = [
+                GridItem(.flexible()),
+                GridItem(.flexible()),
+                GridItem(.flexible()),
+            ]
             
             ZStack {
-                ZStack{
-                    Image(folder.image)
-                        .resizable()
-                        .frame(width: 362, height: 647)
-                    Text("Livros lidos")
-                        .font(.system(size: 24, design: .serif))
-                        .padding(.bottom, 570)
-                    
-//                    ForEach(folder.books) { folderBook in
-//                        BookResearchedCover(book: folderBook)
-//                    }
-                    
+                RoundedRectangle (cornerRadius: 20)
+                    .fill(background)
+//                    .stroke(.white, lineWidth: 20)
+                    .frame(width: 362, height: 647)
+                
+                Text("Livros lidos")
+                    .font(.system(size: 24, design: .serif))
+                    .padding(.bottom, 590)
+                
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(folder.books) { folderBook in
+                            BookResearchedCover(book: folderBook)
+                        }
+                    }
+                    .padding(.horizontal)
                 }
-                //MARK: Making it as a stack
-                .offset(y: expandFolder ? offset : -rect.minY + offset)
+                .frame(maxHeight: 647)
+                
+                
             }
+            //MARK: Making it as a stack
+            .offset(y: expandFolder ? offset : -rect.minY + offset)
         }
         .padding(.bottom,120)
     }
