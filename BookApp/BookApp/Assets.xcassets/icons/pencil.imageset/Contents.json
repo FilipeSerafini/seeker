@@ -1,7 +1,11 @@
 {
   "images" : [
     {
+<<<<<<<< HEAD:BookApp/BookApp/Assets.xcassets/icons/pencil.imageset/Contents.json
+      "filename" : "pencil.line 2.png",
+========
       "filename" : "Zoe 1.png",
+>>>>>>>> develop:BookApp/BookApp/Assets.xcassets/oracle/zoeChat.imageset/Contents.json
       "idiom" : "universal",
       "scale" : "1x"
     },
