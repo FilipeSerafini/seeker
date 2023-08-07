@@ -32,7 +32,6 @@ class SearchViewModel: ObservableObject {
             returnEmpty = false
         }
         
-        print("pag: \(currentPag)")
         currentState = .isLoading
         
         self.service.fetchBooks(searchedText: searchedText, page: currentPag, filter: filter)
@@ -46,13 +45,13 @@ class SearchViewModel: ObservableObject {
                     return
                 }
             }, receiveValue: { books in
-                if books.isEmpty {
+                if books.isEmpty && self.books.isEmpty {
                     self.returnEmpty = true
                 } else {
                     self.books = self.books + self.sortBooks(books: books)
                     self.currentPag += 10
+                    self.currentState = .alreadyLoaded
                 }
-                self.currentState = .alreadyLoaded
             })
             .store(in: &subscriptions)
         

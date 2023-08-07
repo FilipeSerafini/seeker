@@ -91,8 +91,7 @@ extension Publisher where Output == [Book] {
                         })
                         .replaceError(with: book)
                         .eraseToAnyPublisher()
-                }
-                else {
+                } else {
                     var newBook = book
                     newBook.imageCover = UIImage(named: "bookImage")
                     return Just(newBook).eraseToAnyPublisher()
