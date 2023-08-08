@@ -46,37 +46,41 @@ struct TabViewApp: View {
             LibraryView()
                 .tabItem {
                     selectedTab == 0 ? Image("booksColors") : Image("books")
+                    Text("Estante")
                 }
                 .tag(0)
             
             SearchView()
                 .tabItem {
                     selectedTab == 1 ? Image("magnifyingGlassColors") : Image("magnifyingGlass")
+                    Text("Buscar")
                 }
                 .tag(1)
             
             OracleView()
                 .tabItem {
                     selectedTab == 2 ? Image("zoeColors") : Image("zoe")
+                    Text("Oráculo")
                 }
                 .tag(2)
             
-            ChallengesView()
-                .tabItem {
-                    selectedTab == 3 ? Image("badgeColors") : Image("badge")
-                }
-                .tag(3)
+            //            ChallengesView()
+            //                .tabItem {
+            //                    selectedTab == 3 ? Image("badgeColors") : Image("badge")
+            //                }
+            //                .tag(3)
             
             ProfileView()
                 .tabItem {
                     selectedTab == 4 ? Image("profileColors") : Image("profile")
+                    Text("Perfil")
                 }
                 .tag(4)
         }
         .tint(Color("primary"))
         .environmentObject(searchViewModel)
         .environmentObject(recommendedViewModel)
-
+        
     }
 }
 

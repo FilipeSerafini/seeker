@@ -46,12 +46,10 @@ struct ProfileView: View {
                     }
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing){
-                            Button {
-                                UserSettings()
-                            }
-                        label: {
-                            Image("pencil")
-                        }
+                            
+                            NavigationLink(destination: UserSettings(), label: {
+                                Image("pencil")
+                            })
                         }
                     }
                     

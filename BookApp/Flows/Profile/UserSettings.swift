@@ -1,36 +1,49 @@
 import SwiftUI
 
 struct UserSettings: View {
+    
+    @State private var nameText = ""
+    @State private var isEditing: Bool = false
+    
     var body: some View {
         
-        @State var nameText = ""
-        @State var isEditing: Bool = false
-        VStack{
-            Image("usuariaTeste")
-                .resizable()
-                .frame(width: 110, height: 110)
-                .clipShape(Circle())
+        NavigationView {
             
-            HStack{
-                Text("Name")
+            VStack{
+                Image("usuariaTeste")
+                    .resizable()
+                    .frame(width: 110, height: 110)
+                    .clipShape(Circle())
                 
-                TextField("Manoela", text: $nameText, onEditingChanged: { editing in isEditing = editing
-                })
+                HStack{
+                    Text("Name")
+                    
+                    TextField("Manoela", text: $nameText, onEditingChanged: { editing in isEditing = editing
+                    })
+                }
+                HStack{
+                    Text("Username")
+                    TextField("Manoela", text: $nameText, onEditingChanged: { editing in isEditing = editing
+                    })
+                }
+                HStack{
+                    Text("BIO")
+                    TextField("Manoela", text: $nameText, onEditingChanged: { editing in isEditing = editing
+                    })
+                }
+                
+                Spacer()
+            } .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button {}
+                label: {
+                    Image("saveFolder")
+                }
+                }
             }
-            HStack{
-                Text("Username")
-                TextField("Manoela", text: $nameText, onEditingChanged: { editing in isEditing = editing
-                })
-            }
-            HStack{
-                Text("BIO")
-                TextField("Manoela", text: $nameText, onEditingChanged: { editing in isEditing = editing
-                })
-            }
-            Spacer()
+            .padding(.top, 60)
+            .padding()
         }
-        .padding(.top, 60)
-        .padding()
     }
 }
 

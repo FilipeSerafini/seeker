@@ -9,7 +9,7 @@ struct FolderView: View {
         GeometryReader { proxy in
             let rect = proxy.frame(in: .named("SCROLL"))
             // display some portion of each folder
-            let offset = CGFloat(getIndex(folder: folder) * (expandFolder ? 10 : 50))
+            let offset = CGFloat(getIndex(folder: folder) * (expandFolder ? 10 : 30))
             let background = getIndex(folder: folder).isMultiple(of: 2) ? Color("primary") : Color("secondary")
             
             let columns = [
@@ -62,7 +62,7 @@ struct FolderView: View {
             .offset(y: expandFolder ? offset : -rect.minX + offset)
         }
         .padding(.bottom, 30)
-        //.offset(y: 200)
+        .offset(y: 120)
     }
     func getIndex(folder: FolderCard)->Int{
         return folders.firstIndex { currentFolder in
