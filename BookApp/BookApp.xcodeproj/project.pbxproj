@@ -48,6 +48,7 @@
 		7C31DBD42A81D109002FB8F8 /* BarCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBD32A81D109002FB8F8 /* BarCodeScanner.swift */; };
 		7C31DBDB2A81EB64002FB8F8 /* ScannerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBDA2A81EB64002FB8F8 /* ScannerButton.swift */; };
 		7C4245E42A7AE98800241A98 /* StyleFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4245E32A7AE98800241A98 /* StyleFilterButton.swift */; };
+		7C6ADEAB2A82C14900C43005 /* AddReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6ADEAA2A82C14900C43005 /* AddReview.swift */; };
 		B108B8052A7193EF006D6F1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8042A7193EF006D6F1C /* User.swift */; };
 		B108B8072A719406006D6F1C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8062A719406006D6F1C /* Badge.swift */; };
 		B108B8092A719415006D6F1C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8082A719415006D6F1C /* Book.swift */; };
@@ -113,6 +114,7 @@
 		7C31DBD32A81D109002FB8F8 /* BarCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScanner.swift; sourceTree = "<group>"; };
 		7C31DBDA2A81EB64002FB8F8 /* ScannerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerButton.swift; sourceTree = "<group>"; };
 		7C4245E32A7AE98800241A98 /* StyleFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFilterButton.swift; sourceTree = "<group>"; };
+		7C6ADEAA2A82C14900C43005 /* AddReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReview.swift; sourceTree = "<group>"; };
 		B108B8042A7193EF006D6F1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B108B8062A719406006D6F1C /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		B108B8082A719415006D6F1C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				4CDD3BA72A730790001519C3 /* BookView.swift */,
 				B1D5C0EA2A7C2A45007CA7C7 /* AddBookToFolder */,
+				7C6ADEAA2A82C14900C43005 /* AddReview.swift */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				4CDD3BB22A7308CD001519C3 /* LibraryViewModel.swift in Sources */,
 				428ECC5F2A815EE500DA4B66 /* OracleService.swift in Sources */,
 				B108B8102A71943F006D6F1C /* Folder.swift in Sources */,
+				7C6ADEAB2A82C14900C43005 /* AddReview.swift in Sources */,
 				7C281A8D2A742A7700A58E96 /* BookResearchedCover.swift in Sources */,
 				4CDD3BBA2A730917001519C3 /* ChallengesView.swift in Sources */,
 				7C31DBD22A81885E002FB8F8 /* ChatBubble.swift in Sources */,

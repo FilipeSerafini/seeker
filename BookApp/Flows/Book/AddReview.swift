@@ -1,0 +1,86 @@
+import SwiftUI
+
+struct AddReview: View {
+    @State private var titleReview = ""
+    @State private var addReview = ""
+    
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading){
+                HStack{
+                    VStack{
+                        Image("bookImage")
+                            .resizable()
+                            .frame(width: 62, height: 88)
+                            .cornerRadius(10)
+                    }
+                    
+                    VStack(alignment: .leading){
+                        Text("Autor")
+                            .font(.system(size: 13))
+                            .textCase(.uppercase)
+                        Text("Título Livro")
+                            .font(.system(size: 22, weight: .medium, design: .serif))
+                    }
+                    .padding(.bottom, 30)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                Divider()
+                    .padding(.horizontal)
+                VStack{
+                    TextField("Título da nota", text: $titleReview)
+                        .textFieldStyle(.plain)
+                        .font(.system(size: 22, weight: .medium, design: .serif))
+                    ZStack(alignment: .leading) {
+                        TextEditor(text: $addReview)
+                            .padding(.leading, -3)
+
+                        if addReview.isEmpty{
+                            VStack{
+                                Text("Adicionar nota")
+                                    .font(.system(size: 17))
+                                    .foregroundColor(Color(red: 0.7725490196078432, green: 0.7725490196078432, blue: 0.7803921568627451))
+                                    .padding(.top, 10)
+                                    .padding(.leading, 1)
+                                Spacer()
+                            }
+                        }
+                    }
+                }
+                .padding(.horizontal)
+            }
+            .toolbar{
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {}
+                label: {
+                    Image("chevronBackward")
+                        .resizable()
+                        .frame(width: 15, height: 24)
+                }
+                }
+                
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text("Adicionar nota")
+                            .font(.system(size: 22, weight: .medium, design: .serif))
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {}
+                label: {
+                    Image("saveFolder")
+                }
+                }
+            }
+            
+        }
+    }
+}
+
+struct AddReview_Previews: PreviewProvider {
+    static var previews: some View {
+        AddReview()
+    }
+}
