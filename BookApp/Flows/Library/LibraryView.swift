@@ -44,7 +44,7 @@ struct LibraryView: View {
                 }
                 }
                 .padding()
-                
+                Spacer()
                 VStack {
                     
                     ScrollView(.vertical, showsIndicators: false) {
@@ -116,7 +116,8 @@ struct LibraryView: View {
                             }
                         }
                     }
-            }            //MARK: Making it as a stack
+            }
+            //MARK: Making it as a stack
             .offset(y: expandFolder ? offset : -rect.minY + offset)
         }
         // aqui muda o quanto abre a pasta
