@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MediumCommentButton: View {
     var body: some View {
-        RoundedRectangle(cornerRadius: 30)
+        RoundedRectangle(cornerRadius: 8)
             .fill(Color("commentButton"))
             .frame(width: 175, height: 100)
     }

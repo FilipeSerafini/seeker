@@ -14,7 +14,7 @@ struct LibraryView: View {
     var body: some View {
         VStack{
             NavigationStack {
-                HStack{
+                HStack {
                     VStack (alignment: .leading){
                         // Text("E aí, \(userName)?")
                         Text("E aí, Manu?")
@@ -26,30 +26,29 @@ struct LibraryView: View {
                     
                     Button {
                         isPresented.toggle()
+                    } label: {
+                        Image("addFolders")
+                            .resizable()
+                            .frame(width: 46, height: 34)
                     }
-                label: {
-                    Image("addFolders")
-                        .resizable()
-                        .frame(width: 46, height: 34)
-                }
-                .alert("Criar nova pasta", isPresented: $isPresented) {
-                    TextField(folderName, text: $folderName)
-                    Button("Cancelar",action: {})
-                    Button("Salvar",action: {
-                        //                    viewModel.createFolder(folderName: folderName)
-                        userManager.createFolder(folderName: folderName)
-                    })
-                } message: {
-                    Text("Insira o nome desejado para a pasta.")
-                }
+                    .alert("Criar nova pasta", isPresented: $isPresented) {
+                        TextField(folderName, text: $folderName)
+                        Button("Cancelar",action: {})
+                        Button("Salvar",action: {
+                            //                    viewModel.createFolder(folderName: folderName)
+                            userManager.createFolder(folderName: folderName)
+                        })
+                    } message: {
+                        Text("Insira o nome desejado para a pasta.")
+                    }
                 }
                 .padding()
+                
                 Spacer()
+                
                 VStack {
-                    
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 0) {
-                            
                             ForEach(folders) { folder in
                                 FolderView(folder: folder)
                             }
@@ -59,70 +58,69 @@ struct LibraryView: View {
                 }
                 .padding([.horizontal, .trailing])
                 .frame(maxHeight: .infinity, alignment: .bottom)
-//                .background(.green)
             }
         }
     }
     
     // MARK: Folder View
-    @ViewBuilder
-    func FolderView(folder: FolderCard)->some View{
-        
-        GeometryReader {proxy in
-            
-            let rect = proxy.frame(in: .named("SCROLL"))
-            // display some portion of each folder
-            let offset = CGFloat(getIndex(folder: folder) * (expandFolder ? 10 : 70))
-            let background = getIndex(folder: folder).isMultiple(of: 2) ? Color("primary") : Color("secondary")
-            
-            let columns = [
-                GridItem(.flexible()),
-                GridItem(.flexible()),
-                GridItem(.flexible()),
-            ]
-            
-            ZStack {
-                RoundedRectangle (cornerRadius: 20)
-                    .fill(background)
-                //                    .stroke(.white, lineWidth: 20)
-                    .frame(width: 362, height: 647)
-                
-                ScrollView {
-                    Text("Livros lidos")
-                        .font(.system(size: 24, design: .serif))
-                        .padding(.top, 10)
-                    
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        
-                        ForEach(folder.books) { folderBook in
-                            BookResearchedCover(book: folderBook)
-                        }
-                    }
-                }
-                .frame(maxHeight: 647)
-            }
-            .overlay {
-                //Avoid scrolling
-                Rectangle()
-                    .fill(.black.opacity(expandFolder ? 0.01 : 0.01))
-                    .onTapGesture {
-                        if expandFolder {
-                            withAnimation(.easeOut(duration: 0.35)){
-                                expandFolder = false
-                            }
-                        } else {
-                            withAnimation(.easeInOut(duration: 0.35)){
-                                expandFolder = true
-                            }
-                        }
-                    }
-            }
-            //MARK: Making it as a stack
-            .offset(y: expandFolder ? offset : -rect.minY + offset)
-        }
-        // aqui muda o quanto abre a pasta
-        .padding(.bottom, 220)
-    }
+//    @ViewBuilder
+//    func FolderView(folder: FolderCard)->some View{
+//
+//        GeometryReader {proxy in
+//
+//            let rect = proxy.frame(in: .named("SCROLL"))
+//            // display some portion of each folder
+//            let offset = CGFloat(getIndex(folder: folder) * (expandFolder ? 10 : 70))
+//            let background = getIndex(folder: folder).isMultiple(of: 2) ? Color("primary") : Color("secondary")
+//
+//            let columns = [
+//                GridItem(.flexible()),
+//                GridItem(.flexible()),
+//                GridItem(.flexible()),
+//            ]
+//
+//            ZStack {
+//                RoundedRectangle (cornerRadius: 20)
+//                    .fill(background)
+//                //                    .stroke(.white, lineWidth: 20)
+//                    .frame(width: 362, height: 647)
+//
+//                ScrollView {
+//                    Text("Livros lidos")
+//                        .font(.system(size: 24, design: .serif))
+//                        .padding(.top, 10)
+//
+//                    LazyVGrid(columns: columns, spacing: 20) {
+//
+//                        ForEach(folder.books) { folderBook in
+//                            BookResearchedCover(book: folderBook)
+//                        }
+//                    }
+//                }
+//                .frame(maxHeight: 647)
+//            }
+//            .overlay {
+//                //Avoid scrolling
+//                Rectangle()
+//                    .fill(.black.opacity(expandFolder ? 0.01 : 0.01))
+//                    .onTapGesture {
+//                        if expandFolder {
+//                            withAnimation(.easeOut(duration: 0.35)){
+//                                expandFolder = false
+//                            }
+//                        } else {
+//                            withAnimation(.easeInOut(duration: 0.35)){
+//                                expandFolder = true
+//                            }
+//                        }
+//                    }
+//            }
+//            //MARK: Making it as a stack
+//            .offset(y: expandFolder ? offset : -rect.minX + offset)
+//        }
+//        // aqui muda o quanto abre a pasta
+//        .padding(.bottom, 30)
+//    }
     
     //Retreiving Index
     func getIndex(folder: FolderCard)->Int{

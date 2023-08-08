@@ -6,6 +6,7 @@ struct FolderCard: Identifiable {
     var id = UUID().uuidString
     var name: String
     var books: [Book]
+    var isExpanded: Bool = false
 }
 
 //MARK: TEMPORÁRIO PARA TESTES
@@ -30,9 +31,9 @@ var folders: [FolderCard] = [
     FolderCard (name: "Leituras realizadas", books: books),
     FolderCard (name: "Livros que eu quero ler", books: books),
     FolderCard (name: "Lendo agora", books: books),
-//    FolderCard (name: "Lendo agora", books: books),
-//    FolderCard (name: "Lendo agora", books: books),
-//    FolderCard (name: "Lendo agora", books: books),
-//    FolderCard (name: "Lendo agora", books: books),
+    FolderCard (name: "Lendo agora", books: books),
+    FolderCard (name: "Lendo agora", books: books),
+    FolderCard (name: "Lendo agora", books: books),
+    FolderCard (name: "Lendo agora", books: books),
     
 ]
