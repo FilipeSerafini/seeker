@@ -1,10 +1,10 @@
 import Foundation
 import CloudKit
 
-struct Folder: CKProtocol, Identifiable {
+struct Folder: CKProtocol, Identifiable, Equatable {
     var record: CKRecord
     let id: String
-    var books: [CKRecord.Reference]
+    var books: [String]
     var description: String
     var name: String
     
@@ -36,7 +36,7 @@ struct Folder: CKProtocol, Identifiable {
     
     init?(record: CKRecord) {
         let id = record["id"] as? String ?? ""
-        let books = record["books"] as? [CKRecord.Reference] ?? []
+        let books = record["books"] as? [String] ?? []
         let description = record["description"] as? String ?? ""
         let name = record["name"] as? String ?? ""
         
@@ -45,5 +45,12 @@ struct Folder: CKProtocol, Identifiable {
         self.description = description
         self.name = name
         self.record = record
+    }
+    
+    func updateRecordProperties() {
+        record["id"] = id
+        record["books"] = books
+        record["description"] = description
+        record["name"] = name
     }
 }

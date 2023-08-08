@@ -126,7 +126,7 @@ struct BookView: View {
                                         .foregroundColor(scheme == .light ? .black : .white)                                    }
                                 }
                                 .sheet(isPresented: $showSheet) {
-                                    addToFolderView()
+                                    AddToFolderView(book: book)
                                 }
                                 .padding(.bottom, 10)
                                 
