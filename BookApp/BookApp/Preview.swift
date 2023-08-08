@@ -3,7 +3,7 @@ import SwiftUI
 struct Preview: View {
     var body: some View {
         VStack{
-            Image("bookImage")
+            Image("previewImage")
                 .resizable()
                 .frame(width: 340, height: 340)
             Text("Welcome to Seeker")
