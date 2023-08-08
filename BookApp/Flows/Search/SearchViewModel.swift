@@ -50,8 +50,8 @@ class SearchViewModel: ObservableObject {
                 } else {
                     self.books = self.books + self.sortBooks(books: books)
                     self.currentPag += 10
-                    self.currentState = .alreadyLoaded
                 }
+                self.currentState = .alreadyLoaded
             })
             .store(in: &subscriptions)
         

@@ -43,6 +43,8 @@
 		7C31DBA32A7F63A3002FB8F8 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBA22A7F63A3002FB8F8 /* Loading.swift */; };
 		7C31DBD02A818844002FB8F8 /* LoadingOracle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBCF2A818844002FB8F8 /* LoadingOracle.swift */; };
 		7C31DBD22A81885E002FB8F8 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBD12A81885E002FB8F8 /* ChatBubble.swift */; };
+		7C31DBD42A81D109002FB8F8 /* BarCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBD32A81D109002FB8F8 /* BarCodeScanner.swift */; };
+		7C31DBDB2A81EB64002FB8F8 /* ScannerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBDA2A81EB64002FB8F8 /* ScannerButton.swift */; };
 		7C4245E42A7AE98800241A98 /* StyleFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4245E32A7AE98800241A98 /* StyleFilterButton.swift */; };
 		B108B8052A7193EF006D6F1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8042A7193EF006D6F1C /* User.swift */; };
 		B108B8072A719406006D6F1C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8062A719406006D6F1C /* Badge.swift */; };
@@ -104,6 +106,8 @@
 		7C31DBA22A7F63A3002FB8F8 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		7C31DBCF2A818844002FB8F8 /* LoadingOracle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOracle.swift; sourceTree = "<group>"; };
 		7C31DBD12A81885E002FB8F8 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		7C31DBD32A81D109002FB8F8 /* BarCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScanner.swift; sourceTree = "<group>"; };
+		7C31DBDA2A81EB64002FB8F8 /* ScannerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerButton.swift; sourceTree = "<group>"; };
 		7C4245E32A7AE98800241A98 /* StyleFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFilterButton.swift; sourceTree = "<group>"; };
 		B108B8042A7193EF006D6F1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B108B8062A719406006D6F1C /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
@@ -245,6 +249,15 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		7C31DBD52A81D125002FB8F8 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				7C31DBDA2A81EB64002FB8F8 /* ScannerButton.swift */,
+				7C31DBD32A81D109002FB8F8 /* BarCodeScanner.swift */,
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
 		B108B8112A7194B9006D6F1C /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +296,7 @@
 		B1D861BC2A7045AD00CAD142 = {
 			isa = PBXGroup;
 			children = (
+				7C31DBD52A81D125002FB8F8 /* Scanner */,
 				B1D861C72A7045AD00CAD142 /* BookApp */,
 				B1D861DE2A70623A00CAD142 /* Model */,
 				B1D861E02A70624800CAD142 /* Flows */,
@@ -472,10 +486,12 @@
 				B1D5C0DF2A7AA416007CA7C7 /* UserCRUD.swift in Sources */,
 				4CDD3BB52A7308F7001519C3 /* OracleViewModel.swift in Sources */,
 				4C7234892A797723006740F6 /* Preview.swift in Sources */,
+				7C31DBDB2A81EB64002FB8F8 /* ScannerButton.swift in Sources */,
 				7C281A862A73255F00A58E96 /* SearchViewModel.swift in Sources */,
 				B108B8052A7193EF006D6F1C /* User.swift in Sources */,
 				B108B80E2A719431006D6F1C /* Goal.swift in Sources */,
 				4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */,
+				7C31DBD42A81D109002FB8F8 /* BarCodeScanner.swift in Sources */,
 				4CDD3BC12A730938001519C3 /* ProfileView.swift in Sources */,
 				4C5849DB2A818A3B00C7AF97 /* OnBoarding3.swift in Sources */,
 				B1D5C0ED2A7C2ACA007CA7C7 /* FolderRow.swift in Sources */,

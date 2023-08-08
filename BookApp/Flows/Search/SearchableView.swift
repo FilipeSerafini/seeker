@@ -8,8 +8,10 @@ struct SearchableView: View {
     @State private var isEditing: Bool = false
     @State var selectedFilter: Filter = .empty
     @State private var isShowingProgressView = false
+    @State var isPresented = false
     @EnvironmentObject private var searchViewModel: SearchViewModel
-        
+    @EnvironmentObject private var coordinator: Coordinator
+    
     var body: some View {
         ChildSizeReader(size: $wholeSize) {
             ScrollView(showsIndicators: false) {
@@ -17,39 +19,51 @@ struct SearchableView: View {
                     VStack(alignment: .leading) {
                         //MARK: Search Bar
                         HStack {
-                            TextField("Procure por livros, autores e gêneros", text: $searchText, onEditingChanged: { editing in
-                                isEditing = editing
-                                isShowingProgressView = false
-                            })
-                            .onSubmit {
-                                if searchText != "" {
-                                    searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
-                                }
-                            }
-                            .padding(15)
-                            .font(.system(size: 17))
-                            .foregroundColor(Color("foregroundSearch"))
-                        }
-                        .padding(.trailing, 20)
-                        .background(Color("backgroundSearch"))
-                        .cornerRadius(30)
-                        .padding(.horizontal)
-                        .overlay(
                             HStack {
-                                Spacer()
-                                Button(action: {
-                                    searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
-                                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                                }) {
-                                    Image("magnifyingGlassColors")
-                                        .padding(.trailing, 25)
+                                TextField("Procure por livros, autores e gêneros", text: $searchText, onEditingChanged: { editing in
+                                    isEditing = editing
+                                    isShowingProgressView = false
+                                })
+                                .onSubmit {
+                                    if searchText != "" {
+                                        searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
+                                    }
                                 }
-                                .disabled(searchText == "")
-                                .opacity(searchText == "" ? 0.6 : 1)
+                                .padding(15)
+                                .font(.system(size: 16))
+                                .foregroundColor(Color("foregroundSearch"))
                             }
-                        )
-                        .padding(.vertical, 5)
-                        
+                            .padding(.trailing, 20)
+                            .background(Color("backgroundSearch"))
+                            .cornerRadius(30)
+                            .overlay(
+                                HStack {
+                                    Spacer()
+                                    Button(action: {
+                                        searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
+                                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                    }) {
+                                        Image("magnifyingGlassColors")
+                                            .padding(.trailing, 10)
+                                    }
+                                    .disabled(searchText == "")
+                                    .opacity(searchText == "" ? 0.6 : 1)
+                                }
+                            )
+                            .padding(.vertical, 5)
+                            
+//                            Button(action: {
+//                                self.isPresented.toggle()
+//                            }) {
+//                                Image(systemName: "barcode.viewfinder")
+//                                    .resizable()
+//                                    .frame(width: 28, height: 22)
+//                            }.sheet(isPresented: $isPresented) {
+//                                BarCodeScanner()
+//                            }
+                        }
+                        .padding(.horizontal)
+
                         VStack{
                             HStack {
                                 Button(action: {
@@ -126,7 +140,7 @@ struct SearchableView: View {
                             }
                         }
                         
-                        if isShowingProgressView && !searchViewModel.books.isEmpty{
+                        if isShowingProgressView && !searchViewModel.books.isEmpty && isEditing == false {
                             HStack{
                                 Spacer()
                                 ProgressView()
@@ -144,8 +158,6 @@ struct SearchableView: View {
                             )
                         }
                     )
-                    
-                    
                     .onPreferenceChange(
                         ViewOffsetKey.self,
                         perform: { value in
