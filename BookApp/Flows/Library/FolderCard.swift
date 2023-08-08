@@ -10,19 +10,21 @@ struct FolderCard: Identifiable {
     var books: [Book]
 }
 
-var book = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "bookImage", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "bookImage")!)
+//MARK: TEMPORÁRIO PARA TESTES
 
-var book1 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "bookImage", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "bookImage")!)
+var book = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "book0", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "book0")!)
 
-var book2 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "bookImage", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "bookImage")!)
+var book1 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "book1", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "book1")!)
 
-var book3 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "bookImage", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "bookImage")!)
+var book2 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "book2", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "book2")!)
 
-var book4 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "bookImage", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "bookImage")!)
+var book3 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "book3", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "book3")!)
 
-var book5 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "bookImage", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "bookImage")!)
+var book4 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "book4", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "book4")!)
 
-var book6 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "bookImage", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "bookImage")!)
+var book5 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "book5", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "book5")!)
+
+var book6 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "book6", isbns: ["1234"], rating: "4,9", sinopsis: "Essa é uma história sobre uma princesa", title: "A princesa em seu castelo", imageCover: UIImage(named: "book6")!)
 
 var books: [Book] = [book!, book1!, book2!, book3!, book4!, book5!, book6!]
 
