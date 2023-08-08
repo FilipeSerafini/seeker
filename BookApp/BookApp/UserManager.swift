@@ -7,6 +7,7 @@ class UserManager: ObservableObject {
     
     @Published var id: String = ""
     @Published var folders: [Folder] = []
+   
     
     // MARK: - Init
      
@@ -55,6 +56,41 @@ class UserManager: ObservableObject {
                 self.fetchFolders()
             }
         }
+    }
+    
+    
+    func updateFolders(folders: [Folder], completion: @escaping () -> ())  {
+        
+        folders.forEach { folder in
+            guard let folderIndex = folders.firstIndex(of: folder) else { return }
+            
+            var updatedFolder = folders[folderIndex]
+            
+            updatedFolder.updateRecordProperties()
+            
+            CloudKitUtility.add(item: updatedFolder) { result in
+                switch result {
+                case .success(_):
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+                completion()
+                
+            }
+        }
+        
+        
+        
+//        self.folders.forEach({ folder in
+//            var newFolder = folder
+//            if selectedFolders.contains(folder) {
+//                newFolder.books.append(book.id)
+//                print(folder)
+//            }
+//        })
+        
+
     }
 }
 

@@ -2,8 +2,11 @@ import SwiftUI
 
 struct FolderRow: View {
     
-    @State var folder: Folder
-    @State var imageName: String
+    let folder: Folder
+    @State var isSelected: Bool
+    @State var hasChanged: Bool = false
+    
+    let action: (Bool, Bool) -> ()
     
     var body: some View {
         HStack {
@@ -11,15 +14,23 @@ struct FolderRow: View {
                 .font(.system(size: 17, weight: .regular))
             
             Spacer()
-            Image(imageName)
+            Button {
+                isSelected.toggle()
+                hasChanged.toggle()
+                action(isSelected, hasChanged)
+            } label: {
+                Image(isSelected ? "folderSelected" : "folderUnselected")
+            }
+
+            
             
         }
         .padding(29)
     }
 }
 
-struct FolderRow_Previews: PreviewProvider {
-    static var previews: some View {
-        FolderRow(folder: Folder(books: [], description: "a", name: "Melhores!")!, imageName: "folderUnselected")
-    }
-}
+//struct FolderRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FolderRow(folder: Folder(books: [], description: "a", name: "Melhores!")!, selected: false)
+//    }
+//}

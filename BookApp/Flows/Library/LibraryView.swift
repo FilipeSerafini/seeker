@@ -60,15 +60,6 @@ struct LibraryView: View {
                         }
                         .padding()
                         .background(Color.teal)
-//                    ForEach(viewModel.folders.indices, id: \.self) { index in
-//                        VStack {
-//
-//                            Text(viewModel.folders[index].name)
-//
-//                            Text(viewModel.folders[index].description)
-//                        }
-//                        .padding()
-//                        .background(Color.teal)
                     }
                 }
                 

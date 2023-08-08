@@ -10,6 +10,7 @@ struct ContentView: View {
         ZStack {
             if self.isActive {
 //                FolderRow(folder: Folder(books: [], description: "a", name: "Livros que quero ler")!, imageName: "folderSelected")
+//                addToFolderHeader()
                 TabViewApp()
                     .environmentObject(UserCRUD())
                     .environmentObject( UserManager())
