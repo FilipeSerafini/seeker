@@ -23,7 +23,9 @@ class OracleService {
     // MARK: - Chave aqui!!
     private let openAIKey = ""
     
-    private let initialMessage = Message(role: roles.system.description, content: "You are a friendly and helpful assistant, you are going to receive books questions. If the question is not about books dont respond the question just kindly ask the user to make a question about books.")
+    private let initialMessage = Message(role: roles.system.description, content: "Your name is Zoe, you are a friendly and helpful assistant. You are going to receive books questions. If the user asks for any kind of summary, keep the answer short. If the question is not about books dont respond the question just kindly ask the user to make a question about books.")
+    
+    private let errorMessage: String = "Desculpe mas ocorreu um erro inesperado, tente novamente!"
     
     private var messeges: [[String: String]] = []
     
@@ -66,13 +68,13 @@ extension OracleService {
         
         let serverResponse = try? await URLSession.shared.data(for: request)
         
-        guard let serverResponse = serverResponse else { return Message(role: roles.error.description, content: "Erro") }
+        guard let serverResponse = serverResponse else { return Message(role: roles.error.description, content: errorMessage) }
         let data = serverResponse.0
         
         do {
             return try JSONDecoder().decode(APIResponse.self, from: data).choices[0].message
         } catch {
-            return Message(role: roles.error.description, content: "Erro")
+            return Message(role: roles.error.description, content: errorMessage)
         }
     }
 }

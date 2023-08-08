@@ -33,10 +33,10 @@ class RecommendedViewModel: ObservableObject {
                 self.firstList = self.sortBooks(books: list1)
                 self.secondList = self.sortBooks(books: list2)
                 self.thirdList = self.sortBooks(books: list3)
-                if self.currentPag > 70 {
+                if self.currentPag > 60 {
                     defaults.set(0, forKey: "currentPag")
                 } else {
-                    defaults.set(self.currentPag + 10, forKey: "currentPag")
+                    defaults.set(self.currentPag + 20, forKey: "currentPag")
                 }
             })
             .store(in: &subscriptions)
@@ -63,7 +63,11 @@ extension Publisher where Output == [APIBook] {
                 apiBooks.publisher
             })
             .filter ({ apiBook in
-                return true
+                if (apiBook.sinopsis == nil) {
+                    return false
+                } else {
+                    return true
+                }
             })
             .compactMap({ apiBook -> Book in
                 let newBook = Book(authors: apiBook.authors ?? ["N/A"], genres: apiBook.genres ?? ["N/A"], image: apiBook.image?.thumbnail ?? "image", isbns: apiBook.isbns?.map(\.identifier) ?? ["N/A"], rating: apiBook.rating?.description ?? "N/A", sinopsis: apiBook.sinopsis ?? "N/A", title: apiBook.title ?? "N/A", imageCover: nil)
