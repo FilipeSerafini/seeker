@@ -32,6 +32,24 @@ struct ProfileView: View {
                     }
                     .padding(.bottom, 240)
                     .multilineTextAlignment(.center)
+                    
+                    ScrollView{
+                        //                        LazyVGrid(columns: columns, spacing: 20) {
+                        //                            ForEach(data, id: \.self) { item in
+                        //                                Text(item)
+                        //                            }
+                        //                        }
+                        
+                        SmallCommentButton()
+                        SmallCommentButton()
+                        MediumCommentButton()
+                        LargeCommentButton()
+                        
+                        
+                    }
+                    .padding(.top, 300)
+                    
+                    
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing){

@@ -44,45 +44,28 @@ struct LibraryView: View {
                         //                    viewModel.createFolder(folderName: folderName)
                         userManager.createFolder(folderName: folderName)
                     })
-                }message: {
+                } message: {
                     Text("Insira o nome desejado para a pasta.")
+                    }
                 }
-                }
-                .padding(.bottom, 250)
                 .padding()
-            }
-            
-            VStack{
                 
-                ScrollView(.vertical, showsIndicators: false) {
+                VStack {
                     
-                    VStack(spacing: 0) {
-                        
-                        ForEach(folders) { folder in
-                            FolderView(folder: folder)
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(spacing: 0) {
+                            
+                            ForEach(folders) { folder in
+                                FolderView(folder: folder)
+                            }
                         }
                     }
-                    .overlay {
-                        //Avoid scrolling
-                        Rectangle()
-                            .fill(.black.opacity(expandFolder ? 0.01 : 0.01))
-                            .onTapGesture {
-                                if expandFolder {
-                                    withAnimation(.easeOut(duration: 0.35)){
-                                        expandFolder = false
-                                    }
-                                } else {
-                                    withAnimation(.easeInOut(duration: 0.35)){
-                                        expandFolder = true
-                                    }
-                                }
-                            }
-                    }
+                    .coordinateSpace(name: "SCROLL")
                 }
-                .coordinateSpace(name: "SCROLL")
+                .padding([.horizontal, .trailing])
+                .frame(maxHeight: .infinity, alignment: .bottom)
+                .background(.green)
             }
-            .padding([.horizontal, .trailing])
-            .navigationBarTitle("")
         }
     }
     
@@ -97,8 +80,6 @@ struct LibraryView: View {
             let offset = CGFloat(getIndex(folder: folder) * (expandFolder ? 10 : 70))
             let background = getIndex(folder: folder).isMultiple(of: 2) ? Color("primary") : Color("secondary")
             
-            let data = (1...100).map { "Item \($0)" }
-
             let columns = [
                 GridItem(.flexible()),
                 GridItem(.flexible()),
@@ -108,7 +89,7 @@ struct LibraryView: View {
             ZStack {
                 RoundedRectangle (cornerRadius: 20)
                     .fill(background)
-//                    .stroke(.white, lineWidth: 20)
+                //                    .stroke(.white, lineWidth: 20)
                     .frame(width: 362, height: 647)
                 
                 ScrollView {
@@ -118,24 +99,33 @@ struct LibraryView: View {
                     
                     LazyVGrid(columns: columns, spacing: 20) {
                         
-                        ForEach(data, id: \.self) { item in
-                            Text(item)
+                        ForEach(folder.books) { folderBook in
+                            BookResearchedCover(book: folderBook)
                         }
-//                        ForEach(folder.books) { folderBook in
-//                            BookResearchedCover(book: folderBook)
-//                        }
                     }
-                    .padding(.horizontal)
                 }
                 .frame(maxHeight: 647)
-                
-                
             }
-            //MARK: Making it as a stack
+            .overlay {
+                //Avoid scrolling
+                Rectangle()
+                    .fill(.black.opacity(expandFolder ? 0.01 : 0.01))
+                    .onTapGesture {
+                        if expandFolder {
+                            withAnimation(.easeOut(duration: 0.35)){
+                                expandFolder = false
+                            }
+                        } else {
+                            withAnimation(.easeInOut(duration: 0.35)){
+                                expandFolder = true
+                            }
+                        }
+                    }
+            }            //MARK: Making it as a stack
             .offset(y: expandFolder ? offset : -rect.minY + offset)
         }
         // aqui muda o quanto abre a pasta
-        .padding(.bottom,120)
+        .padding(.bottom, 220)
     }
     
     //Retreiving Index
