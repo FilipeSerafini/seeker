@@ -49,7 +49,7 @@ class SearchViewModel: ObservableObject {
                     self.returnEmpty = true
                 } else {
                     self.books = self.books + self.sortBooks(books: books)
-                    self.currentPag += 10
+                    self.currentPag += 20
                 }
                 self.currentState = .alreadyLoaded
             })

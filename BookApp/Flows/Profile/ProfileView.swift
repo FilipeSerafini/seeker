@@ -4,11 +4,17 @@ struct ProfileView: View {
     
     
     var body: some View {
+        
+        let columns = [
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+        ]
+        
         VStack{
             NavigationStack {
                 ZStack{
                     RoundedRectangle(cornerRadius: 30)
-                        .fill(Color("Primary"))
+                        .fill(Color("primary"))
                         .padding(.top, 200)
                         .ignoresSafeArea()
                     HStack{
@@ -32,15 +38,34 @@ struct ProfileView: View {
                     }
                     .padding(.bottom, 240)
                     .multilineTextAlignment(.center)
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing){
-                        Button {
-                            //ação do botão
+                    
+                    ScrollView{
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            
+                            //                            ForEach() { commentButton in
+                            //                                SmallCommentButton(book: commentButton)
+                            //                            }
+                            
+                            SmallCommentButton()
+                            MediumCommentButton()
+                            SmallCommentButton()
+                            SmallCommentButton()
+                            MediumCommentButton()
+                            SmallCommentButton()
+                            SmallCommentButton()
+                            
                         }
-                    label: {
-                        Image("pencil")
+                        .padding(.top, 300)
                     }
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing){
+                            Button {
+                                //ação do botão
+                            }
+                        label: {
+                            Image("pencil")
+                        }
+                        }
                     }
                 }
             }

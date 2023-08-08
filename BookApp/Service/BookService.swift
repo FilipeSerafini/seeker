@@ -46,9 +46,9 @@ extension BookService {
     private func buildAPIURL(searchedText: String, page: Int, filter: Filter) -> URL {
         let baseURL: String = "https://www.googleapis.com/books/v1/"
         
-        let searchURL: String = baseURL + filter.url + searchedText.replacingOccurrences(of: " ", with: "+")
-
-        let pageURL: String = searchURL + "&startIndex=\(page)&orderBy=relevance"
+        let searchURL: String = baseURL + filter.url + "\"" + searchedText.replacingOccurrences(of: " ", with: "+") + "\""
+        
+        let pageURL: String = searchURL + "&startIndex=\(page)&orderBy=relevance&maxResults=20"
         
         let finalURL = pageURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         

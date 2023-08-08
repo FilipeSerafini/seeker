@@ -11,7 +11,7 @@ struct LoadingOracle: View {
     @State private var isAnimated = true
     var body: some View {
         HStack{
-            Text("Oracle está digitando")
+            Text("Zoe está digitando")
                 .font(.system(size: 15, design: .serif))
                 .foregroundColor(.gray)
             

@@ -55,7 +55,7 @@ struct OracleView: View {
                                     Text(message)
                                         .padding()
                                         .foregroundColor(.black)
-                                        .background(Color("secundary"))
+                                        .background(Color("secondary"))
                                         .clipShape(ChatBubble(corners: [.topLeft, .topRight, .bottomRight]))
                                         .padding(.horizontal, 16)
                                         .padding(.bottom, 10)

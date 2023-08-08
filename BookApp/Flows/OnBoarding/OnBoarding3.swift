@@ -25,7 +25,7 @@ struct OnBoarding3: View {
             NavigationLink(destination: LibraryView().navigationBarBackButtonHidden(true), label: {
                 ZStack {
                     Rectangle()
-                        .fill(Color("Primary"))
+                        .fill(Color("primary"))
                         .cornerRadius(30)
                         .frame(width: 168, height: 45)
                     Text("Start")
