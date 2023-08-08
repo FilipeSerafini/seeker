@@ -139,15 +139,6 @@ struct BookView: View {
                     }
                 }
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading){
-                        Button(action: {
-                            presetationMode.wrappedValue.dismiss()
-                        }) {
-                            Image("chevronBackward")
-                                .resizable()
-                                .frame(width: 16, height: 24)
-                        }
-                    }
                     ToolbarItem(placement: .navigationBarTrailing){
                         Button {}
                     label: {
@@ -156,7 +147,6 @@ struct BookView: View {
                     }
                     }
                 }
-                .navigationBarBackButtonHidden(true)
             }
             .background(scheme == .light ? .black : .white)
         }

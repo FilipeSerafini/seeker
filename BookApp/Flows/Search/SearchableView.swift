@@ -6,50 +6,64 @@ struct SearchableView: View {
     @State private var wholeSize: CGSize = .zero
     @State private var searchText = ""
     @State private var isEditing: Bool = false
-    
     @State var selectedFilter: Filter = .empty
-    
-    @Environment(\.colorScheme) var scheme
+    @State private var isShowingProgressView = false
+    @State var isPresented = false
     @EnvironmentObject private var searchViewModel: SearchViewModel
+    @EnvironmentObject private var coordinator: Coordinator
     
     var body: some View {
         ChildSizeReader(size: $wholeSize) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 ChildSizeReader(size: $scrollViewSize) {
                     VStack(alignment: .leading) {
-                        // Search Bar
+                        //MARK: Search Bar
                         HStack {
-                            TextField("Procure por livros, autores e gêneros", text: $searchText, onEditingChanged: { editing in
-                                isEditing = editing
-                            })
-                            .onSubmit {
-                                if searchText != ""{
-                                    searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
-                                }
-                            }
-                            .padding(15)
-                            .font(.system(size: 17))
-                            .foregroundColor(scheme == .light ? Color(red: 0.255, green: 0.255, blue: 0.255) : Color(red: 0.7490196078431373, green: 0.7490196078431373, blue: 0.7490196078431373))
-                        }
-                        .padding(.trailing, 20)
-                        .background(scheme == .light ? Color(red: 0.8509803921568627, green: 0.8509803921568627, blue: 0.8509803921568627) : Color(red: 0.14901960784313725, green: 0.14901960784313725, blue: 0.14901960784313725))
-                        .cornerRadius(30)
-                        .padding(.horizontal)
-                        .overlay(
                             HStack {
-                                Spacer()
-                                Button(action: {
-                                    searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
-                                }) {
-                                    Image("magnifyingGlassColors")
-                                        .padding(.trailing, 25)
+                                TextField("Procure por livros, autores e gêneros", text: $searchText, onEditingChanged: { editing in
+                                    isEditing = editing
+                                    isShowingProgressView = false
+                                })
+                                .onSubmit {
+                                    if searchText != "" {
+                                        searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
+                                    }
                                 }
-                                .disabled(searchText == "")
-                                .opacity(searchText == "" ? 0.6 : 1)
+                                .padding(15)
+                                .font(.system(size: 16))
+                                .foregroundColor(Color("foregroundSearch"))
                             }
-                        )
-                        .padding(.vertical, 5)
-                        
+                            .padding(.trailing, 20)
+                            .background(Color("backgroundSearch"))
+                            .cornerRadius(30)
+                            .overlay(
+                                HStack {
+                                    Spacer()
+                                    Button(action: {
+                                        searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
+                                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                    }) {
+                                        Image("magnifyingGlassColors")
+                                            .padding(.trailing, 10)
+                                    }
+                                    .disabled(searchText == "")
+                                    .opacity(searchText == "" ? 0.6 : 1)
+                                }
+                            )
+                            .padding(.vertical, 5)
+                            
+//                            Button(action: {
+//                                self.isPresented.toggle()
+//                            }) {
+//                                Image(systemName: "barcode.viewfinder")
+//                                    .resizable()
+//                                    .frame(width: 28, height: 22)
+//                            }.sheet(isPresented: $isPresented) {
+//                                BarCodeScanner()
+//                            }
+                        }
+                        .padding(.horizontal)
+
                         VStack{
                             HStack {
                                 Button(action: {
@@ -58,26 +72,26 @@ struct SearchableView: View {
                                     Text("Título")
                                 }.buttonStyle(
                                     StyleFilterButton(
-                                        isFilled: Binding(get: { selectedFilter == .title },
-                                                          set: { newValue in
-                                                              if newValue {
-                                                                  selectedFilter = .title
-                                                              } else {
-                                                                  selectedFilter = .empty
-                                                              }
-                                                          })))
+                                        isFilled: Binding(get: { selectedFilter == .title }, set: { newValue in
+                                            if newValue {
+                                                selectedFilter = .title
+                                            } else {
+                                                selectedFilter = .empty
+                                            }
+                                        })))
                                 
                                 Button(action: {
                                     selectedFilter = .author
                                 }) {
                                     Text("Autor")
-                                }.buttonStyle(StyleFilterButton(isFilled: Binding(get: { selectedFilter == .author }, set: { newValue in
-                                    if newValue {
-                                        selectedFilter = .author
-                                    } else {
-                                        selectedFilter = .empty
-                                    }
-                                })))
+                                }.buttonStyle(StyleFilterButton(
+                                    isFilled: Binding(get: { selectedFilter == .author }, set: { newValue in
+                                        if newValue {
+                                            selectedFilter = .author
+                                        } else {
+                                            selectedFilter = .empty
+                                        }
+                                    })))
                                 
                                 Button(action: {
                                     selectedFilter = .genre
@@ -85,26 +99,55 @@ struct SearchableView: View {
                                     Text("Gênero")
                                 }.buttonStyle(
                                     StyleFilterButton(
-                                        isFilled: Binding(get: { selectedFilter == .genre },
-                                                          set: { newValue in
-                                                              if newValue {
-                                                                  selectedFilter = .genre
-                                                              } else {
-                                                                  selectedFilter = .empty
-                                                              }
-                                                          })))
+                                        isFilled: Binding(get: { selectedFilter == .genre }, set: { newValue in
+                                            if newValue {
+                                                selectedFilter = .genre
+                                            } else {
+                                                selectedFilter = .empty
+                                            }
+                                        })))
                             }
                         }
                         .padding(.bottom, 40)
                         .padding([.leading, .trailing])
                         
-                        
-                        if !isEditing && searchText == "" {
+                        if searchViewModel.isSearching == true && searchViewModel.books.isEmpty {
+                            HStack {
+                                Spacer()
+                                Loading()
+                                    .frame(width: 200, height: 200)
+                                    .foregroundColor(Color("primary"))
+                                Spacer()
+                            }
+                            .padding(.top, 70)
+                        } else if !isEditing && searchText == "" {
                             RecommendedView()
                         } else if !isEditing {
-                            ForEach(searchViewModel.books) { book in
-                                ResearchedBookView(book: book)
+                            if searchViewModel.returnEmpty == true {
+                                VStack(alignment: .center){
+                                    Image("emptyStateSearch")
+                                        .resizable()
+                                        .frame(width: 350, height: 225)
+                                    Text("Infelizmente não encontramos resultados para a sua busca. Que tal procurar por algo diferente?")
+                                        .font(.system(size: 15))
+                                        .multilineTextAlignment(.center)
+                                }
+                                .padding()
+                            } else {
+                                ForEach(searchViewModel.books) { book in
+                                    ResearchedBookView(book: book)
+                                }
                             }
+                        }
+                        
+                        if isShowingProgressView && !searchViewModel.books.isEmpty && isEditing == false {
+                            HStack{
+                                Spacer()
+                                ProgressView()
+                                    .tint(Color("primary"))
+                                Spacer()
+                            }
+                            .padding(.bottom)
                         }
                     }
                     .background(
@@ -120,24 +163,18 @@ struct SearchableView: View {
                         perform: { value in
                             if value > scrollViewSize.height - wholeSize.height {
                                 if !searchText.isEmpty {
-                                    searchViewModel.fetchBooks(searchedText: searchText, filter: .empty)
+                                    searchViewModel.fetchBooks(searchedText: searchText, filter: selectedFilter)
+                                    isShowingProgressView = true
+                                } else {
+                                    isShowingProgressView = false
                                 }
                             }
                         }
                     )
                 }
             }
-            .onTapGesture {
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) //teclado some ao clicar na tela
-            }
             .coordinateSpace(name: spaceName)
         }
-        .onChange(
-            of: scrollViewSize,
-            perform: { value in
-                print(value)
-            }
-        )
     }
 }
 
@@ -176,11 +213,5 @@ struct SizePreferenceKey: PreferenceKey {
     
     static func reduce(value _: inout Value, nextValue: () -> Value) {
         _ = nextValue()
-    }
-}
-
-struct Searchable_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchableView()
     }
 }

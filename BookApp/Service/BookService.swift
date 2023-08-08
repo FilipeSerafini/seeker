@@ -48,7 +48,7 @@ extension BookService {
         
         let searchURL: String = baseURL + filter.url + "\"" + searchedText.replacingOccurrences(of: " ", with: "+") + "\""
         
-        let pageURL: String = searchURL + "&startIndex=\(page)&orderBy=relevance"
+        let pageURL: String = searchURL + "&startIndex=\(page)&orderBy=relevance&maxResults=20"
         
         let finalURL = pageURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         

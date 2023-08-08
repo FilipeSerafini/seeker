@@ -10,9 +10,20 @@
 		420FF5442A7AE73C006F4D0E /* RecommendedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420FF5432A7AE73C006F4D0E /* RecommendedView.swift */; };
 		420FF5462A7AEE92006F4D0E /* RecommendedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420FF5452A7AEE92006F4D0E /* RecommendedViewModel.swift */; };
 		42633AE42A7443EE00401B5F /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42633AE32A7443EE00401B5F /* BookService.swift */; };
-		4C0F0DA92A7ACDC1003932C0 /* BookFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F0DA82A7ACDC1003932C0 /* BookFolder.swift */; };
-		4C0F0DAB2A7AD599003932C0 /* FolderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F0DAA2A7AD599003932C0 /* FolderInfo.swift */; };
+		428ECC5F2A815EE500DA4B66 /* OracleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ECC5E2A815EE500DA4B66 /* OracleService.swift */; };
+		428ECC612A815F1000DA4B66 /* Oracle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ECC602A815F1000DA4B66 /* Oracle.swift */; };
+		4C45AA862A8137BE00DD5FB0 /* FolderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */; };
+		4C45AA8C2A817B0E00DD5FB0 /* FolderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45AA8B2A817B0E00DD5FB0 /* FolderCardView.swift */; };
 		4C4782772A7B29340014F611 /* CÓDIGOS IMPORTANTES in Resources */ = {isa = PBXBuildFile; fileRef = 4C4782762A7B29340014F611 /* CÓDIGOS IMPORTANTES */; };
+		4C4FD44C2A827F0E00503219 /* SmallCommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FD44B2A827F0E00503219 /* SmallCommentButton.swift */; };
+		4C4FD44E2A827F8F00503219 /* MediumCommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FD44D2A827F8F00503219 /* MediumCommentButton.swift */; };
+		4C4FD4502A827FCC00503219 /* LargeCommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FD44F2A827FCC00503219 /* LargeCommentButton.swift */; };
+		4C5849D52A81887800C7AF97 /* TabBarOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5849D42A81887800C7AF97 /* TabBarOnboarding.swift */; };
+		4C5849D72A81889400C7AF97 /* OnBoarding1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5849D62A81889400C7AF97 /* OnBoarding1.swift */; };
+		4C5849D92A81894100C7AF97 /* OnBoarding2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5849D82A81894100C7AF97 /* OnBoarding2.swift */; };
+		4C5849DB2A818A3B00C7AF97 /* OnBoarding3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5849DA2A818A3A00C7AF97 /* OnBoarding3.swift */; };
+		4C5F48272A82C1AC00011EF5 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5F48262A82C1AC00011EF5 /* FolderView.swift */; };
+		4C5F48292A82CDA000011EF5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5F48282A82CDA000011EF5 /* UserSettings.swift */; };
 		4C7234852A743DE9006740F6 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234842A743DE9006740F6 /* CommentView.swift */; };
 		4C7234892A797723006740F6 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234882A797723006740F6 /* Preview.swift */; };
 		4CDD3BA82A730790001519C3 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BA72A730790001519C3 /* BookView.swift */; };
@@ -33,7 +44,13 @@
 		7C281A8F2A742AE200A58E96 /* ResearchedBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281A8E2A742AE200A58E96 /* ResearchedBookView.swift */; };
 		7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281A902A743F3A00A58E96 /* ContentCoreData.swift */; };
 		7C281AB72A78312B00A58E96 /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C281AB62A78312B00A58E96 /* SearchableView.swift */; };
+		7C31DBA32A7F63A3002FB8F8 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBA22A7F63A3002FB8F8 /* Loading.swift */; };
+		7C31DBD02A818844002FB8F8 /* LoadingOracle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBCF2A818844002FB8F8 /* LoadingOracle.swift */; };
+		7C31DBD22A81885E002FB8F8 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBD12A81885E002FB8F8 /* ChatBubble.swift */; };
+		7C31DBD42A81D109002FB8F8 /* BarCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBD32A81D109002FB8F8 /* BarCodeScanner.swift */; };
+		7C31DBDB2A81EB64002FB8F8 /* ScannerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31DBDA2A81EB64002FB8F8 /* ScannerButton.swift */; };
 		7C4245E42A7AE98800241A98 /* StyleFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4245E32A7AE98800241A98 /* StyleFilterButton.swift */; };
+		7C6ADEAB2A82C14900C43005 /* AddReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6ADEAA2A82C14900C43005 /* AddReview.swift */; };
 		B108B8052A7193EF006D6F1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8042A7193EF006D6F1C /* User.swift */; };
 		B108B8072A719406006D6F1C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8062A719406006D6F1C /* Badge.swift */; };
 		B108B8092A719415006D6F1C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8082A719415006D6F1C /* Book.swift */; };
@@ -63,9 +80,20 @@
 		420FF5452A7AEE92006F4D0E /* RecommendedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedViewModel.swift; sourceTree = "<group>"; };
 		422E89BB2A788F1600FADC5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42633AE32A7443EE00401B5F /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
-		4C0F0DA82A7ACDC1003932C0 /* BookFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFolder.swift; sourceTree = "<group>"; };
-		4C0F0DAA2A7AD599003932C0 /* FolderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderInfo.swift; sourceTree = "<group>"; };
+		428ECC5E2A815EE500DA4B66 /* OracleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleService.swift; sourceTree = "<group>"; };
+		428ECC602A815F1000DA4B66 /* Oracle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oracle.swift; sourceTree = "<group>"; };
+		4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCard.swift; sourceTree = "<group>"; };
+		4C45AA8B2A817B0E00DD5FB0 /* FolderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCardView.swift; sourceTree = "<group>"; };
 		4C4782762A7B29340014F611 /* CÓDIGOS IMPORTANTES */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CÓDIGOS IMPORTANTES"; sourceTree = "<group>"; };
+		4C4FD44B2A827F0E00503219 /* SmallCommentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCommentButton.swift; sourceTree = "<group>"; };
+		4C4FD44D2A827F8F00503219 /* MediumCommentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumCommentButton.swift; sourceTree = "<group>"; };
+		4C4FD44F2A827FCC00503219 /* LargeCommentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCommentButton.swift; sourceTree = "<group>"; };
+		4C5849D42A81887800C7AF97 /* TabBarOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOnboarding.swift; sourceTree = "<group>"; };
+		4C5849D62A81889400C7AF97 /* OnBoarding1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding1.swift; sourceTree = "<group>"; };
+		4C5849D82A81894100C7AF97 /* OnBoarding2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding2.swift; sourceTree = "<group>"; };
+		4C5849DA2A818A3A00C7AF97 /* OnBoarding3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding3.swift; sourceTree = "<group>"; };
+		4C5F48262A82C1AC00011EF5 /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
+		4C5F48282A82CDA000011EF5 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		4C7234842A743DE9006740F6 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		4C7234882A797723006740F6 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		4CDD3BA72A730790001519C3 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
@@ -86,7 +114,13 @@
 		7C281A8E2A742AE200A58E96 /* ResearchedBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchedBookView.swift; sourceTree = "<group>"; };
 		7C281A902A743F3A00A58E96 /* ContentCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCoreData.swift; sourceTree = "<group>"; };
 		7C281AB62A78312B00A58E96 /* SearchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableView.swift; sourceTree = "<group>"; };
+		7C31DBA22A7F63A3002FB8F8 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		7C31DBCF2A818844002FB8F8 /* LoadingOracle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOracle.swift; sourceTree = "<group>"; };
+		7C31DBD12A81885E002FB8F8 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		7C31DBD32A81D109002FB8F8 /* BarCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScanner.swift; sourceTree = "<group>"; };
+		7C31DBDA2A81EB64002FB8F8 /* ScannerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerButton.swift; sourceTree = "<group>"; };
 		7C4245E32A7AE98800241A98 /* StyleFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFilterButton.swift; sourceTree = "<group>"; };
+		7C6ADEAA2A82C14900C43005 /* AddReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReview.swift; sourceTree = "<group>"; };
 		B108B8042A7193EF006D6F1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B108B8062A719406006D6F1C /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		B108B8082A719415006D6F1C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -129,8 +163,20 @@
 			children = (
 				B1D5C0DD2A7AA3FE007CA7C7 /* CloudKit */,
 				42633AE32A7443EE00401B5F /* BookService.swift */,
+				428ECC5E2A815EE500DA4B66 /* OracleService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		4C5849D32A81884C00C7AF97 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				4C5849D42A81887800C7AF97 /* TabBarOnboarding.swift */,
+				4C5849D62A81889400C7AF97 /* OnBoarding1.swift */,
+				4C5849D82A81894100C7AF97 /* OnBoarding2.swift */,
+				4C5849DA2A818A3A00C7AF97 /* OnBoarding3.swift */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		4CDD3BA62A730785001519C3 /* Book */ = {
@@ -138,6 +184,7 @@
 			children = (
 				4CDD3BA72A730790001519C3 /* BookView.swift */,
 				B1D5C0EA2A7C2A45007CA7C7 /* AddBookToFolder */,
+				7C6ADEAA2A82C14900C43005 /* AddReview.swift */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -153,11 +200,11 @@
 		4CDD3BAE2A7308B4001519C3 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				4C45AA8B2A817B0E00DD5FB0 /* FolderCardView.swift */,
 				4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */,
 				4CDD3BB12A7308CD001519C3 /* LibraryViewModel.swift */,
-				4C0F0DA82A7ACDC1003932C0 /* BookFolder.swift */,
-				4C0F0DAA2A7AD599003932C0 /* FolderInfo.swift */,
-				B1D5C0E22A7B2DCB007CA7C7 /* FolderDetails.swift */,
+				4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */,
+				4C5F48262A82C1AC00011EF5 /* FolderView.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -167,6 +214,8 @@
 			children = (
 				4CDD3BB62A7308FD001519C3 /* OracleView.swift */,
 				4CDD3BB42A7308F7001519C3 /* OracleViewModel.swift */,
+				7C31DBD12A81885E002FB8F8 /* ChatBubble.swift */,
+				7C31DBCF2A818844002FB8F8 /* LoadingOracle.swift */,
 			);
 			path = Oracle;
 			sourceTree = "<group>";
@@ -184,8 +233,12 @@
 			isa = PBXGroup;
 			children = (
 				4CDD3BC02A730938001519C3 /* ProfileView.swift */,
+				4C5F48282A82CDA000011EF5 /* UserSettings.swift */,
 				4CDD3BBE2A730931001519C3 /* ProfileViewModel.swift */,
 				4C7234842A743DE9006740F6 /* CommentView.swift */,
+				4C4FD44B2A827F0E00503219 /* SmallCommentButton.swift */,
+				4C4FD44D2A827F8F00503219 /* MediumCommentButton.swift */,
+				4C4FD44F2A827FCC00503219 /* LargeCommentButton.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -202,6 +255,7 @@
 		7C281A872A73256500A58E96 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				7C31DBA22A7F63A3002FB8F8 /* Loading.swift */,
 				7C4245E32A7AE98800241A98 /* StyleFilterButton.swift */,
 				7C281AB62A78312B00A58E96 /* SearchableView.swift */,
 				7C281A8E2A742AE200A58E96 /* ResearchedBookView.swift */,
@@ -212,6 +266,15 @@
 				420FF5452A7AEE92006F4D0E /* RecommendedViewModel.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		7C31DBD52A81D125002FB8F8 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				7C31DBDA2A81EB64002FB8F8 /* ScannerButton.swift */,
+				7C31DBD32A81D109002FB8F8 /* BarCodeScanner.swift */,
+			);
+			path = Scanner;
 			sourceTree = "<group>";
 		};
 		B108B8112A7194B9006D6F1C /* Protocol */ = {
@@ -253,6 +316,7 @@
 		B1D861BC2A7045AD00CAD142 = {
 			isa = PBXGroup;
 			children = (
+				7C31DBD52A81D125002FB8F8 /* Scanner */,
 				B1D861C72A7045AD00CAD142 /* BookApp */,
 				B1D861DE2A70623A00CAD142 /* Model */,
 				B1D861E02A70624800CAD142 /* Flows */,
@@ -274,15 +338,15 @@
 		B1D861C72A7045AD00CAD142 /* BookApp */ = {
 			isa = PBXGroup;
 			children = (
+				B1D861CC2A7045AF00CAD142 /* Assets.xcassets */,
+				B1D861D32A7045AF00CAD142 /* BookApp.xcdatamodeld */,
 				422E89BB2A788F1600FADC5C /* Info.plist */,
 				B1D861DD2A705F4400CAD142 /* BookApp.entitlements */,
 				B1D861C82A7045AE00CAD142 /* BookAppApp.swift */,
 				7C281A902A743F3A00A58E96 /* ContentCoreData.swift */,
-				4C7234882A797723006740F6 /* Preview.swift */,
 				B1D861CA2A7045AE00CAD142 /* ContentView.swift */,
-				B1D861CC2A7045AF00CAD142 /* Assets.xcassets */,
 				B1D861D12A7045AF00CAD142 /* Persistence.swift */,
-				B1D861D32A7045AF00CAD142 /* BookApp.xcdatamodeld */,
+				4C7234882A797723006740F6 /* Preview.swift */,
 				B1D861CE2A7045AF00CAD142 /* Preview Content */,
 				B1D5C0E62A7C20CD007CA7C7 /* UserManager.swift */,
 			);
@@ -306,6 +370,7 @@
 				B108B80B2A71942A006D6F1C /* Review.swift */,
 				B108B80D2A719431006D6F1C /* Goal.swift */,
 				B108B80F2A71943F006D6F1C /* Folder.swift */,
+				428ECC602A815F1000DA4B66 /* Oracle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +378,7 @@
 		B1D861E02A70624800CAD142 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				4C5849D32A81884C00C7AF97 /* OnBoarding */,
 				B1D5C0EB2A7C2AA6007CA7C7 /* Folder */,
 				7C281A872A73256500A58E96 /* Search */,
 				4CDD3BA62A730785001519C3 /* Book */,
@@ -321,7 +387,6 @@
 				4CDD3BB32A7308D0001519C3 /* Oracle */,
 				4CDD3BB82A730902001519C3 /* Challenges */,
 				4CDD3BBD2A730922001519C3 /* Profile */,
-				7C281A7E2A73065000A58E96 /* Search */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -397,26 +462,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4FD4502A827FCC00503219 /* LargeCommentButton.swift in Sources */,
+				4C5849D92A81894100C7AF97 /* OnBoarding2.swift in Sources */,
+				4C4FD44C2A827F0E00503219 /* SmallCommentButton.swift in Sources */,
 				B1D861D52A7045AF00CAD142 /* BookApp.xcdatamodeld in Sources */,
 				B1D5C0E52A7C139F007CA7C7 /* AddToFolderView.swift in Sources */,
 				4CDD3BB22A7308CD001519C3 /* LibraryViewModel.swift in Sources */,
-				4C0F0DAB2A7AD599003932C0 /* FolderInfo.swift in Sources */,
+				428ECC5F2A815EE500DA4B66 /* OracleService.swift in Sources */,
 				B108B8102A71943F006D6F1C /* Folder.swift in Sources */,
+				7C6ADEAB2A82C14900C43005 /* AddReview.swift in Sources */,
 				7C281A8D2A742A7700A58E96 /* BookResearchedCover.swift in Sources */,
 				4CDD3BBA2A730917001519C3 /* ChallengesView.swift in Sources */,
+				7C31DBD22A81885E002FB8F8 /* ChatBubble.swift in Sources */,
 				B108B80C2A71942A006D6F1C /* Review.swift in Sources */,
 				7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */,
-				B1D5C0E32A7B2DCB007CA7C7 /* FolderDetails.swift in Sources */,
+				7C31DBA32A7F63A3002FB8F8 /* Loading.swift in Sources */,
 				4CDD3BBF2A730931001519C3 /* ProfileViewModel.swift in Sources */,
+				428ECC612A815F1000DA4B66 /* Oracle.swift in Sources */,
 				B1D5C0E12A7ABB47007CA7C7 /* FolderCRUD.swift in Sources */,
 				420FF5442A7AE73C006F4D0E /* RecommendedView.swift in Sources */,
 				4CDD3BBC2A730920001519C3 /* ChallengesViewModel.swift in Sources */,
 				4CDD3BA82A730790001519C3 /* BookView.swift in Sources */,
+				4C45AA8C2A817B0E00DD5FB0 /* FolderCardView.swift in Sources */,
+				4C4FD44E2A827F8F00503219 /* MediumCommentButton.swift in Sources */,
 				B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */,
+				4C45AA862A8137BE00DD5FB0 /* FolderCard.swift in Sources */,
 				4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */,
 				7C4245E42A7AE98800241A98 /* StyleFilterButton.swift in Sources */,
-				7C281A802A73069900A58E96 /* SearchView.swift in Sources */,
-				7C281A822A7306C500A58E96 /* SearchViewModel.swift in Sources */,
 				B108B8072A719406006D6F1C /* Badge.swift in Sources */,
 				B1D5C0E92A7C2A3E007CA7C7 /* AddToFolderViewModel.swift in Sources */,
 				B1D5C0DC2A7AA3BB007CA7C7 /* CloudKitUtility.swift in Sources */,
@@ -425,21 +497,28 @@
 				B117EF2F2A7D674500E50937 /* AddToFolderHeader.swift in Sources */,
 				420FF5462A7AEE92006F4D0E /* RecommendedViewModel.swift in Sources */,
 				7C281A8F2A742AE200A58E96 /* ResearchedBookView.swift in Sources */,
-				4C0F0DA92A7ACDC1003932C0 /* BookFolder.swift in Sources */,
 				42633AE42A7443EE00401B5F /* BookService.swift in Sources */,
 				7C281AB72A78312B00A58E96 /* SearchableView.swift in Sources */,
 				4CDD3BB72A7308FD001519C3 /* OracleView.swift in Sources */,
 				B1D861D22A7045AF00CAD142 /* Persistence.swift in Sources */,
+				4C5F48292A82CDA000011EF5 /* UserSettings.swift in Sources */,
+				7C31DBD02A818844002FB8F8 /* LoadingOracle.swift in Sources */,
 				B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */,
+				4C5849D72A81889400C7AF97 /* OnBoarding1.swift in Sources */,
 				B1D5C0DF2A7AA416007CA7C7 /* UserCRUD.swift in Sources */,
 				4CDD3BB52A7308F7001519C3 /* OracleViewModel.swift in Sources */,
 				4C7234892A797723006740F6 /* Preview.swift in Sources */,
+				7C31DBDB2A81EB64002FB8F8 /* ScannerButton.swift in Sources */,
 				7C281A862A73255F00A58E96 /* SearchViewModel.swift in Sources */,
 				B108B8052A7193EF006D6F1C /* User.swift in Sources */,
 				B108B80E2A719431006D6F1C /* Goal.swift in Sources */,
 				4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */,
+				7C31DBD42A81D109002FB8F8 /* BarCodeScanner.swift in Sources */,
 				4CDD3BC12A730938001519C3 /* ProfileView.swift in Sources */,
+				4C5849DB2A818A3B00C7AF97 /* OnBoarding3.swift in Sources */,
 				B1D5C0ED2A7C2ACA007CA7C7 /* FolderRow.swift in Sources */,
+				4C5849D52A81887800C7AF97 /* TabBarOnboarding.swift in Sources */,
+				4C5F48272A82C1AC00011EF5 /* FolderView.swift in Sources */,
 				4C7234852A743DE9006740F6 /* CommentView.swift in Sources */,
 				B1D5C0E72A7C20CD007CA7C7 /* UserManager.swift in Sources */,
 				B1D861C92A7045AE00CAD142 /* BookAppApp.swift in Sources */,

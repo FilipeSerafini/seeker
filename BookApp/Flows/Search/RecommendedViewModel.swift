@@ -14,7 +14,6 @@ class RecommendedViewModel: ObservableObject {
         
         let defaults = UserDefaults.standard
         self.currentPag = defaults.integer(forKey: "currentPag")
-        print("antes: \(defaults.integer(forKey: "currentPag"))")
         
         let list1 = self.service.fetchBooks(searchedText: searchedText[0], page: self.currentPag, filter: filter[0])
             .mapAPIBookToBook()
@@ -31,17 +30,29 @@ class RecommendedViewModel: ObservableObject {
         list1
             .zip(list2, list3)
             .sink(receiveCompletion: { _ in }, receiveValue: { list1, list2, list3 in
-                self.firstList = list1
-                self.secondList = list2
-                self.thirdList = list3
-                if self.currentPag > 70 {
+                self.firstList = self.sortBooks(books: list1)
+                self.secondList = self.sortBooks(books: list2)
+                self.thirdList = self.sortBooks(books: list3)
+                if self.currentPag > 60 {
                     defaults.set(0, forKey: "currentPag")
                 } else {
-                    defaults.set(self.currentPag + 10, forKey: "currentPag")
+                    defaults.set(self.currentPag + 20, forKey: "currentPag")
                 }
-                print("depois: \(defaults.integer(forKey: "currentPag"))")
             })
             .store(in: &subscriptions)
+    }
+    
+    func sortBooks(books: [Book]) -> [Book] {
+        let sortedBooks = books.sorted { (book1, book2) in
+            if book1.image.contains("image") && !book2.image.contains("image") {
+                return false // book2 tem capa, então book1 vai depois
+            } else if !book1.image.contains("image") && book2.image.contains("image") {
+                return true // book1 tem capa, então book1 vai antes
+            } else {
+                return book1.title < book2.title // ambos têm ou não têm capa, ordene por título
+            }
+        }
+        return sortedBooks
     }
 }
 
@@ -52,7 +63,11 @@ extension Publisher where Output == [APIBook] {
                 apiBooks.publisher
             })
             .filter ({ apiBook in
-                return true
+                if (apiBook.sinopsis == nil) {
+                    return false
+                } else {
+                    return true
+                }
             })
             .compactMap({ apiBook -> Book in
                 let newBook = Book(authors: apiBook.authors ?? ["N/A"], genres: apiBook.genres ?? ["N/A"], image: apiBook.image?.thumbnail ?? "image", isbns: apiBook.isbns?.map(\.identifier) ?? ["N/A"], rating: apiBook.rating?.description ?? "N/A", sinopsis: apiBook.sinopsis ?? "N/A", title: apiBook.title ?? "N/A", imageCover: nil)
@@ -80,8 +95,7 @@ extension Publisher where Output == [Book] {
                         })
                         .replaceError(with: book)
                         .eraseToAnyPublisher()
-                }
-                else {
+                } else {
                     var newBook = book
                     newBook.imageCover = UIImage(named: "bookImage")
                     return Just(newBook).eraseToAnyPublisher()
