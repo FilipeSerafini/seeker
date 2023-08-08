@@ -95,7 +95,7 @@ struct LibraryView: View {
             let rect = proxy.frame(in: .named("SCROLL"))
             // display some portion of each folder
             let offset = CGFloat(getIndex(folder: folder) * (expandFolder ? 10 : 70))
-            let background = getIndex(folder: folder).isMultiple(of: 2) ? Color("Primary") : Color("Secondary")
+            let background = getIndex(folder: folder).isMultiple(of: 2) ? Color("primary") : Color("secondary")
             
             let data = (1...100).map { "Item \($0)" }
 

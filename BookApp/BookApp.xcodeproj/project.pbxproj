@@ -304,15 +304,15 @@
 		B1D861C72A7045AD00CAD142 /* BookApp */ = {
 			isa = PBXGroup;
 			children = (
+				B1D861CC2A7045AF00CAD142 /* Assets.xcassets */,
+				B1D861D32A7045AF00CAD142 /* BookApp.xcdatamodeld */,
 				422E89BB2A788F1600FADC5C /* Info.plist */,
 				B1D861DD2A705F4400CAD142 /* BookApp.entitlements */,
 				B1D861C82A7045AE00CAD142 /* BookAppApp.swift */,
 				7C281A902A743F3A00A58E96 /* ContentCoreData.swift */,
-				4C7234882A797723006740F6 /* Preview.swift */,
 				B1D861CA2A7045AE00CAD142 /* ContentView.swift */,
-				B1D861CC2A7045AF00CAD142 /* Assets.xcassets */,
 				B1D861D12A7045AF00CAD142 /* Persistence.swift */,
-				B1D861D32A7045AF00CAD142 /* BookApp.xcdatamodeld */,
+				4C7234882A797723006740F6 /* Preview.swift */,
 				B1D861CE2A7045AF00CAD142 /* Preview Content */,
 				B1D5C0E62A7C20CD007CA7C7 /* UserManager.swift */,
 			);

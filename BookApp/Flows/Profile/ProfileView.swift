@@ -8,7 +8,7 @@ struct ProfileView: View {
             NavigationStack {
                 ZStack{
                     RoundedRectangle(cornerRadius: 30)
-                        .fill(Color("Primary"))
+                        .fill(Color("primary"))
                         .padding(.top, 200)
                         .ignoresSafeArea()
                     HStack{
