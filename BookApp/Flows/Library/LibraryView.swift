@@ -2,17 +2,12 @@ import SwiftUI
 
 struct LibraryView: View {
     
-    //MARK: Animation Properties
     @State var expandFolder: Bool = false
-    
     var userName: String = ""
-    //    @EnvironmentObject private var searchViewModel: SearchViewModel
     @EnvironmentObject private var userManager: UserManager
-    
     @StateObject private var viewModel: LibraryViewModel = LibraryViewModel()
     @State private var isPresented: Bool = false
     @State private var folderName: String = ""
-    
     @Environment(\.colorScheme) var scheme
     @State private var startConfirm = false
     
@@ -46,7 +41,7 @@ struct LibraryView: View {
                     })
                 } message: {
                     Text("Insira o nome desejado para a pasta.")
-                    }
+                }
                 }
                 .padding()
                 
@@ -64,7 +59,7 @@ struct LibraryView: View {
                 }
                 .padding([.horizontal, .trailing])
                 .frame(maxHeight: .infinity, alignment: .bottom)
-                .background(.green)
+//                .background(.green)
             }
         }
     }

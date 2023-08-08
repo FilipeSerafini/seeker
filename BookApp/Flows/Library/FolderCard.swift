@@ -5,8 +5,6 @@ struct FolderCard: Identifiable {
     
     var id = UUID().uuidString
     var name: String
-    var image: String
-    
     var books: [Book]
 }
 
@@ -29,12 +27,12 @@ var book6 = Book(authors: ["Maria Autora"], genres: ["Romance"], image: "book6",
 var books: [Book] = [book!, book1!, book2!, book3!, book4!, book5!, book6!]
 
 var folders: [FolderCard] = [
-    FolderCard (name: "Leituras realizadas", image: "folderShapePurple", books: books),
-    FolderCard (name: "Livros que eu quero ler", image: "folderShapeBlue", books: books),
-    FolderCard (name: "Lendo agora", image: "folderShapePurple", books: books),
-    FolderCard (name: "Lendo agora", image: "folderShapePurple", books: books),
-    FolderCard (name: "Lendo agora", image: "folderShapePurple", books: books),
-    FolderCard (name: "Lendo agora", image: "folderShapePurple", books: books),
-    FolderCard (name: "Lendo agora", image: "folderShapePurple", books: books),
-
+    FolderCard (name: "Leituras realizadas", books: books),
+    FolderCard (name: "Livros que eu quero ler", books: books),
+    FolderCard (name: "Lendo agora", books: books),
+    FolderCard (name: "Lendo agora", books: books),
+    FolderCard (name: "Lendo agora", books: books),
+    FolderCard (name: "Lendo agora", books: books),
+    FolderCard (name: "Lendo agora", books: books),
+    
 ]
