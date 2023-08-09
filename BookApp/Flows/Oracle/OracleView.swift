@@ -1,16 +1,15 @@
 import SwiftUI
 
 struct OracleView: View {
-    @State private var inputUsuario: String = ""
-    @State private var sendToAPI: String = ""
     @State var messages: [String] = []
+    @State private var isTyping = false
+    @State private var isEditing: Bool = false
+    @State private var isTextFieldFocused = false
+    @State private var sendToAPI: String = ""
+    @State private var inputUsuario: String = ""
     @State private var oracleResponse: String?
     @State private var service: OracleService = OracleService()
-    @State private var isTyping = false
-    @State private var isTextFieldFocused = false
-    @State private var isEditing: Bool = false
-    @Environment(\.colorScheme) var scheme
-    
+
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
