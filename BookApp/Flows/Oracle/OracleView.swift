@@ -17,8 +17,8 @@ struct OracleView: View {
                     ZStack{
                         VStack {
                             Text("Zoe")
-                                .font(.system(size: 34, design: .serif))
-                                .padding(.top, 5)
+                                .font(.system(size: 22, design: .serif))
+                                .padding(.top, 10)
                         }
                     }
 
