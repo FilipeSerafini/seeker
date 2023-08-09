@@ -1,10 +1,3 @@
-//
-//  Loading.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 06/08/23.
-//
-
 import SwiftUI
 
 struct Loading: View {
@@ -22,7 +15,7 @@ struct Loading: View {
                     .rotationEffect(!self.isAnimating ? .degrees(0) : .degrees(360))
                     .animation(Animation
                         .timingCurve(0.5, 0.15 + Double(index) / 5, 0.25, 1, duration: 1.5)
-                                .repeatForever(autoreverses: false), value: isAnimating)
+                        .repeatForever(autoreverses: false), value: isAnimating)
             }
         }
         .aspectRatio(1, contentMode: .fit)

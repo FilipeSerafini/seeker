@@ -1,10 +1,3 @@
-//
-//  LoadingOracle.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 07/08/23.
-//
-
 import SwiftUI
 
 struct LoadingOracle: View {

@@ -3,6 +3,7 @@ import SwiftUI
 struct BookView: View {
     @State var book: Book
     @State var showSheet: Bool = false
+    @State private var startConfirm = false
     
     @Environment(\.colorScheme) var scheme
     @Environment(\.presentationMode) private var presetationMode: Binding<PresentationMode>
@@ -10,11 +11,6 @@ struct BookView: View {
         VStack{
             NavigationStack{
                 ZStack{
-                    RoundedRectangle(cornerRadius: 30)
-                        .fill(scheme == .light ? .white : .black)
-                        .padding(.top, 300)
-                        .ignoresSafeArea()
-                    
                     VStack{
                         ZStack {
                             Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
@@ -40,93 +36,55 @@ struct BookView: View {
                                     .padding(.bottom, 5)
                                     .padding(.top, 1)
                                 
-                                Text("  Avaliação geral: \(book.rating)  ")
-                                    .background(Rectangle().fill(scheme == .light ? Color.black : Color.white).cornerRadius(20).frame(height: 20))
-                                    .foregroundColor(scheme == .light ? .white : .black)
-                                    .font(.system(size: 13))
-                                    .padding(.bottom, 8)
-                                    .padding(.top, 4)
-                                
-                                // MARK: Barra de adicionar, lido e avaliação
+                                VStack{
+                                    HStack{
+                                        Button {
+                                            //completar
+                                        }
+                                    label: {
+                                        Image("star")
+                                            .resizable()
+                                            .frame(width: 34, height: 30)
+                                    }
+                                        Button {
+                                            //completar
+                                        }
+                                    label: {
+                                        Image("star")
+                                            .resizable()
+                                            .frame(width: 34, height: 30)
+                                    }
+                                        Button {
+                                            //completar
+                                        }
+                                    label: {
+                                        Image("star")
+                                            .resizable()
+                                            .frame(width: 34, height: 30)
+                                    }
+                                        Button {
+                                            //completar
+                                        }
+                                    label: {
+                                        Image("star")
+                                            .resizable()
+                                            .frame(width: 34, height: 30)
+                                    }
+                                        Button {
+                                            //completar
+                                        }
+                                    label: {
+                                        Image("star")
+                                            .resizable()
+                                            .frame(width: 34, height: 30)
+                                    }
+                                    }
+                                    Text("Minha avaliação")
+                                        .font(.system(size: 13))
+                                    .foregroundColor(scheme == .light ? .black : .white)                                    }
                                 
                                 HStack{
-                                    Button {
-                                        showSheet.toggle()
-                                    }
-                                label: {
-                                        VStack{
-                                            Image("addBookToFolder")
-                                                .resizable()
-                                                .frame(width: 34, height: 34)
-                                            Text("Adicionar")
-                                                .font(.system(size: 13))
-                                            .foregroundColor(scheme == .light ? .black : .white)                                        }
-                                    }
-                                    Spacer()
                                     
-                                    Button {
-                                        //completar
-                                    }
-                                label: {
-                                    VStack{
-                                        Image("bookReadCheckbox")
-                                            .resizable()
-                                            .frame(width: 34, height: 34)
-                                        Text("Lido")
-                                            .font(.system(size: 13))
-                                        .foregroundColor(scheme == .light ? .black : .white)                                    }
-                                }
-                                    Spacer()
-                                    
-                                    VStack{
-                                        HStack{
-                                            Button {
-                                                //completar
-                                            }
-                                        label: {
-                                            Image("heart")
-                                                .resizable()
-                                                .frame(width: 34, height: 30)
-                                        }
-                                            Button {
-                                                //completar
-                                            }
-                                        label: {
-                                            Image("heart")
-                                                .resizable()
-                                                .frame(width: 34, height: 30)
-                                        }
-                                            Button {
-                                                //completar
-                                            }
-                                        label: {
-                                            Image("heart")
-                                                .resizable()
-                                                .frame(width: 34, height: 30)
-                                        }
-                                            Button {
-                                                //completar
-                                            }
-                                        label: {
-                                            Image("heart")
-                                                .resizable()
-                                                .frame(width: 34, height: 30)
-                                        }
-                                            Button {
-                                                //completar
-                                            }
-                                        label: {
-                                            Image("heart")
-                                                .resizable()
-                                                .frame(width: 34, height: 30)
-                                        }
-                                        }
-                                        Text("Minha avaliação")
-                                            .font(.system(size: 13))
-                                        .foregroundColor(scheme == .light ? .black : .white)                                    }
-                                }
-                                .sheet(isPresented: $showSheet) {
-                                    AddToFolderView(book: book)
                                 }
                                 .padding(.bottom, 10)
                                 
@@ -145,10 +103,42 @@ struct BookView: View {
                         // MARK: Se o livro estiver nas listas Lendo agora e/ou Leituras realizadas, pode ser compartilhado no Insta
                         Image("shareButton")
                     }
+                        
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        
+                        Button {
+                            startConfirm.toggle()
+                        }
+                    label: {
+                        VStack{
+                            Image("addBookToFolder")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(scheme == .light ? .black : .white)
+                        }
+                        .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible) {
+                            NavigationLink("Adicionar a uma lista") { AddToFolderView(book: book)  }
+                            NavigationLink("Adicionar uma nota") { AddReview(book: book) }
+                        } message: {
+                            Text (book.authors[0])
+                        }
+                    }
                     }
                 }
             }
-            .background(scheme == .light ? .black : .white)
+            //            .background(scheme == .light ? .black : .white)
         }
+        .background(
+            Image("backgroundImage")
+                .resizable()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea()
+        )
     }
 }
+
+
+
+
+

@@ -8,8 +8,8 @@ struct SearchView: View {
         NavigationStack {
             
             SearchableView()
-
-                .navigationBarTitle("Search")
+            
+                .navigationBarTitle("Buscar")
         }
     }
 }

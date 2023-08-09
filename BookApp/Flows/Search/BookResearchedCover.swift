@@ -20,8 +20,3 @@ struct BookResearchedCover: View {
         }
     }
 }
-//struct BookResearchedCover_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BookResearchedCover(book: book)
-//    }
-//}

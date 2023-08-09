@@ -52,18 +52,18 @@ struct SearchableView: View {
                             )
                             .padding(.vertical, 5)
                             
-//                            Button(action: {
-//                                self.isPresented.toggle()
-//                            }) {
-//                                Image(systemName: "barcode.viewfinder")
-//                                    .resizable()
-//                                    .frame(width: 28, height: 22)
-//                            }.sheet(isPresented: $isPresented) {
-//                                BarCodeScanner()
-//                            }
+                            //                            Button(action: {
+                            //                                self.isPresented.toggle()
+                            //                            }) {
+                            //                                Image(systemName: "barcode.viewfinder")
+                            //                                    .resizable()
+                            //                                    .frame(width: 28, height: 22)
+                            //                            }.sheet(isPresented: $isPresented) {
+                            //                                BarCodeScanner()
+                            //                            }
                         }
                         .padding(.horizontal)
-
+                        
                         VStack{
                             HStack {
                                 Button(action: {
@@ -173,6 +173,12 @@ struct SearchableView: View {
                     )
                 }
             }
+            .background(
+                Image("backgroundImage")
+                    .resizable()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .ignoresSafeArea()
+            )
             .coordinateSpace(name: spaceName)
         }
     }

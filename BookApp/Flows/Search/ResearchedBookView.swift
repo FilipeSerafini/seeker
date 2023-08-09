@@ -24,12 +24,6 @@ struct ResearchedBookView: View {
                             .padding(.bottom, -4)
                         Text(book.title)
                             .font(.system(size: 22, weight: .medium, design: .serif))
-                            .padding(.bottom, 3)
-                        Text("  Avaliação geral: \(book.rating)  ")
-                            .foregroundColor(scheme == .light ? .white : .black)
-                            .background(Rectangle().fill(scheme == .light ? Color.black : Color.white).cornerRadius(20).frame(height: 22))
-                            .font(.system(size: 13))
-                            .padding(.bottom, 3)
                         Text(book.sinopsis)
                             .font(.system(size: 15))
                     }
@@ -47,9 +41,3 @@ struct ResearchedBookView: View {
         .padding(.bottom, 5)
     }
 }
-
-//struct ResearchedBookView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ResearchedBookView(book: <#T##Book#>)
-//    }
-//}

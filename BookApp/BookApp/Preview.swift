@@ -7,6 +7,7 @@ struct Preview: View {
                 .resizable()
                 .frame(width: 340, height: 340)
             Text("Welcome to Seeker")
+                .font(.system(size: 17, weight: .regular))
         }
     }
 }

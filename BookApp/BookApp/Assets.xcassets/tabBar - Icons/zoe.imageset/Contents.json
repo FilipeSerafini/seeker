@@ -22,7 +22,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "dark mode.png",
+      "filename" : "1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -48,7 +48,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "dark mode2.png",
+      "filename" : "2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -74,7 +74,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "dark mode3.png",
+      "filename" : "3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
