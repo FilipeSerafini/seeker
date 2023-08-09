@@ -53,11 +53,12 @@
 		B108B8052A7193EF006D6F1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8042A7193EF006D6F1C /* User.swift */; };
 		B108B8072A719406006D6F1C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8062A719406006D6F1C /* Badge.swift */; };
 		B108B8092A719415006D6F1C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8082A719415006D6F1C /* Book.swift */; };
-		B108B80C2A71942A006D6F1C /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B80B2A71942A006D6F1C /* Review.swift */; };
+		B108B80C2A71942A006D6F1C /* CommentReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B80B2A71942A006D6F1C /* CommentReview.swift */; };
 		B108B80E2A719431006D6F1C /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B80D2A719431006D6F1C /* Goal.swift */; };
 		B108B8102A71943F006D6F1C /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B80F2A71943F006D6F1C /* Folder.swift */; };
 		B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8122A7194CC006D6F1C /* CKProtocol.swift */; };
 		B117EF2F2A7D674500E50937 /* AddToFolderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B117EF2E2A7D674500E50937 /* AddToFolderHeader.swift */; };
+		B19E0B052A840EDC00A68092 /* RateReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19E0B042A840EDC00A68092 /* RateReview.swift */; };
 		B1D5C0DC2A7AA3BB007CA7C7 /* CloudKitUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0DB2A7AA3BB007CA7C7 /* CloudKitUtility.swift */; };
 		B1D5C0DF2A7AA416007CA7C7 /* UserCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0DE2A7AA416007CA7C7 /* UserCRUD.swift */; };
 		B1D5C0E12A7ABB47007CA7C7 /* FolderCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C0E02A7ABB47007CA7C7 /* FolderCRUD.swift */; };
@@ -121,11 +122,12 @@
 		B108B8042A7193EF006D6F1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B108B8062A719406006D6F1C /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		B108B8082A719415006D6F1C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
-		B108B80B2A71942A006D6F1C /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		B108B80B2A71942A006D6F1C /* CommentReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentReview.swift; sourceTree = "<group>"; };
 		B108B80D2A719431006D6F1C /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		B108B80F2A71943F006D6F1C /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		B108B8122A7194CC006D6F1C /* CKProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKProtocol.swift; sourceTree = "<group>"; };
 		B117EF2E2A7D674500E50937 /* AddToFolderHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToFolderHeader.swift; sourceTree = "<group>"; };
+		B19E0B042A840EDC00A68092 /* RateReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateReview.swift; sourceTree = "<group>"; };
 		B1D5C0DB2A7AA3BB007CA7C7 /* CloudKitUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUtility.swift; sourceTree = "<group>"; };
 		B1D5C0DE2A7AA416007CA7C7 /* UserCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCRUD.swift; sourceTree = "<group>"; };
 		B1D5C0E02A7ABB47007CA7C7 /* FolderCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCRUD.swift; sourceTree = "<group>"; };
@@ -273,6 +275,15 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		B19E0B062A84193A00A68092 /* BlockedModels */ = {
+			isa = PBXGroup;
+			children = (
+				B108B80D2A719431006D6F1C /* Goal.swift */,
+				B108B8062A719406006D6F1C /* Badge.swift */,
+			);
+			path = BlockedModels;
+			sourceTree = "<group>";
+		};
 		B1D5C0DD2A7AA3FE007CA7C7 /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,13 +363,13 @@
 		B1D861DE2A70623A00CAD142 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B19E0B062A84193A00A68092 /* BlockedModels */,
 				B108B8042A7193EF006D6F1C /* User.swift */,
-				B108B8062A719406006D6F1C /* Badge.swift */,
 				B108B8082A719415006D6F1C /* Book.swift */,
-				B108B80B2A71942A006D6F1C /* Review.swift */,
-				B108B80D2A719431006D6F1C /* Goal.swift */,
+				B108B80B2A71942A006D6F1C /* CommentReview.swift */,
 				B108B80F2A71943F006D6F1C /* Folder.swift */,
 				428ECC602A815F1000DA4B66 /* Oracle.swift */,
+				B19E0B042A840EDC00A68092 /* RateReview.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -462,7 +473,7 @@
 				7C281A8D2A742A7700A58E96 /* BookResearchedCover.swift in Sources */,
 				4CDD3BBA2A730917001519C3 /* ChallengesView.swift in Sources */,
 				7C31DBD22A81885E002FB8F8 /* ChatBubble.swift in Sources */,
-				B108B80C2A71942A006D6F1C /* Review.swift in Sources */,
+				B108B80C2A71942A006D6F1C /* CommentReview.swift in Sources */,
 				7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */,
 				7C31DBA32A7F63A3002FB8F8 /* Loading.swift in Sources */,
 				4CDD3BBF2A730931001519C3 /* ProfileViewModel.swift in Sources */,
@@ -477,6 +488,7 @@
 				4C45AA862A8137BE00DD5FB0 /* FolderCard.swift in Sources */,
 				4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */,
 				7C4245E42A7AE98800241A98 /* StyleFilterButton.swift in Sources */,
+				B19E0B052A840EDC00A68092 /* RateReview.swift in Sources */,
 				B108B8072A719406006D6F1C /* Badge.swift in Sources */,
 				B1D5C0E92A7C2A3E007CA7C7 /* AddToFolderViewModel.swift in Sources */,
 				B1D5C0DC2A7AA3BB007CA7C7 /* CloudKitUtility.swift in Sources */,
