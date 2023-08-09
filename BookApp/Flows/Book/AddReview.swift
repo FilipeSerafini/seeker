@@ -37,23 +37,11 @@ struct AddReview: View {
                         .textFieldStyle(.plain)
                         .font(.system(size: 22, weight: .medium, design: .serif))
                     
-                    ZStack(alignment: .leading) {
-                        TextEditor(text: $addReview)
-                            .scrollContentBackground(.hidden)
-                            .background(.clear)
-                            .padding(.leading, -3)
+                    TextField("Adicionar nota", text: $addReview, axis: .vertical)
+                        .textFieldStyle(.plain)
+                        .font(.system(size: 17))
                         
-                        if addReview.isEmpty{
-                            VStack{
-                                Text("Adicionar nota")
-                                    .font(.system(size: 17))
-                                    .foregroundColor(Color("textNote"))
-                                    .padding(.top, 10)
-                                    .padding(.leading, 1)
-                                Spacer()
-                            }
-                        }
-                    }
+                        Spacer()
                 }
                 .padding(.horizontal)
             }

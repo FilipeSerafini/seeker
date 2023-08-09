@@ -12,6 +12,7 @@
 		42633AE42A7443EE00401B5F /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42633AE32A7443EE00401B5F /* BookService.swift */; };
 		428ECC5F2A815EE500DA4B66 /* OracleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ECC5E2A815EE500DA4B66 /* OracleService.swift */; };
 		428ECC612A815F1000DA4B66 /* Oracle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ECC602A815F1000DA4B66 /* Oracle.swift */; };
+		42DA6EB42A84037400330888 /* BookServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA6EB32A84037400330888 /* BookServiceExtension.swift */; };
 		4C45AA862A8137BE00DD5FB0 /* FolderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */; };
 		4C45AA8C2A817B0E00DD5FB0 /* FolderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45AA8B2A817B0E00DD5FB0 /* FolderCardView.swift */; };
 		4C4782772A7B29340014F611 /* CÓDIGOS IMPORTANTES in Resources */ = {isa = PBXBuildFile; fileRef = 4C4782762A7B29340014F611 /* CÓDIGOS IMPORTANTES */; };
@@ -81,6 +82,7 @@
 		42633AE32A7443EE00401B5F /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
 		428ECC5E2A815EE500DA4B66 /* OracleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleService.swift; sourceTree = "<group>"; };
 		428ECC602A815F1000DA4B66 /* Oracle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oracle.swift; sourceTree = "<group>"; };
+		42DA6EB32A84037400330888 /* BookServiceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookServiceExtension.swift; sourceTree = "<group>"; };
 		4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCard.swift; sourceTree = "<group>"; };
 		4C45AA8B2A817B0E00DD5FB0 /* FolderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCardView.swift; sourceTree = "<group>"; };
 		4C4782762A7B29340014F611 /* CÓDIGOS IMPORTANTES */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CÓDIGOS IMPORTANTES"; sourceTree = "<group>"; };
@@ -164,6 +166,14 @@
 				428ECC5E2A815EE500DA4B66 /* OracleService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		42DA6EB22A84034400330888 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				42DA6EB32A84037400330888 /* BookServiceExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		4C5849D32A81884C00C7AF97 /* OnBoarding */ = {
@@ -315,6 +325,7 @@
 		B1D861BC2A7045AD00CAD142 = {
 			isa = PBXGroup;
 			children = (
+				42DA6EB22A84034400330888 /* Extension */,
 				7C31DBD52A81D125002FB8F8 /* Scanner */,
 				B1D861C72A7045AD00CAD142 /* BookApp */,
 				B1D861DE2A70623A00CAD142 /* Model */,
@@ -481,6 +492,7 @@
 				B1D5C0E12A7ABB47007CA7C7 /* FolderCRUD.swift in Sources */,
 				420FF5442A7AE73C006F4D0E /* RecommendedView.swift in Sources */,
 				4CDD3BBC2A730920001519C3 /* ChallengesViewModel.swift in Sources */,
+				42DA6EB42A84037400330888 /* BookServiceExtension.swift in Sources */,
 				4CDD3BA82A730790001519C3 /* BookView.swift in Sources */,
 				4C45AA8C2A817B0E00DD5FB0 /* FolderCardView.swift in Sources */,
 				4C4FD44E2A827F8F00503219 /* MediumCommentButton.swift in Sources */,
