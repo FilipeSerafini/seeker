@@ -13,6 +13,7 @@ struct AddReview: View {
                             .resizable()
                             .frame(width: 62, height: 88)
                             .cornerRadius(10)
+                           // .shadow(color: Color.black.opacity(0.25), radius: 3.2, x: 0, y: 3.2)
                     }
                     
                     VStack(alignment: .leading){
@@ -32,15 +33,18 @@ struct AddReview: View {
                     TextField("Título da nota", text: $titleReview)
                         .textFieldStyle(.plain)
                         .font(.system(size: 22, weight: .medium, design: .serif))
+                    
                     ZStack(alignment: .leading) {
                         TextEditor(text: $addReview)
+                            .scrollContentBackground(.hidden)
+                            .background(.clear)
                             .padding(.leading, -3)
 
                         if addReview.isEmpty{
                             VStack{
                                 Text("Adicionar nota")
                                     .font(.system(size: 17))
-                                    .foregroundColor(Color(red: 0.7725490196078432, green: 0.7725490196078432, blue: 0.7803921568627451))
+                                    .foregroundColor(Color("textNote"))
                                     .padding(.top, 10)
                                     .padding(.leading, 1)
                                 Spacer()
@@ -50,6 +54,10 @@ struct AddReview: View {
                 }
                 .padding(.horizontal)
             }
+            .background(Image("backgroundImage")
+                .resizable()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea())
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {}

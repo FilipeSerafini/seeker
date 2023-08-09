@@ -39,8 +39,8 @@ struct RatingButton: View {
                     }
                 }
             }
-            
             Text("Minha avaliação")
+                .font(.system(size: 13))
         }
     }
     

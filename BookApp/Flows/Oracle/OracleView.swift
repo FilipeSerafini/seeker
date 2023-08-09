@@ -79,7 +79,7 @@ struct OracleView: View {
                             .padding()
                             .padding(.trailing, 30)
                             .font(.system(size: 15))
-                            .background(scheme == .dark ? Color(hue: 0.552, saturation: 0.085, brightness: 0.19) : Color(red: 0.851, green: 0.851, blue: 0.851))
+                            .background(Color("backgroundSearch"))
                             .cornerRadius(30)
                             .onTapGesture {
                                 isTextFieldFocused = true
