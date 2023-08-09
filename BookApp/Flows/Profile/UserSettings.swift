@@ -3,6 +3,9 @@ import SwiftUI
 struct UserSettings: View {
     
     @State private var nameText = ""
+    @State private var usernameText = ""
+    @State private var bioText = ""
+
     @State private var isEditing: Bool = false
     
     var body: some View {
@@ -14,26 +17,38 @@ struct UserSettings: View {
                     .resizable()
                     .frame(width: 110, height: 110)
                     .clipShape(Circle())
+                    .padding(.bottom, 30)
                 
                 HStack{
-                    Text("Name")
-                    
-                    TextField("Manoela", text: $nameText, onEditingChanged: { editing in isEditing = editing
+                    Text("Nome")
+                    TextField("Nome", text: $nameText, onEditingChanged: { editing in isEditing = editing
                     })
+                    .padding(.leading, 45)
                 }
+                Divider()
+                    .padding(.leading, 100)
                 HStack{
                     Text("Username")
-                    TextField("Manoela", text: $nameText, onEditingChanged: { editing in isEditing = editing
+                    TextField("username", text: $usernameText, onEditingChanged: { editing in isEditing = editing
                     })
+                    .padding(.leading, 12)
+
                 }
+                Divider()
+                    .padding(.leading, 100)
                 HStack{
-                    Text("BIO")
-                    TextField("Manoela", text: $nameText, onEditingChanged: { editing in isEditing = editing
-                    })
+                    Text("Bio")
+                    TextField("Bio", text: $bioText, axis: .vertical)
+                    .padding(.leading, 66)
+
                 }
+                Divider()
+                    .padding(.leading, 100)
                 
                 Spacer()
-            } .toolbar {
+            }
+            .font(.system(size: 17))
+            .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button {}
                 label: {
@@ -41,8 +56,7 @@ struct UserSettings: View {
                 }
                 }
             }
-            .padding(.top, 60)
-            .padding()
+           .padding()
         }
     }
 }

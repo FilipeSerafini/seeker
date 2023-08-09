@@ -51,16 +51,6 @@ struct SearchableView: View {
                                 }
                             )
                             .padding(.vertical, 5)
-                            
-                            //                            Button(action: {
-                            //                                self.isPresented.toggle()
-                            //                            }) {
-                            //                                Image(systemName: "barcode.viewfinder")
-                            //                                    .resizable()
-                            //                                    .frame(width: 28, height: 22)
-                            //                            }.sheet(isPresented: $isPresented) {
-                            //                                BarCodeScanner()
-                            //                            }
                         }
                         .padding(.horizontal)
                         
@@ -96,12 +86,12 @@ struct SearchableView: View {
                                 Button(action: {
                                     selectedFilter = .genre
                                 }) {
-                                    Text("Gênero")
+                                    Text("ISBN")
                                 }.buttonStyle(
                                     StyleFilterButton(
-                                        isFilled: Binding(get: { selectedFilter == .genre }, set: { newValue in
+                                        isFilled: Binding(get: { selectedFilter == .isbn }, set: { newValue in
                                             if newValue {
-                                                selectedFilter = .genre
+                                                selectedFilter = .isbn
                                             } else {
                                                 selectedFilter = .empty
                                             }

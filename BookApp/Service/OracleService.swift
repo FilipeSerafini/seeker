@@ -25,7 +25,7 @@ class OracleService {
     
     private let initialMessage = Message(role: roles.system.description, content: "Your name is Zoe, you are a friendly and helpful assistant. You are going to receive books questions. If the user asks for any kind of summary, keep the answer short. If the question is not about books dont respond the question just kindly ask the user to make a question about books.")
     
-    private let errorMessage: String = "Desculpe mas ocorreu um erro inesperado, tente novamente!"
+    private let errorMessage: String = "Desculpe, não estou conseguindo visualizar uma resposta para a sua pergunta. Que tal checar sua conexão à internet e tentar novamente?"
     
     private var messeges: [[String: String]] = []
     
