@@ -25,7 +25,7 @@ struct ProfileView: View {
                             .font(.system(size: 15))
                             .padding(.top, -16)
                     }
-                    ScrollView{
+                    ScrollView(showsIndicators: false){
                         LazyVGrid(columns: columns, spacing: 10) {
                             
                             //                            ForEach() { commentButton in

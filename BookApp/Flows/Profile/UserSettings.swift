@@ -1,17 +1,13 @@
 import SwiftUI
 
 struct UserSettings: View {
-    
     @State private var nameText = ""
     @State private var usernameText = ""
     @State private var bioText = ""
-
     @State private var isEditing: Bool = false
-    
+
     var body: some View {
-        
         NavigationView {
-            
             VStack{
                 Image("usuariaTeste")
                     .resizable()
@@ -20,43 +16,45 @@ struct UserSettings: View {
                     .padding(.bottom, 30)
                 
                 HStack{
-                    Text("Nome")
-                    TextField("Nome", text: $nameText, onEditingChanged: { editing in isEditing = editing
-                    })
-                    .padding(.leading, 45)
-                }
-                Divider()
-                    .padding(.leading, 100)
-                HStack{
-                    Text("Username")
-                    TextField("username", text: $usernameText, onEditingChanged: { editing in isEditing = editing
-                    })
-                    .padding(.leading, 12)
+                    VStack(alignment: .leading) {
+                        Text("Nome")
+                            .padding(.bottom, 10)
+                        Text("Username")
+                            .padding(.bottom, 20)
+                        Text("Bio")
+                            .padding(.bottom)
+                    }
+                    
+                    VStack{
+                        TextField("Nome", text: $nameText, onEditingChanged: { editing in isEditing = editing
+                        })
+                        Divider()
 
-                }
-                Divider()
-                    .padding(.leading, 100)
-                HStack{
-                    Text("Bio")
-                    TextField("Bio", text: $bioText, axis: .vertical)
-                    .padding(.leading, 66)
+                        TextField("username", text: $usernameText, onEditingChanged: { editing in isEditing = editing
+                        })
+                        Divider()
 
+                        TextField("Bio", text: $bioText, axis: .vertical)
+                           .lineLimit(2)
+                           .frame(maxHeight: 40)
+                        Divider()
+
+                    }
+                    .padding([.leading, .trailing])
                 }
-                Divider()
-                    .padding(.leading, 100)
-                
                 Spacer()
             }
+            .padding(.top, 50)
+            .padding([.leading, .trailing, .bottom])
             .font(.system(size: 17))
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing){
-                    Button {}
-                label: {
-                    Image("saveFolder")
-                }
-                }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing){
+                Button {}
+            label: {
+                Image("saveFolder")
             }
-           .padding()
+            }
         }
     }
 }
