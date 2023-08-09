@@ -1,16 +1,15 @@
 import SwiftUI
 
 struct OracleView: View {
-    @State private var inputUsuario: String = ""
-    @State private var sendToAPI: String = ""
     @State var messages: [String] = []
+    @State private var isTyping = false
+    @State private var isEditing: Bool = false
+    @State private var isTextFieldFocused = false
+    @State private var sendToAPI: String = ""
+    @State private var inputUsuario: String = ""
     @State private var oracleResponse: String?
     @State private var service: OracleService = OracleService()
-    @State private var isTyping = false
-    @State private var isTextFieldFocused = false
-    @State private var isEditing: Bool = false
-    @Environment(\.colorScheme) var scheme
-    
+
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
@@ -79,7 +78,7 @@ struct OracleView: View {
                             .padding()
                             .padding(.trailing, 30)
                             .font(.system(size: 15))
-                            .background(scheme == .dark ? Color(hue: 0.552, saturation: 0.085, brightness: 0.19) : Color(red: 0.851, green: 0.851, blue: 0.851))
+                            .background(Color("backgroundSearch"))
                             .cornerRadius(30)
                             .onTapGesture {
                                 isTextFieldFocused = true

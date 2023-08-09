@@ -57,23 +57,22 @@ struct FilterButton_Previews: PreviewProvider {
 }
 
 struct StyleFilterButton: ButtonStyle {
-    @Environment(\.colorScheme) var scheme
     var isFilled: Binding<Bool> // Estado do botão
     
     func makeBody(configuration: Configuration) -> some View {
         GeometryReader { geometry in
             configuration.label
                 .font(.system(size: 17))
-                .foregroundColor(scheme == .light ? .black : .white)
+                .foregroundColor(Color("text"))
                 .frame(width: 99, height: 35)
                 .background(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color(red: 0.6196078431372549, green: 0.6235294117647059, blue: 0.9215686274509803), lineWidth: 3)
-                        .background(isFilled.wrappedValue ? Color(red: 0.6196078431372549, green: 0.6235294117647059, blue: 0.9215686274509803) : Color.clear)
+                        .stroke(Color("primary"), lineWidth: 3)
+                        .background(isFilled.wrappedValue ? Color("primary") : Color.clear)
                 )
                 .cornerRadius(20)
                 .onTapGesture {
-                    isFilled.wrappedValue.toggle() //alterna o valor do botão entre preenchido e não preenchido quando o botão é clicado
+                    isFilled.wrappedValue.toggle()
                 }
         }
         .padding(.horizontal, 10)
