@@ -21,7 +21,7 @@ enum Filter: String {
 }
 
 class BookService {
-    //    private let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=")!
+    private let baseURL: String = "https://www.googleapis.com/books/v1/"
 }
 
 //MARK: - Fetch Books with combine API
@@ -47,15 +47,18 @@ extension BookService {
     }
     
     private func buildAPIURL(searchedText: String, page: Int, filter: Filter) -> URL {
-        let baseURL: String = "https://www.googleapis.com/books/v1/"
         
-        let searchURL: String = baseURL + filter.url + "\"" + searchedText.replacingOccurrences(of: " ", with: "+") + "\""
+        var searchURL: String = self.baseURL + filter.url
+        
+        if filter == .isbn {
+            searchURL = searchURL + searchedText.replacingOccurrences(of: " ", with: "+")
+        } else {
+            searchURL = searchURL + "\"" + searchedText.replacingOccurrences(of: " ", with: "+") + "\""
+        }
         
         let pageURL: String = searchURL + "&startIndex=\(page)&orderBy=relevance&maxResults=20"
         
         let finalURL = pageURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        
-        print(finalURL)
         
         guard let url = URL(string: finalURL) else {
             return URL(string: "https://www.googleapis.com/books/v1/volumes?q=a")!
@@ -72,6 +75,26 @@ extension BookService {
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(\.data)
             .mapError({ $0 as Error })
+            .subscribe(on: DispatchQueue.global(qos: .userInitiated))
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+}
+
+//MARK: - Fetch Book by ID with Combine API
+extension BookService {
+    func fetchBookById(bookId: String) -> AnyPublisher<APIBook, Error> {
+        let url: URL = URL(string: "https://www.googleapis.com/books/v1/volumes/\(bookId)")!
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .tryMap(\.data)
+            .decode(type: BookItemResponse.self, decoder: JSONDecoder())
+            .mapError { $0 as Error }
+            .compactMap { response in
+                let volumeInfo = response.volumeInfo
+                let apiBook = APIBook(id: response.id, authors: volumeInfo.authors, genres: volumeInfo.genres, image: volumeInfo.image, isbns: volumeInfo.isbns, rating: volumeInfo.rating, sinopsis: volumeInfo.sinopsis, title: volumeInfo.title)
+                return apiBook
+            }
             .subscribe(on: DispatchQueue.global(qos: .userInitiated))
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()

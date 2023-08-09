@@ -32,6 +32,26 @@ extension Publisher where Output == [APIBook] {
     }
 }
 
+extension Publisher where Output == APIBook {
+    func mapAPIBookToBook() -> AnyPublisher<Book, Error> {
+        self
+            .compactMap { apiBook -> Book? in
+                let book = Book(id: apiBook.id ?? "N/A",
+                                authors: apiBook.authors ?? ["N/A"],
+                                genres: apiBook.genres ?? ["N/A"],
+                                image: apiBook.image?.thumbnail ?? "image",
+                                isbns: apiBook.isbns?.map(\.identifier) ?? ["N/A"],
+                                rating: apiBook.rating?.description ?? "N/A",
+                                sinopsis: convertHTMLToString(htmlString: apiBook.sinopsis ?? "N/A"),
+                                title: apiBook.title ?? "N/A",
+                                imageCover: nil)
+                return book
+            }
+            .mapError { $0 as Error }
+            .eraseToAnyPublisher()
+    }
+}
+
 extension Publisher where Output == [Book] {
     func setBookImages(withService service: BookService) -> AnyPublisher<[Book], Error> {
         self
@@ -58,6 +78,48 @@ extension Publisher where Output == [Book] {
             .mapError({ $0 as Error })
             .eraseToAnyPublisher()
     }
+}
+
+extension Publisher where Output == Book {
+    func setBookImages(withService service: BookService) -> AnyPublisher<Book, Error> {
+        self
+            .flatMap({ book in
+                if book.image != "image" {
+                    return service.fetchBookCover(forURL: book.image)
+                        .map({ data in
+                            var newBook = book
+                            newBook.imageCover = UIImage(data: data)
+                            return newBook
+                        })
+                        .replaceError(with: book)
+                        .eraseToAnyPublisher()
+                } else {
+                    var newBook = book
+                    newBook.imageCover = UIImage(named: "bookImage")
+                    return Just(newBook).eraseToAnyPublisher()
+                }
+            })
+            .mapError({ $0 as Error })
+            .eraseToAnyPublisher()
+    }
+}
+
+private func convertHTMLToString(htmlString: String) -> String {
+    if let data = htmlString.data(using: .utf8) {
+        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+        
+        do {
+            let attributedString = try NSAttributedString(data: data, options: options, documentAttributes: nil)
+            return attributedString.string
+        } catch {
+            print("Error converting HTML to attributed string: \(error)")
+        }
+    }
+    
+    return "N/A"
 }
 
 func sortBooks(books: [Book]) -> [Book] {

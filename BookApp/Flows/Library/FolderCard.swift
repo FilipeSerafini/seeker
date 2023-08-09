@@ -29,9 +29,9 @@ var folders: [FolderCard] = [
     FolderCard (name: "Leituras realizadas", books: books),
     FolderCard (name: "Livros que eu quero ler", books: books),
     FolderCard (name: "Lendo agora", books: books),
-    FolderCard (name: "Lendo agora", books: books),
-    FolderCard (name: "Lendo agora", books: books),
-    FolderCard (name: "Lendo agora", books: books),
-    FolderCard (name: "Lendo agora", books: books),
+//    FolderCard (name: "Lendo agora", books: books),
+//    FolderCard (name: "Lendo agora", books: books),
+//    FolderCard (name: "Lendo agora", books: books),
+//    FolderCard (name: "Lendo agora", books: books),
     
 ]
