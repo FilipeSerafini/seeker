@@ -29,7 +29,7 @@ enum CKRecordNames: String {
 struct Book: Identifiable {
     
     var record: CKRecord?
-    var id: String = UUID().uuidString
+    var id: String
     var authors: [String]
     var genres: [String]
     var image: String
@@ -41,7 +41,7 @@ struct Book: Identifiable {
     
     //init para inicializar os atributos
     init() {
-        id = UUID().uuidString
+        id = ""
         authors = []
         genres = []
         image = ""
@@ -55,7 +55,7 @@ struct Book: Identifiable {
     
     //init para transformar os atributos em records para o banco, e determinar o recordType do usuario
     init?(
-        id: String = UUID().uuidString,
+        id: String,
         authors: [String],
         genres: [String],
         image: String,
