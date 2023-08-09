@@ -33,11 +33,14 @@ extension BookService {
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap(\.data)
             .decode(type: APIBookResponse.self, decoder: JSONDecoder())
-            .map(\.items)
-            .map({ items -> [APIBook] in
-                return items?.compactMap({ $0.volumeInfo }) ?? []
-            })
-            .mapError({ $0 as Error })
+            .compactMap { response in
+                response.items?.compactMap { item -> APIBook? in
+                    let volumeInfo = item.volumeInfo
+                    let apiBook = APIBook(id: item.id, authors: volumeInfo.authors, genres: volumeInfo.genres, image: volumeInfo.image, isbns: volumeInfo.isbns, rating: volumeInfo.rating, sinopsis: volumeInfo.sinopsis, title: volumeInfo.title)
+                    return apiBook
+                }
+            }
+            .mapError { $0 as Error }
             .subscribe(on: DispatchQueue.global(qos: .userInitiated))
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()

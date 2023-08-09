@@ -48,7 +48,7 @@ class SearchViewModel: ObservableObject {
                 if books.isEmpty && self.books.isEmpty {
                     self.returnEmpty = true
                 } else {
-                    self.books = self.books + self.sortBooks(books: books)
+                    self.books = self.books + sortBooks(books: books)
                     self.currentPag += 20
                 }
                 self.currentState = .alreadyLoaded
@@ -58,18 +58,5 @@ class SearchViewModel: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.isSearching = false
         }
-    }
-    
-    func sortBooks(books: [Book]) -> [Book] {
-        let sortedBooks = books.sorted { (book1, book2) in
-            if book1.image.contains("image") && !book2.image.contains("image") {
-                return false // book2 tem capa, então book1 vai depois
-            } else if !book1.image.contains("image") && book2.image.contains("image") {
-                return true // book1 tem capa, então book1 vai antes
-            } else {
-                return book1.title < book2.title // ambos têm ou não têm capa, ordene por título
-            }
-        }
-        return sortedBooks
     }
 }
