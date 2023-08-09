@@ -22,7 +22,7 @@ struct ContentView: View {
         .onAppear {
             recommendedViewModel.fetchAll(searchedText: "Young Adult Fiction", "Romance", "Rupi Kaur", filter: .genre, .author)
 #warning("mudar tempo para 1.5")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 withAnimation {
                     self.isActive = true
                 }
