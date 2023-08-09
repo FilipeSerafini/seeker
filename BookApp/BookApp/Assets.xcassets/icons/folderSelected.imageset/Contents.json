@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "checkmark.circle.fill-2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "checkmark.circle.fill-3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

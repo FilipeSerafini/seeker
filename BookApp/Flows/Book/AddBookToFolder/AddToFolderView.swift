@@ -2,9 +2,9 @@ import SwiftUI
 
 struct AddToFolderView: View {
     
-    #warning("SPIKE: Expore data flow options for SwiftUI. Possibly, userManager will be (somehow) inside of a ViewModel")
+#warning("SPIKE: Expore data flow options for SwiftUI. Possibly, userManager will be (somehow) inside of a ViewModel")
     @EnvironmentObject private var userManager: UserManager
-//    @StateObject private var addToFolderViewModel: AddToFolderViewModel = AddToFolderViewModel()
+    //    @StateObject private var addToFolderViewModel: AddToFolderViewModel = AddToFolderViewModel()
     
     @State var book: Book
     @State var state: String = "folderUnselected"
@@ -24,7 +24,7 @@ struct AddToFolderView: View {
                     userManager.updateFolders(folders: modifiedFolders) {
                         print("terminou")
                     }
-//                    addToFolderViewModel.addBookToFolder(book: self.book)
+                    //                    addToFolderViewModel.addBookToFolder(book: self.book)
                 } label: {
                     Image("saveFolder")
                 }
@@ -35,7 +35,7 @@ struct AddToFolderView: View {
             
             ForEach(userManager.folders) { folder in
                 FolderRow(folder: folder, isSelected: folder.books.contains(book.id)) { isSelected, hasChanged in
-                    #warning("FUTURE IMPROVEMENT: Refactor this piece of code for a ViewModel")
+#warning("FUTURE IMPROVEMENT: Refactor this piece of code for a ViewModel")
                     if hasChanged {
                         var updatedFolder = folder
                         

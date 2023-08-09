@@ -21,16 +21,10 @@ struct FolderRow: View {
             } label: {
                 Image(isSelected ? "folderSelected" : "folderUnselected")
             }
-
+            
             
             
         }
         .padding(29)
     }
 }
-
-//struct FolderRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FolderRow(folder: Folder(books: [], description: "a", name: "Melhores!")!, selected: false)
-//    }
-//}

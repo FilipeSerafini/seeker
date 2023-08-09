@@ -23,6 +23,7 @@ struct LibraryView: View {
                         Text("Minha Estante")
                             .font(.system(size: 34, design: .serif))
                     }
+                    .padding(.top, 30)
                     Spacer()
                     
                     Button {
@@ -30,8 +31,9 @@ struct LibraryView: View {
                     } label: {
                         Image("addFolders")
                             .resizable()
-                            .frame(width: 46, height: 34)
+                            .frame(width: 36, height: 24)
                     }
+                    .padding(.top, 40)
                     .alert("Criar nova pasta", isPresented: $isPresented) {
                         TextField(folderName, text: $folderName)
                         Button("Cancelar",action: {})

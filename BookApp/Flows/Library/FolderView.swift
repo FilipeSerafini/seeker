@@ -2,7 +2,7 @@ import SwiftUI
 
 struct FolderView: View {
     @State var expandFolder: Bool = false
-
+    
     var folder: FolderCard
     
     var body: some View {

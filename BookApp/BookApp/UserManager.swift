@@ -7,10 +7,10 @@ class UserManager: ObservableObject {
     
     @Published var id: String = ""
     @Published var folders: [Folder] = []
-   
+    
     
     // MARK: - Init
-     
+    
     init() {
         fetchFolders()
     }
@@ -82,15 +82,15 @@ class UserManager: ObservableObject {
         
         
         
-//        self.folders.forEach({ folder in
-//            var newFolder = folder
-//            if selectedFolders.contains(folder) {
-//                newFolder.books.append(book.id)
-//                print(folder)
-//            }
-//        })
+        //        self.folders.forEach({ folder in
+        //            var newFolder = folder
+        //            if selectedFolders.contains(folder) {
+        //                newFolder.books.append(book.id)
+        //                print(folder)
+        //            }
+        //        })
         
-
+        
     }
 }
 

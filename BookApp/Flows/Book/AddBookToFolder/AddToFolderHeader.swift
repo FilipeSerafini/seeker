@@ -1,10 +1,3 @@
-//
-//  addToFolderHeader.swift
-//  BookApp
-//
-//  Created by Filipe Serafini on 04/08/23.
-//
-
 import SwiftUI
 
 struct addToFolderHeader: View {
