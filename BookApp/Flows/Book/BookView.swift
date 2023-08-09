@@ -36,57 +36,8 @@ struct BookView: View {
                                     .padding(.bottom, 5)
                                     .padding(.top, 1)
                                 
-                                VStack{
-                                    HStack{
-                                        Button {
-                                            //completar
-                                        }
-                                    label: {
-                                        Image("star")
-                                            .resizable()
-                                            .frame(width: 34, height: 30)
-                                    }
-                                        Button {
-                                            //completar
-                                        }
-                                    label: {
-                                        Image("star")
-                                            .resizable()
-                                            .frame(width: 34, height: 30)
-                                    }
-                                        Button {
-                                            //completar
-                                        }
-                                    label: {
-                                        Image("star")
-                                            .resizable()
-                                            .frame(width: 34, height: 30)
-                                    }
-                                        Button {
-                                            //completar
-                                        }
-                                    label: {
-                                        Image("star")
-                                            .resizable()
-                                            .frame(width: 34, height: 30)
-                                    }
-                                        Button {
-                                            //completar
-                                        }
-                                    label: {
-                                        Image("star")
-                                            .resizable()
-                                            .frame(width: 34, height: 30)
-                                    }
-                                    }
-                                    Text("Minha avaliação")
-                                        .font(.system(size: 13))
-                                    .foregroundColor(scheme == .light ? .black : .white)                                    }
-                                
-                                HStack{
-                                    
-                                }
-                                .padding(.bottom, 10)
+                                RatingButton()
+                                    .padding(.bottom, 10)
                                 
                                 Text (book.sinopsis)
                                     .font(.system(size: 17, weight: .regular))
