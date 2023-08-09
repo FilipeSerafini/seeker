@@ -109,6 +109,7 @@ struct APIBookResponse: Decodable {
 }
 
 struct BookItemResponse: Decodable {
+    var id: String
     var volumeInfo: APIBook
 }
 
@@ -132,11 +133,9 @@ struct APIBook: Decodable {
         case rating = "averageRating"
         case sinopsis = "description"
         case title
-        
-        
     }
     
-    var id: String? = UUID().uuidString
+    var id: String?
     var authors: [String]?
     var genres: [String]?
     var image: APIImage?
