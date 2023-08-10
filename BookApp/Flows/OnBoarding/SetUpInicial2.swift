@@ -1,10 +1,3 @@
-//
-//  SetUpInicial2.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 09/08/23.
-//
-
 import SwiftUI
 
 struct SetUpInicial2: View {
@@ -12,6 +5,7 @@ struct SetUpInicial2: View {
     @State private var name = ""
     @State private var isEditing: Bool = false
     @EnvironmentObject private var selectedGenres: SelectedGenres
+    @EnvironmentObject private var recommendedViewModel: RecommendedViewModel
     
     var body: some View {
         NavigationStack {
@@ -32,16 +26,21 @@ struct SetUpInicial2: View {
                 }
                 .padding(.top, 50)
                 
-                NavigationLink(destination: LibraryView().navigationBarBackButtonHidden(true), label: {
-                    ZStack {
-                        Rectangle()
-                            .fill(Color("primary"))
-                            .cornerRadius(30)
-                            .frame(width: 100, height: 45)
-                        Text("Começar")
-                            .foregroundColor(.white)
-                    }
-                })
+                NavigationLink(destination: TabViewApp()
+                    .navigationBarBackButtonHidden(true)
+                    .environmentObject(UserCRUD())
+                    .environmentObject(UserManager())
+                    .environmentObject(recommendedViewModel)
+                    .environmentObject(selectedGenres), label: {
+                        ZStack {
+                            Rectangle()
+                                .fill(Color("primary"))
+                                .cornerRadius(30)
+                                .frame(width: 100, height: 45)
+                            Text("Começar")
+                                .foregroundColor(.white)
+                        }
+                    })
                 .disabled(selectedGenres.genres.count < 3)
                 .opacity(selectedGenres.genres.count < 3 ? 0.6 : 1)
                 .padding(.top, 60)

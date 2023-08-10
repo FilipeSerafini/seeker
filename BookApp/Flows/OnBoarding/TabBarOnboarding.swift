@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct TabBarOnboarding: View {
+    
+    @EnvironmentObject private var selectedGenres: SelectedGenres
+
     var body: some View {
         NavigationStack{
             TabView {
@@ -10,6 +13,7 @@ struct TabBarOnboarding: View {
             }
             .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
+            .environmentObject(selectedGenres)
         }
         .navigationBarBackButtonHidden(true)
     }
