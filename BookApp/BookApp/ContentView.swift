@@ -3,6 +3,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isActive = false
+    @StateObject private var selectedGenres = SelectedGenres()
     
     @StateObject private var recommendedViewModel = RecommendedViewModel()
     
@@ -15,6 +16,7 @@ struct ContentView: View {
                     .environmentObject(UserCRUD())
                     .environmentObject( UserManager())
                     .environmentObject(recommendedViewModel)
+                    .environmentObject(selectedGenres)
             } else {
                 Preview()
             }
@@ -34,5 +36,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(UserCRUD())
+            .environmentObject(UserManager())
     }
 }

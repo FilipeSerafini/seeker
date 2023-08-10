@@ -11,7 +11,6 @@ extension UIImage {
 }
 
 struct TabViewApp: View {
-    
     @State private var selectedTab = 0
     @StateObject var searchViewModel = SearchViewModel()
     @EnvironmentObject private var recommendedViewModel: RecommendedViewModel
@@ -87,5 +86,7 @@ struct TabViewApp: View {
 struct TabViewApp_Previews: PreviewProvider {
     static var previews: some View {
         TabViewApp()
+            .environmentObject(SearchViewModel())
+            .environmentObject(RecommendedViewModel())
     }
 }
