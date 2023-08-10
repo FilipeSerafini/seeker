@@ -2,8 +2,11 @@ import SwiftUI
 
 struct BookView: View {
     @State var book: Book
+    @State var rating: Int = 3
     @State var showSheet: Bool = false
     @State private var startConfirm = false
+    
+    @StateObject var ratingViewModel: RatingViewModel
     
     @Environment(\.colorScheme) var scheme
     @Environment(\.presentationMode) private var presetationMode: Binding<PresentationMode>
@@ -36,7 +39,7 @@ struct BookView: View {
                                     .padding(.bottom, 5)
                                     .padding(.top, 1)
                                 
-                                RatingButton()
+                                RatingButton(book: self.$book, rating: self.$rating, ratingViewModel: RatingViewModel())
                                     .padding(.bottom, 10)
                                 
                                 Text (book.sinopsis)

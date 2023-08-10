@@ -9,11 +9,16 @@ import SwiftUI
 
 struct RatingButton: View {
     @State private var activeButton: Int? = nil
-    @State var rating: Int = 0
+    
+    @Binding var book: Book
+    @Binding var rating: Int
+    
+    @StateObject var ratingViewModel: RatingViewModel
     
     var body: some View {
         VStack {
             HStack {
+                
                 ForEach(1...5, id: \.self) { index in
                     Button(action: {
                         self.activeButton = self.toggleActiveButton(index)
@@ -29,12 +34,13 @@ struct RatingButton: View {
                         Image("star")
                             .resizable()
                             .frame(width: 31, height: 29)
-                            .background(self.isActive(index) ? Image("star.fill")
-                                .resizable()
-                                .frame(width: 31, height: 29)
-                                        : Image("star")
-                                .resizable()
-                                .frame(width: 31, height: 29)
+                            .background(rating >= index ?
+                                        Image("star.fill")
+                                            .resizable()
+                                            .frame(width: 31, height: 29) :
+                                        Image("star")
+                                            .resizable()
+                                            .frame(width: 31, height: 29)
                             )
                     }
                 }
@@ -42,6 +48,9 @@ struct RatingButton: View {
             Text("Minha avaliação")
                 .font(.system(size: 13))
         }
+        .onDisappear(perform: {
+            self.ratingViewModel.addRateReview(rate: self.rating, book: self.book)
+        })
     }
     
     func isActive(_ index: Int) -> Bool {
@@ -59,8 +68,8 @@ struct RatingButton: View {
         return index
     }
 }
-struct RatingButton_Previews: PreviewProvider {
-    static var previews: some View {
-        RatingButton()
-    }
-}
+//struct RatingButton_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RatingButton()
+//    }
+//}
