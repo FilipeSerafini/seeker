@@ -6,9 +6,7 @@ struct SearchView: View {
     var body: some View {
         
         NavigationStack {
-            
-            SearchableView()
-            
+            SearchableView()            
                 .navigationBarTitle("Buscar")
         }
     }

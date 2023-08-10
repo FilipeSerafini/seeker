@@ -12,7 +12,7 @@ extension UIImage {
 
 struct TabViewApp: View {
     @State private var selectedTab = 0
-    @StateObject var searchViewModel = SearchViewModel()
+    @StateObject var searchViewModel: SearchViewModel = SearchViewModel()
     @EnvironmentObject private var recommendedViewModel: RecommendedViewModel
     
     init() {
@@ -79,7 +79,6 @@ struct TabViewApp: View {
         .tint(Color("primary"))
         .environmentObject(searchViewModel)
         .environmentObject(recommendedViewModel)
-        
     }
 }
 
@@ -88,5 +87,6 @@ struct TabViewApp_Previews: PreviewProvider {
         TabViewApp()
             .environmentObject(SearchViewModel())
             .environmentObject(RecommendedViewModel())
+            .environmentObject(SelectedGenres())
     }
 }

@@ -4,7 +4,6 @@ import SwiftUI
 struct ContentView: View {
     @State private var isActive = false
     @StateObject private var selectedGenres = SelectedGenres()
-    
     @StateObject private var recommendedViewModel = RecommendedViewModel()
     
     var body: some View {
@@ -14,7 +13,7 @@ struct ContentView: View {
                 //                addToFolderHeader()
                 TabViewApp()
                     .environmentObject(UserCRUD())
-                    .environmentObject( UserManager())
+                    .environmentObject(UserManager())
                     .environmentObject(recommendedViewModel)
                     .environmentObject(selectedGenres)
             } else {

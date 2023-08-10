@@ -16,15 +16,11 @@ extension Publisher where Output == [APIBook] {
                 apiBooks.publisher
             })
             .filter ({ apiBook in
-                if (apiBook.sinopsis == nil) {
-                    return false
-                } else {
-                    return true
-                }
+                return apiBook.sinopsis != nil
             })
-            .compactMap({ apiBook -> Book in
+            .compactMap({ apiBook -> Book? in
                 let newBook = Book(id: apiBook.id ?? "N/A", authors: apiBook.authors ?? ["N/A"], genres: apiBook.genres ?? ["N/A"], image: apiBook.image?.thumbnail ?? "image", isbns: apiBook.isbns?.map(\.identifier) ?? ["N/A"], rating: apiBook.rating?.description ?? "N/A", sinopsis: apiBook.sinopsis ?? "N/A", title: apiBook.title ?? "N/A", imageCover: nil)
-                return newBook!
+                return newBook
             })
             .collect()
             .mapError({ $0 as Error })
