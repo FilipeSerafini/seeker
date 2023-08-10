@@ -6,7 +6,6 @@ struct AddReview: View {
     @State private var addReview = ""
     
     var body: some View {
-        
         NavigationView {
             VStack(alignment: .leading){
                 HStack{
@@ -15,7 +14,6 @@ struct AddReview: View {
                             .resizable()
                             .frame(width: 62, height: 88)
                             .cornerRadius(10)
-                        // .shadow(color: Color.black.opacity(0.25), radius: 3.2, x: 0, y: 3.2)
                     }
                     
                     VStack(alignment: .leading){

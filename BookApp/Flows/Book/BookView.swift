@@ -17,6 +17,7 @@ struct BookView: View {
                                 .resizable()
                                 .frame(width: 170, height: 244)
                                 .cornerRadius(15)
+                                .shadow(color: Color.black.opacity(0.25), radius: 3.2, x: 0, y: 3.2)
                         }
                         VStack {
                             ScrollView(showsIndicators: false){
@@ -78,7 +79,6 @@ struct BookView: View {
                     }
                 }
             }
-            //            .background(scheme == .light ? .black : .white)
         }
         .background(
             Image("backgroundImage")
