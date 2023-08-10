@@ -2,6 +2,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var firstTimeHere: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     @State private var isActive = false
     @StateObject private var selectedGenres = SelectedGenres()
     @StateObject private var recommendedViewModel = RecommendedViewModel()
@@ -9,20 +11,24 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if self.isActive {
-                //                FolderRow(folder: Folder(books: [], description: "a", name: "Livros que quero ler")!, imageName: "folderSelected")
-                //                addToFolderHeader()
-                TabViewApp()
-                    .environmentObject(UserCRUD())
-                    .environmentObject(UserManager())
-                    .environmentObject(recommendedViewModel)
-                    .environmentObject(selectedGenres)
+                if firstTimeHere {
+                    TabBarOnboarding()
+                        .environmentObject(selectedGenres)
+                        .environmentObject(recommendedViewModel)
+                }
+                else{
+                    TabViewApp()
+                        .environmentObject(UserCRUD())
+                        .environmentObject(UserManager())
+                        .environmentObject(recommendedViewModel)
+                        .environmentObject(selectedGenres)
+                }
             } else {
                 Preview()
             }
         }
         .onAppear {
             recommendedViewModel.fetchAll(searchedText: "Young Adult Fiction", "Romance", "Rupi Kaur", filter: .genre, .author)
-#warning("mudar tempo para 1.5")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 withAnimation {
                     self.isActive = true
@@ -32,10 +38,10 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .environmentObject(UserCRUD())
-            .environmentObject(UserManager())
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//            .environmentObject(UserCRUD())
+//            .environmentObject(UserManager())
+//    }
+//}

@@ -5,6 +5,7 @@ struct SetUpInicial: View {
     @State private var username = ""
     @State private var name = ""
     @State private var isEditing: Bool = false
+    @EnvironmentObject private var selectedGenres: SelectedGenres
     
     var body: some View {
         NavigationStack {
@@ -14,7 +15,7 @@ struct SetUpInicial: View {
                     .font(.system(size: 17, weight: .regular))
             }
             .padding(.bottom, 20)
-
+            
             VStack {
                 HStack{
                     Text("Nome")
@@ -39,18 +40,18 @@ struct SetUpInicial: View {
                 .resizable()
                 .frame(width: 340, height: 240)
             
-            NavigationLink(destination: LibraryView().navigationBarBackButtonHidden(true), label: {
+            NavigationLink(destination: SetUpInicial2().navigationBarBackButtonHidden(true), label: {
                 ZStack {
                     Rectangle()
                         .fill(Color("primary"))
                         .cornerRadius(30)
                         .frame(width: 100, height: 45)
-                    Text("Conitnuar")
+                    Text("Continuar")
                         .foregroundColor(.white)
                 }
             })
             .padding(.top, 60)
-
+            
         }
     }
 }

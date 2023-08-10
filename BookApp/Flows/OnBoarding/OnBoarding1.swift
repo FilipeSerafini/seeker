@@ -5,7 +5,7 @@ struct OnBoarding1: View {
         VStack {
             HStack {
                 Spacer()
-                NavigationLink(destination: LibraryView().navigationBarBackButtonHidden(true), label: {
+                NavigationLink(destination: SetUpInicial().navigationBarBackButtonHidden(true), label: {
                     Text("Skip")
                         .font(.system(size: 20))
                         .foregroundColor(.gray)
@@ -13,18 +13,15 @@ struct OnBoarding1: View {
             }
             VStack{
                 VStack{
-                    Image("zoeImage")
+                    Image("zoeChat")
                         .resizable()
-                        .frame(width: 398, height: 336)
+                        .frame(width: 398, height: 276)
                 }
                 .frame(height: 350)
                 
                 VStack{
-                    Text("Bem-vindos!")
-                        .font(.system(size: 34, design: .serif))
-                        .multilineTextAlignment(.center)
-                        .padding(3)
-                    Text("Esse é o nosso app!")
+                    Text("Organize seus livros em pastas da maneira que preferir: mantendo tudo super simples ou super detalhado!")
+                        .font(.system(size: 13, weight: .regular))
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: 290)
                     Spacer()
