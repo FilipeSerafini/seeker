@@ -11,12 +11,14 @@ struct SetUpInicial2: View {
     @State private var username = ""
     @State private var name = ""
     @State private var isEditing: Bool = false
+    @EnvironmentObject private var selectedGenres: SelectedGenres
     
     var body: some View {
         NavigationStack {
             VStack{
                 VStack{
-                    Text("Vamos nos conhecer melhor!\nQuais são seus gêneros literários favoritos?")   .multilineTextAlignment(.center)
+                    Text("Vamos nos conhecer melhor!\nQuais são seus gêneros literários favoritos?")
+                        .multilineTextAlignment(.center)
                         .font(.system(size: 17, weight: .regular))
                         .padding(.bottom)
                     
@@ -39,10 +41,9 @@ struct SetUpInicial2: View {
                         Text("Começar")
                             .foregroundColor(.white)
                     }
-                    
                 })
-                // .disabled(username == "")
-                // .opacity(username == "" ? 0.6 : 1)
+                .disabled(selectedGenres.genres.count < 3)
+                .opacity(selectedGenres.genres.count < 3 ? 0.6 : 1)
                 .padding(.top, 60)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -59,5 +60,6 @@ struct SetUpInicial2: View {
 struct SetUpInicial2_Previews: PreviewProvider {
     static var previews: some View {
         SetUpInicial2()
+            .environmentObject(SelectedGenres())
     }
 }

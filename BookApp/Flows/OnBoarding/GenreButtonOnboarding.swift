@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+class SelectedGenres: ObservableObject {
+    @Published var genres: [String] = []
+}
+
 struct ButtonData: Identifiable {
     let id: Int
     let title: String
@@ -15,7 +19,7 @@ struct ButtonData: Identifiable {
 }
 
 struct GenreButtonOnboarding: View {
-    @State private var selectedGenres: [String] = []
+    @EnvironmentObject private var selectedGenres: SelectedGenres
     @State private var buttons: [ButtonData] = [
         ButtonData(id: 0, title: "Fantasia", isSelected: false, genre: .fantasy),
         ButtonData(id: 1, title: "Suspese", isSelected: false, genre: .thriller),
@@ -123,9 +127,9 @@ struct GenreButtonOnboarding: View {
         
         if buttons.filter({ $0.isSelected }).count < 3 || button.isSelected {
             if button.isSelected {
-                selectedGenres.removeAll { $0 == button.genre.rawValue }
+                selectedGenres.genres.removeAll { $0 == button.genre.rawValue }
             } else {
-                selectedGenres.append(button.genre.rawValue)
+                selectedGenres.genres.append(button.genre.rawValue)
             }
             buttons[index].isSelected.toggle()
         }
