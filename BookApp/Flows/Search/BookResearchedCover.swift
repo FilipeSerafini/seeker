@@ -16,7 +16,7 @@ struct BookResearchedCover: View {
             }
             .frame(width: 95, height: 136)
             .cornerRadius(8)
-            .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book) })
+            .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book, ratingViewModel: RatingViewModel()) })
         }
     }
 }
