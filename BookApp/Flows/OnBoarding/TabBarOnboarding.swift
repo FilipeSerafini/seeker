@@ -11,6 +11,15 @@ struct TabBarOnboarding: View {
                 OnBoarding2()
                 OnBoarding3()
             }
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: SetUpInicial().navigationBarBackButtonHidden(true), label: {
+                        Text("Pular")
+                            .font(.system(size: 20))
+                            .foregroundColor(.gray)
+                    })
+                }
+            }
             .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
             .environmentObject(selectedGenres)
@@ -22,5 +31,6 @@ struct TabBarOnboarding: View {
 struct TabBarOnboarding_Previews: PreviewProvider {
     static var previews: some View {
         TabBarOnboarding()
+        .environmentObject(SelectedGenres())
     }
 }
