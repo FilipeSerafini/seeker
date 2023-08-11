@@ -5,18 +5,17 @@ struct BookResearchedCover: View {
     let book: Book
     
     var body: some View {
-        NavigationStack{
-            VStack{
-                Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
-                    .resizable()
-                    .scaledToFill()
-                    .onTapGesture {
-                        startConfirm.toggle()
-                    }
-            }
-            .frame(width: 95, height: 136)
-            .cornerRadius(8)
-            .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book, ratingViewModel: RatingViewModel()) })
+        
+        VStack{
+            Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
+                .resizable()
+                .scaledToFill()
+                .onTapGesture {
+                    startConfirm.toggle()
+                }
         }
+        .frame(width: 95, height: 136)
+        .cornerRadius(8)
+        .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book, ratingViewModel: RatingViewModel()) })
     }
 }

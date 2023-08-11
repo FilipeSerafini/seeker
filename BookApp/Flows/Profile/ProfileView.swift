@@ -10,50 +10,48 @@ struct ProfileView: View {
         NavigationStack {
             
             VStack{
-                NavigationStack {
-                    VStack{
-                        Image("usuariaTeste")
-                            .resizable()
-                            .frame(width: 110, height: 110)
-                            .clipShape(Circle())
-                        Text ("@manuaraujo")
-                            .font(.system(size: 17))
-                        Text ("Manu Araujo")
-                            .font(.system(size: 34, design: .serif))
-                        Text ("Amo ler e viajar com amigos!")
-                            .frame(width: 300)
-                            .font(.system(size: 15))
-                            .padding(.top, -16)
-                    }
-                    ScrollView(showsIndicators: false){
-                        LazyVGrid(columns: columns, spacing: 10) {
-                            
-                            //                            ForEach() { commentButton in
-                            //                                SmallCommentButton(book: commentButton)
-                            //                            }
-                            
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            
-                        }
-                    }
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing){
-                            
-                            NavigationLink(destination: UserSettings(), label: {
-                                Image("pencil")
-                            })
-                        }
-                    }
-                    
+                VStack{
+                    Image("usuariaTeste")
+                        .resizable()
+                        .frame(width: 110, height: 110)
+                        .clipShape(Circle())
+                    Text ("@manuaraujo")
+                        .font(.system(size: 17))
+                    Text ("Manu Araujo")
+                        .font(.system(size: 34, design: .serif))
+                    Text ("Amo ler e viajar com amigos!")
+                        .frame(width: 300)
+                        .font(.system(size: 15))
+                        .padding(.top, -16)
                 }
+                ScrollView(showsIndicators: false){
+                    LazyVGrid(columns: columns, spacing: 10) {
+                        
+                        //                            ForEach() { commentButton in
+                        //                                SmallCommentButton(book: commentButton)
+                        //                            }
+                        
+                        MediumCommentButton()
+                        MediumCommentButton()
+                        MediumCommentButton()
+                        MediumCommentButton()
+                        MediumCommentButton()
+                        MediumCommentButton()
+                        MediumCommentButton()
+                        MediumCommentButton()
+                        MediumCommentButton()
+                        
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        
+                        NavigationLink(destination: UserSettings(), label: {
+                            Image("pencil")
+                        })
+                    }
+                }
+                
             }
             .padding()
             .background(

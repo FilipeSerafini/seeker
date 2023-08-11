@@ -2,18 +2,17 @@ import SwiftUI
 
 struct TabBarOnboarding: View {
     
-    @EnvironmentObject private var selectedGenres: SelectedGenres
-
+    @Binding var onboarding: Bool
     var body: some View {
         NavigationStack{
             TabView {
                 OnBoarding1()
                 OnBoarding2()
-                OnBoarding3()
+                OnBoarding3(onboarding: $onboarding)
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: SetUpInicial().navigationBarBackButtonHidden(true), label: {
+                    NavigationLink(destination: SetUpInicial(onboarding: $onboarding).navigationBarBackButtonHidden(true), label: {
                         Text("Pular")
                             .font(.system(size: 20))
                             .foregroundColor(.gray)
@@ -29,15 +28,14 @@ struct TabBarOnboarding: View {
             )
             .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
-            .environmentObject(selectedGenres)
         }
         .navigationBarBackButtonHidden(true)
     }
 }
 
-struct TabBarOnboarding_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBarOnboarding()
-        .environmentObject(SelectedGenres())
-    }
-}
+//struct TabBarOnboarding_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TabBarOnboarding()
+//        //.environmentObject(SelectedGenres())
+//    }
+//}
