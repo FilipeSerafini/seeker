@@ -3,6 +3,8 @@ import SwiftUI
 struct ProfileView: View {
     var body: some View {
         
+        @EnvironmentObject var userManager: UserManager
+        
         let columns = [
             GridItem(.flexible()),
             GridItem(.flexible()),
@@ -34,13 +36,11 @@ struct ProfileView: View {
                             
                             MediumCommentButton()
                             MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
-                            MediumCommentButton()
+                            
+//                            userManager.userRateReviews.forEach { rateReview in
+//                                Text(rateReview.bookID)
+//                                Text(rateReview.rate)
+//                            }
                             
                         }
                     }

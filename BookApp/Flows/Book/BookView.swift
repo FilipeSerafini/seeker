@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BookView: View {
     @State var book: Book
-    @State var rating: Int = 3
+    @State var rating: Int = 0
     @State var showSheet: Bool = false
     @State private var startConfirm = false
     

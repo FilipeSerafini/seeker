@@ -13,6 +13,24 @@ class RatingViewModel: ObservableObject {
     
     @Published var book: Book = Book()
     @Published var bookRate: Int = 0
+    @Published var userID: String = ""
+    
+    @EnvironmentObject var userManager: UserManager
+    
+    
+    func fetchRateReview() {
+        CloudKitUtility.fetchUserRecordID { (result: Result<CKRecord.ID, Error>) in
+            switch result {
+            case .success(let recordID):
+                
+                self.userManager.fetchRateReviewWith(recordID: recordID)
+                
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+        
+    }
     
     
     
