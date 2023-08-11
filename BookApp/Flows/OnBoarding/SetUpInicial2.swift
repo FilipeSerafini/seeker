@@ -16,7 +16,7 @@ struct SetUpInicial2: View {
                         .font(.system(size: 17, weight: .regular))
                         .padding(.bottom)
                     
-                    Text("Escolha ao menos três para prosseguir.")
+                    Text("Escolha três para prosseguir.")
                         .multilineTextAlignment(.center)
                         .font(.system(size: 15))
                 }
@@ -24,8 +24,9 @@ struct SetUpInicial2: View {
                 VStack {
                     GenreButtonOnboarding()
                 }
-                .padding(.top, 50)
-                
+                .padding(.top, 100)
+                .padding(.bottom, 50)
+
                 NavigationLink(destination: TabViewApp()
                     .navigationBarBackButtonHidden(true)
                     .environmentObject(UserCRUD())
@@ -36,9 +37,10 @@ struct SetUpInicial2: View {
                             Rectangle()
                                 .fill(Color("primary"))
                                 .cornerRadius(30)
-                                .frame(width: 100, height: 45)
-                            Text("Começar")
+                                .frame(width: 125, height: 39)
+                            Text("Tudo pronto!")
                                 .foregroundColor(.white)
+                                .font(.system(size: 17))
                         }
                     })
                 .disabled(selectedGenres.genres.count < 3)
@@ -60,5 +62,6 @@ struct SetUpInicial2_Previews: PreviewProvider {
     static var previews: some View {
         SetUpInicial2()
             .environmentObject(SelectedGenres())
+            .environmentObject(RecommendedViewModel())
     }
 }

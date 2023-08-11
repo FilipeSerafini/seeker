@@ -193,9 +193,9 @@
 				4C5849D62A81889400C7AF97 /* OnBoarding1.swift */,
 				4C5849D82A81894100C7AF97 /* OnBoarding2.swift */,
 				4C5849DA2A818A3A00C7AF97 /* OnBoarding3.swift */,
-				7C002BBC2A843BEF00B872CB /* Genres.swift */,
 				4C561BE42A8426D900DDDF9A /* SetUpInicial.swift */,
 				7C002BBA2A8430FA00B872CB /* SetUpInicial2.swift */,
+				7C002BBC2A843BEF00B872CB /* Genres.swift */,
 				7C002BC42A851BB800B872CB /* GenreButtonOnboarding.swift */,
 			);
 			path = OnBoarding;
