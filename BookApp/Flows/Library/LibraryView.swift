@@ -51,8 +51,9 @@ struct LibraryView: View {
                 VStack {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 0) {
-                            ForEach(folders) { folder in
+                            ForEach(userManager.folders) { folder in
                                 FolderView(folder: folder)
+                                    .environmentObject(viewModel)
                             }
                         }
                     }

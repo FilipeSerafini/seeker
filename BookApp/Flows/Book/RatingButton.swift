@@ -50,7 +50,7 @@ struct RatingButton: View {
         }
         .onDisappear(perform: {
             self.ratingViewModel.addRateReview(rate: self.rating, book: self.book)
-            self.ratingViewModel.fetchRateReview()
+//            self.ratingViewModel.fetchRateReview()
         })
     }
     
