@@ -26,7 +26,7 @@ struct OnBoarding3: View {
                                         .cornerRadius(22)
                                         .frame(width: 125, height: 39)
                                     Text("Começar")
-                                        .font(.system(size: 13, weight: .regular))
+                                        .font(.system(size: 17, weight: .regular))
                                         .foregroundColor(.white)
                                 }
                             })
@@ -35,13 +35,6 @@ struct OnBoarding3: View {
                     }
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(
-                Image("backgroundImage")
-                    .resizable()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .ignoresSafeArea()
-            )
         }
     }
 }
