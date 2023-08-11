@@ -80,13 +80,16 @@ struct TabViewApp: View {
         .tint(Color("primary"))
         .environmentObject(searchViewModel)
         .onAppear {
-            let firstTime = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
-            
+            let firstTime: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
             if firstTime {
-                print("setando para false onboard e salvando generos")
                 UserDefaults.standard.set(false, forKey: "firstTimeHere")
-                UserDefaults.standard.set(selectedGenres.genres, forKey: "savedGenres")
-                recommendedViewModel.fetchAll(searchedText: selectedGenres.genres[0], selectedGenres.genres[1], selectedGenres.genres[2], filter: .genre)
+                UserDefaults.standard.set(selectedGenres.genres.map({ $0.toApi }), forKey: "genresAPI")
+                UserDefaults.standard.set(selectedGenres.genres.map({ $0.toUser }), forKey: "genresUser")
+                
+                selectedGenres.genresAPI = selectedGenres.genres.map({ $0.toApi })
+                selectedGenres.genresUser = selectedGenres.genres.map({ $0.toUser })
+                
+                recommendedViewModel.fetchAll(searchedText: selectedGenres.genresAPI[0], selectedGenres.genresAPI[1], selectedGenres.genresAPI[2], filter: .genre)
             }
         }
     }
