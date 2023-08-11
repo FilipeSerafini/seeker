@@ -49,7 +49,9 @@ struct SetUpInicial: View {
                 }
                 .font(.system(size: 17))
                 
-                NavigationLink(destination: SetUpInicial2().navigationBarBackButtonHidden(true), label: {
+                NavigationLink(destination: SetUpInicial2()
+                    .environmentObject(selectedGenres)
+                    .navigationBarBackButtonHidden(true), label: {
                     ZStack {
                         Rectangle()
                             .fill(Color("primary"))

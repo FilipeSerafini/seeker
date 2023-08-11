@@ -127,9 +127,9 @@ struct GenreButtonOnboarding: View {
         
         if buttons.filter({ $0.isSelected }).count < 3 || button.isSelected {
             if button.isSelected {
-                selectedGenres.genres.removeAll { $0 == button.genre.rawValue }
+                selectedGenres.genres.removeAll { $0 == button.genre.description }
             } else {
-                selectedGenres.genres.append(button.genre.rawValue)
+                selectedGenres.genres.append(button.genre.description)
             }
             buttons[index].isSelected.toggle()
         }

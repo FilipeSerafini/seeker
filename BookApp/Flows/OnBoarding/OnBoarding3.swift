@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct OnBoarding3: View {
+    
+    @EnvironmentObject private var selectedGenres: SelectedGenres
+    
     var body: some View {
         NavigationStack{
             VStack {
@@ -19,7 +22,9 @@ struct OnBoarding3: View {
                             .padding()
                         
                         VStack{
-                            NavigationLink(destination: SetUpInicial().navigationBarBackButtonHidden(true), label: {
+                            NavigationLink(destination: SetUpInicial()
+                                .environmentObject(selectedGenres)
+                                .navigationBarBackButtonHidden(true), label: {
                                 ZStack {
                                     Rectangle()
                                         .fill(Color("primary"))

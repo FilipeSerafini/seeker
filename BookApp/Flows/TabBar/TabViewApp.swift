@@ -14,6 +14,7 @@ struct TabViewApp: View {
     @State private var selectedTab = 0
     @StateObject var searchViewModel: SearchViewModel = SearchViewModel()
     @EnvironmentObject private var recommendedViewModel: RecommendedViewModel
+    @EnvironmentObject private var selectedGenres: SelectedGenres
     
     init() {
         // UITabBar configuration
@@ -79,14 +80,25 @@ struct TabViewApp: View {
         .tint(Color("primary"))
         .environmentObject(searchViewModel)
         .environmentObject(recommendedViewModel)
+        .environmentObject(selectedGenres)
+        .onAppear {
+            let firstTime = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
+            
+            if firstTime {
+                print("setando para false onboard e salvando generos")
+                UserDefaults.standard.set(false, forKey: "firstTimeHere")
+                UserDefaults.standard.set(selectedGenres.genres, forKey: "savedGenres")
+                recommendedViewModel.fetchAll(searchedText: selectedGenres.genres[0], selectedGenres.genres[1], selectedGenres.genres[2], filter: .genre)
+            }
+        }
     }
 }
 
-struct TabViewApp_Previews: PreviewProvider {
-    static var previews: some View {
-        TabViewApp()
-            .environmentObject(SearchViewModel())
-            .environmentObject(RecommendedViewModel())
-            .environmentObject(SelectedGenres())
-    }
-}
+//struct TabViewApp_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TabViewApp()
+//            .environmentObject(SearchViewModel())
+//            .environmentObject(RecommendedViewModel())
+//            .environmentObject(SelectedGenres())
+//    }
+//}

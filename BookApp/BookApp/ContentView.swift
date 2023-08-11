@@ -15,8 +15,7 @@ struct ContentView: View {
                     TabBarOnboarding()
                         .environmentObject(selectedGenres)
                         .environmentObject(recommendedViewModel)
-                }
-                else{
+                } else {
                     TabViewApp()
                         .environmentObject(UserCRUD())
                         .environmentObject(UserManager())
@@ -28,7 +27,16 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            recommendedViewModel.fetchAll(searchedText: "Young Adult Fiction", "Romance", "Rupi Kaur", filter: .genre, .author)
+            
+            if !firstTimeHere {
+                print("carregando na content")
+                
+                let savedGenres = UserDefaults.standard.object(forKey: "savedGenres") as! [String]
+                selectedGenres.genres = savedGenres
+                
+                recommendedViewModel.fetchAll(searchedText: selectedGenres.genres[0], selectedGenres.genres[1], selectedGenres.genres[2], filter: .genre)
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 withAnimation {
                     self.isActive = true

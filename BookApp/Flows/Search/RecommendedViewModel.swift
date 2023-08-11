@@ -2,6 +2,11 @@ import Foundation
 import Combine
 import SwiftUI
 
+private enum State: Comparable {
+    case isLoading
+    case alreadyLoaded
+}
+
 class RecommendedViewModel: ObservableObject {
     @Published var firstList: [Book] = []
     @Published var secondList: [Book] = []
@@ -9,21 +14,28 @@ class RecommendedViewModel: ObservableObject {
     private let service: BookService = BookService()
     private var subscriptions = Set<AnyCancellable>()
     private var currentPag: Int = 0
+    private var currentState: State = .alreadyLoaded
     
-    func fetchAll(searchedText: String..., filter: Filter...) {
+    func fetchAll(searchedText: String..., filter: Filter) {
+        
+        if currentState == .isLoading {
+            return
+        }
+        
+        currentState = .isLoading
         
         let defaults = UserDefaults.standard
         self.currentPag = defaults.integer(forKey: "currentPag")
         
-        let list1 = self.service.fetchBooks(searchedText: searchedText[0], page: self.currentPag, filter: filter[0])
+        let list1 = self.service.fetchBooks(searchedText: searchedText[0], page: self.currentPag, filter: filter)
             .mapAPIBookToBook()
             .setBookImages(withService: self.service)
         
-        let list2 = self.service.fetchBooks(searchedText: searchedText[1], page: self.currentPag, filter: filter[0])
+        let list2 = self.service.fetchBooks(searchedText: searchedText[1], page: self.currentPag, filter: filter)
             .mapAPIBookToBook()
             .setBookImages(withService: self.service)
         
-        let list3 = self.service.fetchBooks(searchedText: searchedText[2], page: self.currentPag, filter: filter[1])
+        let list3 = self.service.fetchBooks(searchedText: searchedText[2], page: self.currentPag, filter: filter)
             .mapAPIBookToBook()
             .setBookImages(withService: self.service)
         
@@ -38,6 +50,7 @@ class RecommendedViewModel: ObservableObject {
                 } else {
                     defaults.set(self.currentPag + 20, forKey: "currentPag")
                 }
+                self.currentState = .alreadyLoaded
             })
             .store(in: &subscriptions)
     }
