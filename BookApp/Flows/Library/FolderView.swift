@@ -7,6 +7,8 @@ struct FolderView: View {
     
     @EnvironmentObject var libraryViewModel: LibraryViewModel
     
+    @State var navigateToFolder: Bool = false
+    
     var body: some View {
         GeometryReader { proxy in
             let rect = proxy.frame(in: .named("SCROLL"))
@@ -38,12 +40,7 @@ struct FolderView: View {
                             Text(folder.name)
                                 .font(.system(size: 24, design: .serif))
                                 .padding(.top, 10)
-                            NavigationLink {
-                                FolderCardView(folder: folder)
-                                
-                            } label: {
-                                Text ("Ver mais")
-                            }
+                            
                             
                             
                         }
@@ -66,6 +63,7 @@ struct FolderView: View {
                 Rectangle()
                     .fill(.black.opacity(expandFolder ? 0.01 : 0.01))
                     .onTapGesture {
+                        navigateToFolder.toggle()
                         if expandFolder {
                             withAnimation(.easeOut(duration: 0.35)){
                                 expandFolder = false
@@ -82,6 +80,10 @@ struct FolderView: View {
         }
         .padding(.bottom, 30)
         .offset(y: 120)
+        .navigationDestination(isPresented: $navigateToFolder, destination: {
+            FolderCardView(folder: folder)
+                .environmentObject(libraryViewModel)
+        })
     }
     func getIndex(folder: Folder)->Int{
         return folders.firstIndex { currentFolder in
