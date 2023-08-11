@@ -39,4 +39,22 @@ enum Genre: String {
         case .empty: return ""
         }
     }
+    
+    var description: String {
+        switch self {
+        case .romance: return "Romance"
+        case .fiction: return "Ficção"
+        case .poetry: return "Poesia"
+        case .horror: return "Terror"
+        case .mystery: return "Mistério"
+        case .selfHelp: return "Autoajuda"
+        case .nonFiction: return "Não ficção"
+        case .fantasy: return "Fantasia"
+        case .thriller: return "Suspese"
+        case .biography: return "Biografia"
+        case .religion: return "Religião"
+        case .philosophy: return "Filosofia"
+        case .empty: return ""
+        }
+    }
 }

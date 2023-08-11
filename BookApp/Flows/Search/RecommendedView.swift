@@ -4,13 +4,14 @@ import Foundation
 struct RecommendedView: View {
     
     @EnvironmentObject private var recommendedViewModel: RecommendedViewModel
+    @EnvironmentObject private var selectedGenres: SelectedGenres
     
     var body: some View {
         VStack {
             VStack {
                 HStack{
                     if !recommendedViewModel.firstList.isEmpty {
-                        Text("Livros de Ficção")
+                        Text("Livros de \(selectedGenres.genres[0].description)")
                             .font(.system(size: 17, weight: .semibold, design: .serif))
                             .padding(.leading)
                         Spacer()
@@ -30,7 +31,7 @@ struct RecommendedView: View {
             VStack{
                 HStack {
                     if !recommendedViewModel.secondList.isEmpty{
-                        Text("Livros de Romance")
+                        Text("Livros de \(selectedGenres.genres[1].description)")
                             .font(.system(size: 17, weight: .semibold, design: .serif))
                             .padding(.leading)
                         Spacer()
@@ -50,7 +51,7 @@ struct RecommendedView: View {
             VStack(alignment: .leading){
                 HStack {
                     if !recommendedViewModel.thirdList.isEmpty {
-                        Text("Mais de Rupi Kaur")
+                        Text("Mais de \(selectedGenres.genres[2].description)")
                             .font(.system(size: 17, weight: .semibold, design: .serif))
                             .padding(.leading)
                         Spacer()
