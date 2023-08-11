@@ -79,8 +79,6 @@ struct TabViewApp: View {
         }
         .tint(Color("primary"))
         .environmentObject(searchViewModel)
-        .environmentObject(recommendedViewModel)
-        .environmentObject(selectedGenres)
         .onAppear {
             let firstTime = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
             

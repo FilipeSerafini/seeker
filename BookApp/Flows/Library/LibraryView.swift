@@ -14,7 +14,6 @@ struct LibraryView: View {
     var body: some View {
         NavigationStack {
             VStack{
-                
                 HStack {
                     VStack (alignment: .leading){
                         // Text("E aí, \(userName)?")
@@ -72,7 +71,6 @@ struct LibraryView: View {
         
     }
     
-    //Retreiving Index
     func getIndex(folder: FolderCard)->Int{
         return folders.firstIndex { currentFolder in
             return currentFolder.id == folder.id

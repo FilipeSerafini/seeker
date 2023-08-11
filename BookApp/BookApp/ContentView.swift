@@ -7,27 +7,27 @@ struct ContentView: View {
     @State private var isActive = false
     @StateObject private var selectedGenres = SelectedGenres()
     @StateObject private var recommendedViewModel = RecommendedViewModel()
+    @StateObject private var userCrud = UserCRUD()
+    @StateObject private var userManager = UserManager()
+    @State var onboarding: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     
     var body: some View {
         ZStack {
             if self.isActive {
-                if firstTimeHere {
-                    TabBarOnboarding()
-                        .environmentObject(selectedGenres)
-                        .environmentObject(recommendedViewModel)
+                if onboarding {
+                    TabBarOnboarding(onboarding: $onboarding)
                 } else {
                     TabViewApp()
-                        .environmentObject(UserCRUD())
-                        .environmentObject(UserManager())
-                        .environmentObject(recommendedViewModel)
-                        .environmentObject(selectedGenres)
                 }
             } else {
                 Preview()
             }
         }
+        .environmentObject(userCrud)
+        .environmentObject(userManager)
+        .environmentObject(recommendedViewModel)
+        .environmentObject(selectedGenres)
         .onAppear {
-            
             if !firstTimeHere {
                 print("carregando na content")
                 
