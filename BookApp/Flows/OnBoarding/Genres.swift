@@ -22,7 +22,7 @@ enum Genre: String {
     case philosophy
     case empty
     
-    var url: String {
+    var toApi: String {
         switch self {
         case .romance: return "romance"
         case .fiction: return "fiction"
@@ -40,7 +40,7 @@ enum Genre: String {
         }
     }
     
-    var description: String {
+    var toUser: String {
         switch self {
         case .romance: return "Romance"
         case .fiction: return "Ficção"

@@ -8,7 +8,9 @@
 import SwiftUI
 
 class SelectedGenres: ObservableObject {
-    @Published var genres: [String] = []
+    @Published var genres: [Genre] = []
+    @Published var genresAPI: [String] = []
+    @Published var genresUser: [String] = []
 }
 
 struct ButtonData: Identifiable {
@@ -127,9 +129,9 @@ struct GenreButtonOnboarding: View {
         
         if buttons.filter({ $0.isSelected }).count < 3 || button.isSelected {
             if button.isSelected {
-                selectedGenres.genres.removeAll { $0 == button.genre.description }
+                selectedGenres.genres.removeAll { $0 == button.genre }
             } else {
-                selectedGenres.genres.append(button.genre.description)
+                selectedGenres.genres.append(button.genre)
             }
             buttons[index].isSelected.toggle()
         }

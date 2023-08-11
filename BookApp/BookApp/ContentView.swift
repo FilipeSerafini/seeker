@@ -3,7 +3,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var firstTimeHere: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
+    @State private var firstTimeHere: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     @State private var isActive = false
     @StateObject private var selectedGenres = SelectedGenres()
     @StateObject private var recommendedViewModel = RecommendedViewModel()
@@ -29,15 +29,16 @@ struct ContentView: View {
         .environmentObject(selectedGenres)
         .onAppear {
             if !firstTimeHere {
-                print("carregando na content")
+                let genresAPI = UserDefaults.standard.object(forKey: "genresAPI") as! [String]
+                selectedGenres.genresAPI = genresAPI
                 
-                let savedGenres = UserDefaults.standard.object(forKey: "savedGenres") as! [String]
-                selectedGenres.genres = savedGenres
+                let genresUser = UserDefaults.standard.object(forKey: "genresUser") as! [String]
+                selectedGenres.genresUser = genresUser
                 
-                recommendedViewModel.fetchAll(searchedText: selectedGenres.genres[0], selectedGenres.genres[1], selectedGenres.genres[2], filter: .genre)
+                recommendedViewModel.fetchAll(searchedText: selectedGenres.genresAPI[0], selectedGenres.genresAPI[1], selectedGenres.genresAPI[2], filter: .genre)
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
                 withAnimation {
                     self.isActive = true
                 }
