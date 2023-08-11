@@ -2,43 +2,30 @@ import SwiftUI
 
 struct OnBoarding2: View {
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                NavigationLink(destination: LibraryView().navigationBarBackButtonHidden(true), label: {
-                    Text("Skip")
-                        .font(.system(size: 20))
-                        .foregroundColor(.gray)
-                }).padding(25)
-            }
+        
+        VStack{
             VStack{
-                VStack{
-                    Image("zoeImage")
-                        .resizable()
-                        .frame(width: 398, height: 336)
-                }
-                .frame(height: 350)
-                
-                VStack{
-                    Text("Bem-vindos!")
-                        .font(.system(size: 34, design: .serif))
-                        .multilineTextAlignment(.center)
-                        .padding(3)
-                    Text("Esse é o nosso app!")
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: 290)
-                    Spacer()
-                }
+                Image("onb2")
+                    .resizable()
+                    .frame(width: 340, height: 340)
+            }
+            .frame(height: 350)
+            
+            VStack{
+                Text("Nunca perca um detalhe: avalie e comente suas leituras preferidas sempre que quiser.")
+                    .font(.system(size: 17, weight: .regular))
+                    .multilineTextAlignment(.center)
+                    .padding()
             }
         }
-        .preferredColorScheme(.light)
+        
     }
 }
 
-struct OnBoarding2_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack{
-            OnBoarding2()
-        }
-    }
-}
+//struct OnBoarding2_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationStack{
+//            OnBoarding2()
+//        }
+//    }
+//}

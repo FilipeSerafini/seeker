@@ -11,10 +11,10 @@ extension UIImage {
 }
 
 struct TabViewApp: View {
-    
     @State private var selectedTab = 0
-    @StateObject var searchViewModel = SearchViewModel()
+    @StateObject var searchViewModel: SearchViewModel = SearchViewModel()
     @EnvironmentObject private var recommendedViewModel: RecommendedViewModel
+    @EnvironmentObject private var selectedGenres: SelectedGenres
     
     init() {
         // UITabBar configuration
@@ -79,13 +79,27 @@ struct TabViewApp: View {
         }
         .tint(Color("primary"))
         .environmentObject(searchViewModel)
-        .environmentObject(recommendedViewModel)
-        
+        .onAppear {
+            let firstTime: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
+            if firstTime {
+                UserDefaults.standard.set(false, forKey: "firstTimeHere")
+                UserDefaults.standard.set(selectedGenres.genres.map({ $0.toApi }), forKey: "genresAPI")
+                UserDefaults.standard.set(selectedGenres.genres.map({ $0.toUser }), forKey: "genresUser")
+                
+                selectedGenres.genresAPI = selectedGenres.genres.map({ $0.toApi })
+                selectedGenres.genresUser = selectedGenres.genres.map({ $0.toUser })
+                
+                recommendedViewModel.fetchAll(searchedText: selectedGenres.genresAPI[0], selectedGenres.genresAPI[1], selectedGenres.genresAPI[2], filter: .genre)
+            }
+        }
     }
 }
 
-struct TabViewApp_Previews: PreviewProvider {
-    static var previews: some View {
-        TabViewApp()
-    }
-}
+//struct TabViewApp_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TabViewApp()
+//            .environmentObject(SearchViewModel())
+//            .environmentObject(RecommendedViewModel())
+//            .environmentObject(SelectedGenres())
+//    }
+//}

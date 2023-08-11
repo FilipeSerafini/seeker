@@ -1,47 +1,47 @@
 import SwiftUI
 
 struct OnBoarding3: View {
+    @Binding var onboarding: Bool
     
     var body: some View {
-        VStack() {
+        VStack{
             VStack{
-                Image("zoeImage")
+                Image("onb3")
                     .resizable()
-                    .frame(width: 350, height: 313)
+                    .frame(width: 330, height: 400)
             }
             .frame(height: 350)
             
-            VStack(alignment: .center) {
-                Text("Bem-vindos!")
-                    .font(.system(size: 34, design: .serif))
+            VStack{
+                Text("Um universo inteiro: vá além da sua estante e descubra coisas novas sobre as histórias que você gosta - ou até mesmo novas histórias!")
+                    .font(.system(size: 17, weight: .regular))
                     .multilineTextAlignment(.center)
-                    .padding(3)
-                Text("Esse é o nosso app!")
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: 290)
-            }
-            
-            //mudar aqui
-            NavigationLink(destination: LibraryView().navigationBarBackButtonHidden(true), label: {
-                ZStack {
-                    Rectangle()
-                        .fill(Color("primary"))
-                        .cornerRadius(30)
-                        .frame(width: 168, height: 45)
-                    Text("Start")
-                        .font(.system(size: 34, design: .serif))
-                        .foregroundColor(.white)
+                    .padding()
+                
+                VStack{
+                    NavigationLink(destination: SetUpInicial(onboarding: $onboarding)
+                                   //.environmentObject(selectedGenres)
+                        .navigationBarBackButtonHidden(true), label: {
+                            ZStack {
+                                Rectangle()
+                                    .fill(Color("primary"))
+                                    .cornerRadius(22)
+                                    .frame(width: 125, height: 39)
+                                Text("Começar")
+                                    .font(.system(size: 17, weight: .regular))
+                                    .foregroundColor(.white)
+                            }
+                        })
+                    .padding(.top, 60)
                 }
-            })
-            .padding(.top, 60)
-            
+            }
         }
-        .preferredColorScheme(.light)
     }
 }
 
-struct OnBoarding3_Previews: PreviewProvider {
-    static var previews: some View {
-        OnBoarding3()
-    }
-}
+
+//struct OnBoarding3_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnBoarding3()
+//    }
+//}

@@ -6,7 +6,7 @@ struct Preview: View {
             Image("zoeChat")
                 .resizable()
                 .frame(width: 340, height: 240)
-            Text("Welcome to Seeker")
+            Text("Bem-vindo ao Seeker")
                 .font(.system(size: 22, weight: .medium, design: .serif))
         }
     }

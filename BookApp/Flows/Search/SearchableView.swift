@@ -11,6 +11,7 @@ struct SearchableView: View {
     @State var isPresented = false
     @EnvironmentObject private var searchViewModel: SearchViewModel
     @EnvironmentObject private var coordinator: Coordinator
+    @EnvironmentObject private var selectedGenres: SelectedGenres
     
     var body: some View {
         ChildSizeReader(size: $wholeSize) {
@@ -61,8 +62,8 @@ struct SearchableView: View {
                                 }) {
                                     Text("Título")
                                 }.buttonStyle(
-                                    StyleFilterButton(
-                                        isFilled: Binding(get: { selectedFilter == .title }, set: { newValue in
+                                    CustomButtonFilter(
+                                        isSelected: Binding(get: { selectedFilter == .title }, set: { newValue in
                                             if newValue {
                                                 selectedFilter = .title
                                             } else {
@@ -74,8 +75,8 @@ struct SearchableView: View {
                                     selectedFilter = .author
                                 }) {
                                     Text("Autor")
-                                }.buttonStyle(StyleFilterButton(
-                                    isFilled: Binding(get: { selectedFilter == .author }, set: { newValue in
+                                }.buttonStyle(CustomButtonFilter(
+                                    isSelected: Binding(get: { selectedFilter == .author }, set: { newValue in
                                         if newValue {
                                             selectedFilter = .author
                                         } else {
@@ -88,8 +89,8 @@ struct SearchableView: View {
                                 }) {
                                     Text("ISBN")
                                 }.buttonStyle(
-                                    StyleFilterButton(
-                                        isFilled: Binding(get: { selectedFilter == .isbn }, set: { newValue in
+                                    CustomButtonFilter(
+                                        isSelected: Binding(get: { selectedFilter == .isbn }, set: { newValue in
                                             if newValue {
                                                 selectedFilter = .isbn
                                             } else {
@@ -112,6 +113,7 @@ struct SearchableView: View {
                             .padding(.top, 70)
                         } else if !isEditing && searchText == "" {
                             RecommendedView()
+                                .environmentObject(selectedGenres)
                         } else if !isEditing {
                             if searchViewModel.returnEmpty == true {
                                 VStack(alignment: .center){

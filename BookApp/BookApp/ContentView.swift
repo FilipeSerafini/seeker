@@ -2,27 +2,43 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isActive = false
     
+    @State private var firstTimeHere: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
+    @State private var isActive = false
+    @StateObject private var selectedGenres = SelectedGenres()
     @StateObject private var recommendedViewModel = RecommendedViewModel()
+    @StateObject private var userCrud = UserCRUD()
+    @StateObject private var userManager = UserManager()
+    @State var onboarding: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     
     var body: some View {
         ZStack {
             if self.isActive {
-                //                FolderRow(folder: Folder(books: [], description: "a", name: "Livros que quero ler")!, imageName: "folderSelected")
-                //                addToFolderHeader()
-                TabViewApp()
-                    .environmentObject(UserCRUD())
-                    .environmentObject( UserManager())
-                    .environmentObject(recommendedViewModel)
+                if onboarding {
+                    TabBarOnboarding(onboarding: $onboarding)
+                } else {
+                    TabViewApp()
+                }
             } else {
                 Preview()
             }
         }
+        .environmentObject(userCrud)
+        .environmentObject(userManager)
+        .environmentObject(recommendedViewModel)
+        .environmentObject(selectedGenres)
         .onAppear {
-            recommendedViewModel.fetchAll(searchedText: "Young Adult Fiction", "Romance", "Rupi Kaur", filter: .genre, .author)
-#warning("mudar tempo para 1.5")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            if !firstTimeHere {
+                let genresAPI = UserDefaults.standard.object(forKey: "genresAPI") as! [String]
+                selectedGenres.genresAPI = genresAPI
+                
+                let genresUser = UserDefaults.standard.object(forKey: "genresUser") as! [String]
+                selectedGenres.genresUser = genresUser
+                
+                recommendedViewModel.fetchAll(searchedText: selectedGenres.genresAPI[0], selectedGenres.genresAPI[1], selectedGenres.genresAPI[2], filter: .genre)
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
                 withAnimation {
                     self.isActive = true
                 }
@@ -31,8 +47,10 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//            .environmentObject(UserCRUD())
+//            .environmentObject(UserManager())
+//    }
+//}
