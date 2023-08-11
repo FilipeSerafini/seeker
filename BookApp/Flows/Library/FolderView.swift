@@ -3,7 +3,9 @@ import SwiftUI
 struct FolderView: View {
     @State var expandFolder: Bool = false
     
-    var folder: FolderCard
+    var folder: Folder
+    
+    @EnvironmentObject var libraryViewModel: LibraryViewModel
     
     var body: some View {
         GeometryReader { proxy in
@@ -18,29 +20,46 @@ struct FolderView: View {
                 GridItem(.flexible()),
             ]
             
-            ZStack(alignment: .bottom) {
-                RoundedRectangle (cornerRadius: 20)
-                    .fill(background)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(lineWidth: 2)
-                            .fill(.white)
-                    }
-                    .frame(width: 362, height: 647)
-                
-                ScrollView {
-                    Text("Livros lidos")
-                        .font(.system(size: 24, design: .serif))
-                        .padding(.top, 10)
+            NavigationStack {
+                ZStack(alignment: .bottom) {
+                    RoundedRectangle (cornerRadius: 20)
+                        .fill(background)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(lineWidth: 2)
+                                .fill(.white)
+                        }
+                        .frame(width: 362, height: 647)
                     
-                    LazyVGrid(columns: columns, spacing: 20) {
+                    ScrollView {
                         
-                        ForEach(folder.books) { folderBook in
-                            BookResearchedCover(book: folderBook)
+                        
+                        HStack{
+                            Text(folder.name)
+                                .font(.system(size: 24, design: .serif))
+                                .padding(.top, 10)
+                            NavigationLink {
+                                FolderCardView(folder: folder)
+                                
+                            } label: {
+                                Text ("Ver mais")
+                            }
+                            
+                            
+                        }
+                        
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            
+                            ForEach(libraryViewModel.books) { book in
+                                BookResearchedCover(book: book)
+                            }
                         }
                     }
+                    .frame(maxHeight: 647)
                 }
-                .frame(maxHeight: 647)
+            }
+            .onAppear {
+                libraryViewModel.fetchBooks(bookIDs: folder.books)
             }
             .overlay {
                 //Avoid scrolling
@@ -64,7 +83,7 @@ struct FolderView: View {
         .padding(.bottom, 30)
         .offset(y: 120)
     }
-    func getIndex(folder: FolderCard)->Int{
+    func getIndex(folder: Folder)->Int{
         return folders.firstIndex { currentFolder in
             return currentFolder.id == folder.id
         } ?? 0

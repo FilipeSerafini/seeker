@@ -3,6 +3,8 @@ import SwiftUI
 struct ProfileView: View {
     var body: some View {
         
+        @EnvironmentObject var userManager: UserManager
+        
         let columns = [
             GridItem(.flexible()),
             GridItem(.flexible()),

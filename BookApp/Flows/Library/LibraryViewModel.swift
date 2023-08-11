@@ -1,70 +1,49 @@
 import SwiftUI
 import CloudKit
+import Combine
 
 class LibraryViewModel: ObservableObject {
     
     // MARK: - Variables
     
-    @State var presentAlert = false
-    @State var newFolderName = ""
-    
     @Published var books: [Book] = []
-    @Published var folders: [Folder] = []
-    var userRecordID: CKRecord.ID?
-    
     @EnvironmentObject var userManager: UserManager
     
-    // MARK: - Init
+    private let bookService: BookService = BookService()
+    private var subscriptions = Set<AnyCancellable>()
+
     
-    init() {
-        fetchAllFolders()
-    }
     
-    // MARK: - Setup
-    
-    func fetchAllFolders() {
-//        userManager.fetchFolders()
-//        CloudKitUtility.fetchUserRecordID { (result: Result<CKRecord.ID, Error>) in
-//            switch result {
-//            case .success(let recordID):
-//                self.userRecordID = recordID
-//                print("JORGE ", recordID.recordName)
-//                self.fetchAllFoldersWith(recordID: recordID)
-//            case .failure(let failure):
-//                print(failure.localizedDescription)
-//            }
-//        }
-    }
-    
-    // MARK: - Functions
-    
-//    func fetchAllFoldersWith(recordID: CKRecord.ID) {
-//        let reference = CKRecord.Reference(recordID: recordID, action: .none)
-//        let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
-//        let recordType = "Folder"
-//
-//        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[Folder], Error>) in
-//            switch result {
-//            case .success(let folders):
-//                print("JORGE retornou \(folders.count)")
-//                DispatchQueue.main.async {
-//                    self.folders = folders
+        
+    func fetchBooks(bookIDs: [String]) {
+        
+        bookIDs.forEach { bookID in
+            
+            
+            bookService.fetchBookById(bookId: bookID)
+                .mapAPIBookToBook()
+                .setBookImages(withService: bookService)
+                .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    return
+                }
+            }, receiveValue: { book in
+//                if books.isEmpty && self.books.isEmpty {
+//                    self.returnEmpty = true
+//                } else {
+//                    self.books = self.books + sortBooks(books: books)
+//                    self.currentPag += 20
 //                }
-//            case .failure(let failure):
-//                print(failure.localizedDescription)
-//            }
-//        }
-//    }
-//
-    func createFolder(folderName: String) {
-//        userManager.createFolder(folderName: folderName)
-//
-//        guard let newFolder = Folder(id: "1", books: [], description: "", name: folderName) else { return }
-//
-//        CloudKitUtility.add(item: newFolder) { result in
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//                self.fetchAllFolders()
-//            }
-//        }
+//                self.currentState = .alreadyLoaded
+                self.books.append(book)
+            })
+            .store(in: &subscriptions)
+            
+                
+        }
     }
+    
 }
