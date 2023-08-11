@@ -1,41 +1,44 @@
 import SwiftUI
 
 struct OnBoarding3: View {
-    
     var body: some View {
-        VStack() {
-            VStack{
-                Image("zoeChat")
-                    .resizable()
-                    .frame(width: 350, height: 276)
-            }
-            .frame(height: 350)
-            
-            VStack(alignment: .center) {
-                Text("Um universo inteiro: vá além da sua estante e descubra coisas novas sobre as histórias que você gosta - ou até mesmo novas histórias!")
-                    .font(.system(size: 13, weight: .regular))
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: 290)
-            }
-            
-            //mudar aqui
-            NavigationLink(destination: SetUpInicial().navigationBarBackButtonHidden(true), label: {
-                ZStack {
-                    Rectangle()
-                        .fill(Color("primary"))
-                        .cornerRadius(30)
-                        .frame(width: 168, height: 45)
-                    Text("Começar")
-                        .font(.system(size: 13, weight: .regular))
-                        .foregroundColor(.white)
+        NavigationStack{
+            VStack {
+                VStack{
+                    VStack{
+                        Image("onb3")
+                            .resizable()
+                            .frame(width: 330, height: 400)
+                    }
+                    .frame(height: 350)
+                    
+                    VStack{
+                        Text("Um universo inteiro: vá além da sua estante e descubra coisas novas sobre as histórias que você gosta - ou até mesmo novas histórias!")
+                            .font(.system(size: 17, weight: .regular))
+                            .multilineTextAlignment(.center)
+                            .padding()
+                        
+                        VStack{
+                            NavigationLink(destination: SetUpInicial().navigationBarBackButtonHidden(true), label: {
+                                ZStack {
+                                    Rectangle()
+                                        .fill(Color("primary"))
+                                        .cornerRadius(22)
+                                        .frame(width: 125, height: 39)
+                                    Text("Começar")
+                                        .font(.system(size: 17, weight: .regular))
+                                        .foregroundColor(.white)
+                                }
+                            })
+                            .padding(.top, 60)
+                        }
+                    }
                 }
-            })
-            .padding(.top, 60)
-            
+            }
         }
-        .preferredColorScheme(.light)
     }
 }
+
 
 struct OnBoarding3_Previews: PreviewProvider {
     static var previews: some View {

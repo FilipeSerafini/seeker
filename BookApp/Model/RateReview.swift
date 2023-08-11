@@ -36,7 +36,7 @@ struct RateReview: CKProtocol {
         
         record["id"] = id
         record["rate"] = rate
-        record["bookdID"] = bookID
+        record["bookID"] = bookID
         
         self.init(record: record)
     }

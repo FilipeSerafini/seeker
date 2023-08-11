@@ -33,7 +33,7 @@ struct ResearchedBookView: View {
                     startConfirm.toggle()
                 }
             }
-            .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book) })
+            .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book, ratingViewModel: RatingViewModel()) })
         }
         .foregroundColor(.black)
         .frame(maxWidth: .infinity, maxHeight: 140, alignment: .topLeading)

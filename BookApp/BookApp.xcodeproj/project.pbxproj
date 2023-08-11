@@ -77,6 +77,7 @@
 		B1D861D02A7045AF00CAD142 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1D861CF2A7045AF00CAD142 /* Preview Assets.xcassets */; };
 		B1D861D22A7045AF00CAD142 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D861D12A7045AF00CAD142 /* Persistence.swift */; };
 		B1D861D52A7045AF00CAD142 /* BookApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B1D861D32A7045AF00CAD142 /* BookApp.xcdatamodeld */; };
+		B1D8D1C82A85429400F96F32 /* RatingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8D1C72A85429400F96F32 /* RatingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +154,7 @@
 		B1D861D12A7045AF00CAD142 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B1D861D42A7045AF00CAD142 /* BookApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookApp.xcdatamodel; sourceTree = "<group>"; };
 		B1D861DD2A705F4400CAD142 /* BookApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookApp.entitlements; sourceTree = "<group>"; };
+		B1D8D1C72A85429400F96F32 /* RatingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,9 +193,9 @@
 				4C5849D62A81889400C7AF97 /* OnBoarding1.swift */,
 				4C5849D82A81894100C7AF97 /* OnBoarding2.swift */,
 				4C5849DA2A818A3A00C7AF97 /* OnBoarding3.swift */,
-				7C002BBC2A843BEF00B872CB /* Genres.swift */,
 				4C561BE42A8426D900DDDF9A /* SetUpInicial.swift */,
 				7C002BBA2A8430FA00B872CB /* SetUpInicial2.swift */,
+				7C002BBC2A843BEF00B872CB /* Genres.swift */,
 				7C002BC42A851BB800B872CB /* GenreButtonOnboarding.swift */,
 			);
 			path = OnBoarding;
@@ -205,6 +207,7 @@
 				4CDD3BA72A730790001519C3 /* BookView.swift */,
 				7C6ADEAA2A82C14900C43005 /* AddReview.swift */,
 				7C7DB2AB2A82E37F0036FCD5 /* RatingButton.swift */,
+				B1D8D1C72A85429400F96F32 /* RatingViewModel.swift */,
 				B1D5C0EA2A7C2A45007CA7C7 /* AddBookToFolder */,
 			);
 			path = Book;
@@ -512,6 +515,7 @@
 				4C561BE52A8426D900DDDF9A /* SetUpInicial.swift in Sources */,
 				4C4FD44E2A827F8F00503219 /* MediumCommentButton.swift in Sources */,
 				B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */,
+				B1D8D1C82A85429400F96F32 /* RatingViewModel.swift in Sources */,
 				4C45AA862A8137BE00DD5FB0 /* FolderCard.swift in Sources */,
 				4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */,
 				7C4245E42A7AE98800241A98 /* CustomButtonFilter.swift in Sources */,
