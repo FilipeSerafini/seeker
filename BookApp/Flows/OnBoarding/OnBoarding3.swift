@@ -20,7 +20,6 @@ struct OnBoarding3: View {
                 
                 VStack{
                     NavigationLink(destination: SetUpInicial(onboarding: $onboarding)
-                                   //.environmentObject(selectedGenres)
                         .navigationBarBackButtonHidden(true), label: {
                             ZStack {
                                 Rectangle()

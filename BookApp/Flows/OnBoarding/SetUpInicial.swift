@@ -1,12 +1,10 @@
 import SwiftUI
 
 struct SetUpInicial: View {
-    
-    @State private var username = ""
-    @State private var name = ""
-    @State private var isEditing: Bool = false
-    
+    @State var username = ""
+    @State var name = ""
     @Binding var onboarding: Bool
+    
     var body: some View {
         VStack{
             VStack{
@@ -26,13 +24,12 @@ struct SetUpInicial: View {
                     .foregroundColor(.gray)
                     
                     VStack{
-                        TextField("Nome", text: $name, onEditingChanged: { editing in isEditing = editing
-                        })
+                        TextField("Nome", text: $name)
                         .padding(.top)
+
                         Divider()
                         
-                        TextField("username", text: $username, onEditingChanged: { editing in isEditing = editing
-                        })
+                        TextField("username", text: $username)
                         .padding(.top)
                         Divider()
                     }
@@ -47,10 +44,8 @@ struct SetUpInicial: View {
                     .padding(.bottom, 60)
             }
             .font(.system(size: 17))
-            
-            NavigationLink(destination: SetUpInicial2(onboarding: $onboarding)
-                           //.environmentObject(selectedGenres)
-                .navigationBarBackButtonHidden(true), label: {
+        
+            NavigationLink(destination: SetUpInicial2(username: $username, name: $name, onboarding: $onboarding)                .navigationBarBackButtonHidden(true), label: {
                     ZStack {
                         Rectangle()
                             .fill(Color("primary"))
@@ -70,9 +65,3 @@ struct SetUpInicial: View {
         )
     }
 }
-
-//struct SetUpInicial_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SetUpInicial()
-//    }
-//}

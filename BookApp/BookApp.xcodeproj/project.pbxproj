@@ -56,6 +56,8 @@
 		7C4245E42A7AE98800241A98 /* CustomButtonFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4245E32A7AE98800241A98 /* CustomButtonFilter.swift */; };
 		7C6ADEAB2A82C14900C43005 /* AddReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6ADEAA2A82C14900C43005 /* AddReview.swift */; };
 		7C7DB2AC2A82E37F0036FCD5 /* RatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7DB2AB2A82E37F0036FCD5 /* RatingButton.swift */; };
+		7CB884112A8A9CEE0081798D /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB884102A8A9CEE0081798D /* PhotoPicker.swift */; };
+		7CB884132A8A9DC20081798D /* ProfilePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB884122A8A9DC20081798D /* ProfilePhoto.swift */; };
 		B108B8052A7193EF006D6F1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8042A7193EF006D6F1C /* User.swift */; };
 		B108B8072A719406006D6F1C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8062A719406006D6F1C /* Badge.swift */; };
 		B108B8092A719415006D6F1C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8082A719415006D6F1C /* Book.swift */; };
@@ -132,6 +134,8 @@
 		7C4245E32A7AE98800241A98 /* CustomButtonFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonFilter.swift; sourceTree = "<group>"; };
 		7C6ADEAA2A82C14900C43005 /* AddReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReview.swift; sourceTree = "<group>"; };
 		7C7DB2AB2A82E37F0036FCD5 /* RatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingButton.swift; sourceTree = "<group>"; };
+		7CB884102A8A9CEE0081798D /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		7CB884122A8A9DC20081798D /* ProfilePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhoto.swift; sourceTree = "<group>"; };
 		B108B8042A7193EF006D6F1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B108B8062A719406006D6F1C /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		B108B8082A719415006D6F1C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -265,7 +269,9 @@
 				4C7234842A743DE9006740F6 /* CommentView.swift */,
 				4C4FD44B2A827F0E00503219 /* SmallCommentButton.swift */,
 				4C4FD44D2A827F8F00503219 /* MediumCommentButton.swift */,
+				7CB884102A8A9CEE0081798D /* PhotoPicker.swift */,
 				4C4FD44F2A827FCC00503219 /* LargeCommentButton.swift */,
+				7CB884122A8A9DC20081798D /* ProfilePhoto.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -518,6 +524,7 @@
 				4C45AA8C2A817B0E00DD5FB0 /* FolderCardView.swift in Sources */,
 				4C561BE52A8426D900DDDF9A /* SetUpInicial.swift in Sources */,
 				4C4FD44E2A827F8F00503219 /* MediumCommentButton.swift in Sources */,
+				7CB884112A8A9CEE0081798D /* PhotoPicker.swift in Sources */,
 				B108B8132A7194CC006D6F1C /* CKProtocol.swift in Sources */,
 				B1D8D1C82A85429400F96F32 /* RatingViewModel.swift in Sources */,
 				4C45AA862A8137BE00DD5FB0 /* FolderCard.swift in Sources */,
@@ -540,6 +547,7 @@
 				7C31DBD02A818844002FB8F8 /* LoadingOracle.swift in Sources */,
 				B1D861CB2A7045AE00CAD142 /* ContentView.swift in Sources */,
 				4C5849D72A81889400C7AF97 /* OnBoarding1.swift in Sources */,
+				7CB884132A8A9DC20081798D /* ProfilePhoto.swift in Sources */,
 				B1D5C0DF2A7AA416007CA7C7 /* UserCRUD.swift in Sources */,
 				4CDD3BB52A7308F7001519C3 /* OracleViewModel.swift in Sources */,
 				4C7234892A797723006740F6 /* Preview.swift in Sources */,

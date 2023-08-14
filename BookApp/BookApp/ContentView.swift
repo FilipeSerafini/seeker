@@ -2,7 +2,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @State private var firstTimeHere: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     @State private var isActive = false
     @StateObject private var selectedGenres = SelectedGenres()
