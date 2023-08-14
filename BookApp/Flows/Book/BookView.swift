@@ -46,12 +46,16 @@ struct BookView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing){
-                    Button {}
+                    Button {
+                        let customView = SharedInstagramView(book: book)
+                        
+                        if let viewImageData = customView.toImage().pngData() {
+                            shareImageOnInstagramStories(imageData: viewImageData)
+                        }
+                    }
                 label: {
-                    // MARK: Se o livro estiver nas listas Lendo agora e/ou Leituras realizadas, pode ser compartilhado no Insta
                     Image("shareButton")
                 }
-                    
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
                     
