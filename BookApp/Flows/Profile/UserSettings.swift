@@ -67,6 +67,11 @@ struct UserSettings: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing){
                 Button {
+                    UserDefaults.standard.set(nameText, forKey: "name")
+                    UserDefaults.standard.set(usernameText, forKey: "username")
+                    UserDefaults.standard.set(bioText, forKey: "bio")
+
+                    
                     myName = nameText
                     myUsername = usernameText
                     myBio = bioText

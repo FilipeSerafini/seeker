@@ -15,8 +15,10 @@ struct FolderCardView: View {
     var body: some View {
         
         VStack{
-            Text(folder.name)
-            Text("LIVROS")
+            HStack{
+                Text(folder.name)
+                
+            }
             LazyVGrid(columns: columns, spacing: 20) {
                 
                 ForEach(libraryViewModel.books) { book in
@@ -24,6 +26,14 @@ struct FolderCardView: View {
                 }
             }
             Text("Poder editar o restante")
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing){
+                
+                NavigationLink(destination: ProfileView(), label: {
+                    Image("pencil")
+                })
+            }
         }
     }
 }

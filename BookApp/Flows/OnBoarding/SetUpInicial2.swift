@@ -51,8 +51,6 @@ struct SetUpInicial2: View {
                 .ignoresSafeArea()
         )
         .onAppear {
-            print("setando name: ", name)
-            print("setando username: ", username)
             UserDefaults.standard.set(name, forKey: "name")
             UserDefaults.standard.set(username, forKey: "username")
         }

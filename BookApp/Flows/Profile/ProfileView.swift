@@ -4,7 +4,8 @@ struct ProfileView: View {
     @AppStorage("profileIcon") var profileIcon : Data = .init(count: 0)
     @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? "name"
     @State private var myUsername = UserDefaults.standard.value(forKey: "username") as? String ?? "username"
-    @State private var myBio = "Accept yourself as you were designed. – Rupi Kaur"
+    @State private var myBio = UserDefaults.standard.value(forKey: "bio") as? String ?? "Accept yourself as you were designed. – Rupi Kaur"
+    //@State private var myBio = "Accept yourself as you were designed. – Rupi Kaur"
     
     
 
