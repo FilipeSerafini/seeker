@@ -29,11 +29,10 @@
 		4C7234852A743DE9006740F6 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234842A743DE9006740F6 /* CommentView.swift */; };
 		4C7234892A797723006740F6 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234882A797723006740F6 /* Preview.swift */; };
 		4CCB79072A8ABED600FAAC2C /* BookImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB79062A8ABED600FAAC2C /* BookImage.swift */; };
-		4CCB790B2A8BED2900FAAC2C /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB790A2A8BED2900FAAC2C /* FolderViewModel.swift */; };
 		4CDD3BA82A730790001519C3 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BA72A730790001519C3 /* BookView.swift */; };
 		4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */; };
 		4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */; };
-		4CDD3BB22A7308CD001519C3 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BB12A7308CD001519C3 /* LibraryViewModel.swift */; };
+		4CDD3BB22A7308CD001519C3 /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BB12A7308CD001519C3 /* FolderViewModel.swift */; };
 		4CDD3BB52A7308F7001519C3 /* OracleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BB42A7308F7001519C3 /* OracleViewModel.swift */; };
 		4CDD3BB72A7308FD001519C3 /* OracleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BB62A7308FD001519C3 /* OracleView.swift */; };
 		4CDD3BBA2A730917001519C3 /* ChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BB92A730917001519C3 /* ChallengesView.swift */; };
@@ -109,11 +108,10 @@
 		4C7234842A743DE9006740F6 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		4C7234882A797723006740F6 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		4CCB79062A8ABED600FAAC2C /* BookImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImage.swift; sourceTree = "<group>"; };
-		4CCB790A2A8BED2900FAAC2C /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
 		4CDD3BA72A730790001519C3 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewApp.swift; sourceTree = "<group>"; };
 		4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
-		4CDD3BB12A7308CD001519C3 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
+		4CDD3BB12A7308CD001519C3 /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
 		4CDD3BB42A7308F7001519C3 /* OracleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleViewModel.swift; sourceTree = "<group>"; };
 		4CDD3BB62A7308FD001519C3 /* OracleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleView.swift; sourceTree = "<group>"; };
 		4CDD3BB92A730917001519C3 /* ChallengesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesView.swift; sourceTree = "<group>"; };
@@ -238,10 +236,9 @@
 			children = (
 				4C45AA8B2A817B0E00DD5FB0 /* FolderCardView.swift */,
 				4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */,
-				4CDD3BB12A7308CD001519C3 /* LibraryViewModel.swift */,
+				4CDD3BB12A7308CD001519C3 /* FolderViewModel.swift */,
 				4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */,
 				4C5F48262A82C1AC00011EF5 /* FolderView.swift */,
-				4CCB790A2A8BED2900FAAC2C /* FolderViewModel.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -507,7 +504,7 @@
 				4C4FD44C2A827F0E00503219 /* SmallCommentButton.swift in Sources */,
 				B1D861D52A7045AF00CAD142 /* BookApp.xcdatamodeld in Sources */,
 				B1D5C0E52A7C139F007CA7C7 /* AddToFolderView.swift in Sources */,
-				4CDD3BB22A7308CD001519C3 /* LibraryViewModel.swift in Sources */,
+				4CDD3BB22A7308CD001519C3 /* FolderViewModel.swift in Sources */,
 				428ECC5F2A815EE500DA4B66 /* OracleService.swift in Sources */,
 				B108B8102A71943F006D6F1C /* Folder.swift in Sources */,
 				7C08EE4B2A86CC8F00280376 /* SharedInstagramView.swift in Sources */,
@@ -540,7 +537,6 @@
 				B19E0B052A840EDC00A68092 /* RateReview.swift in Sources */,
 				B108B8072A719406006D6F1C /* Badge.swift in Sources */,
 				B1D5C0E92A7C2A3E007CA7C7 /* AddToFolderViewModel.swift in Sources */,
-				4CCB790B2A8BED2900FAAC2C /* FolderViewModel.swift in Sources */,
 				B1D5C0DC2A7AA3BB007CA7C7 /* CloudKitUtility.swift in Sources */,
 				B108B8092A719415006D6F1C /* Book.swift in Sources */,
 				7C281A842A73255500A58E96 /* SearchView.swift in Sources */,

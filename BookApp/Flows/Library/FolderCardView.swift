@@ -2,7 +2,7 @@ import SwiftUI
 
 struct FolderCardView: View {
     
-    @EnvironmentObject var libraryViewModel: LibraryViewModel
+    @EnvironmentObject var folderViewModel: FolderViewModel
 
     let folder: Folder
     let columns = [
@@ -14,12 +14,10 @@ struct FolderCardView: View {
     var body: some View {
         
         VStack{
-
-                //arrumar para buscar livros de cada folder
-                
-                ForEach(libraryViewModel.books) { book in
-                    BookResearchedCover(book: book)
-                }
+            
+//                ForEach(folderViewModel.books) { book in
+//                    BookResearchedCover(book: book)
+//                }
             
             
             Button {

@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct FolderView: View {
-    var folder: Folder
     
-    @EnvironmentObject var libraryViewModel: LibraryViewModel
-    @EnvironmentObject private var userManager: UserManager
+    var folder: Folder
+    @StateObject var folderViewModel: FolderViewModel = FolderViewModel()
+    @EnvironmentObject var userManager: UserManager
     
     var body: some View {
         let background = getIndex(folder: folder).isMultiple(of: 2) ? Color("primary2") : Color("secondary")
@@ -12,7 +12,7 @@ struct FolderView: View {
         NavigationStack {
             NavigationLink {
                 FolderCardView(folder: folder)
-                    .environmentObject(libraryViewModel)
+                    .environmentObject(folderViewModel)
             } label: {
                 ZStack(alignment: .bottom) {
                     //                    RoundedRectangle (cornerRadius: 20)
@@ -30,7 +30,9 @@ struct FolderView: View {
                             .foregroundColor(.black)
                         HStack{
                             //pegar os livros de cada folder
-                            ForEach(libraryViewModel.firstBooks) { book in
+                            
+                            
+                            ForEach(folderViewModel.books) { book in
                                 BookImage(book: book)
                             }
                         }
@@ -50,7 +52,7 @@ struct FolderView: View {
                 }
             }
             .onAppear {
-                libraryViewModel.fetchBooks(bookIDs: folder.books)
+                folderViewModel.fetchBooks(bookIDs: folder.books)
             }
         }
     }
