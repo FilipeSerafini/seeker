@@ -16,7 +16,7 @@ struct FolderView: View {
                 FolderCardView(folder: folder)
                     .environmentObject(folderViewModel)
             } label: {
-                ZStack(alignment: .bottom) {
+                ZStack {
                     RoundedRectangle (cornerRadius: 20)
                         .fill(background)
                         .overlay {
@@ -26,31 +26,19 @@ struct FolderView: View {
                         }
                         .frame(width: 362, height: 205)
                     VStack{
-                        Text(folder.name)
-                            .multilineTextAlignment(.leading)
-                            .font(.system(size: 24, design: .serif))
-                            .foregroundColor(.black)
                         HStack{
-                            //pegar os livros de cada folder
-                            
-                            
-                            ForEach(folderViewModel.books) { book in
+                            Text(folder.name)
+                                .padding(.leading, 40)
+                                .font(.system(size: 24, design: .serif))
+                                .foregroundColor(.black)
+                            Spacer()
+                        }
+                        HStack(spacing: 20){
+                            ForEach(folderViewModel.books.prefix(3)) { book in
                                 BookImage(book: book)
                             }
                         }
                     }
-                    //porque esta menor que o tamanho de 362?
-                    //                    .padding()
-                    //                    .background(background)
-                    //                    .cornerRadius(20)
-                    //                    .overlay {
-                    //                        RoundedRectangle(cornerRadius: 20)
-                    //                            .stroke(lineWidth: 3)
-                    //                            .fill()
-                    //                    }
-                    //                    .frame(width: 362)
-                    //                    .frame(height: 205)
-                    
                 }
             }
             .onAppear {
@@ -64,6 +52,7 @@ struct FolderView: View {
             return currentFolder.id == folder.id
         } ?? 0
     }
+    
 }
 
 
