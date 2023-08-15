@@ -249,6 +249,7 @@ extension CloudKitUtility {
             if let error = returnedError {
                 completion(.failure(error))
             } else {
+                print("DELETOU")
                 completion(.success(true))
             }
         }
@@ -258,7 +259,8 @@ extension CloudKitUtility {
         CloudKitUtility.delete(record: item.record, completion: completion)
     }
     
-    static func delete<T:CKProtocol>(item: T) -> Future<Bool, Error>{
+    @discardableResult
+    static func delete<T:CKProtocol>(item: T) -> Future<Bool, Error> {
         Future { promise in
             CloudKitUtility.delete(item: item, completion: promise)
         }
