@@ -15,6 +15,7 @@ struct TabViewApp: View {
     @StateObject var searchViewModel: SearchViewModel = SearchViewModel()
     @EnvironmentObject private var recommendedViewModel: RecommendedViewModel
     @EnvironmentObject private var selectedGenres: SelectedGenres
+    @StateObject var profileViewModel: ProfileViewModel = ProfileViewModel()
     
     init() {
         // UITabBar configuration
@@ -79,6 +80,7 @@ struct TabViewApp: View {
         }
         .tint(Color("primary"))
         .environmentObject(searchViewModel)
+        .environmentObject(profileViewModel)
         .onAppear {
             let firstTime: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
             if firstTime {

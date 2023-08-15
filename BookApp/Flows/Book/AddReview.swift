@@ -4,6 +4,8 @@ struct AddReview: View {
     @State var book: Book
     @State private var titleReview = ""
     @State private var addReview = ""
+    @EnvironmentObject var profileViewModel: ProfileViewModel
+    @Environment (\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
@@ -38,8 +40,8 @@ struct AddReview: View {
                     TextField("Adicionar nota", text: $addReview, axis: .vertical)
                         .textFieldStyle(.plain)
                         .font(.system(size: 17))
-                        
-                        Spacer()
+                    
+                    Spacer()
                 }
                 .padding(.horizontal)
             }
@@ -61,7 +63,11 @@ struct AddReview: View {
                 }
             }
             ToolbarItem(placement: .navigationBarTrailing){
-                Button {}
+                Button {
+                    let comment = CommentReview(comment: addReview, bookID: book.id, bookTitle: book.title)
+                    profileViewModel.addCommentReview(comment: comment!)
+                    dismiss()
+                }
             label: {
                 Image("saveFolder")
             }

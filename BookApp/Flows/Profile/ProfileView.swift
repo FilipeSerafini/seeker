@@ -5,7 +5,8 @@ struct ProfileView: View {
     @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? "Seu nome aqui"
     @State private var myUsername = UserDefaults.standard.value(forKey: "username") as? String ?? "@username"
     @State private var myBio = UserDefaults.standard.value(forKey: "bio") as? String ?? "Accept yourself as you were designed. – Rupi Kaur"    
-
+    @EnvironmentObject var profileViewModel: ProfileViewModel
+    
     var body: some View {
         let columns = [
             GridItem(.flexible()),
@@ -36,21 +37,9 @@ struct ProfileView: View {
                 }
                 ScrollView(showsIndicators: false){
                     LazyVGrid(columns: columns, spacing: 10) {
-                        
-                        //                            ForEach() { commentButton in
-                        //                                SmallCommentButton(book: commentButton)
-                        //                            }
-                        
-                        MediumCommentButton()
-                        MediumCommentButton()
-                        MediumCommentButton()
-                        MediumCommentButton()
-                        MediumCommentButton()
-                        MediumCommentButton()
-                        MediumCommentButton()
-                        MediumCommentButton()
-                        MediumCommentButton()
-                        
+                        ForEach(profileViewModel.allCommentReviews) { comment in
+                            MediumCommentButton(comment: comment)
+                        }
                     }
                 }
                 .toolbar {
@@ -69,11 +58,15 @@ struct ProfileView: View {
                     .ignoresSafeArea()
             )
         }
+        .onAppear {
+            profileViewModel.fetchCommentReview()
+        }
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
+            .environmentObject(ProfileViewModel())
     }
 }
