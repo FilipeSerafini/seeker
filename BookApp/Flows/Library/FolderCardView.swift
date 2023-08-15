@@ -3,63 +3,64 @@ import SwiftUI
 struct FolderCardView: View {
     
     @EnvironmentObject var folderViewModel: FolderViewModel
-
+    
     let folder: Folder
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
-
+    
     var body: some View {
         
         VStack{
-            
-//                ForEach(folderViewModel.books) { book in
-//                    BookResearchedCover(book: book)
-//                }
-            
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(folderViewModel.books) { book in
+                    BookResearchedCover(book: book)
+                }
+            }
             
             Button {
-                #warning("Excluir pasta funcionar com o banco")
+#warning("Excluir pasta funcionar com o banco")
                 //excluir pasta
             } label: {
                 ZStack {
                     Rectangle()
-                        .foregroundColor(.red)
-//                        .fill(Color("primary"))
+                        .fill(.white)
                         .cornerRadius(22)
-                        .frame(width: 125, height: 39)
-                    Text("Apagar pasta")
-                        .font(.system(size: 17, weight: .regular))
-                        .foregroundColor(.black)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(lineWidth: 1)
+                                .fill(.red)
+                        }
+                        .frame(width: 126, height: 36)
+                    HStack{
+                        Image(systemName: "trash")
+                            .foregroundColor(.red)
+                        Text("Apagar pasta")
+                            .font(.system(size: 13, weight: .regular))
+                            .foregroundColor(.black)
+                    }
                 }
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                HStack {
-                    Text(folder.name)
-                        .font(.system(size: 22, weight: .medium, design: .serif))
-                }
-            }
-            
-            ToolbarItem(placement: .navigationBarTrailing){
-                
-                NavigationLink(destination: ProfileView(), label: {
-                    Image("pencil")
-                })
-            }
-        }
+        .padding(.top, 20)
+        .padding(.bottom, 30)
         
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarTrailing){
-//                
-//                NavigationLink(destination: UserSettings(), label: {
-//                    Image("pencil")
-//                })
-//            }
-//        }
+        Spacer()        
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Text(folder.name)
+                            .font(.system(size: 22, weight: .medium, design: .serif))
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing){
+                    NavigationLink(destination: ProfileView(), label: {
+                        Image("pencil")
+                    })
+                }
+            }
     }
 }
 
