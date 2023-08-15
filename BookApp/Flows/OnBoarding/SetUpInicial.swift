@@ -65,6 +65,10 @@ struct SetUpInicial: View {
                             .foregroundColor(.white)
                     }
                 })
+            .disabled(name == "")
+            .disabled(username == "")
+            .opacity(name == "" ? 0.6 : 1)
+            .opacity(username == "" ? 0.6 : 1)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
