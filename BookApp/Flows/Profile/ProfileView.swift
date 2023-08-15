@@ -37,7 +37,7 @@ struct ProfileView: View {
                 }
                 ScrollView(showsIndicators: false){
                     LazyVGrid(columns: columns, spacing: 10) {
-                        ForEach(profileViewModel.allCommentReviews) { comment in
+                        ForEach(profileViewModel.userCommentReviews) { comment in
                             MediumCommentButton(comment: comment)
                         }
                     }
@@ -57,9 +57,11 @@ struct ProfileView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
             )
-        }
-        .onAppear {
-            profileViewModel.fetchCommentReview()
+            .onAppear {
+                if !profileViewModel.requestAlreadyMade {
+                    profileViewModel.fetchUserData()
+                }
+            }
         }
     }
 }

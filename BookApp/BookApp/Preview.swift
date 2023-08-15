@@ -3,11 +3,9 @@ import SwiftUI
 struct Preview: View {
     var body: some View {
         VStack{
-            Image("zoeChat")
+            Image("previewImage")
                 .resizable()
-                .frame(width: 340, height: 240)
-            Text("Bem-vindo ao Seeker")
-                .font(.system(size: 22, weight: .medium, design: .serif))
+                .frame(width: 269, height: 229)
         }
     }
 }

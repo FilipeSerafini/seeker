@@ -65,7 +65,7 @@ struct AddReview: View {
             ToolbarItem(placement: .navigationBarTrailing){
                 Button {
                     let comment = CommentReview(comment: addReview, bookID: book.id, bookTitle: book.title)
-                    profileViewModel.addCommentReview(comment: comment!)
+                    profileViewModel.saveUserCommentReview(comment: comment!)
                     dismiss()
                 }
             label: {
