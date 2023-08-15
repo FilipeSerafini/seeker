@@ -2,32 +2,50 @@ import SwiftUI
 
 struct FolderCardView: View {
     
+    @EnvironmentObject var libraryViewModel: LibraryViewModel
+
     let folder: Folder
-    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
-    
-    @EnvironmentObject var libraryViewModel: LibraryViewModel
-    
+
     var body: some View {
         
         VStack{
-            HStack{
-                Text(folder.name)
-                
-            }
-            LazyVGrid(columns: columns, spacing: 20) {
+
+                //arrumar para buscar livros de cada folder
                 
                 ForEach(libraryViewModel.books) { book in
                     BookResearchedCover(book: book)
                 }
+            
+            
+            Button {
+                #warning("Excluir pasta funcionar com o banco")
+                //excluir pasta
+            } label: {
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.red)
+//                        .fill(Color("primary"))
+                        .cornerRadius(22)
+                        .frame(width: 125, height: 39)
+                    Text("Apagar pasta")
+                        .font(.system(size: 17, weight: .regular))
+                        .foregroundColor(.black)
+                }
             }
-            Text("Poder editar o restante")
         }
         .toolbar {
+            ToolbarItem(placement: .principal) {
+                HStack {
+                    Text(folder.name)
+                        .font(.system(size: 22, weight: .medium, design: .serif))
+                }
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing){
                 
                 NavigationLink(destination: ProfileView(), label: {
@@ -35,6 +53,15 @@ struct FolderCardView: View {
                 })
             }
         }
+        
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarTrailing){
+//                
+//                NavigationLink(destination: UserSettings(), label: {
+//                    Image("pencil")
+//                })
+//            }
+//        }
     }
 }
 

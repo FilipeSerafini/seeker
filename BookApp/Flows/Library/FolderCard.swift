@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 struct FolderCard: Identifiable {
-    
+
     var id = UUID().uuidString
     var name: String
     var books: [Book]
@@ -33,5 +33,5 @@ var folders: [FolderCard] = [
 //    FolderCard (name: "Lendo agora", books: books),
 //    FolderCard (name: "Lendo agora", books: books),
 //    FolderCard (name: "Lendo agora", books: books),
-    
+
 ]

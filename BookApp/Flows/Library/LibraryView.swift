@@ -3,7 +3,7 @@ import SwiftUI
 struct LibraryView: View {
     
     @EnvironmentObject private var userManager: UserManager
-    @StateObject private var viewModel: LibraryViewModel = LibraryViewModel()
+    @State private var viewModel: LibraryViewModel = LibraryViewModel()
     @State private var isPresented: Bool = false
     @State private var folderName: String = ""
     @Environment(\.colorScheme) var scheme
@@ -48,11 +48,12 @@ struct LibraryView: View {
                         ForEach(userManager.folders) { folder in
                             FolderView(folder: folder)
                                 .environmentObject(viewModel)
-                                .padding(.bottom, 200)
+                                .padding(.bottom, 10)
                         }
                     }
                 }
             }
+//            .padding()
             .background(
                 Image("backgroundImage")
                     .resizable()
