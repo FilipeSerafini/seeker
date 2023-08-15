@@ -79,6 +79,7 @@ struct BookView: View {
             }
             
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             Image("backgroundImage")
                 .resizable()

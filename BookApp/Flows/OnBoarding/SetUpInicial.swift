@@ -26,11 +26,21 @@ struct SetUpInicial: View {
                     VStack{
                         TextField("Nome", text: $name)
                         .padding(.top)
-
+                        .onChange(of: name) { newValue in
+                            let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ")
+                            let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
+                            name = String(filteredText)
+                        }
                         Divider()
                         
                         TextField("username", text: $username)
                         .padding(.top)
+                        .autocapitalization(.none)
+                        .onChange(of: username) { newValue in
+                            let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.-")
+                            let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
+                            username = String(filteredText.prefix(10))
+                        }
                         Divider()
                     }
                     .padding([.leading, .trailing])

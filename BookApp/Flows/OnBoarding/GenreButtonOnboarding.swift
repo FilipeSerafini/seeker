@@ -135,7 +135,6 @@ struct GenreButtonOnboarding: View {
             }
             buttons[index].isSelected.toggle()
         }
-        print(selectedGenres)
     }
 }
 

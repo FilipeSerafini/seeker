@@ -2,12 +2,9 @@ import SwiftUI
 
 struct ProfileView: View {
     @AppStorage("profileIcon") var profileIcon : Data = .init(count: 0)
-    @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? "name"
-    @State private var myUsername = UserDefaults.standard.value(forKey: "username") as? String ?? "username"
-    @State private var myBio = UserDefaults.standard.value(forKey: "bio") as? String ?? "Accept yourself as you were designed. – Rupi Kaur"
-    //@State private var myBio = "Accept yourself as you were designed. – Rupi Kaur"
-    
-    
+    @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? "Seu nome aqui"
+    @State private var myUsername = UserDefaults.standard.value(forKey: "username") as? String ?? "@username"
+    @State private var myBio = UserDefaults.standard.value(forKey: "bio") as? String ?? "Accept yourself as you were designed. – Rupi Kaur"    
 
     var body: some View {
         let columns = [
@@ -22,8 +19,14 @@ struct ProfileView: View {
                         .scaledToFill()
                         .frame(width: 110, height: 110)
                         .clipShape(Circle())
-                    Text ("@\(myUsername.replacingOccurrences(of: "@", with: ""))")
+                    Text ("@\(myUsername)")
                         .font(.system(size: 15))
+                        .autocapitalization(.none)
+                        .onChange(of: myUsername) { newValue in
+                            let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.-")
+                            let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
+                            myUsername = String(filteredText.prefix(10))
+                        }
                     Text (myName)
                         .font(.system(size: 22, design: .serif))
                     Text (myBio)

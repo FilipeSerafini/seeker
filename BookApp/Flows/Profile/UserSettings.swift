@@ -7,7 +7,6 @@ struct UserSettings: View {
     @Binding var myName: String
     @Binding var myUsername: String
     @Binding var myBio: String
-    let characterLimitUsername = 10
     let characterLimitBio = 150
     @Environment(\.dismiss) var dismiss
     
@@ -37,13 +36,19 @@ struct UserSettings: View {
                     
                     VStack{
                         TextField("Nome", text: $nameText)
+                            .onChange(of: nameText) { newValue in
+                                let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ")
+                                let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
+                                nameText = String(filteredText)
+                            }
                         Divider()
                         
                         TextField("username", text: $usernameText)
+                            .autocapitalization(.none)
                             .onChange(of: usernameText) { newValue in
-                                if newValue.count > characterLimitUsername {
-                                    usernameText = String(newValue.prefix(characterLimitUsername))
-                                }
+                                let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.-")
+                                let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
+                                usernameText = String(filteredText.prefix(10))
                             }
                         Divider()
                         
@@ -59,6 +64,14 @@ struct UserSettings: View {
                     }
                     .padding([.leading, .trailing])
                 }
+                HStack{
+                    Spacer()
+                    Text("\(characterLimitBio - bioText.count)")
+                        .font(.system(size: 15))
+                        .foregroundColor(Color("textNote"))
+                        .multilineTextAlignment(.trailing)
+                }
+                .padding(.trailing)
                 Spacer()
             }
             .padding([.leading, .trailing, .bottom])
@@ -70,7 +83,6 @@ struct UserSettings: View {
                     UserDefaults.standard.set(nameText, forKey: "name")
                     UserDefaults.standard.set(usernameText, forKey: "username")
                     UserDefaults.standard.set(bioText, forKey: "bio")
-
                     
                     myName = nameText
                     myUsername = usernameText

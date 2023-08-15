@@ -1,12 +1,4 @@
-//
-//  PhotoPicker.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 14/08/23.
-//
-
 import SwiftUI
-import Combine
 
 struct PhotoPicker : UIViewControllerRepresentable {
     @Binding var show: Bool
@@ -45,7 +37,5 @@ struct PhotoPicker : UIViewControllerRepresentable {
             self.child.image = data!
             self.child.show.toggle()
         }
-        
-       
     }
 }
