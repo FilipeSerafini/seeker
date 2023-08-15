@@ -16,6 +16,8 @@ struct TabBarOnboarding: View {
                         Text("Pular")
                             .font(.system(size: 20))
                             .foregroundColor(.gray)
+                            .padding(.top, 50)
+                            .padding(.trailing)
                     })
                 }
             }
@@ -32,10 +34,3 @@ struct TabBarOnboarding: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-
-//struct TabBarOnboarding_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TabBarOnboarding()
-//        //.environmentObject(SelectedGenres())
-//    }
-//}
