@@ -54,7 +54,14 @@ struct RatingButton: View {
             }
         })
         .onDisappear(perform: {
-            //self.ratingViewModel.addOrUpdateRateReview(rate: self.ratingViewModel.currentReview, book: self.book)
+            
+            if self.ratingViewModel.currentReview != 0 {
+                self.ratingViewModel.addOrUpdateRateReview(rate: self.ratingViewModel.currentReview, book: self.book)
+                
+                
+            } else {
+                print("avaliacao 0 ent n criei")
+            }
 //            self.ratingViewModel.deleteAllRateReviews()
         })
     }
