@@ -22,19 +22,19 @@ struct RatingButton: View {
                 ForEach(1...5, id: \.self) { index in
                     Button(action: {
                         self.activeButton = self.toggleActiveButton(index)
-                        rating = index
+                        self.ratingViewModel.currentReview = index
                         if self.isActive(index) {
-                            rating = index
+                            self.ratingViewModel.currentReview = index
                         } else {
-                            rating = rating - 1
+                            self.ratingViewModel.currentReview = self.ratingViewModel.currentReview - 1
                         }
-                        print("avaliacao: \(rating)")
+                        print("avaliacao: \(self.ratingViewModel.currentReview)")
                         
                     }) {
                         Image("star")
                             .resizable()
                             .frame(width: 31, height: 29)
-                            .background(rating >= index ?
+                            .background(self.ratingViewModel.currentReview >= index ?
                                         Image("star.fill")
                                             .resizable()
                                             .frame(width: 31, height: 29) :
@@ -48,9 +48,14 @@ struct RatingButton: View {
             Text("Minha avaliação")
                 .font(.system(size: 13))
         }
+        .onAppear(perform: {
+            Task {
+               self.ratingViewModel.getBookRate(bookID: book.id)
+            }
+        })
         .onDisappear(perform: {
-            self.ratingViewModel.addRateReview(rate: self.rating, book: self.book)
-//            self.ratingViewModel.fetchRateReview()
+            //self.ratingViewModel.addOrUpdateRateReview(rate: self.ratingViewModel.currentReview, book: self.book)
+//            self.ratingViewModel.deleteAllRateReviews()
         })
     }
     

@@ -6,6 +6,8 @@ struct FolderView: View {
     @StateObject var folderViewModel: FolderViewModel = FolderViewModel()
     @EnvironmentObject var userManager: UserManager
     
+    @State var navigateToFolder: Bool = false
+    
     var body: some View {
         let background = getIndex(folder: folder).isMultiple(of: 2) ? Color("primary2") : Color("secondary")
         

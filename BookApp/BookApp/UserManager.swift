@@ -8,7 +8,7 @@ class UserManager: ObservableObject {
     @Published var id: String = ""
     @Published var folders: [Folder] = []
     
-    @Published var userRateReviews: [RateReview] = []
+    @Published var rateReviews: [RateReview] = []
     
     
     // MARK: - Init
@@ -83,24 +83,24 @@ class UserManager: ObservableObject {
         }
     }
     
-    func fetchRateReviewWith(recordID: CKRecord.ID) {
-        let reference = CKRecord.Reference(recordID: recordID, action: .none)
-        let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
-        let recordType = "RateReview"
-        
-        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[RateReview], Error>) in
-            switch result {
-            case .success(let userRateReviews):
-                DispatchQueue.main.async {
-                    self.userRateReviews = userRateReviews
-                }
-            case .failure(let failure):
-                print(failure.localizedDescription)
-            }
-        }
-        
-        print(userRateReviews)
-    }
+//    func fetchRateReviewWith(recordID: CKRecord.ID) {
+//        let reference = CKRecord.Reference(recordID: recordID, action: .none)
+//        let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
+//        let recordType = "RateReview"
+//        
+//        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[RateReview], Error>) in
+//            switch result {
+//            case .success(let userRateReviews):
+//                DispatchQueue.main.async {
+//                    self.rateReviews = userRateReviews
+//                }
+//            case .failure(let failure):
+//                print(failure.localizedDescription)
+//            }
+//        }
+//        
+//        print(rateReviews)
+//    }
     
 }
 
