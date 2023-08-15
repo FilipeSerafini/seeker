@@ -3,7 +3,6 @@ import SwiftUI
 struct LibraryView: View {
     
     @EnvironmentObject private var userManager: UserManager
-    @State private var viewModel: LibraryViewModel = LibraryViewModel()
     @State private var isPresented: Bool = false
     @State private var folderName: String = ""
     @Environment(\.colorScheme) var scheme
@@ -47,7 +46,6 @@ struct LibraryView: View {
                     ScrollView {
                         ForEach(userManager.folders) { folder in
                             FolderView(folder: folder)
-                                .environmentObject(viewModel)
                                 .padding(.bottom, 10)
                         }
                     }
