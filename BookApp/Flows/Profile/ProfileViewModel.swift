@@ -4,30 +4,47 @@ import SwiftUI
 
 class ProfileViewModel: ObservableObject {
     
-    @Published var allCommentReviews: [CommentReview] = []
+    @Published var userCommentReviews: [CommentReview] = []
+    @Published var requestAlreadyMade: Bool = false
     
-    func fetchCommentReview() {
+    func fetchUserData() {
         CloudKitUtility.fetchUserRecordID { (result: Result<CKRecord.ID, Error>) in
             switch result {
             case .success(let recordID):
-                print("aa", recordID)
+                self.fetchUserCommentReview(recordID: recordID)
             case .failure(let failure):
-                print(failure.localizedDescription)
+                print("error trying to fetch userId: ", failure.localizedDescription)
             }
         }
     }
     
-    func addCommentReview(comment: CommentReview) {
-        print("adicionando comentario: ", comment.bookTitle)
-        allCommentReviews.append(comment)
+    private func fetchUserCommentReview(recordID: CKRecord.ID) {
+        let reference = CKRecord.Reference(recordID: recordID, action: .none)
+        let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
+        let recordType = "CommentReview"
         
-//        CloudKitUtility.add(item: comment) { result in
-//            switch result {
-//            case .success(_):
-//                break
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
+        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[CommentReview], Error>) in
+            switch result {
+            case .success(let userCommentReviews):
+                DispatchQueue.main.async {
+                    self.requestAlreadyMade = true
+                    self.userCommentReviews = userCommentReviews
+                }
+            case .failure(let failure):
+                print("error trying to fetch CommentReview: ", failure.localizedDescription)
+            }
+        }
+    }
+    
+    func saveUserCommentReview(comment: CommentReview) {
+        userCommentReviews.append(comment)
+        CloudKitUtility.add(item: comment) { result in
+            switch result {
+            case .success(_):
+                break
+            case .failure(let error):
+                print("error trying to save CommentReview: ", error.localizedDescription)
+            }
+        }
     }
 }
