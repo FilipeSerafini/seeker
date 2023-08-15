@@ -9,16 +9,16 @@ class FolderViewModel: ObservableObject {
     @Published var books: [Book] = []
     @EnvironmentObject var userManager: UserManager
     
-        var firstBooks: [Book] {
-            if books.count == 1 {
-                return [books[0]]
-            } else if books.count == 2 {
-                return [books[0], books[1]]
-            } else if books.count > 2 {
-                return [books[0], books[1], books[3]]
-            }
-            return []
-        }
+//        var firstBooks: [Book] {
+//            if books.count == 1 {
+//                return [books[0]]
+//            } else if books.count == 2 {
+//                return [books[0], books[1]]
+//            } else if books.count > 2 {
+//                return [books[0], books[1], books[3]]
+//            }
+//            return []
+//        }
     
     private let bookService: BookService = BookService()
     private var subscriptions = Set<AnyCancellable>()
@@ -59,7 +59,9 @@ class FolderViewModel: ObservableObject {
                         return
                     }
                 }, receiveValue: { book in
-                    self.books.append(book)
+                    if !self.books.contains(where: {$0.id == book.id}) {
+                        self.books.append(book)
+                    }
                 })
                 .store(in: &subscriptions)
             

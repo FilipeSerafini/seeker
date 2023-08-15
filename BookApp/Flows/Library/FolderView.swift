@@ -17,14 +17,14 @@ struct FolderView: View {
                     .environmentObject(folderViewModel)
             } label: {
                 ZStack(alignment: .bottom) {
-                    //                    RoundedRectangle (cornerRadius: 20)
-                    //                        .fill(background)
-                    //                        .overlay {
-                    //                            RoundedRectangle(cornerRadius: 20)
-                    //                                .stroke(lineWidth: 3)
-                    //                                .fill(.white)
-                    //                        }
-                    //                        .frame(width: 362, height: 205)
+                    RoundedRectangle (cornerRadius: 20)
+                        .fill(background)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(lineWidth: 3)
+                                .fill(.white)
+                        }
+                        .frame(width: 362, height: 205)
                     VStack{
                         Text(folder.name)
                             .multilineTextAlignment(.leading)
@@ -40,16 +40,16 @@ struct FolderView: View {
                         }
                     }
                     //porque esta menor que o tamanho de 362?
-                    .padding()
-                    .background(background)
-                    .cornerRadius(20)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(lineWidth: 3)
-                            .fill()
-                    }
-                    .frame(width: 362)
-                    .frame(height: 205)
+                    //                    .padding()
+                    //                    .background(background)
+                    //                    .cornerRadius(20)
+                    //                    .overlay {
+                    //                        RoundedRectangle(cornerRadius: 20)
+                    //                            .stroke(lineWidth: 3)
+                    //                            .fill()
+                    //                    }
+                    //                    .frame(width: 362)
+                    //                    .frame(height: 205)
                     
                 }
             }
