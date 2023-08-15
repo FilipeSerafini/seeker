@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct SetUpInicial2: View {
-    @State private var username = ""
-    @State private var name = ""
+    @Binding var username: String
+    @Binding var name: String
     @State private var isEditing: Bool = false
     @EnvironmentObject private var selectedGenres: SelectedGenres
     @Binding var onboarding: Bool
@@ -50,6 +50,10 @@ struct SetUpInicial2: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
         )
+        .onAppear {
+            UserDefaults.standard.set(name, forKey: "name")
+            UserDefaults.standard.set(username, forKey: "username")
+        }
     }
 }
 

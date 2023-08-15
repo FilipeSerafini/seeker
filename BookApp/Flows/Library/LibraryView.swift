@@ -2,21 +2,17 @@ import SwiftUI
 
 struct LibraryView: View {
     
-    @State var expandFolder: Bool = false
-    var userName: String = ""
     @EnvironmentObject private var userManager: UserManager
-    @StateObject private var viewModel: LibraryViewModel = LibraryViewModel()
     @State private var isPresented: Bool = false
     @State private var folderName: String = ""
     @Environment(\.colorScheme) var scheme
-    @State private var startConfirm = false
     
     var body: some View {
         NavigationStack {
             VStack{
                 HStack {
                     VStack (alignment: .leading){
-                        // Text("E aí, \(userName)?")
+#warning("Mudar para o nome do usuário")
                         Text("E aí, Manu?")
                             .font(.system(size: 15))
                         Text("Minha Estante")
@@ -24,7 +20,6 @@ struct LibraryView: View {
                     }
                     .padding(.top, 30)
                     Spacer()
-                    
                     Button {
                         isPresented.toggle()
                     } label: {
@@ -37,7 +32,6 @@ struct LibraryView: View {
                         TextField(folderName, text: $folderName)
                         Button("Cancelar",action: {})
                         Button("Salvar",action: {
-                            //                    viewModel.createFolder(folderName: folderName)
                             userManager.createFolder(folderName: folderName)
                         })
                     } message: {
@@ -49,19 +43,15 @@ struct LibraryView: View {
                 Spacer()
                 
                 VStack {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack(spacing: 0) {
-                            ForEach(userManager.folders) { folder in
-                                FolderView(folder: folder)
-                                    .environmentObject(viewModel)
-                            }
+                    ScrollView {
+                        ForEach(userManager.folders) { folder in
+                            FolderView(folder: folder)
+                                .padding(.bottom, 10)
                         }
                     }
-                    .coordinateSpace(name: "SCROLL")
                 }
-                .padding([.horizontal, .trailing])
-                .frame(maxHeight: .infinity, alignment: .bottom)
             }
+//            .padding()
             .background(
                 Image("backgroundImage")
                     .resizable()
@@ -69,13 +59,6 @@ struct LibraryView: View {
                     .ignoresSafeArea()
             )
         }
-        
-    }
-    
-    func getIndex(folder: FolderCard)->Int{
-        return folders.firstIndex { currentFolder in
-            return currentFolder.id == folder.id
-        } ?? 0
     }
 }
 

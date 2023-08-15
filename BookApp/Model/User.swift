@@ -10,6 +10,7 @@ struct User: CKProtocol {
     var bio: String
     var favoriteGenres: [String]
     var image: String
+    //var image: URL?
     
     //init para inicializar os atributos
     init() {
@@ -19,6 +20,7 @@ struct User: CKProtocol {
         bio = ""
         favoriteGenres = []
         image = ""
+       // image = nil
         
         self.record = CKRecord(recordType: "User")
     }
@@ -31,7 +33,9 @@ struct User: CKProtocol {
         username: String,
         bio: String,
         favoriteGenres: [String]
-//        image:,
+       // image:,
+        
+       // image: URL?
     ) {
         
         let record = CKRecord(recordType: "User")
@@ -41,7 +45,12 @@ struct User: CKProtocol {
         record["username"] = username
         record["bio"] = bio
         record["favoriteGenres"] = favoriteGenres
-//        record["image"] =
+        //record["image"] =
+        
+//        if let url = image {
+//            let asset = CKAsset(fileURL: url)
+//            record["image"] = asset
+//        }
         
         self.init(record: record)
     }
@@ -61,7 +70,10 @@ struct User: CKProtocol {
         self.username = username
         self.bio = bio
         self.favoriteGenres = favoriteGenres
+        
+        let imageAsset = record["image"] as? CKAsset
         self.image = ""
+        //self.image = imageAsset?.fileURL
         
         self.record = record
     }

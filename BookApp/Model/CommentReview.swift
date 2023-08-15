@@ -1,7 +1,7 @@
 import Foundation
 import CloudKit
 
-struct CommentReview: CKProtocol {
+struct CommentReview: CKProtocol, Identifiable {
     
     var record: CKRecord
     var id: String = UUID().uuidString
@@ -33,7 +33,7 @@ struct CommentReview: CKProtocol {
         
         record["id"] = id
         record["comment"] = comment
-        record["bookdID"] = bookID
+        record["bookID"] = bookID
         record["bookTitle"] = bookTitle
         
         self.init(record: record)
@@ -43,11 +43,9 @@ struct CommentReview: CKProtocol {
     init?(record: CKRecord) {
         
         guard let id = record["id"] as? String else {return nil}
-        guard let book = record["book"] as? String else {return nil}
         guard let comment = record["comment"] as? String else {return nil}
         guard let bookID = record["bookID"] as? String else {return nil}
         guard let bookTitle = record["bookTitle"] as? String else {return nil}
-        
         
         self.id = id
         self.comment = comment
