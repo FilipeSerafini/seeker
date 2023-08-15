@@ -30,7 +30,7 @@ struct FolderCardView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing){
                 
-                NavigationLink(destination: UserSettings(), label: {
+                NavigationLink(destination: ProfileView(), label: {
                     Image("pencil")
                 })
             }

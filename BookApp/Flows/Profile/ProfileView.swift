@@ -1,30 +1,38 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @AppStorage("profileIcon") var profileIcon : Data = .init(count: 0)
+    @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? "Seu nome aqui"
+    @State private var myUsername = UserDefaults.standard.value(forKey: "username") as? String ?? "@username"
+    @State private var myBio = UserDefaults.standard.value(forKey: "bio") as? String ?? "Accept yourself as you were designed. – Rupi Kaur"    
+
     var body: some View {
-        
-        @EnvironmentObject var userManager: UserManager
-        
         let columns = [
             GridItem(.flexible()),
             GridItem(.flexible()),
         ]
         NavigationStack {
-            
             VStack{
-                VStack{
-                    Image("usuariaTeste")
+                VStack(spacing: 5){
+                    Image(uiImage: UIImage(data: self.profileIcon) ?? UIImage(named: "person")!)
                         .resizable()
+                        .scaledToFill()
                         .frame(width: 110, height: 110)
                         .clipShape(Circle())
-                    Text ("@manuaraujo")
-                        .font(.system(size: 17))
-                    Text ("Manu Araujo")
-                        .font(.system(size: 34, design: .serif))
-                    Text ("Amo ler e viajar com amigos!")
+                    Text ("@\(myUsername)")
+                        .font(.system(size: 15))
+                        .autocapitalization(.none)
+                        .onChange(of: myUsername) { newValue in
+                            let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.-")
+                            let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
+                            myUsername = String(filteredText.prefix(10))
+                        }
+                    Text (myName)
+                        .font(.system(size: 22, design: .serif))
+                    Text (myBio)
                         .frame(width: 300)
                         .font(.system(size: 15))
-                        .padding(.top, -16)
+                        .multilineTextAlignment(.center)
                 }
                 ScrollView(showsIndicators: false){
                     LazyVGrid(columns: columns, spacing: 10) {
@@ -47,13 +55,11 @@ struct ProfileView: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing){
-                        
-                        NavigationLink(destination: UserSettings(), label: {
+                        NavigationLink(destination: UserSettings(myName: $myName, myUsername: $myUsername, myBio: $myBio), label: {
                             Image("pencil")
                         })
                     }
                 }
-                
             }
             .padding()
             .background(
