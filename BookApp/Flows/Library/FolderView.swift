@@ -4,53 +4,59 @@ struct FolderView: View {
     var folder: Folder
     
     @EnvironmentObject var libraryViewModel: LibraryViewModel
+    @EnvironmentObject private var userManager: UserManager
     
     var body: some View {
-        GeometryReader { proxy in
-            let background = getIndex(folder: folder).isMultiple(of: 2) ? Color("primary2") : Color("secondary")
-            
-            let columns = [
-                GridItem(.flexible()),
-                GridItem(.flexible()),
-                GridItem(.flexible()),
-            ]
-            
-            NavigationStack {
-                NavigationLink {
-                    ProfileView()
-                } label: {
-                    ZStack(alignment: .bottom) {
-                        RoundedRectangle (cornerRadius: 20)
-                            .fill(background)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(lineWidth: 3)
-                                    .fill(.white)
+        let background = getIndex(folder: folder).isMultiple(of: 2) ? Color("primary2") : Color("secondary")
+        
+        NavigationStack {
+            NavigationLink {
+                FolderCardView(folder: folder)
+                    .environmentObject(libraryViewModel)
+            } label: {
+                ZStack(alignment: .bottom) {
+                    //                    RoundedRectangle (cornerRadius: 20)
+                    //                        .fill(background)
+                    //                        .overlay {
+                    //                            RoundedRectangle(cornerRadius: 20)
+                    //                                .stroke(lineWidth: 3)
+                    //                                .fill(.white)
+                    //                        }
+                    //                        .frame(width: 362, height: 205)
+                    VStack{
+                        Text(folder.name)
+                            .multilineTextAlignment(.leading)
+                            .font(.system(size: 24, design: .serif))
+                            .foregroundColor(.black)
+                        HStack{
+                            //pegar os livros de cada folder
+                            ForEach(libraryViewModel.firstBooks) { book in
+                                BookImage(book: book)
                             }
-                            .frame(width: 362, height: 205)
-                        VStack{
-                            Text(folder.name)
-                                .multilineTextAlignment(.leading)
-                                .font(.system(size: 24, design: .serif))
-                                .foregroundColor(.black)
-                            LazyVGrid(columns: columns, spacing: 20) {
-                                ForEach(libraryViewModel.books) { book in
-                                    BookResearchedCover(book: book)
-                                }
-                            }
-                            .padding(.bottom, 15)
-                            .padding(.leading)
                         }
                     }
+                    //porque esta menor que o tamanho de 362?
+                    .padding()
+                    .background(background)
+                    .cornerRadius(20)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(lineWidth: 3)
+                            .fill()
+                    }
+                    .frame(width: 362)
+                    .frame(height: 205)
+                    
                 }
-                .onAppear {
-                    libraryViewModel.fetchBooks(bookIDs: folder.books)
-                }
+            }
+            .onAppear {
+                libraryViewModel.fetchBooks(bookIDs: folder.books)
             }
         }
     }
+    
     func getIndex(folder: Folder)->Int{
-        return folders.firstIndex { currentFolder in
+        return userManager.folders.firstIndex { currentFolder in
             return currentFolder.id == folder.id
         } ?? 0
     }
