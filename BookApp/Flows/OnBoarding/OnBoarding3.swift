@@ -13,7 +13,7 @@ struct OnBoarding3: View {
             .frame(height: 350)
             
             VStack{
-                Text("Um universo inteiro: vá além da sua estante e descubra coisas novas sobre as histórias que você gosta - ou até mesmo novas histórias!")
+                Text("Um universo inteiro: vá além da sua estante e com a ajuda da nossa Inteligência Artificial descubra coisas novas sobre as histórias que você gosta - ou até mesmo novas histórias!")
                     .font(.system(size: 17, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding()
