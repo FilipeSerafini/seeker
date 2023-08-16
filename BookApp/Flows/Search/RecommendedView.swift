@@ -12,7 +12,7 @@ struct RecommendedView: View {
                 HStack{
                     if !recommendedViewModel.firstList.isEmpty {
                         Text("Livros de \(selectedGenres.genresUser[0])")
-                            .font(.system(size: 17, weight: .semibold, design: .serif))
+                            .font(.system(size: 22, weight: .regular, design: .serif))
                             .padding(.leading)
                         Spacer()
                     }
@@ -32,7 +32,7 @@ struct RecommendedView: View {
                 HStack {
                     if !recommendedViewModel.secondList.isEmpty{
                         Text("Livros de \(selectedGenres.genresUser[1])")
-                            .font(.system(size: 17, weight: .semibold, design: .serif))
+                            .font(.system(size: 22, weight: .regular, design: .serif))
                             .padding(.leading)
                         Spacer()
                     }
@@ -52,7 +52,7 @@ struct RecommendedView: View {
                 HStack {
                     if !recommendedViewModel.thirdList.isEmpty {
                         Text("Mais de \(selectedGenres.genresUser[2])")
-                            .font(.system(size: 17, weight: .semibold, design: .serif))
+                            .font(.system(size: 22, weight: .regular, design: .serif))
                             .padding(.leading)
                         Spacer()
                     }

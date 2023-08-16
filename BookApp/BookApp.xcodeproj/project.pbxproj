@@ -29,6 +29,8 @@
 		4C7234852A743DE9006740F6 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234842A743DE9006740F6 /* CommentView.swift */; };
 		4C7234892A797723006740F6 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234882A797723006740F6 /* Preview.swift */; };
 		4CCB79072A8ABED600FAAC2C /* BookImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB79062A8ABED600FAAC2C /* BookImage.swift */; };
+		4CCB790D2A8D405A00FAAC2C /* FolderCardViewEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB790C2A8D405A00FAAC2C /* FolderCardViewEdit.swift */; };
+		4CCB790F2A8D408E00FAAC2C /* BookImageAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB790E2A8D408E00FAAC2C /* BookImageAction.swift */; };
 		4CDD3BA82A730790001519C3 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BA72A730790001519C3 /* BookView.swift */; };
 		4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */; };
 		4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */; };
@@ -108,6 +110,8 @@
 		4C7234842A743DE9006740F6 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		4C7234882A797723006740F6 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		4CCB79062A8ABED600FAAC2C /* BookImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImage.swift; sourceTree = "<group>"; };
+		4CCB790C2A8D405A00FAAC2C /* FolderCardViewEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCardViewEdit.swift; sourceTree = "<group>"; };
+		4CCB790E2A8D408E00FAAC2C /* BookImageAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageAction.swift; sourceTree = "<group>"; };
 		4CDD3BA72A730790001519C3 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewApp.swift; sourceTree = "<group>"; };
 		4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -154,7 +158,7 @@
 		B1D5C0E62A7C20CD007CA7C7 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		B1D5C0E82A7C2A3E007CA7C7 /* AddToFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToFolderViewModel.swift; sourceTree = "<group>"; };
 		B1D5C0EC2A7C2ACA007CA7C7 /* FolderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderRow.swift; sourceTree = "<group>"; };
-		B1D861C52A7045AD00CAD142 /* BookApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1D861C52A7045AD00CAD142 /* Seeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D861C82A7045AE00CAD142 /* BookAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAppApp.swift; sourceTree = "<group>"; };
 		B1D861CA2A7045AE00CAD142 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B1D861CC2A7045AF00CAD142 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 			children = (
 				4CDD3BA72A730790001519C3 /* BookView.swift */,
 				4CCB79062A8ABED600FAAC2C /* BookImage.swift */,
+				4CCB790E2A8D408E00FAAC2C /* BookImageAction.swift */,
 				7C08EE4A2A86CC8F00280376 /* SharedInstagramView.swift */,
 				7C6ADEAA2A82C14900C43005 /* AddReview.swift */,
 				7C7DB2AB2A82E37F0036FCD5 /* RatingButton.swift */,
@@ -235,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				4C45AA8B2A817B0E00DD5FB0 /* FolderCardView.swift */,
+				4CCB790C2A8D405A00FAAC2C /* FolderCardViewEdit.swift */,
 				4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */,
 				4CDD3BB12A7308CD001519C3 /* FolderViewModel.swift */,
 				4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */,
@@ -367,7 +373,7 @@
 		B1D861C62A7045AD00CAD142 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B1D861C52A7045AD00CAD142 /* BookApp.app */,
+				B1D861C52A7045AD00CAD142 /* Seeker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -431,9 +437,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B1D861C42A7045AD00CAD142 /* BookApp */ = {
+		B1D861C42A7045AD00CAD142 /* Seeker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1D861D82A7045AF00CAD142 /* Build configuration list for PBXNativeTarget "BookApp" */;
+			buildConfigurationList = B1D861D82A7045AF00CAD142 /* Build configuration list for PBXNativeTarget "Seeker" */;
 			buildPhases = (
 				B1D861C12A7045AD00CAD142 /* Sources */,
 				B1D861C22A7045AD00CAD142 /* Frameworks */,
@@ -443,9 +449,9 @@
 			);
 			dependencies = (
 			);
-			name = BookApp;
+			name = Seeker;
 			productName = BookApp;
-			productReference = B1D861C52A7045AD00CAD142 /* BookApp.app */;
+			productReference = B1D861C52A7045AD00CAD142 /* Seeker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -476,7 +482,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B1D861C42A7045AD00CAD142 /* BookApp */,
+				B1D861C42A7045AD00CAD142 /* Seeker */,
 			);
 		};
 /* End PBXProject section */
@@ -515,6 +521,7 @@
 				B108B80C2A71942A006D6F1C /* CommentReview.swift in Sources */,
 				7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */,
 				7C31DBA32A7F63A3002FB8F8 /* Loading.swift in Sources */,
+				4CCB790D2A8D405A00FAAC2C /* FolderCardViewEdit.swift in Sources */,
 				7C002BBD2A843BEF00B872CB /* Genres.swift in Sources */,
 				4CDD3BBF2A730931001519C3 /* ProfileViewModel.swift in Sources */,
 				428ECC612A815F1000DA4B66 /* Oracle.swift in Sources */,
@@ -546,6 +553,7 @@
 				42633AE42A7443EE00401B5F /* BookService.swift in Sources */,
 				7C281AB72A78312B00A58E96 /* SearchableView.swift in Sources */,
 				4CDD3BB72A7308FD001519C3 /* OracleView.swift in Sources */,
+				4CCB790F2A8D408E00FAAC2C /* BookImageAction.swift in Sources */,
 				B1D861D22A7045AF00CAD142 /* Persistence.swift in Sources */,
 				4C5F48292A82CDA000011EF5 /* UserSettings.swift in Sources */,
 				7C31DBD02A818844002FB8F8 /* LoadingOracle.swift in Sources */,
@@ -706,6 +714,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Seeker;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -716,7 +726,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.filipeserafini.BookApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -745,6 +755,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Seeker;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -755,7 +767,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.filipeserafini.BookApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -781,7 +793,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1D861D82A7045AF00CAD142 /* Build configuration list for PBXNativeTarget "BookApp" */ = {
+		B1D861D82A7045AF00CAD142 /* Build configuration list for PBXNativeTarget "Seeker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B1D861D92A7045AF00CAD142 /* Debug */,

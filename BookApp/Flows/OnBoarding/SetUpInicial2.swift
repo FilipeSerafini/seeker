@@ -6,6 +6,7 @@ struct SetUpInicial2: View {
     @State private var isEditing: Bool = false
     @EnvironmentObject private var selectedGenres: SelectedGenres
     @Binding var onboarding: Bool
+    @EnvironmentObject var userManager: UserManager
     
     var body: some View {
         VStack{
@@ -50,17 +51,26 @@ struct SetUpInicial2: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
         )
+        .background(Color("backgroundColor"))
         .onAppear {
             UserDefaults.standard.set(name, forKey: "name")
             UserDefaults.standard.set(username, forKey: "username")
         }
+        .onDisappear {
+            let user: User = User(name: name, username: username, bio: "", favoriteGenres: selectedGenres.genresUser, favoriteGenresForAPI: selectedGenres.genresAPI) ?? User(name: "NAO CRIOU", username: "aa", bio: "aa", favoriteGenres: [], favoriteGenresForAPI: [])!
+            
+            CloudKitUtility.add(item: user) { result in
+                switch result {
+                case .success(_):
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            
+            userManager.createFolder(folderName: "Lendo agora")
+            userManager.createFolder(folderName: "Livros que quero ler")
+            userManager.createFolder(folderName: "Leituras realizadas")
+        }
     }
 }
-
-//struct SetUpInicial2_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SetUpInicial2()
-////            .environmentObject(SelectedGenres())
-////            .environmentObject(RecommendedViewModel())
-//    }
-//}

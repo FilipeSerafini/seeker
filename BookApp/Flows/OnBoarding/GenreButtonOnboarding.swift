@@ -24,7 +24,7 @@ struct GenreButtonOnboarding: View {
     @EnvironmentObject private var selectedGenres: SelectedGenres
     @State private var buttons: [ButtonData] = [
         ButtonData(id: 0, title: "Fantasia", isSelected: false, genre: .fantasy),
-        ButtonData(id: 1, title: "Suspese", isSelected: false, genre: .thriller),
+        ButtonData(id: 1, title: "Suspense", isSelected: false, genre: .thriller),
         ButtonData(id: 2, title: "Ficção", isSelected: false, genre: .fiction),
         ButtonData(id: 3, title: "Romance", isSelected: false, genre: .romance),
         ButtonData(id: 4, title: "Poesia", isSelected: false, genre: .poetry),
@@ -58,7 +58,7 @@ struct GenreButtonOnboarding: View {
                     .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
                 }
             }
-            .padding(.leading, -50)
+            .padding(.leading, -60)
             
             HStack {
                 ForEach(buttons.dropFirst(3).prefix(2)) { button in
@@ -70,8 +70,7 @@ struct GenreButtonOnboarding: View {
                     .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
                 }
             }
-            .padding(.leading, 90)
-            
+            .padding(.leading, 50)
             
             HStack {
                 ForEach(buttons.dropFirst(5).prefix(2)) { button in
@@ -83,7 +82,7 @@ struct GenreButtonOnboarding: View {
                     .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
                 }
             }
-            .padding(.leading, 30)
+            .padding(.leading, 5)
             
             HStack {
                 ForEach(buttons.dropFirst(7).prefix(2)) { button in
@@ -107,7 +106,7 @@ struct GenreButtonOnboarding: View {
                     .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
                 }
             }
-            .padding(.leading, 70)
+            .padding(.leading, 50)
             
             HStack {
                 Button(action: {
@@ -118,8 +117,9 @@ struct GenreButtonOnboarding: View {
                 .buttonStyle(CustomButtonGenre(isSelected: buttons[11].isSelected))
                 
             }
-            .padding(.leading, 50)
+            .padding(.leading, 20)
         }
+        .padding(.leading, 5)
     }
     
     private func toggleButtonSelection(button: ButtonData) {
