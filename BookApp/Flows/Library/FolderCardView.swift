@@ -12,64 +12,53 @@ struct FolderCardView: View {
     ]
     
     var body: some View {
+        
         VStack{
-            ScrollView(showsIndicators: false) {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(folderViewModel.books) { book in
-                        BookResearchedCover(book: book)
-                    }
-                }
+            if (folderViewModel.books.isEmpty){
+                Image("emptyStateFolder")
+                    .resizable()
+                    .frame(width: 328, height: 269)
+                    .padding(.top, 150)
+                
+                Text("Ah não! Parece que não temos nenhum livro por aqui. Que tal começarmos a pesquisar alguns? Clique no ícone de busca abaixo e comece a explorar!")
+                    .font(.system(size: 15, weight: .regular))
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
             }
-            Spacer()
             
-            Button {
-                isPresented.toggle()
-            } label: {
-                ZStack {
-                    Rectangle()
-                        .fill(.clear)
-                        .cornerRadius(22)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(lineWidth: 1)
-                                .fill(.red)
+            else {
+                
+                VStack{
+                    ScrollView(showsIndicators: false) {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(folderViewModel.books) { book in
+                                BookResearchedCover(book: book)
+                            }
                         }
-                        .frame(width: 126, height: 36)
-                    HStack{
-                        Image(systemName: "trash")
-                            .foregroundColor(.red)
-                        Text("Apagar pasta")
-                            .font(.system(size: 13, weight: .regular))
-                            .foregroundColor(Color("text"))
+                    }
+                    Spacer()
+                }
+                .padding(.top, 20)
+            }
+            
+            Spacer()
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        NavigationLink(destination: FolderCardViewEdit(folder: folder)                    .environmentObject(folderViewModel)
+                                       , label: {
+                            Image("pencil")
+                        })
+                    }
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Text(folder.name)
+                                .font(.system(size: 22, weight: .medium, design: .serif))
+                        }
                     }
                 }
-            }
-            .alert("Tem certeza que deseja apagar essa pasta?", isPresented: $isPresented) {
-                Button("Cancelar",action: {})
-                Button("Apagar",action: {
-                    //acao de apagar a pasta
-                    #warning("Excluir pasta funcionar com o banco")
-                })
-            } message: {
-                Text("Essa ação não poderá ser desfeita.")
-            }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .padding(.top, 10)
-        .padding(.bottom)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                HStack {
-                    Text(folder.name)
-                        .font(.system(size: 22, weight: .medium, design: .serif))
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing){
-                NavigationLink(destination: ProfileView(), label: {
-                    Image("pencil")
-                })
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             Image("backgroundImage")
                 .resizable()

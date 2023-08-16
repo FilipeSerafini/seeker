@@ -35,7 +35,7 @@ struct SearchableView: View {
                                 .foregroundColor(Color("foregroundSearch"))
                             }
                             .padding(.trailing, 20)
-                            .background(Color("backgroundSearch"))
+                            .background(Color("textField"))
                             .cornerRadius(30)
                             .overlay(
                                 HStack {
@@ -45,7 +45,7 @@ struct SearchableView: View {
                                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                                     }) {
                                         Image("magnifyingGlassColors")
-                                            .padding(.trailing, 10)
+                                            .padding(.trailing, 20)
                                     }
                                     .disabled(searchText == "")
                                     .opacity(searchText == "" ? 0.6 : 1)
@@ -171,6 +171,7 @@ struct SearchableView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
             )
+            .background(Color("backgroundColor"))
             .coordinateSpace(name: spaceName)
         }
     }
