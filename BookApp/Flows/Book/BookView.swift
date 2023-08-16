@@ -66,9 +66,11 @@ struct BookView: View {
                         .resizable()
                         .frame(width: 24, height: 24)
                 }
-                .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible) {
+                .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible){
                     NavigationLink("Adicionar a uma pasta") { AddToFolderView(book: book)  }
-                    NavigationLink("Adicionar uma review") { AddReview(book: book) }
+                    NavigationLink("Adicionar nota")
+                    { AddReview(book: book) }
+                    Button("Cancelar", role: .cancel, action: {})
                 } message: {
                     Text (book.authors[0])
                 }
@@ -82,6 +84,7 @@ struct BookView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
         )
+        .background(Color("backgroundColor"))
     }
 }
 

@@ -78,6 +78,7 @@ struct LibraryView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
             )
+            .background(Color("backgroundColor"))
         }
     }
 }
