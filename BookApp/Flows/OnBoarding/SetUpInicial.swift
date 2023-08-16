@@ -4,6 +4,7 @@ struct SetUpInicial: View {
     @State var username = ""
     @State var name = ""
     @Binding var onboarding: Bool
+    @State var usernameAvailable: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -80,5 +81,26 @@ struct SetUpInicial: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
         )
+    }
+    
+    func checkUserName(newUsername: String) {
+        let predicate = NSPredicate(format: "username == %@", newUsername)
+        let recordType = "User"
+        
+        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[User], Error>) in
+            switch result {
+            case .success(let users):
+                DispatchQueue.main.async {
+//                    users.isEmpty ? self.usernameAvailable = true : self.usernameAvailable = false
+                    if users.isEmpty {
+                        self.usernameAvailable = true
+                    } else {
+                        self.usernameAvailable = false
+                    }
+                }
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
     }
 }
