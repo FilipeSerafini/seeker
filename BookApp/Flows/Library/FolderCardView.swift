@@ -35,11 +35,11 @@ struct FolderCardView: View {
                             ForEach(folderViewModel.books) { book in
                                 BookResearchedCover(book: book)
                             }
+                            .padding(.top, 20)
                         }
                     }
                     Spacer()
                 }
-                .padding(.top, 20)
             }
             
             Spacer()
