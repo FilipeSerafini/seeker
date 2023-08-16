@@ -85,13 +85,17 @@ struct TabViewApp: View {
             let firstTime: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
             if firstTime {
                 UserDefaults.standard.set(false, forKey: "firstTimeHere")
-                UserDefaults.standard.set(selectedGenres.genres.map({ $0.toApi }), forKey: "genresAPI")
-                UserDefaults.standard.set(selectedGenres.genres.map({ $0.toUser }), forKey: "genresUser")
                 
                 selectedGenres.genresAPI = selectedGenres.genres.map({ $0.toApi })
                 selectedGenres.genresUser = selectedGenres.genres.map({ $0.toUser })
                 
+                UserDefaults.standard.set(selectedGenres.genresAPI, forKey: "genresAPI")
+                UserDefaults.standard.set(selectedGenres.genresUser, forKey: "genresUser")
+                
                 recommendedViewModel.fetchAll(searchedText: selectedGenres.genresAPI[0], selectedGenres.genresAPI[1], selectedGenres.genresAPI[2], filter: .genre)
+            }
+            if !profileViewModel.requestAlreadyMade {
+                profileViewModel.fetchUserData()
             }
         }
     }
