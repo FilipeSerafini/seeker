@@ -27,7 +27,7 @@ struct UserSettings: View {
                 HStack{
                     VStack(alignment: .leading) {
                         Text("Nome")
-                            .padding(.bottom, 10)
+                            .padding(.bottom, 20)
                         Text("Username")
                             .padding(.bottom, 20)
                         Text("Bio")
@@ -39,19 +39,23 @@ struct UserSettings: View {
                             .onChange(of: nameText) { newValue in
                                 let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ")
                                 let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
-                                nameText = String(filteredText)
+                                nameText = String(filteredText.prefix(25))
                             }
+
                         Divider()
+                            .padding(.bottom, 10)
                         
-                        TextField("username", text: $usernameText)
+                        TextField("Username", text: $usernameText)
                             .autocapitalization(.none)
                             .onChange(of: usernameText) { newValue in
                                 let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.-")
                                 let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
-                                usernameText = String(filteredText.prefix(10))
+                                usernameText = String(filteredText.prefix(30))
                             }
+
                         Divider()
-                        
+                            .padding(.top, 5)
+
                         TextField("Bio", text: $bioText, axis: .vertical)
                             .lineLimit(2)
                             .frame(maxHeight: 40)
