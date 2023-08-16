@@ -10,7 +10,7 @@ struct User: CKProtocol {
     var bio: String
     var favoriteGenres: [String]
     var image: String
-    //var image: URL?
+    var favoriteGenresForAPI: [String]
     
     //init para inicializar os atributos
     init() {
@@ -20,7 +20,7 @@ struct User: CKProtocol {
         bio = ""
         favoriteGenres = []
         image = ""
-       // image = nil
+        favoriteGenresForAPI = []
         
         self.record = CKRecord(recordType: "User")
     }
@@ -28,14 +28,14 @@ struct User: CKProtocol {
     
     //init para transformar os atributos em records para o banco, e determinar o recordType do usuario
     init?(
-        id: String,
+        id: String = UUID().uuidString,
         name: String,
         username: String,
         bio: String,
-        favoriteGenres: [String]
+        favoriteGenres: [String],
+        favoriteGenresForAPI: [String]
        // image:,
         
-       // image: URL?
     ) {
         
         let record = CKRecord(recordType: "User")
@@ -45,12 +45,7 @@ struct User: CKProtocol {
         record["username"] = username
         record["bio"] = bio
         record["favoriteGenres"] = favoriteGenres
-        //record["image"] =
-        
-//        if let url = image {
-//            let asset = CKAsset(fileURL: url)
-//            record["image"] = asset
-//        }
+        record["favoriteGenresForAPI"] = favoriteGenresForAPI
         
         self.init(record: record)
     }
@@ -63,17 +58,15 @@ struct User: CKProtocol {
         guard let username = record["username"] as? String else {return nil}
         guard let bio = record["bio"] as? String else {return nil}
         guard let favoriteGenres = record["favoriteGenres"] as? [String] else {return nil}
-//        guard let image = record["image"] as? String else {return nil}
+        guard let favoriteGenresForAPI = record["favoriteGenresForAPI"] as? [String] else {return nil}
         
         self.id = id
         self.name = name
         self.username = username
         self.bio = bio
         self.favoriteGenres = favoriteGenres
-        
-        let imageAsset = record["image"] as? CKAsset
         self.image = ""
-        //self.image = imageAsset?.fileURL
+        self.favoriteGenresForAPI = favoriteGenresForAPI
         
         self.record = record
     }
