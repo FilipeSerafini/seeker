@@ -16,6 +16,7 @@ struct TabViewApp: View {
     @EnvironmentObject private var recommendedViewModel: RecommendedViewModel
     @EnvironmentObject private var selectedGenres: SelectedGenres
     @StateObject var profileViewModel: ProfileViewModel = ProfileViewModel()
+    @StateObject var ratingViewModel: RatingViewModel = RatingViewModel()
     
     init() {
         // UITabBar configuration
@@ -81,6 +82,7 @@ struct TabViewApp: View {
         .tint(Color("primary"))
         .environmentObject(searchViewModel)
         .environmentObject(profileViewModel)
+        .environmentObject(ratingViewModel)
         .onAppear {
             let firstTime: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
             if firstTime {
@@ -96,6 +98,9 @@ struct TabViewApp: View {
             }
             if !profileViewModel.requestAlreadyMade {
                 profileViewModel.fetchUserData()
+            }
+            if !ratingViewModel.requestAlreadyMade {
+                ratingViewModel.fetchRateReviews()
             }
         }
     }

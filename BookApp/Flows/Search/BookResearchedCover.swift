@@ -3,6 +3,7 @@ import SwiftUI
 struct BookResearchedCover: View {
     @State private var startConfirm = false
     let book: Book
+    @EnvironmentObject var ratingViewModel: RatingViewModel
     
     var body: some View {
         
@@ -16,6 +17,6 @@ struct BookResearchedCover: View {
         }
         .frame(width: 95, height: 136)
         .cornerRadius(8)
-        .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book, ratingViewModel: RatingViewModel()) })
+        .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book) })
     }
 }

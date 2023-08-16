@@ -1,10 +1,3 @@
-//
-//  RatingButton.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 08/08/23.
-//
-
 import SwiftUI
 
 struct RatingButton: View {
@@ -36,11 +29,11 @@ struct RatingButton: View {
                             .frame(width: 31, height: 29)
                             .background(self.ratingViewModel.currentReview >= index ?
                                         Image("star.fill")
-                                            .resizable()
-                                            .frame(width: 31, height: 29) :
-                                        Image("star")
-                                            .resizable()
-                                            .frame(width: 31, height: 29)
+                                .resizable()
+                                .frame(width: 31, height: 29) :
+                                            Image("star")
+                                .resizable()
+                                .frame(width: 31, height: 29)
                             )
                     }
                 }
@@ -50,19 +43,13 @@ struct RatingButton: View {
         }
         .onAppear(perform: {
             Task {
-               self.ratingViewModel.getBookRate(bookID: book.id)
+                self.ratingViewModel.getBookRate(bookID: book.id)
             }
         })
         .onDisappear(perform: {
-            
             if self.ratingViewModel.currentReview != 0 {
                 self.ratingViewModel.addOrUpdateRateReview(rate: self.ratingViewModel.currentReview, book: self.book)
-                
-                
-            } else {
-                print("avaliacao 0 ent n criei")
             }
-//            self.ratingViewModel.deleteAllRateReviews()
         })
     }
     

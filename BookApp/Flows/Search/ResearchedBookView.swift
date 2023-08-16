@@ -4,6 +4,7 @@ struct ResearchedBookView: View {
     @State private var startConfirm = false
     @State var book: Book
     @Environment(\.colorScheme) var scheme
+    @EnvironmentObject var ratingViewModel: RatingViewModel
     
     var body: some View {
         ZStack{
@@ -32,7 +33,7 @@ struct ResearchedBookView: View {
                 startConfirm.toggle()
             }
         }
-        .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book, ratingViewModel: RatingViewModel()) })
+        .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book) })
         
         .foregroundColor(.black)
         .frame(maxWidth: .infinity, maxHeight: 140, alignment: .topLeading)

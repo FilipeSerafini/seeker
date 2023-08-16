@@ -8,18 +8,20 @@
 import Foundation
 import CloudKit
 
-struct RateReview: CKProtocol {
+struct RateReview: CKProtocol, Identifiable {
     
     var record: CKRecord
     var id: String = UUID().uuidString
     var rate: Int //estrelas
     var bookID: String
+    var bookTitle: String
     
     //init para inicializar os atributos
     init() {
         id = UUID().uuidString
         rate = 0
         bookID = ""
+        bookTitle = ""
         
         self.record = CKRecord(recordType: "RateReview")
     }
@@ -29,7 +31,8 @@ struct RateReview: CKProtocol {
     init?(
         id: String = UUID().uuidString,
         rate : Int,
-        bookID: String
+        bookID: String,
+        bookTitle: String
     ) {
         
         let record = CKRecord(recordType: "RateReview")
@@ -37,6 +40,7 @@ struct RateReview: CKProtocol {
         record["id"] = id
         record["rate"] = rate
         record["bookID"] = bookID
+        record["bookTitle"] = bookTitle
         
         self.init(record: record)
     }
@@ -47,11 +51,13 @@ struct RateReview: CKProtocol {
         guard let id = record["id"] as? String else {return nil}
         guard let rate = record["rate"] as? Int else {return nil}
         guard let bookID = record["bookID"] as? String else {return nil}
+        guard let bookTitle = record["bookTitle"] as? String else { return nil }
         
         
         self.id = id
         self.rate = rate
         self.bookID = bookID
+        self.bookTitle = bookTitle
         
         self.record = record
     }

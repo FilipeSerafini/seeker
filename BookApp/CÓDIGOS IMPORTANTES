@@ -36,3 +36,69 @@ CÓDIGOS IMPORTANTES
      appearance.backgroundImage = UIImage(named: "")
      UITabBar.appearance().scrollEdgeAppearance = appearance
      }
+     
+-- Da RatingViewModel
+
+//        if !userRateReviews.isEmpty {
+//        }
+//        else {
+//
+//            guard let newRateReview = RateReview(rate: rate, bookID: book.id, bookTitle: book.title) else { return }
+//
+//            addBookToCK(rateReview: newRateReview)
+//            self.fetchRateReviews()
+//            print("criou no else")
+//        }
+
+//        if !userRateReviews.isEmpty {
+//
+//            self.userRateReviews.forEach { rateReview in
+//                if rateReview.bookID == book.id {
+//                    alreadyHasRate = true
+//                    let rateReviewToUpdate = rateReview
+//
+//                    rateReviewToUpdate.record["rate"] = rate
+//
+//                    CloudKitUtility.update(item: rateReviewToUpdate) { result in
+//                        switch result {
+//                        case .success(_):
+//                            break
+//                        case .failure(let error):
+//                            print(error.localizedDescription)
+//                        }
+//                    }
+//
+//                    self.fetchRateReviews()
+//                    print("deu update")
+//                }
+//                else {
+//
+//                    guard let newRateReview = RateReview(rate: rate, bookID: book.id) else { return }
+//
+//                    addBookToCK(rateReview: newRateReview)
+//                    self.fetchRateReviews()
+//                    print("criou no if")
+//                }
+//            }
+//        } else {
+//
+//            guard let newRateReview = RateReview(rate: rate, bookID: book.id) else { return }
+//
+//            addBookToCK(rateReview: newRateReview)
+//            self.fetchRateReviews()
+//            print("criou no else")
+//        }
+
+//    func getBookRate(bookID: String, completion: @escaping ((Result<Int, Error>) -> Void)) {
+//        fetchRateReviews()
+//        fetchRateReviewsSemaphore.wait()
+//
+//        let result: Int
+//        if let rateReview = self.rateReviews.first(where: { $0.bookID == bookID }) {
+//            result = rateReview.rate
+//        } else {
+//            result = 0
+//        }
+//
+//        completion(.success(result))
+//    }

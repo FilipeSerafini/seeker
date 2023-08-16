@@ -48,3 +48,17 @@ class ProfileViewModel: ObservableObject {
         }
     }
 }
+
+enum AnyReview: Identifiable {
+    case rate(RateReview)
+    case comment(CommentReview)
+    
+    var id: String {
+        switch self {
+        case .rate(let review):
+            return review.id
+        case .comment(let review):
+            return review.id
+        }
+    }
+}
