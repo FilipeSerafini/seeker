@@ -20,7 +20,7 @@ struct FolderCardViewEdit: View {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(folderViewModel.books) { book in
-                        BookImageAction(book: book)
+                        BookImageAction(folder: folder, book: book)
                     }
                 }
             }

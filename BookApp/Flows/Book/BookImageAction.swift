@@ -3,6 +3,8 @@ import SwiftUI
 struct BookImageAction: View {
     
     @State private var startConfirm = false
+    @EnvironmentObject var userManager: UserManager
+    @State var folder: Folder
     let book: Book
     var body: some View {
         
@@ -17,8 +19,25 @@ struct BookImageAction: View {
         .frame(width: 95, height: 136)
         .cornerRadius(8)
         .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible) {
-            NavigationLink("Remover dessa lista") {
-                //colocar acao de remover da lista
+            Button("Remover dessa lista") {
+                folder.books.removeAll(where: { $0 == book.id })
+                
+                var folderToUpdate = folder
+                
+                folderToUpdate.record["books"] = folder.books
+                
+                CloudKitUtility.update(item: folder) { result in
+                    switch result {
+                    case .success(_):
+                        break
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                
+                userManager.fetchFolders()
+//                userManager.folders.removeAll(where: { $0.id == folder.id })
+//                userManager.folders.append(folder)
             }
         } message: {
             Text (book.authors[0])
