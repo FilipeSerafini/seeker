@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FolderCardView: View {
-    
+    @State private var isPresented: Bool = false
     @EnvironmentObject var folderViewModel: FolderViewModel
     
     let folder: Folder
@@ -13,16 +13,17 @@ struct FolderCardView: View {
     
     var body: some View {
         VStack{
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(folderViewModel.books) { book in
-                    BookResearchedCover(book: book)
+            ScrollView(showsIndicators: false) {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(folderViewModel.books) { book in
+                        BookResearchedCover(book: book)
+                    }
                 }
             }
             Spacer()
             
             Button {
-#warning("Excluir pasta funcionar com o banco")
-                //excluir pasta
+                isPresented.toggle()
             } label: {
                 ZStack {
                     Rectangle()
@@ -43,9 +44,18 @@ struct FolderCardView: View {
                     }
                 }
             }
+            .alert("Tem certeza que deseja apagar essa pasta?", isPresented: $isPresented) {
+                Button("Cancelar",action: {})
+                Button("Apagar",action: {
+                    //acao de apagar a pasta
+                    #warning("Excluir pasta funcionar com o banco")
+                })
+            } message: {
+                Text("Essa ação não poderá ser desfeita.")
+            }
         }
-        .padding(.top, 20)
-        .padding(.bottom, 30)
+        .padding(.top, 10)
+        .padding(.bottom)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 HStack {
