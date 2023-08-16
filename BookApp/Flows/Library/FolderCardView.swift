@@ -12,13 +12,13 @@ struct FolderCardView: View {
     ]
     
     var body: some View {
-        
         VStack{
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(folderViewModel.books) { book in
                     BookResearchedCover(book: book)
                 }
             }
+            Spacer()
             
             Button {
 #warning("Excluir pasta funcionar com o banco")
@@ -26,7 +26,7 @@ struct FolderCardView: View {
             } label: {
                 ZStack {
                     Rectangle()
-                        .fill(.white)
+                        .fill(.clear)
                         .cornerRadius(22)
                         .overlay {
                             RoundedRectangle(cornerRadius: 20)
@@ -39,28 +39,33 @@ struct FolderCardView: View {
                             .foregroundColor(.red)
                         Text("Apagar pasta")
                             .font(.system(size: 13, weight: .regular))
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("text"))
                     }
                 }
             }
         }
         .padding(.top, 20)
         .padding(.bottom, 30)
-        
-        Spacer()        
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        Text(folder.name)
-                            .font(.system(size: 22, weight: .medium, design: .serif))
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing){
-                    NavigationLink(destination: ProfileView(), label: {
-                        Image("pencil")
-                    })
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                HStack {
+                    Text(folder.name)
+                        .font(.system(size: 22, weight: .medium, design: .serif))
                 }
             }
+            ToolbarItem(placement: .navigationBarTrailing){
+                NavigationLink(destination: ProfileView(), label: {
+                    Image("pencil")
+                })
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            Image("backgroundImage")
+                .resizable()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea()
+        )
     }
 }
 

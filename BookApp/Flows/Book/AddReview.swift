@@ -54,24 +54,22 @@ struct AddReview: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                VStack {
-                    Text("Adicionar uma nota")
-                        .font(.system(size: 17, weight: .medium, design: .serif))
-                        .bold()
-                        .foregroundColor(.black)
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text("Adicionar uma nota")
+                            .font(.system(size: 22, weight: .medium, design: .serif))
+                    }
                 }
-            }
-            ToolbarItem(placement: .navigationBarTrailing){
-                Button {
-                    let comment = CommentReview(comment: addReview, bookID: book.id, bookTitle: book.title)
-                    profileViewModel.saveUserCommentReview(comment: comment!)
-                    dismiss()
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button {
+                        let comment = CommentReview(comment: addReview, bookID: book.id, bookTitle: book.title)
+                        profileViewModel.saveUserCommentReview(comment: comment!)
+                        dismiss()
+                    }
+                label: {
+                    Image("saveFolder")
                 }
-            label: {
-                Image("saveFolder")
-            }
-            }
+                }
         }
     }
 }

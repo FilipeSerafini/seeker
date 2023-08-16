@@ -55,6 +55,9 @@ struct BookView: View {
                     }
                 label: {
                     Image("shareButton")
+                        .resizable()
+                        .frame(width: 22, height: 24)
+                        .padding(.trailing, -10)
                 }
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
@@ -69,15 +72,14 @@ struct BookView: View {
                             .frame(width: 24, height: 24)
                     }
                     .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible) {
-                        NavigationLink("Adicionar a uma lista") { AddToFolderView(book: book)  }
-                        NavigationLink("Adicionar uma nota") { AddReview(book: book) }
+                        NavigationLink("Adicionar a uma pasta") { AddToFolderView(book: book)  }
+                        NavigationLink("Adicionar uma review") { AddReview(book: book) }
                     } message: {
                         Text (book.authors[0])
                     }
                 }
                 }
             }
-            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(

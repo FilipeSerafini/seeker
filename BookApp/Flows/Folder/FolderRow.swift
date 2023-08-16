@@ -12,7 +12,6 @@ struct FolderRow: View {
         HStack {
             Text(folder.name)
                 .font(.system(size: 17, weight: .regular))
-            
             Spacer()
             Button {
                 isSelected.toggle()
@@ -20,11 +19,11 @@ struct FolderRow: View {
                 action(isSelected, hasChanged)
             } label: {
                 Image(isSelected ? "folderSelected" : "folderUnselected")
+                    .resizable()
+                    .frame(width: 30, height: 30)
             }
-            
-            
-            
         }
-        .padding(29)
+        .padding(.vertical, 5)
+        .padding(.horizontal, 20)
     }
 }
