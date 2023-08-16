@@ -34,6 +34,7 @@ struct LibraryView: View {
                         Button("Cancelar",action: {})
                         Button("Salvar",action: {
                             userManager.createFolder(folderName: folderName)
+                            userManager.fetchFolders()
                         })
                     } message: {
                         Text("Insira o nome desejado para a pasta.")

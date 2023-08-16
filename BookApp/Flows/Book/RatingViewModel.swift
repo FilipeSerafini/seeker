@@ -10,7 +10,6 @@ class RatingViewModel: ObservableObject {
     @Published var userRateReviews: [RateReview] = []
     @Published var currentReview: Int = 0
     @Published var requestAlreadyMade: Bool = false
-    @EnvironmentObject var userManager: UserManager
     
     func fetchRateReviews() {
         CloudKitUtility.fetchUserRecordID { (result: Result<CKRecord.ID, Error>) in
