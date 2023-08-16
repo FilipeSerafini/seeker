@@ -13,6 +13,21 @@ struct FolderCardView: View {
     
     var body: some View {
         
+        if (folderViewModel.books.isEmpty){
+            
+            #warning("trocar para outro asset")
+            
+            Image("emptyStateSearch")
+                .resizable()
+                .frame(width: 200, height: 200)
+            
+            Text("Ah não! Parece que não temos nenhum livro por aqui. Que tal começarmos a pesquisar alguns? Clique no ícone de busca abaixo e comece a explorar!")
+                .font(.system(size: 15, weight: .regular))
+                .multilineTextAlignment(.center)
+                .padding()
+        }
+        else{
+        
         VStack{
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(folderViewModel.books) { book in
@@ -47,6 +62,7 @@ struct FolderCardView: View {
         .padding(.top, 20)
         .padding(.bottom, 30)
         
+        }
         Spacer()        
             .toolbar {
                 ToolbarItem(placement: .principal) {
