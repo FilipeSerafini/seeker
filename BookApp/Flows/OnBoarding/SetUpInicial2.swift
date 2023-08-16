@@ -51,6 +51,7 @@ struct SetUpInicial2: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
         )
+        .background(Color("backgroundColor"))
         .onAppear {
             UserDefaults.standard.set(name, forKey: "name")
             UserDefaults.standard.set(username, forKey: "username")
@@ -73,11 +74,3 @@ struct SetUpInicial2: View {
         }
     }
 }
-
-//struct SetUpInicial2_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SetUpInicial2()
-////            .environmentObject(SelectedGenres())
-////            .environmentObject(RecommendedViewModel())
-//    }
-//}

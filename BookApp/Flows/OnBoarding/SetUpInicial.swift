@@ -31,17 +31,17 @@ struct SetUpInicial: View {
                         .onChange(of: name) { newValue in
                             let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ")
                             let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
-                            name = String(filteredText)
+                            name = String(filteredText.prefix(25))
                         }
                         Divider()
                         
-                        TextField("username", text: $username)
+                        TextField("Username", text: $username)
                         .padding(.top)
                         .autocapitalization(.none)
                         .onChange(of: username) { newValue in
                             let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.-")
                             let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
-                            username = String(filteredText.prefix(10))
+                            username = String(filteredText.prefix(30))
                         }
                         Divider()
                     }
@@ -81,6 +81,7 @@ struct SetUpInicial: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
         )
+        .background(Color("backgroundColor"))
     }
     
     func checkUserName(newUsername: String) {
