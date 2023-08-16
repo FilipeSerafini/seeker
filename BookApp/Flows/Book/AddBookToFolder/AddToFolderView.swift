@@ -47,6 +47,7 @@ struct AddToFolderView: View {
                     userManager.updateFolders(folders: modifiedFolders)
                     {
                         print("Salvou livro")
+                        userManager.fetchFolders()
                     }
                     dismiss()
                 } label: {
