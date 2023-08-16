@@ -1,5 +1,5 @@
 
-<h1 align="center"> BookApp </h1>
+<h1 align="center"> Seeker </h1>
 
 # Índice
 
