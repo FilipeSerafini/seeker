@@ -29,24 +29,8 @@ struct LibraryView: View {
                             .frame(width: 36, height: 24)
                     }
                     .padding(.top, 40)
-//                    .alert("Criar nova pasta", isPresented: $isPresented) {
-//                        TextField(folderName, text: $folderName)
-//                        Button("Cancelar",action: {})
-//                        Button("Salvar",action: {
-//                            userManager.createFolder(folderName: folderName)
-//                        })
-//                    } message: {
-//                        Text("Insira o nome desejado para a pasta.")
-//                    }
-                    
-                    #warning("VER PORQUE NAO ESTA LIMITANDO NA CAIXA DE TEXTO")
                     .alert("Criar nova pasta", isPresented: $isPresented) {
                         TextField(folderName, text: $folderName)
-                            .onChange(of: folderName) { newValue in
-                                let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ")
-                                let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
-                                folderName = String(filteredText.prefix(25))
-                            }
                         Button("Cancelar",action: {})
                         Button("Salvar",action: {
                             userManager.createFolder(folderName: folderName)
@@ -54,6 +38,22 @@ struct LibraryView: View {
                     } message: {
                         Text("Insira o nome desejado para a pasta.")
                     }
+                    
+                    #warning("VER PORQUE NAO ESTA LIMITANDO NA CAIXA DE TEXTO")
+//                    .alert("Criar nova pasta", isPresented: $isPresented) {
+//                        TextField(folderName, text: $folderName)
+//                            .onChange(of: folderName) { newValue in
+//                                let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ")
+//                                let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
+//                                folderName = String(filteredText.prefix(25))
+//                            }
+//                        Button("Cancelar",action: {})
+//                        Button("Salvar",action: {
+//                            userManager.createFolder(folderName: folderName)
+//                        })
+//                    } message: {
+//                        Text("Insira o nome desejado para a pasta.")
+//                    }
                     
                     
                     

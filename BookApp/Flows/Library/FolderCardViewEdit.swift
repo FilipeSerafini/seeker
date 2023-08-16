@@ -7,6 +7,7 @@ struct FolderCardViewEdit: View {
     @State private var isPresented: Bool = false
     @EnvironmentObject var folderViewModel: FolderViewModel
     @Environment (\.dismiss) var dismiss
+    @EnvironmentObject var userManager: UserManager
 
     let columns = [
         GridItem(.flexible()),
@@ -50,8 +51,9 @@ struct FolderCardViewEdit: View {
             .alert("Tem certeza que deseja apagar essa pasta?", isPresented: $isPresented) {
                 Button("Cancelar",action: {})
                 Button("Apagar",action: {
-                    //acao de apagar a pasta
-                    #warning("Excluir pasta funcionar com o banco")
+                    CloudKitUtility.delete(item: folder)
+                    userManager.fetchFolders()
+                    dismiss()
                 })
             } message: {
                 Text("Essa ação não poderá ser desfeita.")
