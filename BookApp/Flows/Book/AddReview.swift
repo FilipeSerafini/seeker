@@ -16,6 +16,7 @@ struct AddReview: View {
                             .resizable()
                             .frame(width: 62, height: 88)
                             .cornerRadius(10)
+                            .shadow(color: Color("shadowBook"), radius: 3.2, x: 0, y: 3.2)
                     }
                     
                     VStack(alignment: .leading){
@@ -36,6 +37,7 @@ struct AddReview: View {
                     TextField("Título da nota", text: $titleReview)
                         .textFieldStyle(.plain)
                         .font(.system(size: 22, weight: .medium, design: .serif))
+                        .padding(.vertical, 5)
                     
                     TextField("Adicionar nota", text: $addReview, axis: .vertical)
                         .textFieldStyle(.plain)
@@ -51,12 +53,13 @@ struct AddReview: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
             )
+            .background(Color("backgroundColor"))
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
                 ToolbarItem(placement: .principal) {
                     VStack {
-                        Text("Adicionar uma nota")
+                        Text("Adicionar nota")
                             .font(.system(size: 22, weight: .medium, design: .serif))
                     }
                 }
