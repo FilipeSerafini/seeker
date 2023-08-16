@@ -1,22 +1,20 @@
 import SwiftUI
 
 struct MediumCommentButton: View {
-    
     var comment: CommentReview
     
     var body: some View {
-        
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(Color("commentButton"))
+                    .fill(Color("historicPost"))
                 VStack(alignment: .leading, spacing: 4) {
                     Text(comment.bookTitle)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color("comment"))
+                        .font(.system(size: 17, weight: .semibold))
+                        .foregroundColor(Color("historicTitle"))
                         .frame(width: 165, height: 20, alignment: .leading)
                     Text(comment.comment)
-                        .font(.subheadline)
+                        .font(.system(size: 15, weight: .regular))
                 }
                 .padding(.all, 4)
                 .frame(width: 165, height: 95, alignment: .topLeading)

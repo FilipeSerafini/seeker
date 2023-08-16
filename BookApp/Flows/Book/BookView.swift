@@ -44,21 +44,6 @@ struct BookView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing){
                 Button {
-                    let customView = SharedInstagramView(book: book)
-                    
-                    if let viewImageData = customView.toImage().pngData() {
-                        shareImageOnInstagramStories(imageData: viewImageData)
-                    }
-                }
-            label: {
-                Image("shareButton")
-                    .resizable()
-                    .frame(width: 22, height: 24)
-                    .padding(.trailing, -10)
-            }
-            }
-            ToolbarItem(placement: .navigationBarTrailing){
-                Button {
                     startConfirm.toggle()
                 }
             label: {
@@ -66,6 +51,7 @@ struct BookView: View {
                     Image("addBookToFolder")
                         .resizable()
                         .frame(width: 24, height: 24)
+                        .padding(.trailing, -10)
                 }
                 .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible){
                     NavigationLink("Adicionar a uma pasta") { AddToFolderView(book: book)  }
@@ -77,6 +63,21 @@ struct BookView: View {
                 }
             }
             }
+            ToolbarItem(placement: .navigationBarTrailing){
+                Button {
+                    let customView = SharedInstagramView(book: book)
+                    
+                    if let viewImageData = customView.toImage().pngData() {
+                        shareImageOnInstagramStories(imageData: viewImageData)
+                    }
+                }
+            label: {
+                Image("shareButton")
+                    .resizable()
+                    .frame(width: 22, height: 24)
+            }
+            }
+
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
