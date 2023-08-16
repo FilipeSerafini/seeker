@@ -78,7 +78,7 @@ struct OracleView: View {
                             .padding()
                             .padding(.trailing, 30)
                             .font(.system(size: 15))
-                            .background(Color("backgroundSearch"))
+                            .background(Color("textFieldOracle"))
                             .cornerRadius(30)
                             .onTapGesture {
                                 isTextFieldFocused = true
@@ -97,6 +97,8 @@ struct OracleView: View {
                                         }
                                     } label: {
                                         Image("paperplane")
+                                            .resizable()
+                                            .frame(width: 28, height: 26)
                                             .padding(.trailing, 15)
                                     }
                                     .disabled(inputUsuario == "")

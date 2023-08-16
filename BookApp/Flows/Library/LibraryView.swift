@@ -5,6 +5,7 @@ struct LibraryView: View {
     @EnvironmentObject private var userManager: UserManager
     @State private var isPresented: Bool = false
     @State private var folderName: String = ""
+    @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? ""
     @Environment(\.colorScheme) var scheme
     
     var body: some View {
@@ -13,7 +14,7 @@ struct LibraryView: View {
                 HStack {
                     VStack (alignment: .leading){
 #warning("Mudar para o nome do usuário")
-                        Text("E aí, Manu?")
+                        Text("E aí, \(myName)?")
                             .font(.system(size: 15))
                         Text("Minha Estante")
                             .font(.system(size: 34, design: .serif))
@@ -43,7 +44,7 @@ struct LibraryView: View {
                 Spacer()
                 
                 VStack {
-                    ScrollView {
+                    ScrollView(showsIndicators: false){
                         ForEach(userManager.folders) { folder in
                             FolderView(folder: folder)
                                 .padding(.bottom, 10)
