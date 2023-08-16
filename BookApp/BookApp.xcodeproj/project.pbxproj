@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		420FF5442A7AE73C006F4D0E /* RecommendedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420FF5432A7AE73C006F4D0E /* RecommendedView.swift */; };
 		420FF5462A7AEE92006F4D0E /* RecommendedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420FF5452A7AEE92006F4D0E /* RecommendedViewModel.swift */; };
+		42290FA02A8D3B35003AE538 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42290F9F2A8D3B35003AE538 /* RatingView.swift */; };
+		426045462A8C3F9F00775124 /* SetUpInicialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426045452A8C3F9F00775124 /* SetUpInicialViewModel.swift */; };
 		42633AE42A7443EE00401B5F /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42633AE32A7443EE00401B5F /* BookService.swift */; };
 		428ECC5F2A815EE500DA4B66 /* OracleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ECC5E2A815EE500DA4B66 /* OracleService.swift */; };
 		428ECC612A815F1000DA4B66 /* Oracle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ECC602A815F1000DA4B66 /* Oracle.swift */; };
@@ -89,7 +91,9 @@
 /* Begin PBXFileReference section */
 		420FF5432A7AE73C006F4D0E /* RecommendedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedView.swift; sourceTree = "<group>"; };
 		420FF5452A7AEE92006F4D0E /* RecommendedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedViewModel.swift; sourceTree = "<group>"; };
+		42290F9F2A8D3B35003AE538 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		422E89BB2A788F1600FADC5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		426045452A8C3F9F00775124 /* SetUpInicialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpInicialViewModel.swift; sourceTree = "<group>"; };
 		42633AE32A7443EE00401B5F /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
 		428ECC5E2A815EE500DA4B66 /* OracleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleService.swift; sourceTree = "<group>"; };
 		428ECC602A815F1000DA4B66 /* Oracle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oracle.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				7C002BBA2A8430FA00B872CB /* SetUpInicial2.swift */,
 				7C002BBC2A843BEF00B872CB /* Genres.swift */,
 				7C002BC42A851BB800B872CB /* GenreButtonOnboarding.swift */,
+				426045452A8C3F9F00775124 /* SetUpInicialViewModel.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				7CB884102A8A9CEE0081798D /* PhotoPicker.swift */,
 				4C4FD44F2A827FCC00503219 /* LargeCommentButton.swift */,
 				7CB884122A8A9DC20081798D /* ProfilePhoto.swift */,
+				42290F9F2A8D3B35003AE538 /* RatingView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 				4C45AA862A8137BE00DD5FB0 /* FolderCard.swift in Sources */,
 				4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */,
 				7C4245E42A7AE98800241A98 /* CustomButtonFilter.swift in Sources */,
+				42290FA02A8D3B35003AE538 /* RatingView.swift in Sources */,
 				B19E0B052A840EDC00A68092 /* RateReview.swift in Sources */,
 				B108B8072A719406006D6F1C /* Badge.swift in Sources */,
 				B1D5C0E92A7C2A3E007CA7C7 /* AddToFolderViewModel.swift in Sources */,
@@ -569,6 +576,7 @@
 				B108B80E2A719431006D6F1C /* Goal.swift in Sources */,
 				4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */,
 				7C7DB2AC2A82E37F0036FCD5 /* RatingButton.swift in Sources */,
+				426045462A8C3F9F00775124 /* SetUpInicialViewModel.swift in Sources */,
 				7C31DBD42A81D109002FB8F8 /* BarCodeScanner.swift in Sources */,
 				4CDD3BC12A730938001519C3 /* ProfileView.swift in Sources */,
 				4C5849DB2A818A3B00C7AF97 /* OnBoarding3.swift in Sources */,
