@@ -32,12 +32,12 @@ struct LibraryView: View {
                     .alert("Criar nova pasta", isPresented: $isPresented) {
                         TextField(folderName, text: $folderName)
                         Button("Cancelar",action: {})
-                        Button("Salvar",action: {
+                        Button("Criar",action: {
                             userManager.createFolder(folderName: folderName)
                             userManager.fetchFolders()
                         })
                     } message: {
-                        Text("Insira o nome desejado para a pasta.")
+                        Text("Defina um nome para a nova pasta. Assim que criada, ela aparecerá na sua estante.")
                     }
                     
                     #warning("VER PORQUE NAO ESTA LIMITANDO NA CAIXA DE TEXTO")

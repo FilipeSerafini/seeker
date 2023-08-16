@@ -32,8 +32,8 @@ struct CustomButtonGenre: ButtonStyle {
             .frame(maxHeight: 36)
             .background(
                 RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color("secondary"), lineWidth: 3)
-                    .background(isSelected ? Color("secondary") : Color.clear)
+                    .stroke(Color("genreButton"), lineWidth: 3)
+                    .background(isSelected ? Color("genreButton") : Color.clear)
             )
             .cornerRadius(20)
     }

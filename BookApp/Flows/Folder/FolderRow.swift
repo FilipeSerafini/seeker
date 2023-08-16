@@ -18,15 +18,14 @@ struct FolderRow: View {
                         .font(.system(size: 17, weight: .regular))
                         .foregroundColor(Color("text"))
                     Spacer()
-                    
                     Image(isSelected ? "folderSelected" : "folderUnselected")
                         .resizable()
                         .frame(width: 30, height: 30)
                 }
-                
             }
         }
         .padding(.vertical, 5)
         .padding(.horizontal, 20)
+        .background(Color("backgroundColor"))
     }
 }

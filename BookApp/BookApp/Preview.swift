@@ -7,6 +7,8 @@ struct Preview: View {
                 .resizable()
                 .frame(width: 269, height: 229)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color("backgroundColor"))
     }
 }
 
