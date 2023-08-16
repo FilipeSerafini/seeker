@@ -171,6 +171,7 @@ struct SearchableView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
             )
+            .background(Color("backgroundColor"))
             .coordinateSpace(name: spaceName)
         }
     }
