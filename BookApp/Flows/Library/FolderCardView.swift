@@ -21,53 +21,23 @@ struct FolderCardView: View {
                 }
             }
             Spacer()
-            
-            Button {
-                isPresented.toggle()
-            } label: {
-                ZStack {
-                    Rectangle()
-                        .fill(.clear)
-                        .cornerRadius(22)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(lineWidth: 1)
-                                .fill(.red)
-                        }
-                        .frame(width: 126, height: 36)
-                    HStack{
-                        Image(systemName: "trash")
-                            .foregroundColor(.red)
-                        Text("Apagar pasta")
-                            .font(.system(size: 13, weight: .regular))
-                            .foregroundColor(Color("text"))
-                    }
-                }
-            }
-            .alert("Tem certeza que deseja apagar essa pasta?", isPresented: $isPresented) {
-                Button("Cancelar",action: {})
-                Button("Apagar",action: {
-                    //acao de apagar a pasta
-                    #warning("Excluir pasta funcionar com o banco")
-                })
-            } message: {
-                Text("Essa ação não poderá ser desfeita.")
-            }
         }
         .padding(.top, 10)
         .padding(.bottom)
         .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing){
+                NavigationLink(destination: FolderCardViewEdit(folder: folder)                    .environmentObject(folderViewModel)
+                    , label: {
+                    Image("pencil")
+                })
+            }
             ToolbarItem(placement: .principal) {
                 HStack {
                     Text(folder.name)
                         .font(.system(size: 22, weight: .medium, design: .serif))
                 }
             }
-            ToolbarItem(placement: .navigationBarTrailing){
-                NavigationLink(destination: ProfileView(), label: {
-                    Image("pencil")
-                })
-            }
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
