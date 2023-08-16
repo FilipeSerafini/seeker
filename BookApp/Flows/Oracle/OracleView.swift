@@ -32,7 +32,6 @@ struct OracleView: View {
                                 .font(.system(size: 15))
                                 .multilineTextAlignment(.center)
                                 .frame(width: geometry.size.width/1.15)
-                                
                         }
                        
                     ScrollView(.vertical, showsIndicators: false){
@@ -78,7 +77,7 @@ struct OracleView: View {
                             .padding()
                             .padding(.trailing, 30)
                             .font(.system(size: 15))
-                            .background(Color("backgroundSearch"))
+                            .background(Color("textField"))
                             .cornerRadius(30)
                             .onTapGesture {
                                 isTextFieldFocused = true
@@ -97,6 +96,8 @@ struct OracleView: View {
                                         }
                                     } label: {
                                         Image("paperplane")
+                                            .resizable()
+                                            .frame(width: 28, height: 26)
                                             .padding(.trailing, 15)
                                     }
                                     .disabled(inputUsuario == "")
@@ -109,18 +110,18 @@ struct OracleView: View {
                     .padding()
                 }
                 .background(
-                             Image("backgroundImage")
+                    Image("backgroundImage")
                     .resizable()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
                 )
+                .background(Color("backgroundColor"))
                 .onTapGesture {
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }
             }
         }
     }
-    
 
     func sendMessage(message: String) {
         withAnimation {
@@ -141,7 +142,8 @@ struct OracleView: View {
                 }
             }
         })
-    }}
+    }
+}
 
 struct OracleView_Previews: PreviewProvider {
     static var previews: some View {

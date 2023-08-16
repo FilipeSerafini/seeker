@@ -6,12 +6,13 @@ struct SetUpInicial: View {
     @Binding var onboarding: Bool
     
     var body: some View {
-        VStack{
+        GeometryReader { geometry in
             VStack{
                 Text("Como você gostaria de ser chamado?")
                     .multilineTextAlignment(.center)
                     .font(.system(size: 17, weight: .regular))
                     .padding([.top, .bottom])
+                    .padding(.top, 50)
                 
                 HStack{
                     VStack(alignment: .leading) {
@@ -46,30 +47,32 @@ struct SetUpInicial: View {
                     .padding([.leading, .trailing])
                 }
                 .padding()
-                .padding(.bottom, 60)
+                .padding(.bottom, 20)
                 
                 Image("zoeChat")
                     .resizable()
-                    .frame(width: 400, height: 280)
-                    .padding(.bottom, 60)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.5)
+                    .padding(.bottom, 15)
+                
+                NavigationLink(destination: SetUpInicial2(username: $username, name: $name, onboarding: $onboarding).navigationBarBackButtonHidden(true), label: {
+                        ZStack {
+                            Rectangle()
+                                .fill(Color("primary"))
+                                .cornerRadius(30)
+                                .frame(width: 125, height: 39)
+                            Text("Continuar")
+                                .foregroundColor(.white)
+                        }
+                    })
+                .disabled(name == "")
+                .disabled(username == "")
+                .opacity(name == "" ? 0.6 : 1)
+                .opacity(username == "" ? 0.6 : 1)
             }
             .font(.system(size: 17))
-        
-            NavigationLink(destination: SetUpInicial2(username: $username, name: $name, onboarding: $onboarding)                .navigationBarBackButtonHidden(true), label: {
-                    ZStack {
-                        Rectangle()
-                            .fill(Color("primary"))
-                            .cornerRadius(30)
-                            .frame(width: 125, height: 39)
-                        Text("Continuar")
-                            .foregroundColor(.white)
-                    }
-                })
-            .disabled(name == "")
-            .disabled(username == "")
-            .opacity(name == "" ? 0.6 : 1)
-            .opacity(username == "" ? 0.6 : 1)
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             Image("backgroundImage")

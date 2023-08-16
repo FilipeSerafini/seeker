@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FolderCardView: View {
-    
+    @State private var isPresented: Bool = false
     @EnvironmentObject var folderViewModel: FolderViewModel
     
     let folder: Folder
@@ -12,57 +12,36 @@ struct FolderCardView: View {
     ]
     
     var body: some View {
-        
-        if (folderViewModel.books.isEmpty){
-            
-            #warning("trocar para outro asset")
-            
-            Image("emptyStateSearch")
-                .resizable()
-                .frame(width: 200, height: 200)
-            
-            Text("Ah não! Parece que não temos nenhum livro por aqui. Que tal começarmos a pesquisar alguns? Clique no ícone de busca abaixo e comece a explorar!")
-                .font(.system(size: 15, weight: .regular))
-                .multilineTextAlignment(.center)
-                .padding()
-        }
-        else{
-        
         VStack{
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(folderViewModel.books) { book in
-                    BookResearchedCover(book: book)
-                }
-            }
-            
-            Button {
-#warning("Excluir pasta funcionar com o banco")
-                //excluir pasta
-            } label: {
-                ZStack {
-                    Rectangle()
-                        .fill(.white)
-                        .cornerRadius(22)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(lineWidth: 1)
-                                .fill(.red)
-                        }
-                        .frame(width: 126, height: 36)
-                    HStack{
-                        Image(systemName: "trash")
-                            .foregroundColor(.red)
-                        Text("Apagar pasta")
-                            .font(.system(size: 13, weight: .regular))
-                            .foregroundColor(.black)
+            ScrollView(showsIndicators: false) {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(folderViewModel.books) { book in
+                        BookResearchedCover(book: book)
                     }
                 }
             }
+            Spacer()
+        }
+        .padding(.top, 10)
+        .padding(.bottom)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing){
+                NavigationLink(destination: FolderCardViewEdit(folder: folder)                    .environmentObject(folderViewModel)
+                    , label: {
+                    Image("pencil")
+                })
+            }
+            ToolbarItem(placement: .principal) {
+                HStack {
+                    Text(folder.name)
+                        .font(.system(size: 22, weight: .medium, design: .serif))
+                }
+            }
+            
         }
         .padding(.top, 20)
         .padding(.bottom, 30)
         
-        }
         Spacer()        
             .toolbar {
                 ToolbarItem(placement: .principal) {

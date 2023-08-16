@@ -35,29 +35,6 @@ class RatingViewModel: ObservableObject {
         }
     }
     
-    func deleteAllRateReviews() {
-        
-        var allReviews: [RateReview] = []
-        let predicate = NSPredicate(value: true)
-        
-        let semaphore = DispatchSemaphore(value: 0)
-        
-        CloudKitUtility.fetch(predicate: predicate, recordType: "RateReview") { (result: Result<[RateReview], Error>) in
-            switch result {
-                case .success(let reviews):
-                    allReviews = reviews
-                case .failure(let failure):
-                    print(failure.localizedDescription)
-            }
-            semaphore.signal()
-        }
-        semaphore.wait()
-        
-        allReviews.forEach { rateReview in
-            CloudKitUtility.delete(item: rateReview)
-        }
-    }
-    
     func fetchRateReviewsWith(recordID: CKRecord.ID) {
         let reference = CKRecord.Reference(recordID: recordID, action: .none)
         let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
@@ -122,13 +99,9 @@ class RatingViewModel: ObservableObject {
     
     
     func addOrUpdateRateReview(rate: Int, book: Book) {
-        
-        var alreadyHasRate: Bool = false
-        
-        self.userRateReviews.forEach { rateReview in
-            if rateReview.bookID == book.id {
-                alreadyHasRate = true
-                var rateReviewToUpdate = rateReview
+        if !userRateReviews.isEmpty {
+            if userRateReviews.contains(where: { $0.bookID == book.id }) {
+                let rateReviewToUpdate = userRateReviews.first(where: { $0.bookID == book.id})!
                 
                 rateReviewToUpdate.record["rate"] = rate
                 
@@ -140,22 +113,78 @@ class RatingViewModel: ObservableObject {
                         print(error.localizedDescription)
                     }
                 }
+                
+                self.fetchRateReviews()
+                print("deu update")
             }
-            
-            
-            if !alreadyHasRate {
+            else {
                 
                 guard let newRateReview = RateReview(rate: rate, bookID: book.id) else { return }
                 
-                CloudKitUtility.add(item: newRateReview) { result in
-                    switch result {
-                    case .success(_):
-                        break
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                    }
-                }
+                addBookToCK(rateReview: newRateReview)
+                self.fetchRateReviews()
+                print("criou no if")
+            }
+        }
+        else {
+            
+            guard let newRateReview = RateReview(rate: rate, bookID: book.id) else { return }
+            
+            addBookToCK(rateReview: newRateReview)
+            self.fetchRateReviews()
+            print("criou no else")
+        }
+        
+//        if !userRateReviews.isEmpty {
+//
+//            self.userRateReviews.forEach { rateReview in
+//                if rateReview.bookID == book.id {
+//                    alreadyHasRate = true
+//                    let rateReviewToUpdate = rateReview
+//
+//                    rateReviewToUpdate.record["rate"] = rate
+//
+//                    CloudKitUtility.update(item: rateReviewToUpdate) { result in
+//                        switch result {
+//                        case .success(_):
+//                            break
+//                        case .failure(let error):
+//                            print(error.localizedDescription)
+//                        }
+//                    }
+//
+//                    self.fetchRateReviews()
+//                    print("deu update")
+//                }
+//                else {
+//
+//                    guard let newRateReview = RateReview(rate: rate, bookID: book.id) else { return }
+//
+//                    addBookToCK(rateReview: newRateReview)
+//                    self.fetchRateReviews()
+//                    print("criou no if")
+//                }
+//            }
+//        } else {
+//
+//            guard let newRateReview = RateReview(rate: rate, bookID: book.id) else { return }
+//
+//            addBookToCK(rateReview: newRateReview)
+//            self.fetchRateReviews()
+//            print("criou no else")
+//        }
+    }
+    
+    func addBookToCK(rateReview: RateReview) {
+        CloudKitUtility.add(item: rateReview) { result in
+            switch result {
+            case .success(_):
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
+    
+    
 }
