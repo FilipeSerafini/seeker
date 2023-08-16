@@ -19,17 +19,12 @@ struct FolderView: View {
                 ZStack {
                     RoundedRectangle (cornerRadius: 20)
                         .fill(background)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(lineWidth: 3)
-                                .fill(.white)
-                        }
-                        .frame(width: 362, height: 205)
+                        .frame(width: 358, height: 205)
                     VStack{
                         HStack{
                             Text(folder.name)
-                                .padding(.leading, 40)
-                                .font(.system(size: 24, design: .serif))
+                                .padding(.leading, 32)
+                                .font(.system(size: 24, weight: .medium, design: .serif))
                                 .foregroundColor(.black)
                             Spacer()
                         }

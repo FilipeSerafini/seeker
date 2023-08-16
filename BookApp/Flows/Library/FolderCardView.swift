@@ -12,34 +12,53 @@ struct FolderCardView: View {
     ]
     
     var body: some View {
+        
         VStack{
-            ScrollView(showsIndicators: false) {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(folderViewModel.books) { book in
-                        BookResearchedCover(book: book)
-                    }
-                }
-            }
-            Spacer()
-        }
-        .padding(.top, 10)
-        .padding(.bottom)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing){
-                NavigationLink(destination: FolderCardViewEdit(folder: folder)                    .environmentObject(folderViewModel)
-                    , label: {
-                    Image("pencil")
-                })
-            }
-            ToolbarItem(placement: .principal) {
-                HStack {
-                    Text(folder.name)
-                        .font(.system(size: 22, weight: .medium, design: .serif))
-                }
+            if (folderViewModel.books.isEmpty){
+                Image("emptyStateFolder")
+                    .resizable()
+                    .frame(width: 328, height: 269)
+                    .padding(.top, 150)
+                
+                Text("Ah não! Parece que não temos nenhum livro por aqui. Que tal começarmos a pesquisar alguns? Clique no ícone de busca abaixo e comece a explorar!")
+                    .font(.system(size: 15, weight: .regular))
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
             }
             
+            else {
+                
+                VStack{
+                    ScrollView(showsIndicators: false) {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(folderViewModel.books) { book in
+                                BookResearchedCover(book: book)
+                            }
+                        }
+                    }
+                    Spacer()
+                }
+                .padding(.top, 20)
+            }
+            
+            Spacer()
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        NavigationLink(destination: FolderCardViewEdit(folder: folder)                    .environmentObject(folderViewModel)
+                                       , label: {
+                            Image("pencil")
+                        })
+                    }
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Text(folder.name)
+                                .font(.system(size: 22, weight: .medium, design: .serif))
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             Image("backgroundImage")
                 .resizable()
