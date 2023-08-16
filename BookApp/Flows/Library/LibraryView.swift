@@ -79,6 +79,10 @@ struct LibraryView: View {
                     .ignoresSafeArea()
             )
             .background(Color("backgroundColor"))
+            
+        }
+        .onAppear{
+            userManager.fetchFolders()
         }
     }
 }
