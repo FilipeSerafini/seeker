@@ -52,10 +52,14 @@ class UserManager: ObservableObject {
     
     func createFolder(folderName: String) {
         guard let newFolder = Folder(books: [], description: "", name: folderName) else { return }
+        folders.append(newFolder)
         
         CloudKitUtility.add(item: newFolder) { result in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.fetchFolders()
+            switch result {
+            case .success(_):
+                break
+            case.failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
@@ -83,24 +87,24 @@ class UserManager: ObservableObject {
         }
     }
     
-//    func fetchRateReviewWith(recordID: CKRecord.ID) {
-//        let reference = CKRecord.Reference(recordID: recordID, action: .none)
-//        let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
-//        let recordType = "RateReview"
-//        
-//        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[RateReview], Error>) in
-//            switch result {
-//            case .success(let userRateReviews):
-//                DispatchQueue.main.async {
-//                    self.rateReviews = userRateReviews
-//                }
-//            case .failure(let failure):
-//                print(failure.localizedDescription)
-//            }
-//        }
-//        
-//        print(rateReviews)
-//    }
+    //    func fetchRateReviewWith(recordID: CKRecord.ID) {
+    //        let reference = CKRecord.Reference(recordID: recordID, action: .none)
+    //        let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
+    //        let recordType = "RateReview"
+    //
+    //        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[RateReview], Error>) in
+    //            switch result {
+    //            case .success(let userRateReviews):
+    //                DispatchQueue.main.async {
+    //                    self.rateReviews = userRateReviews
+    //                }
+    //            case .failure(let failure):
+    //                print(failure.localizedDescription)
+    //            }
+    //        }
+    //
+    //        print(rateReviews)
+    //    }
     
 }
 

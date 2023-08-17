@@ -36,8 +36,6 @@ struct BookImageAction: View {
                 }
                 
                 userManager.fetchFolders()
-//                userManager.folders.removeAll(where: { $0.id == folder.id })
-//                userManager.folders.append(folder)
             }
         } message: {
             Text (book.authors[0])

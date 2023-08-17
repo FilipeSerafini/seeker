@@ -44,7 +44,9 @@ struct ProfileView: View {
                         ForEach(combinedReviews) { review in
                             switch review {
                             case .rate(let rateReview):
-                                RatingView(review: rateReview)
+                                if rateReview.rate != 0 {
+                                    RatingView(review: rateReview)
+                                }
                             case .comment(let commentReview):
                                 MediumCommentButton(comment: commentReview)
                             }

@@ -47,7 +47,7 @@ struct RatingButton: View {
             }
         })
         .onDisappear(perform: {
-            if self.ratingViewModel.currentReview != 0 {
+            if self.ratingViewModel.currentReview != 0 || self.ratingViewModel.currentReview == 0 {
                 self.ratingViewModel.addOrUpdateRateReview(rate: self.ratingViewModel.currentReview, book: self.book)
             }
         })
