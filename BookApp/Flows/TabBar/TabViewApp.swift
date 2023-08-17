@@ -22,12 +22,14 @@ struct TabViewApp: View {
         // UITabBar configuration
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(named: "backgroundColor")
+        UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
         
         // UINavigationBar configuration
-        if let image = UIImage(named: "chevronBackward"){
+         let image = UIImage(named: "chevronBackward")
             let imageSize = CGSize(width: 13, height: 22)
-            let resizedImage = image.resized(with: imageSize)
+        let resizedImage = image!.resized(with: imageSize)
             
             let navigationBarAppearance = UINavigationBarAppearance()
             navigationBarAppearance.setBackIndicatorImage(resizedImage, transitionMaskImage: resizedImage)
@@ -39,7 +41,7 @@ struct TabViewApp: View {
             navigationBarAppearance.backButtonAppearance = backButtonAppearance
             navigationBarAppearance.largeTitleTextAttributes = [.font: UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: .headline).withDesign(.serif)!, size: 34)]
             UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-        }
+        
     }
     
     var body: some View {

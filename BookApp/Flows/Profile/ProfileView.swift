@@ -59,7 +59,7 @@ struct ProfileView: View {
                     }
                 }
             }
-            .padding()
+            .padding([.top, .horizontal])
             .background(
                 Image("backgroundImage")
                     .resizable()
