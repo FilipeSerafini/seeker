@@ -22,10 +22,9 @@ struct AddToFolderView: View {
                             } else {
                                 updatedFolder.books.removeAll(where: { $0 == book.id })
                             }
-                            
                             modifiedFolders.append(updatedFolder)
                         } else {
-                            modifiedFolders.removeAll{ $0 == folder }
+                            modifiedFolders.removeAll{ $0.id == folder.id }
                         }
                     }
                     
