@@ -3,7 +3,7 @@ import SwiftUI
 struct ProfileView: View {
     @AppStorage("profileIcon") var profileIcon : Data = .init(count: 0)
     @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? ""
-    @State private var myUsername = UserDefaults.standard.value(forKey: "username") as? String ?? "username"
+    //@State private var myUsername = UserDefaults.standard.value(forKey: "username") as? String ?? "username"
     @State private var myBio = UserDefaults.standard.value(forKey: "bio") as? String ?? ""
     @EnvironmentObject var profileViewModel: ProfileViewModel
     @EnvironmentObject var ratingViewModel: RatingViewModel
@@ -22,12 +22,13 @@ struct ProfileView: View {
                         .scaledToFill()
                         .frame(width: 110, height: 110)
                         .clipShape(Circle())
-                    Text ("@\(myUsername)")
-                        .font(.system(size: 15))
-                        .autocapitalization(.none)
-                        .padding(.top, 5)
+//                    Text ("@\(myUsername)")
+//                        .font(.system(size: 15))
+//                        .autocapitalization(.none)
+//                        .padding(.top, 5)
                     Text (myName)
                         .font(.system(size: 22, design: .serif))
+                        .padding(.top, 5)
                     Text (myBio)
                         .frame(width: 300)
                         .font(.system(size: 15))
@@ -55,7 +56,7 @@ struct ProfileView: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing){
-                        NavigationLink(destination: UserSettings(myName: $myName, myUsername: $myUsername, myBio: $myBio), label: {
+                        NavigationLink(destination: UserSettings(myName: $myName, myBio: $myBio), label: {
                             Image("pencil")
                         })
                     }

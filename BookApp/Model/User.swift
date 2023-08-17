@@ -6,7 +6,7 @@ struct User: CKProtocol {
     var record: CKRecord
     var id: String = UUID().uuidString
     var name: String
-    var username: String
+   // var username: String
     var bio: String
     var favoriteGenres: [String]
     var image: String
@@ -16,7 +16,7 @@ struct User: CKProtocol {
     init() {
         id = UUID().uuidString
         name = ""
-        username = ""
+       // username = ""
         bio = ""
         favoriteGenres = []
         image = ""
@@ -30,7 +30,7 @@ struct User: CKProtocol {
     init?(
         id: String = UUID().uuidString,
         name: String,
-        username: String,
+       // username: String,
         bio: String,
         favoriteGenres: [String],
         favoriteGenresForAPI: [String]
@@ -42,7 +42,7 @@ struct User: CKProtocol {
         
         record["id"] = id
         record["name"] = name
-        record["username"] = username
+        //record["username"] = username
         record["bio"] = bio
         record["favoriteGenres"] = favoriteGenres
         record["favoriteGenresForAPI"] = favoriteGenresForAPI
@@ -55,14 +55,14 @@ struct User: CKProtocol {
         
         guard let id = record["id"] as? String else {return nil}
         guard let name = record["name"] as? String else {return nil}
-        guard let username = record["username"] as? String else {return nil}
+       // guard let username = record["username"] as? String else {return nil}
         guard let bio = record["bio"] as? String else {return nil}
         guard let favoriteGenres = record["favoriteGenres"] as? [String] else {return nil}
         guard let favoriteGenresForAPI = record["favoriteGenresForAPI"] as? [String] else {return nil}
         
         self.id = id
         self.name = name
-        self.username = username
+        //self.username = username
         self.bio = bio
         self.favoriteGenres = favoriteGenres
         self.image = ""

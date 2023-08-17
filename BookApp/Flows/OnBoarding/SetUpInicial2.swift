@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct SetUpInicial2: View {
-    @Binding var username: String
-    @Binding var name: String
+   // @Binding var username: String
     @State private var isEditing: Bool = false
-    @EnvironmentObject private var selectedGenres: SelectedGenres
+    @Binding var name: String
     @Binding var onboarding: Bool
     @EnvironmentObject var userManager: UserManager
+    @EnvironmentObject private var selectedGenres: SelectedGenres
     
     var body: some View {
         VStack{
@@ -54,10 +54,10 @@ struct SetUpInicial2: View {
         .background(Color("backgroundColor"))
         .onAppear {
             UserDefaults.standard.set(name, forKey: "name")
-            UserDefaults.standard.set(username, forKey: "username")
+           // UserDefaults.standard.set(username, forKey: "username")
         }
         .onDisappear {
-            let user: User = User(name: name, username: username, bio: "", favoriteGenres: selectedGenres.genresUser, favoriteGenresForAPI: selectedGenres.genresAPI) ?? User(name: "NAO CRIOU", username: "aa", bio: "aa", favoriteGenres: [], favoriteGenresForAPI: [])!
+            let user: User = User(name: name, bio: "", favoriteGenres: selectedGenres.genresUser, favoriteGenresForAPI: selectedGenres.genresAPI) ?? User(name: "NAO CRIOU", bio: "aa", favoriteGenres: [], favoriteGenresForAPI: [])!
             
             CloudKitUtility.add(item: user) { result in
                 switch result {
