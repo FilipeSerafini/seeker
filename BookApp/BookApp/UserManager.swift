@@ -7,14 +7,15 @@ class UserManager: ObservableObject {
     
     @Published var id: String = ""
     @Published var folders: [Folder] = []
-    
     @Published var rateReviews: [RateReview] = []
+    @Published var userAlreadyOnCK: Bool = false
     
     
     // MARK: - Init
     
     init() {
         fetchFolders()
+        checkUserAlreadyOnCK()
     }
     
     // MARK: - Functions
@@ -70,7 +71,7 @@ class UserManager: ObservableObject {
         folders.forEach { folder in
             guard let folderIndex = folders.firstIndex(of: folder) else { return }
             
-            var updatedFolder = folders[folderIndex]
+            let updatedFolder = folders[folderIndex]
             
             updatedFolder.updateRecordProperties()
             
@@ -83,6 +84,37 @@ class UserManager: ObservableObject {
                 }
                 completion()
                 
+            }
+        }
+    }
+    
+    func checkUserAlreadyOnCK() {
+        CloudKitUtility.fetchUserRecordID { (result: Result<CKRecord.ID, Error>) in
+            switch result {
+            case .success(let recordID):
+                DispatchQueue.main.async {
+                    self.id = recordID.recordName
+                }
+                self.fetchUserWith(recordID: recordID)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchUserWith(recordID: CKRecord.ID) {
+        let reference = CKRecord.Reference(recordID: recordID, action: .none)
+        let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
+        let recordType = "User"
+        
+        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[User], Error>) in
+            switch result {
+            case .success(let user):
+                DispatchQueue.main.async {
+                    self.userAlreadyOnCK = user.isEmpty ? false: true
+                }
+            case .failure(let failure):
+                print(failure.localizedDescription)
             }
         }
     }
