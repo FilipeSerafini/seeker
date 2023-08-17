@@ -17,6 +17,7 @@ struct TabViewApp: View {
     @EnvironmentObject private var selectedGenres: SelectedGenres
     @StateObject var profileViewModel: ProfileViewModel = ProfileViewModel()
     @StateObject var ratingViewModel: RatingViewModel = RatingViewModel()
+    @EnvironmentObject var userManager: UserManager
     
     init() {
         // UITabBar configuration
@@ -90,8 +91,20 @@ struct TabViewApp: View {
             if firstTime {
                 UserDefaults.standard.set(false, forKey: "firstTimeHere")
                 
-                selectedGenres.genresAPI = selectedGenres.genres.map({ $0.toApi })
-                selectedGenres.genresUser = selectedGenres.genres.map({ $0.toUser })
+                if userManager.selectedGenresForAPI.isEmpty {
+                    
+                    selectedGenres.genresAPI = selectedGenres.genres.map({ $0.toApi })
+                    selectedGenres.genresUser = selectedGenres.genres.map({ $0.toUser })
+                    
+                } else {
+                    print(userManager.selectedGenresForAPI)
+                    print(userManager.selectedGenresUser)
+                    selectedGenres.genresAPI = userManager.selectedGenresForAPI
+                    selectedGenres.genresUser = userManager.selectedGenresUser
+                    print(selectedGenres.genresAPI)
+                }
+                
+                
                 
                 UserDefaults.standard.set(selectedGenres.genresAPI, forKey: "genresAPI")
                 UserDefaults.standard.set(selectedGenres.genresUser, forKey: "genresUser")

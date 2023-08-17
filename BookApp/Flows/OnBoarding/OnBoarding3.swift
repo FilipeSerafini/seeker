@@ -35,7 +35,7 @@ struct OnBoarding3: View {
                             })
                         .padding(.top, 60)
                     } else {
-                        NavigationLink(destination: LibraryView()
+                        NavigationLink(destination: TabViewApp()
                             .navigationBarBackButtonHidden(true), label: {
                                 ZStack {
                                     Rectangle()

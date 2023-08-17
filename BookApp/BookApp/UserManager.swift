@@ -8,6 +8,9 @@ class UserManager: ObservableObject {
     @Published var folders: [Folder] = []
     @Published var rateReviews: [RateReview] = []
     @Published var userAlreadyOnCK: Bool = false
+    @Published var selectedGenresForAPI: [String] = []
+    @Published var selectedGenresUser: [String] = []
+    
     
     // MARK: - Init
     init() {
@@ -112,6 +115,10 @@ class UserManager: ObservableObject {
             case .success(let user):
                 DispatchQueue.main.async {
                     self.userAlreadyOnCK = user.isEmpty ? false: true
+                    if !user.isEmpty {
+                        self.selectedGenresForAPI = user[0].favoriteGenresForAPI
+                        self.selectedGenresUser = user[0].favoriteGenres
+                    }
                 }
             case .failure(let failure):
                 print(failure.localizedDescription)
