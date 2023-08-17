@@ -2,6 +2,7 @@ import SwiftUI
 
 struct OnBoarding3: View {
     @Binding var onboarding: Bool
+    @EnvironmentObject var userManager: UserManager
     
     var body: some View {
         VStack{
@@ -19,19 +20,35 @@ struct OnBoarding3: View {
                     .padding()
                 
                 VStack{
-                    NavigationLink(destination: SetUpInicial(onboarding: $onboarding)
-                        .navigationBarBackButtonHidden(true), label: {
-                            ZStack {
-                                Rectangle()
-                                    .fill(Color("primary"))
-                                    .cornerRadius(22)
-                                    .frame(width: 125, height: 39)
-                                Text("Começar")
-                                    .font(.system(size: 17, weight: .regular))
-                                    .foregroundColor(.white)
-                            }
-                        })
-                    .padding(.top, 60)
+                    if userManager.userAlreadyOnCK == false {
+                        NavigationLink(destination: SetUpInicial(onboarding: $onboarding)
+                            .navigationBarBackButtonHidden(true), label: {
+                                ZStack {
+                                    Rectangle()
+                                        .fill(Color("primary"))
+                                        .cornerRadius(22)
+                                        .frame(width: 125, height: 39)
+                                    Text("Começar")
+                                        .font(.system(size: 17, weight: .regular))
+                                        .foregroundColor(.white)
+                                }
+                            })
+                        .padding(.top, 60)
+                    } else {
+                        NavigationLink(destination: LibraryView()
+                            .navigationBarBackButtonHidden(true), label: {
+                                ZStack {
+                                    Rectangle()
+                                        .fill(Color("primary"))
+                                        .cornerRadius(22)
+                                        .frame(width: 125, height: 39)
+                                    Text("Começar")
+                                        .font(.system(size: 17, weight: .regular))
+                                        .foregroundColor(.white)
+                                }
+                            })
+                        .padding(.top, 60)
+                    }
                 }
             }
         }
