@@ -21,7 +21,7 @@ class OracleService {
     private let openAIURL = URL(string: "https://api.openai.com/v1/chat/completions")!
     
     // MARK: - Chave aqui!!
-    private let openAIKey = ""
+    private let openAIKey = "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"
     
     private let initialMessage = Message(role: roles.system.description, content: "Your name is Zoe, you are a friendly and helpful assistant. You are going to receive books questions. If the user asks for any kind of summary, keep the answer short. If the question is not about books dont respond the question just kindly ask the user to make a question about books.")
     

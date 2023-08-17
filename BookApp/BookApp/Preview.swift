@@ -2,10 +2,10 @@ import SwiftUI
 
 struct Preview: View {
     var body: some View {
-        VStack{
+        HStack{
             Image("previewImage")
                 .resizable()
-                .frame(width: 269, height: 229)
+                .frame(width: 269, height: 194)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("backgroundColor"))
