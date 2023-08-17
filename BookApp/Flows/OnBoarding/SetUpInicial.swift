@@ -66,6 +66,7 @@ struct SetUpInicial: View {
                             Text("Continuar")
                                 .foregroundColor(.white)
                         }
+                        .padding(.top, 40)
                     })
                 .disabled(name == "")
                 .opacity(name == "" ? 0.6 : 1)
