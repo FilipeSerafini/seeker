@@ -37,7 +37,7 @@ struct TabViewApp: View {
             backButtonAppearance.highlighted.titleTextAttributes = [.foregroundColor: UIColor.clear]
             backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
             navigationBarAppearance.backButtonAppearance = backButtonAppearance
-            navigationBarAppearance.largeTitleTextAttributes = [.font: UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: .largeTitle).withDesign(.serif)!, size: 34)]
+            navigationBarAppearance.largeTitleTextAttributes = [.font: UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: .headline).withDesign(.serif)!, size: 34)]
             UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         }
     }
@@ -105,12 +105,3 @@ struct TabViewApp: View {
         }
     }
 }
-
-//struct TabViewApp_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TabViewApp()
-//            .environmentObject(SearchViewModel())
-//            .environmentObject(RecommendedViewModel())
-//            .environmentObject(SelectedGenres())
-//    }
-//}

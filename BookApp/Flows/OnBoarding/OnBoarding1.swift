@@ -8,14 +8,13 @@ struct OnBoarding1: View {
                     .resizable()
                     .frame(width: 330, height: 330)
             }
-            .frame(height: 350)
-            
             VStack{
                 Text("Organize seus livros em pastas da maneira que preferir: mantendo tudo super simples ou super detalhado!")
                     .font(.system(size: 17, weight: .regular))
                     .multilineTextAlignment(.center)
-                    .padding()
+                    .padding(.horizontal)
             }
+            .padding(.bottom, 100)
         }
         
     }

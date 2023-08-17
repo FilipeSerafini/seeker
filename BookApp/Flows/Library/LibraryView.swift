@@ -17,9 +17,8 @@ struct LibraryView: View {
                         Text("E aí, \(myName)?")
                             .font(.system(size: 15))
                         Text("Minha Estante")
-                            .font(.system(size: 34, design: .serif))
+                            .font(.system(size: 34, weight: .semibold, design: .serif))
                     }
-                    .padding(.top, 30)
                     Spacer()
                     Button {
                         isPresented.toggle()
@@ -28,7 +27,7 @@ struct LibraryView: View {
                             .resizable()
                             .frame(width: 36, height: 24)
                     }
-                    .padding(.top, 40)
+                    .padding(.top, 20)
                     .alert("Criar nova pasta", isPresented: $isPresented) {
                         TextField(folderName, text: $folderName)
                         Button("Cancelar",action: {})
@@ -59,7 +58,9 @@ struct LibraryView: View {
                     
                     
                 }
-                .padding()
+                .padding(.top, 30)
+                .padding(.bottom, 10)
+                .padding(.horizontal)
                 
                 Spacer()
                 
@@ -72,7 +73,6 @@ struct LibraryView: View {
                     }
                 }
             }
-//            .padding()
             .background(
                 Image("backgroundImage")
                     .resizable()
