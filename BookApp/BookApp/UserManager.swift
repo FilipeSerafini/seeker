@@ -4,37 +4,34 @@ import CloudKit
 class UserManager: ObservableObject {
     
     // MARK: - Variables
-    
     @Published var id: String = ""
     @Published var folders: [Folder] = []
     @Published var rateReviews: [RateReview] = []
     @Published var userAlreadyOnCK: Bool = false
     
-    
     // MARK: - Init
-    
     init() {
         fetchFolders()
         checkUserAlreadyOnCK()
     }
     
     // MARK: - Functions
-    
     func fetchFolders() {
+        print("fez o fetch")
         CloudKitUtility.fetchUserRecordID { (result: Result<CKRecord.ID, Error>) in
             switch result {
             case .success(let recordID):
                 DispatchQueue.main.async {
                     self.id = recordID.recordName
+                    self.fetchAllFoldersWith(recordID: recordID)
                 }
-                self.fetchAllFoldersWith(recordID: recordID)
             case .failure(let failure):
-                print(failure.localizedDescription)
+                print("error trying to fetch folder: ", failure.localizedDescription)
             }
         }
     }
     
-    func fetchAllFoldersWith(recordID: CKRecord.ID) {
+    private func fetchAllFoldersWith(recordID: CKRecord.ID) {
         let reference = CKRecord.Reference(recordID: recordID, action: .none)
         let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
         let recordType = "Folder"
@@ -65,8 +62,12 @@ class UserManager: ObservableObject {
         }
     }
     
-    
     func updateFolders(folders: [Folder], completion: @escaping () -> ())  {
+        
+        for folder in folders {
+            self.folders.removeAll(where: { $0.id == folder.id})
+            self.folders.append(folder)
+        }
         
         folders.forEach { folder in
             guard let folderIndex = folders.firstIndex(of: folder) else { return }
@@ -83,7 +84,6 @@ class UserManager: ObservableObject {
                     print(error.localizedDescription)
                 }
                 completion()
-                
             }
         }
     }
@@ -139,5 +139,3 @@ class UserManager: ObservableObject {
     //    }
     
 }
-
-

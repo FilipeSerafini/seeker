@@ -44,11 +44,7 @@ struct AddToFolderView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing){
                 Button {
-                    userManager.updateFolders(folders: modifiedFolders)
-                    {
-                        print("Salvou livro")
-                        userManager.fetchFolders()
-                    }
+                    userManager.updateFolders(folders: modifiedFolders) {}
                     dismiss()
                 } label: {
                     Image("saveFolder")

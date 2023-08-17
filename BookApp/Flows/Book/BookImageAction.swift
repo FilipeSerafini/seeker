@@ -20,22 +20,24 @@ struct BookImageAction: View {
         .cornerRadius(8)
         .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible) {
             Button("Remover dessa lista") {
+                print("antes: ", folder.books)
+                
                 folder.books.removeAll(where: { $0 == book.id })
                 
                 var folderToUpdate = folder
                 
                 folderToUpdate.record["books"] = folder.books
+                folderToUpdate.books = folder.books
                 
-                CloudKitUtility.update(item: folder) { result in
-                    switch result {
-                    case .success(_):
-                        break
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                    }
+                print(folderToUpdate.books)
+                
+                let folders: [Folder] = [folderToUpdate]
+                
+                userManager.updateFolders(folders: folders)
+                {
+//                    print("Deletou o livro livro")
+//                    userManager.fetchFolders()
                 }
-                
-                userManager.fetchFolders()
             }
         } message: {
             Text (book.authors[0])
