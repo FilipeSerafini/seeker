@@ -35,7 +35,7 @@ struct LibraryView: View {
                             }
                         Button("Cancelar",action: {})
                         Button("Criar",action: {
-                            userManager.createFolder(folderName: folderName)
+                            userManager.createFolder(folderName: folderName, description: "")
                         })
                     } message: {
                         Text("Defina um nome para a nova pasta. Assim que criada, ela aparecerá na sua estante.")

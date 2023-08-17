@@ -18,15 +18,18 @@ struct FolderCardView: View {
         VStack{
             
             if (folderViewModel.books.isEmpty){
-                Image("emptyStateFolder")
-                    .resizable()
-                    .frame(width: 328, height: 269)
-                    .padding(.top, 120)
-                
-                Text("Ah não! Parece que não temos nenhum livro por aqui. Que tal começarmos a pesquisar alguns? Clique no ícone de busca abaixo e comece a explorar!")
-                    .font(.system(size: 15, weight: .regular))
-                    .multilineTextAlignment(.center)
+                VStack{
+                    Image("emptyStateFolder")
+                        .resizable()
+                        .frame(width: 328, height: 269)
+                        .padding(.top, 150)
+                    
+                    Text("Ah não! Parece que não temos nenhum livro por aqui. Que tal começarmos a pesquisar alguns? Clique no ícone de busca abaixo e comece a explorar!")
+                        .font(.system(size: 15, weight: .regular))
+                        .multilineTextAlignment(.center)
                     .padding()
+                }
+                Spacer()
             }
             else {
                 
@@ -39,39 +42,7 @@ struct FolderCardView: View {
                                 }
                             }
                         }
-                        Spacer()
-                        Button {
-                            isPresented.toggle()
-                        } label: {
-                            ZStack {
-                                Rectangle()
-                                    .fill(.clear)
-                                    .cornerRadius(22)
-                                    .overlay {
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(lineWidth: 1)
-                                            .fill(.red)
-                                    }
-                                    .frame(width: 126, height: 36)
-                                HStack{
-                                    Image(systemName: "trash")
-                                        .foregroundColor(.red)
-                                    Text("Apagar pasta")
-                                        .font(.system(size: 13, weight: .regular))
-                                        .foregroundColor(Color("text"))
-                                }
-                            }
-                        }
-                        .alert("Tem certeza que deseja apagar essa pasta?", isPresented: $isPresented) {
-                            Button("Cancelar",action: {})
-                            Button("Apagar",action: {
-                                CloudKitUtility.delete(item: folder)
-                                userManager.fetchFolders()
-                                dismiss()
-                            })
-                        } message: {
-                            Text("Essa ação não poderá ser desfeita.")
-                        }
+                        Spacer()                        
                     }
                     .padding(.top, 20)
                     .padding(.bottom)
@@ -88,19 +59,58 @@ struct FolderCardView: View {
                 }
                 
             }
+            if folder.description != "NaoApagar" && onEdit {
+                Button {
+                    isPresented.toggle()
+                } label: {
+                    ZStack {
+                        Rectangle()
+                            .fill(.clear)
+                            .cornerRadius(22)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(lineWidth: 1)
+                                    .fill(.red)
+                            }
+                            .frame(width: 126, height: 36)
+                        HStack{
+                            Image(systemName: "trash")
+                                .foregroundColor(.red)
+                            Text("Apagar pasta")
+                                .font(.system(size: 13, weight: .regular))
+                                .foregroundColor(Color("text"))
+                        }
+                    }
+                    .padding(.bottom)
+                }
+                .alert("Tem certeza que deseja apagar essa pasta?", isPresented: $isPresented) {
+                    Button("Cancelar",action: {})
+                    Button("Apagar",action: {
+                        CloudKitUtility.delete(item: folder)
+                        userManager.fetchFolders()
+                        dismiss()
+                    })
+                } message: {
+                    Text("Essa ação não poderá ser desfeita.")
+                }
+            }
+
+            // apagar aqui
+            
+            
+            
+            
         }
         .toolbar {
             
             if onEdit {
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button {
-                        //acao
                         onEdit = false
                     } label: {
                         Image("saveFolder")
                     }
                 }
-                
             }
             else {
                 ToolbarItem(placement: .navigationBarTrailing){
@@ -128,9 +138,3 @@ struct FolderCardView: View {
         
     }
 }
-
-//struct FolderCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FolderCardView()
-//    }
-//}

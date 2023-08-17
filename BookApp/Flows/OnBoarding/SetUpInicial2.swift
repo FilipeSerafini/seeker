@@ -68,9 +68,9 @@ struct SetUpInicial2: View {
                 }
             }
             
-            userManager.createFolder(folderName: "Lendo agora")
-            userManager.createFolder(folderName: "Livros que quero ler")
-            userManager.createFolder(folderName: "Leituras realizadas")
+            userManager.createFolder(folderName: "Lendo agora", description: "NaoApagar")
+            userManager.createFolder(folderName: "Livros que quero ler", description: "NaoApagar")
+            userManager.createFolder(folderName: "Leituras realizadas", description: "NaoApagar")
         }
     }
 }
