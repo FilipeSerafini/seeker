@@ -2,19 +2,19 @@ import SwiftUI
 
 struct UserSettings: View {
     @State private var nameText = ""
-    @State private var usernameText = ""
+    //@State private var usernameText = ""
     @State private var bioText = ""
     @Binding var myName: String
-    @Binding var myUsername: String
+    //@Binding var myUsername: String
     @Binding var myBio: String
     let characterLimitBio = 150
     @Environment(\.dismiss) var dismiss
     
-    init(myName: Binding<String>, myUsername: Binding<String>, myBio: Binding<String>) {
+    init(myName: Binding<String>, myBio: Binding<String>) {
         _myName = myName
         _nameText = State(initialValue: myName.wrappedValue)
-        _myUsername = myUsername
-        _usernameText = State(initialValue: myUsername.wrappedValue)
+       // _myUsername = myUsername
+       // _usernameText = State(initialValue: myUsername.wrappedValue)
         _myBio = myBio
         _bioText = State(initialValue: myBio.wrappedValue)
     }
@@ -28,8 +28,8 @@ struct UserSettings: View {
                     VStack(alignment: .leading) {
                         Text("Nome")
                             .padding(.bottom, 20)
-                        Text("Username")
-                            .padding(.bottom, 20)
+//                        Text("Username")
+//                            .padding(.bottom, 20)
                         Text("Bio")
                             .padding(.bottom)
                     }
@@ -45,16 +45,16 @@ struct UserSettings: View {
                         Divider()
                             .padding(.bottom, 10)
                         
-                        TextField("Username", text: $usernameText)
-                            .autocapitalization(.none)
-                            .onChange(of: usernameText) { newValue in
-                                let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.-")
-                                let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
-                                usernameText = String(filteredText.prefix(30))
-                            }
-
-                        Divider()
-                            .padding(.top, 5)
+//                        TextField("Username", text: $usernameText)
+//                            .autocapitalization(.none)
+//                            .onChange(of: usernameText) { newValue in
+//                                let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.-")
+//                                let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
+//                                usernameText = String(filteredText.prefix(30))
+//                            }
+//
+//                        Divider()
+//                            .padding(.top, 5)
 
                         TextField("Bio", text: $bioText, axis: .vertical)
                             .lineLimit(2)
@@ -85,11 +85,11 @@ struct UserSettings: View {
             ToolbarItem(placement: .navigationBarTrailing){
                 Button {
                     UserDefaults.standard.set(nameText, forKey: "name")
-                    UserDefaults.standard.set(usernameText, forKey: "username")
+                   // UserDefaults.standard.set(usernameText, forKey: "username")
                     UserDefaults.standard.set(bioText, forKey: "bio")
                     
                     myName = nameText
-                    myUsername = usernameText
+                   // myUsername = usernameText
                     myBio = bioText
                     dismiss()
                 }

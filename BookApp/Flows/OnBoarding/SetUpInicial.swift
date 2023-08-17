@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct SetUpInicial: View {
-    @State var username = ""
     @State var name = ""
     @Binding var onboarding: Bool
-    @State var usernameAvailable: Bool = false
+    // @State var username = ""
+    // @State var usernameAvailable: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -19,9 +19,9 @@ struct SetUpInicial: View {
                     VStack(alignment: .leading) {
                         Text("Nome")
                             .padding([.top, .bottom])
-                        Text("Username")
-                            .padding(.top, 10)
-                            .padding(.bottom, 10)
+//                        Text("Username")
+//                            .padding(.top, 10)
+//                            .padding(.bottom, 10)
                     }
                     .foregroundColor(.gray)
                     
@@ -35,15 +35,15 @@ struct SetUpInicial: View {
                         }
                         Divider()
                         
-                        TextField("Username", text: $username)
-                        .padding(.top)
-                        .autocapitalization(.none)
-                        .onChange(of: username) { newValue in
-                            let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.-")
-                            let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
-                            username = String(filteredText.prefix(30))
-                        }
-                        Divider()
+//                        TextField("Username", text: $username)
+//                        .padding(.top)
+//                        .autocapitalization(.none)
+//                        .onChange(of: username) { newValue in
+//                            let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.-")
+//                            let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
+//                            username = String(filteredText.prefix(30))
+//                        }
+//                        Divider()
                     }
                     .padding([.leading, .trailing])
                 }
@@ -55,8 +55,9 @@ struct SetUpInicial: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.5)
                     .padding(.bottom, 15)
-                
-                NavigationLink(destination: SetUpInicial2(username: $username, name: $name, onboarding: $onboarding).navigationBarBackButtonHidden(true), label: {
+            
+                //NavigationLink(destination: SetUpInicial2(username: $username, name: $name, onboarding:
+                NavigationLink(destination: SetUpInicial2(name: $name, onboarding: $onboarding).navigationBarBackButtonHidden(true), label: {
                         ZStack {
                             Rectangle()
                                 .fill(Color("primary"))
@@ -67,9 +68,9 @@ struct SetUpInicial: View {
                         }
                     })
                 .disabled(name == "")
-                .disabled(username == "")
                 .opacity(name == "" ? 0.6 : 1)
-                .opacity(username == "" ? 0.6 : 1)
+                //.disabled(username == "")
+                //.opacity(username == "" ? 0.6 : 1)
             }
             .font(.system(size: 17))
         }
@@ -84,24 +85,24 @@ struct SetUpInicial: View {
         .background(Color("backgroundColor"))
     }
     
-    func checkUserName(newUsername: String) {
-        let predicate = NSPredicate(format: "username == %@", newUsername)
-        let recordType = "User"
-        
-        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[User], Error>) in
-            switch result {
-            case .success(let users):
-                DispatchQueue.main.async {
-//                    users.isEmpty ? self.usernameAvailable = true : self.usernameAvailable = false
-                    if users.isEmpty {
-                        self.usernameAvailable = true
-                    } else {
-                        self.usernameAvailable = false
-                    }
-                }
-            case .failure(let failure):
-                print(failure.localizedDescription)
-            }
-        }
-    }
+//    func checkUserName(newUsername: String) {
+//        let predicate = NSPredicate(format: "username == %@", newUsername)
+//        let recordType = "User"
+//
+//        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[User], Error>) in
+//            switch result {
+//            case .success(let users):
+//                DispatchQueue.main.async {
+////                    users.isEmpty ? self.usernameAvailable = true : self.usernameAvailable = false
+//                    if users.isEmpty {
+//                        self.usernameAvailable = true
+//                    } else {
+//                        self.usernameAvailable = false
+//                    }
+//                }
+//            case .failure(let failure):
+//                print(failure.localizedDescription)
+//            }
+//        }
+//    }
 }
