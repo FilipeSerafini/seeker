@@ -12,7 +12,6 @@ struct FolderCardView: View {
     ]
     
     var body: some View {
-        
         VStack{
             if (folderViewModel.books.isEmpty){
                 Image("emptyStateFolder")
@@ -24,30 +23,19 @@ struct FolderCardView: View {
                     .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .padding()
-                
             }
             else {
-                
-                VStack{
-                    ScrollView(showsIndicators: false) {
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(folderViewModel.books) { book in
-                                BookResearchedCover(book: book)
-                            }
-                            .padding(.top, 20)
+                ScrollView(showsIndicators: false) {
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(folderViewModel.books) { book in
+                            BookResearchedCover(book: book)
                         }
-                        Spacer()
+                        .padding(.top, 20)
                     }
+                    Spacer()
                 }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            Image("backgroundImage")
-                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea()
-        )
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing){
                 NavigationLink(destination: FolderCardViewEdit(folder: folder)
@@ -63,7 +51,14 @@ struct FolderCardView: View {
                 }
             }
         }
-
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            Image("backgroundImage")
+                .resizable()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea()
+        )
+        
     }
 }
 

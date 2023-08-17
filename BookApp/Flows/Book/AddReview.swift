@@ -16,7 +16,7 @@ struct AddReview: View {
                             .resizable()
                             .frame(width: 62, height: 88)
                             .cornerRadius(10)
-                            .shadow(color: Color("shadowBook"), radius: 5, x: 5, y: 4)
+                            .shadow(color: Color("shadowBook"), radius: 4, x: 2, y: 4)
                     }
                     
                     VStack(alignment: .leading){

@@ -5,7 +5,6 @@ struct SearchView: View {
     @EnvironmentObject private var selectedGenres: SelectedGenres
     
     var body: some View {
-        
         NavigationStack {
             SearchableView()
                 .environmentObject(searchViewModel)

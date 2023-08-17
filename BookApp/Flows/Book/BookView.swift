@@ -6,17 +6,16 @@ struct BookView: View {
     @State var showSheet: Bool = false
     @State private var startConfirm = false
     @EnvironmentObject var ratingViewModel: RatingViewModel
-    @Environment(\.presentationMode) private var presetationMode: Binding<PresentationMode>
 
-    
     var body: some View {
         VStack{
             Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
                 .resizable()
                 .frame(width: 136, height: 195)
                 .cornerRadius(15)
-                .shadow(color: Color("shadowBook"), radius: 5, x: 5, y: 4)
-                .padding(.top, -20)
+                .shadow(color: Color("shadowBook"), radius: 4, x: 2, y: 4)
+                .padding(.top)
+                .padding(.top, 100)
             
             ScrollView(showsIndicators: false){
                 Text (book.authors[0])
@@ -40,7 +39,8 @@ struct BookView: View {
                     .padding(.bottom)
             }
         }
-        .padding([.leading, .trailing])
+        .edgesIgnoringSafeArea(.top)
+        .padding(.horizontal)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing){
                 Button {
@@ -77,7 +77,6 @@ struct BookView: View {
                     .frame(width: 22, height: 24)
             }
             }
-
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
