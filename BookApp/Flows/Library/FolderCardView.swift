@@ -3,6 +3,9 @@ import SwiftUI
 struct FolderCardView: View {
     @State private var isPresented: Bool = false
     @EnvironmentObject var folderViewModel: FolderViewModel
+    @State private var onEdit: Bool = false
+    @Environment (\.dismiss) var dismiss
+    @EnvironmentObject var userManager: UserManager
     
     let folder: Folder
     let columns = [
@@ -13,11 +16,12 @@ struct FolderCardView: View {
     
     var body: some View {
         VStack{
+            
             if (folderViewModel.books.isEmpty){
                 Image("emptyStateFolder")
                     .resizable()
                     .frame(width: 328, height: 269)
-                    .padding(.top, 150)
+                    .padding(.top, 120)
                 
                 Text("Ah não! Parece que não temos nenhum livro por aqui. Que tal começarmos a pesquisar alguns? Clique no ícone de busca abaixo e comece a explorar!")
                     .font(.system(size: 15, weight: .regular))
@@ -25,24 +29,87 @@ struct FolderCardView: View {
                     .padding()
             }
             else {
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(folderViewModel.books) { book in
-                            BookResearchedCover(book: book)
+                
+                if onEdit {
+                    VStack{
+                        ScrollView(showsIndicators: false) {
+                            LazyVGrid(columns: columns, spacing: 20) {
+                                ForEach(folderViewModel.books) { book in
+                                    BookImageAction(folder: folder, book: book)
+                                }
+                            }
                         }
-                        .padding(.top, 20)
+                        Spacer()
+                        Button {
+                            isPresented.toggle()
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .fill(.clear)
+                                    .cornerRadius(22)
+                                    .overlay {
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .stroke(lineWidth: 1)
+                                            .fill(.red)
+                                    }
+                                    .frame(width: 126, height: 36)
+                                HStack{
+                                    Image(systemName: "trash")
+                                        .foregroundColor(.red)
+                                    Text("Apagar pasta")
+                                        .font(.system(size: 13, weight: .regular))
+                                        .foregroundColor(Color("text"))
+                                }
+                            }
+                        }
+                        .alert("Tem certeza que deseja apagar essa pasta?", isPresented: $isPresented) {
+                            Button("Cancelar",action: {})
+                            Button("Apagar",action: {
+                                CloudKitUtility.delete(item: folder)
+                                userManager.fetchFolders()
+                                dismiss()
+                            })
+                        } message: {
+                            Text("Essa ação não poderá ser desfeita.")
+                        }
                     }
-                    Spacer()
+                    .padding(.top, 20)
+                    .padding(.bottom)
+                } else {
+                    ScrollView(showsIndicators: false) {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(folderViewModel.books) { book in
+                                BookResearchedCover(book: book)
+                            }
+                            .padding(.top, 20)
+                        }
+                        
+                    }
                 }
+                
             }
         }
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing){
-                NavigationLink(destination: FolderCardViewEdit(folder: folder)
-                    .environmentObject(folderViewModel)
-                               , label: {
-                    Image("pencil")
-                })
+            
+            if onEdit {
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button {
+                        //acao
+                        onEdit = false
+                    } label: {
+                        Image("saveFolder")
+                    }
+                }
+                
+            }
+            else {
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button {
+                        onEdit = true
+                    } label: {
+                        Image("pencil")
+                    }
+                }
             }
             ToolbarItem(placement: .principal) {
                 HStack {
