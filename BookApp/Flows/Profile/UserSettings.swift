@@ -37,7 +37,7 @@ struct UserSettings: View {
                     VStack{
                         TextField("Nome", text: $nameText)
                             .onChange(of: nameText) { newValue in
-                                let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ")
+                                let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'ˆ`˜áàãâéèêíìóòôõúùçÁÀÃÂÉÈÊÍÌÓÒÔÕÚÙÇ ")
                                 let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
                                 nameText = String(filteredText.prefix(25))
                             }

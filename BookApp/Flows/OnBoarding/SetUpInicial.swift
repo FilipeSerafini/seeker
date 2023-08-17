@@ -29,7 +29,7 @@ struct SetUpInicial: View {
                         TextField("Nome", text: $name)
                         .padding(.top)
                         .onChange(of: name) { newValue in
-                            let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ")
+                            let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'ˆ`˜áàãâéèêíìóòôõúùçÁÀÃÂÉÈÊÍÌÓÒÔÕÚÙÇ. ")
                             let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
                             name = String(filteredText.prefix(25))
                         }

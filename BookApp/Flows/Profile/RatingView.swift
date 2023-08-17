@@ -15,11 +15,11 @@ struct RatingView: View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(Color("commentButton"))
+                    .fill(Color("historicPost"))
                 VStack(alignment: .leading, spacing: 4) {
                     Text(review.bookTitle)
                         .fontWeight(.semibold)
-                        .foregroundColor(Color("comment"))
+                        .foregroundColor(Color("historicTitle"))
                         .frame(width: 165, height: 25, alignment: .leading)
                     HStack {
                         ForEach(1...review.rate, id: \.self) { index in

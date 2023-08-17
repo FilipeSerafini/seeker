@@ -26,7 +26,6 @@ struct FolderCardView: View {
                     .padding()
                 
             }
-            
             else {
                 
                 VStack{
@@ -37,34 +36,34 @@ struct FolderCardView: View {
                             }
                             .padding(.top, 20)
                         }
+                        Spacer()
                     }
-                    Spacer()
                 }
             }
-            
-            Spacer()
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing){
-                        NavigationLink(destination: FolderCardViewEdit(folder: folder)                    .environmentObject(folderViewModel)
-                                       , label: {
-                            Image("pencil")
-                        })
-                    }
-                    ToolbarItem(placement: .principal) {
-                        HStack {
-                            Text(folder.name)
-                                .font(.system(size: 22, weight: .medium, design: .serif))
-                        }
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             Image("backgroundImage")
                 .resizable()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
         )
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing){
+                NavigationLink(destination: FolderCardViewEdit(folder: folder)
+                    .environmentObject(folderViewModel)
+                               , label: {
+                    Image("pencil")
+                })
+            }
+            ToolbarItem(placement: .principal) {
+                HStack {
+                    Text(folder.name)
+                        .font(.system(size: 22, weight: .medium, design: .serif))
+                }
+            }
+        }
+
     }
 }
 

@@ -24,7 +24,9 @@ struct TabBarOnboarding: View {
                             .padding(.top, 50)
                             .padding(.trailing)
                     })
-                }
+                    } else {
+                        Text("")
+                    }
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

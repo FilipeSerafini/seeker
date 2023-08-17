@@ -21,19 +21,22 @@ struct FolderView: View {
                         .fill(background)
                         .frame(width: 358, height: 205)
                     VStack{
-                        HStack{
-                            Text(folder.name)
-                                .padding(.leading, 32)
-                                .font(.system(size: 24, weight: .medium, design: .serif))
-                                .foregroundColor(.black)
-                            Spacer()
-                        }
+                        Text(folder.name)
+                            .font(.system(size: 24, weight: .medium, design: .serif))
+                            .foregroundColor(.black)
+                            .padding(.all, 10)
+                    }
+                    .frame(width: 350, height: 200, alignment: .topLeading)
+                    
+                    VStack {
                         HStack(spacing: 20){
                             ForEach(folderViewModel.books.prefix(3)) { book in
                                 BookImage(book: book)
                             }
                         }
                     }
+                    .padding(.all, 10)
+                    .frame(width: 350, height: 190, alignment: .bottomLeading)
                 }
             }
             .onAppear {
