@@ -28,7 +28,7 @@ struct TabBarOnboarding: View {
                                     .padding(.trailing)
                             })
                         } else {
-                            NavigationLink(destination: LibraryView().navigationBarBackButtonHidden(true), label: {
+                            NavigationLink(destination: TabViewApp().navigationBarBackButtonHidden(true), label: {
                                 Text("Pular")
                                     .font(.system(size: 20))
                                     .foregroundColor(.gray)
