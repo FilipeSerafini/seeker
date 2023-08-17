@@ -50,8 +50,8 @@ class UserManager: ObservableObject {
         }
     }
     
-    func createFolder(folderName: String) {
-        guard let newFolder = Folder(books: [], description: "", name: folderName) else { return }
+    func createFolder(folderName: String, description: String) {
+        guard let newFolder = Folder(books: [], description: description, name: folderName) else { return }
         folders.append(newFolder)
         
         CloudKitUtility.add(item: newFolder) { result in

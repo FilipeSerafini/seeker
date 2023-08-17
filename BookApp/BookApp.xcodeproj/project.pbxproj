@@ -31,7 +31,6 @@
 		4C7234852A743DE9006740F6 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234842A743DE9006740F6 /* CommentView.swift */; };
 		4C7234892A797723006740F6 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234882A797723006740F6 /* Preview.swift */; };
 		4CCB79072A8ABED600FAAC2C /* BookImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB79062A8ABED600FAAC2C /* BookImage.swift */; };
-		4CCB790D2A8D405A00FAAC2C /* FolderCardViewEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB790C2A8D405A00FAAC2C /* FolderCardViewEdit.swift */; };
 		4CCB790F2A8D408E00FAAC2C /* BookImageAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB790E2A8D408E00FAAC2C /* BookImageAction.swift */; };
 		4CDD3BA82A730790001519C3 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BA72A730790001519C3 /* BookView.swift */; };
 		4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */; };
@@ -114,7 +113,6 @@
 		4C7234842A743DE9006740F6 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		4C7234882A797723006740F6 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		4CCB79062A8ABED600FAAC2C /* BookImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImage.swift; sourceTree = "<group>"; };
-		4CCB790C2A8D405A00FAAC2C /* FolderCardViewEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCardViewEdit.swift; sourceTree = "<group>"; };
 		4CCB790E2A8D408E00FAAC2C /* BookImageAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageAction.swift; sourceTree = "<group>"; };
 		4CDD3BA72A730790001519C3 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewApp.swift; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				4C45AA8B2A817B0E00DD5FB0 /* FolderCardView.swift */,
-				4CCB790C2A8D405A00FAAC2C /* FolderCardViewEdit.swift */,
 				4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */,
 				4CDD3BB12A7308CD001519C3 /* FolderViewModel.swift */,
 				4C45AA852A8137BE00DD5FB0 /* FolderCard.swift */,
@@ -527,7 +524,6 @@
 				B108B80C2A71942A006D6F1C /* CommentReview.swift in Sources */,
 				7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */,
 				7C31DBA32A7F63A3002FB8F8 /* Loading.swift in Sources */,
-				4CCB790D2A8D405A00FAAC2C /* FolderCardViewEdit.swift in Sources */,
 				7C002BBD2A843BEF00B872CB /* Genres.swift in Sources */,
 				4CDD3BBF2A730931001519C3 /* ProfileViewModel.swift in Sources */,
 				428ECC612A815F1000DA4B66 /* Oracle.swift in Sources */,
