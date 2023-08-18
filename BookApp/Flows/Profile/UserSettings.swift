@@ -9,6 +9,7 @@ struct UserSettings: View {
     @Binding var myBio: String
     let characterLimitBio = 150
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var userManager: UserManager
     
     init(myName: Binding<String>, myBio: Binding<String>) {
         _myName = myName
@@ -87,6 +88,9 @@ struct UserSettings: View {
                     UserDefaults.standard.set(nameText, forKey: "name")
                    // UserDefaults.standard.set(usernameText, forKey: "username")
                     UserDefaults.standard.set(bioText, forKey: "bio")
+                    var userToUpdate = User(name: nameText, bio: bioText, favoriteGenres: userManager.selectedGenresUser, favoriteGenresForAPI: userManager.selectedGenresForAPI)!
+                    
+                    userManager.updateUser(name: nameText, bio: bioText)
                     
                     myName = nameText
                    // myUsername = usernameText
