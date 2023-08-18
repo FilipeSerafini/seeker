@@ -1,17 +1,7 @@
-//
-//  OpenComment.swift
-//  Seeker
-//
-//  Created by Sabrina Souza on 18/08/23.
-//
-
 import SwiftUI
 
 struct OpenComment: View {
     @State var comment: CommentReview
-
-    @EnvironmentObject var profileViewModel: ProfileViewModel
-    @Environment (\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
@@ -26,24 +16,26 @@ struct OpenComment: View {
                     }
                     
                     VStack(alignment: .leading){
-                        Text("")
+                        Text(comment.bookAuthor)
                             .font(.system(size: 13))
                             .textCase(.uppercase)
                         Text(comment.bookTitle)
                             .font(.system(size: 22, weight: .medium, design: .serif))
                     }
-                    .padding(.bottom, 30)
                     Spacer()
                 }
                 .padding(.top, 30)
                 .padding(.horizontal)
                 Divider()
                     .padding(.horizontal)
-                VStack{
+                
+                VStack(alignment: .leading){
+                    Text(comment.commentTitle)
+                        .font(.system(size: 22, weight: .medium, design: .serif))
+                        .padding(.vertical, 5)
+                        .multilineTextAlignment(.leading)
                     Text(comment.comment)
                         .font(.system(size: 17))
-                        .padding(.vertical)
-                    
                     Spacer()
                 }
                 .padding(.horizontal)
