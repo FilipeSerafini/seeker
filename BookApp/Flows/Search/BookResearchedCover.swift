@@ -2,9 +2,7 @@ import SwiftUI
 
 struct BookResearchedCover: View {
     @State private var startConfirm = false
-    let book: Book
-    @EnvironmentObject var ratingViewModel: RatingViewModel
-    
+    let book: Book    
     var body: some View {
         
         VStack{

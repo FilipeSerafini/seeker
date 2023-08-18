@@ -52,6 +52,7 @@ struct ProfileView: View {
                                 MediumCommentButton(comment: commentReview)
                             }
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                     }
                 }
                 .toolbar {
