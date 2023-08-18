@@ -29,10 +29,10 @@ struct SetUpInicial: View {
                         TextField("Nome", text: $name)
                         .padding(.top)
                         .onChange(of: name) { newValue in
-                            let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'ˆ`˜áàãâéèêíìóòôõúùçÁÀÃÂÉÈÊÍÌÓÒÔÕÚÙÇ. ")
-                            let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
-                            name = String(filteredText.prefix(25))
-                        }
+                                let forbiddenCharacterSet = CharacterSet(charactersIn: "&$#@!%*()+=[]{}|;:'\",<>/?-_€£0123456789")
+                                let filteredText = newValue.filter { !forbiddenCharacterSet.contains(UnicodeScalar(String($0))!)}
+                                name = String(filteredText.prefix(25))
+                            }
                         Divider()
                         
 //                        TextField("Username", text: $username)
