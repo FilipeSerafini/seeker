@@ -2,18 +2,28 @@ import SwiftUI
 
 struct OpenComment: View {
     @State var comment: CommentReview
+    private let service: BookService = BookService()
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading){
                 HStack{
-                    VStack{
-                        Image("bookImage")
-                            .resizable()
-                            .frame(width: 62, height: 88)
-                            .cornerRadius(10)
-                            .shadow(color: Color("shadowBook"), radius: 4, x: 2, y: 4)
+                    VStack {
+                        if let url = URL(string: comment.bookImageURL) {
+                            AsyncImage(url: url) { image in
+                                image
+                                    .resizable()
+                            } placeholder: {
+                                Image("bookImage")
+                                    .resizable()
+                            }
+                        } else {
+                            Image("bookImage")
+                        }
                     }
+                    .frame(width: 62, height: 88)
+                    .cornerRadius(10)
+                    .shadow(color: Color("shadowBook"), radius: 4, x: 2, y: 4)
                     
                     VStack(alignment: .leading){
                         Text(comment.bookAuthor)
