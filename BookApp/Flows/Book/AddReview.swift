@@ -37,7 +37,6 @@ struct AddReview: View {
                     TextField("Título da nota", text: $titleReview)
                         .textFieldStyle(.plain)
                         .font(.system(size: 22, weight: .medium, design: .serif))
-                        .padding(.vertical, 5)
                     
                     TextField("Adicionar nota", text: $addReview, axis: .vertical)
                         .textFieldStyle(.plain)
