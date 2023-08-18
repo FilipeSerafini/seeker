@@ -28,25 +28,24 @@ struct TabViewApp: View {
         UITabBar.appearance().scrollEdgeAppearance = appearance
         
         // UINavigationBar configuration
-         let image = UIImage(named: "chevronBackward")
-            let imageSize = CGSize(width: 13, height: 22)
+        let image = UIImage(named: "chevronBackward")
+        let imageSize = CGSize(width: 13, height: 22)
         let resizedImage = image!.resized(with: imageSize)
-            
-            let navigationBarAppearance = UINavigationBarAppearance()
-            navigationBarAppearance.setBackIndicatorImage(resizedImage, transitionMaskImage: resizedImage)
-            let backButtonAppearance = UIBarButtonItemAppearance(style: .done)
-            backButtonAppearance.focused.titleTextAttributes = [.foregroundColor: UIColor.clear]
-            backButtonAppearance.disabled.titleTextAttributes = [.foregroundColor: UIColor.clear]
-            backButtonAppearance.highlighted.titleTextAttributes = [.foregroundColor: UIColor.clear]
-            backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
-            navigationBarAppearance.backButtonAppearance = backButtonAppearance
-            navigationBarAppearance.largeTitleTextAttributes = [.font: UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: .headline).withDesign(.serif)!, size: 34)]
-            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.setBackIndicatorImage(resizedImage, transitionMaskImage: resizedImage)
+        let backButtonAppearance = UIBarButtonItemAppearance(style: .done)
+        backButtonAppearance.focused.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        backButtonAppearance.disabled.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        backButtonAppearance.highlighted.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        navigationBarAppearance.backButtonAppearance = backButtonAppearance
+        navigationBarAppearance.largeTitleTextAttributes = [.font: UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: .headline).withDesign(.serif)!, size: 34)]
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         
     }
     
     var body: some View {
-        
         TabView(selection: $selectedTab) {
             LibraryView()
                 .tabItem {
@@ -92,20 +91,12 @@ struct TabViewApp: View {
                 UserDefaults.standard.set(false, forKey: "firstTimeHere")
                 
                 if userManager.selectedGenresForAPI.isEmpty {
-                    
                     selectedGenres.genresAPI = selectedGenres.genres.map({ $0.toApi })
                     selectedGenres.genresUser = selectedGenres.genres.map({ $0.toUser })
-                    
                 } else {
-                    print(userManager.selectedGenresForAPI)
-                    print(userManager.selectedGenresUser)
                     selectedGenres.genresAPI = userManager.selectedGenresForAPI
                     selectedGenres.genresUser = userManager.selectedGenresUser
-                    print(selectedGenres.genresAPI)
                 }
-                
-                
-                
                 UserDefaults.standard.set(selectedGenres.genresAPI, forKey: "genresAPI")
                 UserDefaults.standard.set(selectedGenres.genresUser, forKey: "genresUser")
                 

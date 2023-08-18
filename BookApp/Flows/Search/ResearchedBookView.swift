@@ -34,7 +34,6 @@ struct ResearchedBookView: View {
             }
         }
         .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book) })
-        
         .foregroundColor(.black)
         .frame(maxWidth: .infinity, maxHeight: 140, alignment: .topLeading)
         .padding([.leading, .trailing])

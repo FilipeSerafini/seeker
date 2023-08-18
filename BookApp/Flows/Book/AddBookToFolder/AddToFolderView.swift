@@ -27,7 +27,6 @@ struct AddToFolderView: View {
                             modifiedFolders.removeAll{ $0.id == folder.id }
                         }
                     }
-                    
                     Divider()
                         .padding(.horizontal)
                 }

@@ -1,10 +1,3 @@
-//
-//  Genres.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 09/08/23.
-//
-
 import Foundation
 
 enum Genre: String {

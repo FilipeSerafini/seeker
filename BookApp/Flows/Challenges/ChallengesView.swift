@@ -2,12 +2,12 @@ import SwiftUI
 
 struct ChallengesView: View {
     var body: some View {
-        VStack (alignment: .leading){
+        VStack (alignment: .leading) {
             Text("Desafios de leitura")
                 .font(.system(size: 34, design: .serif))
                 .frame(alignment: .leading)
             
-            ZStack{
+            ZStack {
                 RoundedRectangle(cornerRadius: 30)
                     .fill(.gray)
                     .frame(width: 358, height: 170)

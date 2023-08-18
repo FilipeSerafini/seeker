@@ -2,7 +2,6 @@ import SwiftUI
 import Foundation
 
 struct RecommendedView: View {
-    
     @EnvironmentObject private var recommendedViewModel: RecommendedViewModel
     @EnvironmentObject private var selectedGenres: SelectedGenres
     
@@ -57,7 +56,6 @@ struct RecommendedView: View {
                         Spacer()
                     }
                 }
-                
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(spacing: 0){
                         ForEach(recommendedViewModel.thirdList) { book in

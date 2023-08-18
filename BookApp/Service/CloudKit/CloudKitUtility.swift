@@ -3,7 +3,6 @@ import CloudKit
 import Combine
 
 class CloudKitUtility {
-    
     enum CloudKitError: String, LocalizedError {
         case iCloudAccountNotFound
         case iCloudAccountNotDetermined
@@ -13,12 +12,10 @@ class CloudKitUtility {
         case iCloudCouldNotFetchUserRecordID
         case iCloudCouldNotDiscoverUser
     }
-    
 }
 
 // MARK: USER FUNCTIONS
 extension CloudKitUtility {
-    
     static private func getiCloudStatus(completion: @escaping (Result<Bool, Error>) -> ()) {
         CKContainer.default().accountStatus { returnedStatus, returnedError in
             switch returnedStatus {
@@ -40,12 +37,9 @@ extension CloudKitUtility {
         Future { promise in
             CloudKitUtility.getiCloudStatus { result in
                 promise(result)
-                
             }
-            
         }
     }
-    
     
     static private func requestApplicationPermission(completion: @escaping (Result<Bool, Error>) -> ()) {
         CKContainer.default().requestApplicationPermission([.userDiscoverability]) { returnedStatus, returnedError in
@@ -61,9 +55,7 @@ extension CloudKitUtility {
         Future { promise in
             CloudKitUtility.requestApplicationPermission { result in
                 promise(result)
-                
             }
-            
         }
     }
     
@@ -94,7 +86,6 @@ extension CloudKitUtility {
                 CloudKitUtility.discoverUserIdentity(id: recordID, completion: completion)
             case .failure(let error):
                 completion(.failure(error))
-                
             }
         }
     }
@@ -103,19 +94,13 @@ extension CloudKitUtility {
         Future { promise in
             CloudKitUtility.discoverUserIdentity { result in
                 promise(result)
-                
             }
-            
         }
     }
-    
-    
 }
-
 
 // MARK: CRUD FUNCTIONS
 extension CloudKitUtility {
-    
     //chumiga tinha feito outro fetch com a reference
     
     static func fetch<T:CKProtocol>(
@@ -151,26 +136,25 @@ extension CloudKitUtility {
         sortDescriptors: [NSSortDescriptor]? = nil,
         resultsLimit: Int? = nil,
         completion: @escaping(_ items: [T]) -> ()) {
-        
-        //Create operation
-        let operation = createOperation(predicate: predicate, recordType: recordType, sortDescriptors: sortDescriptors, resultsLimit: resultsLimit)
-        
-        //Get items in query
-        var returnedItems: [T] = []
-        addRecordMatchedBlock(operation: operation) { item in
-            returnedItems.append(item)
+            
+            //Create operation
+            let operation = createOperation(predicate: predicate, recordType: recordType, sortDescriptors: sortDescriptors, resultsLimit: resultsLimit)
+            
+            //Get items in query
+            var returnedItems: [T] = []
+            addRecordMatchedBlock(operation: operation) { item in
+                returnedItems.append(item)
+            }
+            
+            //Query compeltion
+            addQueryResultBlock(operation: operation) { finished in
+                completion(returnedItems)
+            }
+            
+            //Execute operation
+            addOperation(operation: operation)
+            
         }
-        
-        //Query compeltion
-        addQueryResultBlock(operation: operation) { finished in
-            completion(returnedItems)
-        }
-
-        
-        //Execute operation
-        addOperation(operation: operation)
-
-    }
     
     static private func createOperation(
         predicate: NSPredicate,
@@ -187,7 +171,6 @@ extension CloudKitUtility {
         if let limit = resultsLimit {
             queryOperation.resultsLimit = limit
         }
-        
         return queryOperation
     }
     
@@ -199,7 +182,6 @@ extension CloudKitUtility {
             case .success(let record):
                 guard let item = T(record: record) else { return }
                 completion(item)
-                
             case .failure(let error):
                 print("Error recordMatchedBlock: \(error)")
             }
@@ -211,7 +193,6 @@ extension CloudKitUtility {
         operation.queryResultBlock = { returnedResult in
             completion(true)
         }
-
     }
     
     //puxar do banco a informacao
@@ -221,7 +202,6 @@ extension CloudKitUtility {
     }
     
     static func add<T:CKProtocol>(item: T, completion: @escaping (Result<Bool, Error>) -> ()) {
-        
         //Get record from generic item
         let record = item.record
         
@@ -230,7 +210,6 @@ extension CloudKitUtility {
     }
     
     static func update<T:CKProtocol>(item: T, completion: @escaping (Result<Bool, Error>) -> ()) {
-        
         add(item: item, completion: completion)
     }
     
@@ -249,7 +228,6 @@ extension CloudKitUtility {
             if let error = returnedError {
                 completion(.failure(error))
             } else {
-                print("DELETOU")
                 completion(.success(true))
             }
         }

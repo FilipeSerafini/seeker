@@ -3,21 +3,18 @@ import SwiftUI
 struct OpenComment: View {
     @State var comment: CommentReview
     @State private var onEdit: Bool = false
-    private let service: BookService = BookService()
-    @EnvironmentObject var profileViewModel: ProfileViewModel
-    
-    
     @State private var titleReview = ""
     @State private var addReview = ""
     @State private var isPresented: Bool = false
+    @EnvironmentObject var profileViewModel: ProfileViewModel
     @Environment (\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
-            VStack{
+            VStack {
                 if onEdit {
-                    VStack(alignment: .leading){
-                        HStack{
+                    VStack(alignment: .leading) {
+                        HStack {
                             VStack {
                                 
                                 if let url = URL(string: comment.bookImageURL) {
@@ -36,7 +33,7 @@ struct OpenComment: View {
                             .cornerRadius(10)
                             .shadow(color: Color("shadowBook"), radius: 4, x: 2, y: 4)
                             
-                            VStack(alignment: .leading){
+                            VStack(alignment: .leading) {
                                 Text(comment.bookAuthor)
                                     .font(.system(size: 13))
                                     .textCase(.uppercase)
@@ -50,7 +47,7 @@ struct OpenComment: View {
                         Divider()
                             .padding(.horizontal)
                         
-                        VStack(alignment: .leading){
+                        VStack(alignment: .leading) {
                             TextField("", text: $comment.commentTitle)
                                 .textFieldStyle(.plain)
                                 .font(.system(size: 22, weight: .medium, design: .serif))
@@ -63,7 +60,7 @@ struct OpenComment: View {
                         }
                         .padding(.horizontal)
                     }
-                    VStack(alignment: .center){
+                    VStack(alignment: .center) {
                         Button {
                             isPresented.toggle()
                         } label: {
@@ -77,7 +74,7 @@ struct OpenComment: View {
                                             .fill(.red)
                                     }
                                     .frame(width: 126, height: 36)
-                                HStack{
+                                HStack {
                                     Image(systemName: "trash")
                                         .foregroundColor(.red)
                                     Text("Apagar nota")
@@ -99,7 +96,7 @@ struct OpenComment: View {
                         }
                     }
                 } else {
-                    VStack(alignment: .leading){
+                    VStack(alignment: .leading) {
                         HStack{
                             VStack {
                                 if let url = URL(string: comment.bookImageURL) {
@@ -118,7 +115,7 @@ struct OpenComment: View {
                             .cornerRadius(10)
                             .shadow(color: Color("shadowBook"), radius: 4, x: 2, y: 4)
                             
-                            VStack(alignment: .leading){
+                            VStack(alignment: .leading) {
                                 Text(comment.bookAuthor)
                                     .font(.system(size: 13))
                                     .textCase(.uppercase)
@@ -132,7 +129,7 @@ struct OpenComment: View {
                         Divider()
                             .padding(.horizontal)
                         
-                        VStack(alignment: .leading){
+                        VStack(alignment: .leading) {
                             Text(comment.commentTitle)
                                 .font(.system(size: 22, weight: .medium, design: .serif))
                                 .padding(.vertical, 5)
@@ -156,7 +153,7 @@ struct OpenComment: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if onEdit {
-                ToolbarItem(placement: .navigationBarTrailing){
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         onEdit = false
                         profileViewModel.saveUserCommentReview(comment: comment)
@@ -171,7 +168,7 @@ struct OpenComment: View {
                     }
                 }
             } else {
-                ToolbarItem(placement: .navigationBarTrailing){
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         onEdit = true
                     } label: {

@@ -15,17 +15,17 @@ struct ProfileView: View {
             GridItem(.flexible()),
         ]
         NavigationStack {
-            VStack{
-                VStack(spacing: 5){
+            VStack {
+                VStack(spacing: 5) {
                     Image(uiImage: UIImage(data: self.profileIcon) ?? UIImage(named: "person")!)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 110, height: 110)
                         .clipShape(Circle())
-//                    Text ("@\(myUsername)")
-//                        .font(.system(size: 15))
-//                        .autocapitalization(.none)
-//                        .padding(.top, 5)
+//                                        Text ("@\(myUsername)")
+//                                            .font(.system(size: 15))
+//                                            .autocapitalization(.none)
+//                                            .padding(.top, 5)
                     Text (myName)
                         .font(.system(size: 22, design: .serif))
                         .padding(.top, 5)
@@ -56,7 +56,7 @@ struct ProfileView: View {
                     }
                 }
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing){
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: UserSettings(myName: $myName, myBio: $myBio), label: {
                             Image("pencil")
                         })

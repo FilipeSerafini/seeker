@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RatingView: View {
-    
     var review: RateReview
     
     var body: some View {
@@ -34,11 +33,5 @@ struct RatingView: View {
             }
             .frame(width: 175, height: 70)
         }
-    }
-}
-
-struct RatingView_Previews: PreviewProvider {
-    static var previews: some View {
-        RatingView(review: RateReview(rate: 2, bookID: "123", bookTitle: "Jogos Vorazes")!)
     }
 }

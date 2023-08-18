@@ -6,11 +6,11 @@ struct BookImageAction: View {
     @State private var startConfirm = false
     @State var folder: Folder
     @EnvironmentObject var userManager: UserManager
-    let book: Book
     @EnvironmentObject var folderViewModel: FolderViewModel
+    let book: Book
     
     var body: some View {
-        VStack{
+        VStack {
             Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
                 .resizable()
                 .scaledToFill()
@@ -33,26 +33,17 @@ struct BookImageAction: View {
             .alert("Remover livro da pasta", isPresented: $isPresented) {
                 Button("Cancelar", role: .cancel , action: {})
                 Button("Remover", role: .destructive, action: {
-                    print("antes: ", folder.books)
-
                     folder.books.removeAll(where: { $0 == book.id })
                     folderViewModel.books.removeAll(where: { $0.id == book.id })
-
+                    
                     var folderToUpdate = folder
-
+                    
                     folderToUpdate.record["books"] = folder.books
                     folderToUpdate.books = folder.books
-
-                    print(folderToUpdate.books)
-
+                    
                     let folders: [Folder] = [folderToUpdate]
-
-                    userManager.updateFolders(folders: folders)
-                    {
-    //                    print("Deletou o livro livro")
-    //                    userManager.fetchFolders()
-                    }
-                   // dismiss()
+                    
+                    userManager.updateFolders(folders: folders) {}
                 })
             } message: {
                 Text("Tem certeza que deseja remover \(book.title) da pasta?")
@@ -67,30 +58,5 @@ struct BookImageAction: View {
         .onAppear{
             isAnimated.toggle()
         }
-                
-//        .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible) {
-//            Button("Remover dessa lista") {
-//                print("antes: ", folder.books)
-//
-//                folder.books.removeAll(where: { $0 == book.id })
-//
-//                var folderToUpdate = folder
-//
-//                folderToUpdate.record["books"] = folder.books
-//                folderToUpdate.books = folder.books
-//
-//                print(folderToUpdate.books)
-//
-//                let folders: [Folder] = [folderToUpdate]
-//
-//                userManager.updateFolders(folders: folders)
-//                {
-////                    print("Deletou o livro livro")
-////                    userManager.fetchFolders()
-//                }
-//            }
-//        } message: {
-//            Text (book.authors[0])
-//        }
     }
 }

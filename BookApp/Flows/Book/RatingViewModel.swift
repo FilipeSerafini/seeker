@@ -3,7 +3,6 @@ import SwiftUI
 import CloudKit
 
 class RatingViewModel: ObservableObject {
-    
     @Published var book: Book = Book()
     @Published var bookRate: Int = 0
     @Published var userID: String = ""
@@ -41,7 +40,6 @@ class RatingViewModel: ObservableObject {
             }
         }
     }
-    
     
     private let fetchRateReviewsSemaphore: DispatchSemaphore = DispatchSemaphore(value: 0)
     private let thread = DispatchQueue(label: "fetchRate", qos: .background)

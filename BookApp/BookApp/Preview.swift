@@ -2,7 +2,7 @@ import SwiftUI
 
 struct Preview: View {
     var body: some View {
-        HStack{
+        HStack {
             Image("previewImage")
                 .resizable()
                 .frame(width: 269, height: 194)
