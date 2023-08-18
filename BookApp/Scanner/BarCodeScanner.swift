@@ -1,24 +1,14 @@
-//
-//  BarCodeScanner.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 06/08/23.
-//
-
 import UIKit
 import SwiftUI
 import AVFoundation
 import Combine
 
-
 struct BarCodeScanner: UIViewControllerRepresentable {
-    
     var isbn: String?
     @Binding var foundBook: Book?
     @Environment(\.presentationMode) var presentationMode
     
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-    }
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(parent: self)
@@ -44,41 +34,34 @@ struct BarCodeScanner: UIViewControllerRepresentable {
         
         if (context.coordinator.captureSession.canAddOutput(metadataOutput)) {
             context.coordinator.captureSession.addOutput(metadataOutput)
-            
             metadataOutput.setMetadataObjectsDelegate(context.coordinator, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.ean8, .ean13, .pdf417]
         } else {
             print("Output problem")
         }
-        
         context.coordinator.previewLayer = AVCaptureVideoPreviewLayer(session: context.coordinator.captureSession)
         context.coordinator.previewLayer.frame = vc.view.layer.bounds
         context.coordinator.previewLayer.videoGravity = .resizeAspectFill
         vc.view.layer.addSublayer(context.coordinator.previewLayer)
-        
         context.coordinator.captureSession.startRunning()
-        
         return vc
-        
     }
 }
 
 class Coordinator: NSObject, AVCaptureMetadataOutputObjectsDelegate, ObservableObject {
     var parent: BarCodeScanner
-    @Binding var foundBook: Book?
-
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    @Binding var foundBook: Book?
     
     private let service: BookService = BookService()
     private var subscriptions = Set<AnyCancellable>()
     var returnEmpty: Bool = true
-    #warning("usar a variavel returnEmpty para retorno vazio da API")
+#warning("usar a variavel returnEmpty para retorno vazio da API")
     
     init(parent: BarCodeScanner) {
         self.parent = parent
         self._foundBook = parent.$foundBook
-
     }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
@@ -91,7 +74,6 @@ class Coordinator: NSObject, AVCaptureMetadataOutputObjectsDelegate, ObservableO
             found(code: stringValue)
             captureSession.stopRunning()
             parent.presentationMode.wrappedValue.dismiss()
-            
         }
     }
     
@@ -111,7 +93,6 @@ class Coordinator: NSObject, AVCaptureMetadataOutputObjectsDelegate, ObservableO
                 }
             }, receiveValue: { books in
                 if books.isEmpty {
-                    print("aaa")
                 } else {
                     self.parent.foundBook = books[0]
                     self.returnEmpty = false

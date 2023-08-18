@@ -2,16 +2,13 @@ import SwiftUI
 
 struct RatingButton: View {
     @State private var activeButton: Int? = nil
-    
     @Binding var book: Book
     @Binding var rating: Int
-    
     @StateObject var ratingViewModel: RatingViewModel
     
     var body: some View {
         VStack {
             HStack {
-                
                 ForEach(1...5, id: \.self) { index in
                     Button(action: {
                         self.activeButton = self.toggleActiveButton(index)
@@ -21,8 +18,6 @@ struct RatingButton: View {
                         } else {
                             self.ratingViewModel.currentReview = self.ratingViewModel.currentReview - 1
                         }
-                        print("avaliacao: \(self.ratingViewModel.currentReview)")
-                        
                     }) {
                         Image("star")
                             .resizable()
@@ -68,8 +63,3 @@ struct RatingButton: View {
         return index
     }
 }
-//struct RatingButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RatingButton()
-//    }
-//}

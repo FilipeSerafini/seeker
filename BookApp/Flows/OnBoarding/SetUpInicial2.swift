@@ -67,7 +67,6 @@ struct SetUpInicial2: View {
                     print(error.localizedDescription)
                 }
             }
-            
             userManager.createFolder(folderName: "Lendo agora", description: "NaoApagar")
             userManager.createFolder(folderName: "Livros que quero ler", description: "NaoApagar")
             userManager.createFolder(folderName: "Leituras realizadas", description: "NaoApagar")

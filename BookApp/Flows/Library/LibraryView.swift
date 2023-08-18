@@ -1,25 +1,24 @@
 import SwiftUI
 
 struct LibraryView: View {
-    
-    @EnvironmentObject private var userManager: UserManager
     @State private var isPresented: Bool = false
     @State private var folderName: String = ""
     @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? ""
+    @EnvironmentObject private var userManager: UserManager
     @Environment (\.dismiss) var dismiss
-
+    
     var body: some View {
         NavigationStack {
-            VStack{
+            VStack {
                 HStack {
-                    VStack (alignment: .leading){
+                    VStack (alignment: .leading) {
                         Text("E aí, \(myName)?")
                             .font(.system(size: 15))
                         Text("Minha Estante")
                             .font(.system(size: 34, weight: .semibold, design: .serif))
                     }
                     Spacer()
-                    #warning("VER PORQUE NAO ESTA LIMITANDO NA CAIXA DE TEXTO")
+#warning("VER PORQUE NAO ESTA LIMITANDO NA CAIXA DE TEXTO")
                     Button {
                         isPresented.toggle()
                     } label: {
@@ -67,7 +66,6 @@ struct LibraryView: View {
         }
     }
 }
-
 
 struct Previews_LibraryView_Previews: PreviewProvider {
     static var previews: some View {

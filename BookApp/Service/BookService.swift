@@ -27,7 +27,6 @@ class BookService {
 //MARK: - Fetch Books with combine API
 extension BookService {
     func fetchBooks(searchedText: String, page: Int, filter: Filter) -> AnyPublisher<[APIBook], Error> {
-        
         let url: URL = buildAPIURL(searchedText: searchedText, page: page, filter: filter)
         
         return URLSession.shared.dataTaskPublisher(for: url)
@@ -47,7 +46,6 @@ extension BookService {
     }
     
     private func buildAPIURL(searchedText: String, page: Int, filter: Filter) -> URL {
-        
         var searchURL: String = self.baseURL + filter.url
         
         if filter == .isbn {
@@ -63,7 +61,6 @@ extension BookService {
         guard let url = URL(string: finalURL) else {
             return URL(string: "https://www.googleapis.com/books/v1/volumes?q=a")!
         }
-        
         return url
     }
 }

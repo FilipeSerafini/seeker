@@ -3,7 +3,6 @@ import CloudKit
 import SwiftUI
 
 class ProfileViewModel: ObservableObject {
-    
     @Published var userCommentReviews: [CommentReview] = []
     @Published var requestAlreadyMade: Bool = false
     

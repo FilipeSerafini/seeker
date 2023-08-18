@@ -6,7 +6,7 @@ struct BookView: View {
     @State var showSheet: Bool = false
     @State private var startConfirm = false
     @EnvironmentObject var ratingViewModel: RatingViewModel
-
+    
     var body: some View {
         VStack{
             Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
@@ -66,7 +66,6 @@ struct BookView: View {
             ToolbarItem(placement: .navigationBarTrailing){
                 Button {
                     let customView = SharedInstagramView(book: book)
-                    
                     if let viewImageData = customView.toImage().pngData() {
                         shareImageOnInstagramStories(imageData: viewImageData)
                     }

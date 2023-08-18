@@ -1,10 +1,3 @@
-//
-//  button.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 08/08/23.
-//
-
 import SwiftUI
 
 struct ScannerButton: View {
@@ -19,7 +12,8 @@ struct ScannerButton: View {
                 Image(systemName: "barcode.viewfinder")
                     .resizable()
                     .frame(width: 28, height: 22)
-            }.sheet(isPresented: $isPresented) {
+            }
+            .sheet(isPresented: $isPresented) {
                 BarCodeScanner(foundBook: $foundBook)
             }
         }

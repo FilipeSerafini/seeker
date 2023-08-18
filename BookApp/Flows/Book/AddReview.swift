@@ -9,9 +9,9 @@ struct AddReview: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading){
-                HStack{
-                    VStack{
+            VStack(alignment: .leading) {
+                HStack {
+                    VStack {
                         Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
                             .resizable()
                             .frame(width: 62, height: 88)
@@ -19,7 +19,7 @@ struct AddReview: View {
                             .shadow(color: Color("shadowBook"), radius: 4, x: 2, y: 4)
                     }
                     
-                    VStack(alignment: .leading){
+                    VStack(alignment: .leading) {
                         Text(book.authors[0])
                             .font(.system(size: 13))
                             .textCase(.uppercase)
@@ -33,7 +33,7 @@ struct AddReview: View {
                 .padding(.horizontal)
                 Divider()
                     .padding(.horizontal)
-                VStack{
+                VStack {
                     TextField("Título da nota", text: $titleReview)
                         .textFieldStyle(.plain)
                         .font(.system(size: 22, weight: .medium, design: .serif))
@@ -56,23 +56,22 @@ struct AddReview: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        Text("Adicionar nota")
-                            .font(.system(size: 22, weight: .medium, design: .serif))
-                    }
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    Text("Adicionar nota")
+                        .font(.system(size: 22, weight: .medium, design: .serif))
                 }
-                ToolbarItem(placement: .navigationBarTrailing){
-                    Button {
-                        let comment = CommentReview(comment: addReview, bookID: book.id, bookTitle: book.title, bookAuthor: book.authors[0], bookImageURL: book.image, commentTitle: titleReview)
-//                        let comment = CommentReview(comment: addReview, bookID: book.id, bookTitle: book.title)
-                        profileViewModel.saveUserCommentReview(comment: comment!)
-                        dismiss()
-                    }
-                label: {
-                    Image("saveFolder")
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    let comment = CommentReview(comment: addReview, bookID: book.id, bookTitle: book.title, bookAuthor: book.authors[0], bookImageURL: book.image, commentTitle: titleReview)
+                    profileViewModel.saveUserCommentReview(comment: comment!)
+                    dismiss()
                 }
-                }
+            label: {
+                Image("saveFolder")
+            }
+            }
         }
     }
 }

@@ -2,8 +2,9 @@ import SwiftUI
 
 struct LoadingOracle: View {
     @State private var isAnimated = true
+    
     var body: some View {
-        HStack{
+        HStack {
             Text("Zoe está digitando")
                 .font(.system(size: 15, design: .serif))
                 .foregroundColor(.gray)
@@ -26,7 +27,7 @@ struct LoadingOracle: View {
                 .scaleEffect(isAnimated ? 1.0 : 0.5)
                 .animation(Animation.easeInOut(duration: 0.5).repeatForever().delay(0.6), value: isAnimated)
         }
-        .onAppear{
+        .onAppear {
             self.isAnimated = false
         }
     }

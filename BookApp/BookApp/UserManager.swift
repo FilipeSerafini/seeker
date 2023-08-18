@@ -65,12 +65,10 @@ class UserManager: ObservableObject {
     }
     
     func updateFolders(folders: [Folder], completion: @escaping () -> ())  {
-        
         for folder in folders {
             self.folders.removeAll(where: { $0.id == folder.id})
             self.folders.append(folder)
         }
-        
         folders.forEach { folder in
             guard let folderIndex = folders.firstIndex(of: folder) else { return }
             
@@ -97,7 +95,6 @@ class UserManager: ObservableObject {
                 DispatchQueue.main.async {
                     self.id = recordID.recordName
                 }
-//                self.fetchUserWith(recordID: recordID)
                 self.fetchUserWith(recordID: recordID) { userFound in
                     self.selectedGenresForAPI = userFound.favoriteGenresForAPI
                     self.selectedGenresUser = userFound.favoriteGenres
@@ -109,7 +106,6 @@ class UserManager: ObservableObject {
             }
         }
     }
-
     
     func fetchUserWith(recordID: CKRecord.ID, completion: @escaping (_ user: User) -> ()) {
         let reference = CKRecord.Reference(recordID: recordID, action: .none)
@@ -158,67 +154,4 @@ class UserManager: ObservableObject {
             }
         }
     }
-    
-    
-    //    func fetchUserWith(recordID: CKRecord.ID) {
-    //        let reference = CKRecord.Reference(recordID: recordID, action: .none)
-    //        let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
-    //        let recordType = "User"
-    //
-    //        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[User], Error>) in
-    //            switch result {
-    //            case .success(let user):
-    //                DispatchQueue.main.async {
-    //                    self.userAlreadyOnCK = user.isEmpty ? false: true
-    //                    if !user.isEmpty {
-    //                        self.selectedGenresForAPI = user[0].favoriteGenresForAPI
-    //                        self.selectedGenresUser = user[0].favoriteGenres
-    //                        UserDefaults.standard.set(user[0].name, forKey: "name")
-    //                        UserDefaults.standard.set(user[0].bio, forKey: "bio")
-    //                    }
-    //                }
-    //            case .failure(let failure):
-    //                print(failure.localizedDescription)
-    //            }
-    //        }
-    //    }
-    
-    
-    
-    
-    
-    
-    //    func updateUser(name: String, bio: String)  {
-    //
-    //
-    //        CloudKitUtility.update(item: updatedUser) { result in
-    //            switch result {
-    //            case .success(_):
-    //                break
-    //            case .failure(let error):
-    //                print(error.localizedDescription)
-    //            }
-    //        }
-    //
-    //    }
-    
-    //    func fetchRateReviewWith(recordID: CKRecord.ID) {
-    //        let reference = CKRecord.Reference(recordID: recordID, action: .none)
-    //        let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
-    //        let recordType = "RateReview"
-    //
-    //        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[RateReview], Error>) in
-    //            switch result {
-    //            case .success(let userRateReviews):
-    //                DispatchQueue.main.async {
-    //                    self.rateReviews = userRateReviews
-    //                }
-    //            case .failure(let failure):
-    //                print(failure.localizedDescription)
-    //            }
-    //        }
-    //
-    //        print(rateReviews)
-    //    }
-    
 }

@@ -9,7 +9,7 @@ struct OracleView: View {
     @State private var inputUsuario: String = ""
     @State private var oracleResponse: String?
     @State private var service: OracleService = OracleService()
-
+    
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
@@ -21,19 +21,19 @@ struct OracleView: View {
                                 .padding(.top, 10)
                         }
                     }
-
+                    
                     if !isEditing && messages.isEmpty {
-                            Image("zoeChat")
-                                .resizable()
-                                .frame(width: 350, height: 261)
-                                .padding(.top, geometry.size.height/6)
-                            
-                            Text("Olá, eu sou Zoe, seu oráculo literário! Estou aqui para te ajudar a descobrir tudo que quer saber sobre o mundo da leitura. Você pode me perguntar qualquer coisa relacionada a livros!")
-                                .font(.system(size: 15))
-                                .multilineTextAlignment(.center)
-                                .frame(width: geometry.size.width/1.15)
-                        }
-                       
+                        Image("zoeChat")
+                            .resizable()
+                            .frame(width: 350, height: 261)
+                            .padding(.top, geometry.size.height/6)
+                        
+                        Text("Olá, eu sou Zoe, seu oráculo literário! Estou aqui para te ajudar a descobrir tudo que quer saber sobre o mundo da leitura. Você pode me perguntar qualquer coisa relacionada a livros!")
+                            .font(.system(size: 15))
+                            .multilineTextAlignment(.center)
+                            .frame(width: geometry.size.width/1.15)
+                    }
+                    
                     ScrollView(.vertical, showsIndicators: false){
                         ForEach(messages, id: \.self) { message in
                             if message.contains("[USER]") {
@@ -47,9 +47,8 @@ struct OracleView: View {
                                         .clipShape(ChatBubble(corners: [.topLeft, .topRight, .bottomLeft]))                  .padding(.horizontal, 16)
                                         .padding(.bottom, 10)
                                 }
-                            }
-                            else {
-                                HStack{
+                            } else {
+                                HStack {
                                     Text(message)
                                         .padding()
                                         .foregroundColor(.black)
@@ -57,7 +56,6 @@ struct OracleView: View {
                                         .clipShape(ChatBubble(corners: [.topLeft, .topRight, .bottomRight]))
                                         .padding(.horizontal, 16)
                                         .padding(.bottom, 10)
-                                    
                                     Spacer()
                                 }
                             }
@@ -74,46 +72,46 @@ struct OracleView: View {
                         TextField("O que você gostaria de saber?", text: $inputUsuario, onEditingChanged: { editing in
                             isEditing = editing
                         })
-                            .padding()
-                            .padding(.trailing, 30)
-                            .font(.system(size: 15))
-                            .background(Color("textField"))
-                            .cornerRadius(30)
-                            .onTapGesture {
-                                isTextFieldFocused = true
+                        .padding()
+                        .padding(.trailing, 30)
+                        .font(.system(size: 15))
+                        .background(Color("textField"))
+                        .cornerRadius(30)
+                        .onTapGesture {
+                            isTextFieldFocused = true
+                        }
+                        .onSubmit {
+                            if inputUsuario != "" {
+                                sendMessage(message: inputUsuario)
                             }
-                            .onSubmit {
-                                if inputUsuario != ""{
-                                    sendMessage(message: inputUsuario)
+                        }
+                        .overlay(
+                            HStack {
+                                Spacer()
+                                Button {
+                                    if inputUsuario != ""{
+                                        sendMessage(message: inputUsuario)
+                                    }
+                                } label: {
+                                    Image("paperplane")
+                                        .resizable()
+                                        .frame(width: 28, height: 26)
+                                        .padding(.trailing, 15)
                                 }
-                            }
-                            .overlay(
-                                HStack {
-                                    Spacer()
-                                    Button {
-                                        if inputUsuario != ""{
-                                            sendMessage(message: inputUsuario)
-                                        }
-                                    } label: {
-                                        Image("paperplane")
-                                            .resizable()
-                                            .frame(width: 28, height: 26)
-                                            .padding(.trailing, 15)
-                                    }
-                                    .disabled(inputUsuario == "")
-                                    .opacity(inputUsuario == "" ? 0.6 : 1)
-                                    .onTapGesture {
-                                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                                    }
-                                })
+                                .disabled(inputUsuario == "")
+                                .opacity(inputUsuario == "" ? 0.6 : 1)
+                                .onTapGesture {
+                                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                }
+                            })
                     }
                     .padding()
                 }
                 .background(
                     Image("backgroundImage")
-                    .resizable()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .ignoresSafeArea()
+                        .resizable()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .ignoresSafeArea()
                 )
                 .background(Color("backgroundColor"))
                 .onTapGesture {
@@ -122,7 +120,7 @@ struct OracleView: View {
             }
         }
     }
-
+    
     func sendMessage(message: String) {
         withAnimation {
             messages.append("[USER]" + message)
@@ -130,11 +128,10 @@ struct OracleView: View {
             self.inputUsuario = ""
             isTyping = true
         }
-
+        
         Task.init(priority: .userInitiated, operation: {
             let message = await self.service.sendRequest(messageString: sendToAPI)
             oracleResponse = message.content
-
             DispatchQueue.main.async {
                 withAnimation {
                     messages.append(oracleResponse ?? "")

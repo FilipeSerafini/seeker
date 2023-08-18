@@ -7,13 +7,10 @@ struct addToFolderHeader: View {
             Text("Adicionar a uma lista")
                 .font(.system(size: 22, weight: .medium, design: .serif))
             Spacer()
-            Button {
-                
-            } label: {
+            Button {} label: {
                 Image("saveFolder")
             }
             Spacer()
-            
         }
         .padding(.top)
     }

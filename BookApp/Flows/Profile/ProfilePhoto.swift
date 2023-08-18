@@ -5,12 +5,12 @@ struct ProfilePhoto: View {
     @State public var iconPicker : Bool = false
     
     var body: some View {
-        ZStack{
-            VStack(alignment: .leading){
+        ZStack {
+            VStack(alignment: .leading) {
                 Button {
                     self.iconPicker.toggle()
                 } label: {
-                    VStack{
+                    VStack {
                         if self.profileIcon.count != 0  {
                             Image(uiImage: UIImage(data: self.profileIcon)!)
                                 .resizable()

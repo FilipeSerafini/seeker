@@ -1,10 +1,3 @@
-//
-//  BookServiceExtension.swift
-//  BookApp
-//
-//  Created by Waldyr Schneider on 09/08/23.
-//
-
 import Foundation
 import Combine
 import SwiftUI
@@ -114,7 +107,6 @@ private func convertHTMLToString(htmlString: String) -> String {
             print("Error converting HTML to attributed string: \(error)")
         }
     }
-    
     return "N/A"
 }
 

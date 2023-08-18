@@ -36,7 +36,6 @@
 		4CDD3BAD2A73087C001519C3 /* TabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */; };
 		4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */; };
 		4CDD3BB22A7308CD001519C3 /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BB12A7308CD001519C3 /* FolderViewModel.swift */; };
-		4CDD3BB52A7308F7001519C3 /* OracleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BB42A7308F7001519C3 /* OracleViewModel.swift */; };
 		4CDD3BB72A7308FD001519C3 /* OracleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BB62A7308FD001519C3 /* OracleView.swift */; };
 		4CDD3BBA2A730917001519C3 /* ChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BB92A730917001519C3 /* ChallengesView.swift */; };
 		4CDD3BBC2A730920001519C3 /* ChallengesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD3BBB2A730920001519C3 /* ChallengesViewModel.swift */; };
@@ -119,7 +118,6 @@
 		4CDD3BAC2A73087C001519C3 /* TabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewApp.swift; sourceTree = "<group>"; };
 		4CDD3BAF2A7308C7001519C3 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		4CDD3BB12A7308CD001519C3 /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
-		4CDD3BB42A7308F7001519C3 /* OracleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleViewModel.swift; sourceTree = "<group>"; };
 		4CDD3BB62A7308FD001519C3 /* OracleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OracleView.swift; sourceTree = "<group>"; };
 		4CDD3BB92A730917001519C3 /* ChallengesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesView.swift; sourceTree = "<group>"; };
 		4CDD3BBB2A730920001519C3 /* ChallengesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesViewModel.swift; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 			isa = PBXGroup;
 			children = (
 				4CDD3BB62A7308FD001519C3 /* OracleView.swift */,
-				4CDD3BB42A7308F7001519C3 /* OracleViewModel.swift */,
 				7C31DBD12A81885E002FB8F8 /* ChatBubble.swift */,
 				7C31DBCF2A818844002FB8F8 /* LoadingOracle.swift */,
 			);
@@ -568,7 +565,6 @@
 				4C5849D72A81889400C7AF97 /* OnBoarding1.swift in Sources */,
 				7CB884132A8A9DC20081798D /* ProfilePhoto.swift in Sources */,
 				B1D5C0DF2A7AA416007CA7C7 /* UserCRUD.swift in Sources */,
-				4CDD3BB52A7308F7001519C3 /* OracleViewModel.swift in Sources */,
 				4C7234892A797723006740F6 /* Preview.swift in Sources */,
 				7C31DBDB2A81EB64002FB8F8 /* ScannerButton.swift in Sources */,
 				7C281A862A73255F00A58E96 /* SearchViewModel.swift in Sources */,

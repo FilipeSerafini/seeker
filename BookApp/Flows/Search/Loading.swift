@@ -31,7 +31,6 @@ struct Loading: View {
     func calcYOffset(_ geometry: GeometryProxy) -> CGFloat {
         return geometry.size.width / 10 - geometry.size.height / 2
     }
-    
 }
 
 struct Loading_Previews: PreviewProvider {

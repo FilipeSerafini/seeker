@@ -16,14 +16,5 @@ struct OnBoarding1: View {
             }
             .padding(.bottom, 100)
         }
-        
     }
 }
-
-//struct OnBoarding1_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationStack{
-//            OnBoarding1()
-//        }
-//    }
-//}

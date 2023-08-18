@@ -3,14 +3,12 @@ import Combine
 import CloudKit
 
 class UserCRUD: ObservableObject {
-        
     @Published var permissionStatus: Bool = false
     @Published var isSignedInToiCloud: Bool = false
     @Published var error: String = ""
     @Published var userName: String = ""
     @Published var userID: String = ""
     @Published var userRecordID: CKRecord.ID?
-    
     var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -18,21 +16,13 @@ class UserCRUD: ObservableObject {
         requestPermission() //pedir permissao ao usuario para pegar sua informacao
         setUserID() //guardar o id do usuario
         getCurrentUserName() //depois de ter logado pegar o id necessario para pegar o userName
-        
-        
     }
     
-    func addUserToCK() {
-        
-    }
+    func addUserToCK() {}
     
-    func fetchUsers() {
-        
-    }
-    
+    func fetchUsers() {}
     
     private func getiCloudStatus(){
-        
         CloudKitUtility.getiCloudStatus()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
@@ -46,13 +36,10 @@ class UserCRUD: ObservableObject {
                 self?.isSignedInToiCloud = success
             }
             .store(in: &cancellables)
-
+        
     }
     
-    
-    //funcao para pedir permissao ao usuario para pegar a identidade
     func requestPermission() {
-        
         CloudKitUtility.requestApplicationPermission()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
@@ -66,7 +53,7 @@ class UserCRUD: ObservableObject {
                 self?.permissionStatus = success
             }
             .store(in: &cancellables)
-
+        
     }
     
     func getCurrentUserName() {
@@ -95,7 +82,6 @@ class UserCRUD: ObservableObject {
     }
     
     func setUserID() {
-        
         CloudKitUtility.fetchUserRecordID { fetchCompletion in
             switch fetchCompletion {
             case .success(let userRecordID):
@@ -104,24 +90,22 @@ class UserCRUD: ObservableObject {
                     self.userRecordID = userRecordID
                     UserDefaults.standard.set(self.userID, forKey: "userID")
                 }
-
+                
             case .failure(let error):
                 print(error)
             }
         }
-
+        
     }
-
+    
     static func getUserID() -> String {
         return UserDefaults.standard.string(forKey: "userID") ?? "No ID"
     }
-
 }
 
 struct CloudKitUserBootcamp: View {
-
     @StateObject private var vm = UserCRUD()
-
+    
     var body: some View {
         VStack {
             Text("IS SIGNED IN: \(vm.isSignedInToiCloud.description.uppercased())")
@@ -138,15 +122,3 @@ struct CloudKitUserBootcamp_Previews: PreviewProvider {
         CloudKitUserBootcamp()
     }
 }
-
-
-
-
-
-//    func fetchiCloudUserRecordID() {
-//        CKContainer.default().fetchUserRecordID { [weak self] returnedID, returnedError in
-//            if let id = returnedID {
-////                self?.userID = id
-//            }
-//        }
-//    }

@@ -1,10 +1,3 @@
-//
-//  GenreButtonOnboarding.swift
-//  BookApp
-//
-//  Created by Sabrina Souza on 10/08/23.
-//
-
 import SwiftUI
 
 class SelectedGenres: ObservableObject {
@@ -115,7 +108,6 @@ struct GenreButtonOnboarding: View {
                     Text(buttons[11].title)
                 }
                 .buttonStyle(CustomButtonGenre(isSelected: buttons[11].isSelected))
-                
             }
             .padding(.leading, 20)
         }
@@ -126,7 +118,6 @@ struct GenreButtonOnboarding: View {
         guard let index = buttons.firstIndex(where: { $0.id == button.id }) else {
             return
         }
-        
         if buttons.filter({ $0.isSelected }).count < 3 || button.isSelected {
             if button.isSelected {
                 selectedGenres.genres.removeAll { $0 == button.genre }

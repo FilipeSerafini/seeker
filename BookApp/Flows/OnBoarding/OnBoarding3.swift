@@ -54,10 +54,3 @@ struct OnBoarding3: View {
         }
     }
 }
-
-
-//struct OnBoarding3_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OnBoarding3()
-//    }
-//}
