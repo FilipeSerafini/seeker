@@ -6,6 +6,8 @@ struct FolderCardView: View {
     @State private var onEdit: Bool = false
     @Environment (\.dismiss) var dismiss
     @EnvironmentObject var userManager: UserManager
+    @State private var newFolderName: String = ""
+    @State private var showEditName: Bool = false
     
     let folder: Folder
     let columns = [
@@ -35,6 +37,21 @@ struct FolderCardView: View {
                 
                 if onEdit {
                     VStack{
+                        Button {
+                            showEditName.toggle()
+                        } label: {
+                            Image("addFolders")
+                                .resizable()
+                                .frame(width: 34, height: 25)
+                        }
+                        .padding(.top, 20)
+                        .alert("Alterar nome da pasta", isPresented: $showEditName) {
+                            TextField("Novo nome", text: $newFolderName)
+                            Button("Cancelar",action: {})
+                            Button("Confirmar", action: {})
+                        } message: {
+                            Text("Defina um novo nome para a pasta.")
+                        }
                         ScrollView(showsIndicators: false) {
                             LazyVGrid(columns: columns, spacing: 20) {
                                 ForEach(folderViewModel.books) { book in

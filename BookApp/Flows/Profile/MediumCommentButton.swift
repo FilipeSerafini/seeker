@@ -26,6 +26,6 @@ struct MediumCommentButton: View {
 
 struct MediumCommentButton_Previews: PreviewProvider {
     static var previews: some View {
-        MediumCommentButton(comment: CommentReview(comment: "Não gostei", bookID: "123", bookTitle: "Velozes e Furiosos")!)
+        MediumCommentButton(comment: CommentReview(comment: "aa", bookID: "32", bookTitle: "a", bookAuthor: "aaa", bookImageURL: "aa", commentTitle: "titulo")!)
     }
 }
