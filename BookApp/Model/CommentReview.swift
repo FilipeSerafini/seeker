@@ -8,6 +8,9 @@ struct CommentReview: CKProtocol, Identifiable {
     var comment: String
     var bookID: String
     var bookTitle: String
+    var bookAuthor: String
+    var bookImageURL: String
+    var commentTitle: String
     
     //init para inicializar os atributos
     init() {
@@ -15,6 +18,9 @@ struct CommentReview: CKProtocol, Identifiable {
         comment = ""
         bookID = ""
         bookTitle = ""
+        bookAuthor = ""
+        bookImageURL = ""
+        commentTitle = ""
         
         self.record = CKRecord(recordType: "CommentReview")
     }
@@ -25,7 +31,10 @@ struct CommentReview: CKProtocol, Identifiable {
         id: String = UUID().uuidString,
         comment: String,
         bookID: String,
-        bookTitle: String
+        bookTitle: String,
+        bookAuthor: String,
+        bookImageURL: String,
+        commentTitle: String
         
     ) {
         
@@ -35,6 +44,9 @@ struct CommentReview: CKProtocol, Identifiable {
         record["comment"] = comment
         record["bookID"] = bookID
         record["bookTitle"] = bookTitle
+        record["bookAuthor"] = bookAuthor
+        record["bookImageURL"] = bookImageURL
+        record["commentTitle"] = commentTitle
         
         self.init(record: record)
     }
@@ -46,11 +58,17 @@ struct CommentReview: CKProtocol, Identifiable {
         guard let comment = record["comment"] as? String else {return nil}
         guard let bookID = record["bookID"] as? String else {return nil}
         guard let bookTitle = record["bookTitle"] as? String else {return nil}
+        guard let bookAuthor = record["bookAuthor"] as? String else { return nil }
+        guard let bookImageURL = record["bookImageURL"] as? String else { return nil }
+        guard let commentTitle = record["commentTitle"] as? String else { return nil }
         
         self.id = id
         self.comment = comment
         self.bookID = bookID
         self.bookTitle = bookTitle
+        self.bookAuthor = bookAuthor
+        self.bookImageURL = bookImageURL
+        self.commentTitle = commentTitle
         
         self.record = record
     }
