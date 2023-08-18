@@ -20,7 +20,6 @@ class UserManager: ObservableObject {
     
     // MARK: - Functions
     func fetchFolders() {
-        print("fez o fetch")
         CloudKitUtility.fetchUserRecordID { (result: Result<CKRecord.ID, Error>) in
             switch result {
             case .success(let recordID):
@@ -98,26 +97,33 @@ class UserManager: ObservableObject {
                 DispatchQueue.main.async {
                     self.id = recordID.recordName
                 }
-                self.fetchUserWith(recordID: recordID)
+//                self.fetchUserWith(recordID: recordID)
+                self.fetchUserWith(recordID: recordID) { userFound in
+                    self.selectedGenresForAPI = userFound.favoriteGenresForAPI
+                    self.selectedGenresUser = userFound.favoriteGenres
+                    UserDefaults.standard.set(userFound.name, forKey: "name")
+                    UserDefaults.standard.set(userFound.bio, forKey: "bio")
+                }
             case .failure(let failure):
                 print(failure.localizedDescription)
             }
         }
     }
+
     
-    func fetchUserWith(recordID: CKRecord.ID) {
+    func fetchUserWith(recordID: CKRecord.ID, completion: @escaping (_ user: User) -> ()) {
         let reference = CKRecord.Reference(recordID: recordID, action: .none)
         let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
         let recordType = "User"
         
         CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[User], Error>) in
             switch result {
-            case .success(let user):
+            case .success(let users):
                 DispatchQueue.main.async {
-                    self.userAlreadyOnCK = user.isEmpty ? false: true
-                    if !user.isEmpty {
-                        self.selectedGenresForAPI = user[0].favoriteGenresForAPI
-                        self.selectedGenresUser = user[0].favoriteGenres
+                    self.userAlreadyOnCK = users.isEmpty ? false: true
+                    if !users.isEmpty {
+                        let userFound = users[0]
+                        completion(userFound)
                     }
                 }
             case .failure(let failure):
@@ -125,6 +131,76 @@ class UserManager: ObservableObject {
             }
         }
     }
+    
+    func updateUser(name: String, bio: String) {
+        CloudKitUtility.fetchUserRecordID { (result: Result<CKRecord.ID, Error>) in
+            switch result {
+            case .success(let recordID):
+                DispatchQueue.main.async {
+                    self.id = recordID.recordName
+                    
+                    self.fetchUserWith(recordID: recordID, completion: { userFound in
+                        userFound.record["name"] = name
+                        userFound.record["bio"] = bio
+                        
+                        CloudKitUtility.update(item: userFound) { result in
+                            switch result {
+                            case .success(_):
+                                break
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                            }
+                        }
+                    })
+                }
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    }
+    
+    
+    //    func fetchUserWith(recordID: CKRecord.ID) {
+    //        let reference = CKRecord.Reference(recordID: recordID, action: .none)
+    //        let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
+    //        let recordType = "User"
+    //
+    //        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[User], Error>) in
+    //            switch result {
+    //            case .success(let user):
+    //                DispatchQueue.main.async {
+    //                    self.userAlreadyOnCK = user.isEmpty ? false: true
+    //                    if !user.isEmpty {
+    //                        self.selectedGenresForAPI = user[0].favoriteGenresForAPI
+    //                        self.selectedGenresUser = user[0].favoriteGenres
+    //                        UserDefaults.standard.set(user[0].name, forKey: "name")
+    //                        UserDefaults.standard.set(user[0].bio, forKey: "bio")
+    //                    }
+    //                }
+    //            case .failure(let failure):
+    //                print(failure.localizedDescription)
+    //            }
+    //        }
+    //    }
+    
+    
+    
+    
+    
+    
+    //    func updateUser(name: String, bio: String)  {
+    //
+    //
+    //        CloudKitUtility.update(item: updatedUser) { result in
+    //            switch result {
+    //            case .success(_):
+    //                break
+    //            case .failure(let error):
+    //                print(error.localizedDescription)
+    //            }
+    //        }
+    //
+    //    }
     
     //    func fetchRateReviewWith(recordID: CKRecord.ID) {
     //        let reference = CKRecord.Reference(recordID: recordID, action: .none)
