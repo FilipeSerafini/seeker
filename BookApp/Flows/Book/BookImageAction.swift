@@ -7,6 +7,7 @@ struct BookImageAction: View {
     @State var folder: Folder
     @EnvironmentObject var userManager: UserManager
     let book: Book
+    @EnvironmentObject var folderViewModel: FolderViewModel
     
     var body: some View {
         VStack{
@@ -35,6 +36,7 @@ struct BookImageAction: View {
                     print("antes: ", folder.books)
 
                     folder.books.removeAll(where: { $0 == book.id })
+                    folderViewModel.books.removeAll(where: { $0.id == book.id })
 
                     var folderToUpdate = folder
 
