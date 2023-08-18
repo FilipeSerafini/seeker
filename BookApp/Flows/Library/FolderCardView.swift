@@ -62,7 +62,7 @@ struct FolderCardView: View {
                 
             }
             if folder.description != "NaoApagar" && onEdit {
-                VStack {
+                HStack {
                     Button {
                         showEditName.toggle()
                     } label: {
@@ -77,9 +77,11 @@ struct FolderCardView: View {
                                 }
                                 .frame(width: 126, height: 36)
                             HStack{
+                                Image(systemName: "square.and.pencil")
+                                    .foregroundColor(Color("primary"))
                                 Text("Alterar nome")
                                     .font(.system(size: 13, weight: .regular))
-                                    .foregroundColor(Color("primary"))
+                                    .foregroundColor(Color("text"))
                             }
                         }
                         .padding(.bottom)
@@ -129,6 +131,8 @@ struct FolderCardView: View {
                             }
                         }
                         .padding(.bottom)
+                        .padding(.top, 20)
+
                     }
                 }
                 .alert("Tem certeza que deseja apagar essa pasta?", isPresented: $isPresented) {
