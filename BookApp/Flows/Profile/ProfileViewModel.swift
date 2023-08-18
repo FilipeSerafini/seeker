@@ -37,6 +37,9 @@ class ProfileViewModel: ObservableObject {
     }
     
     func saveUserCommentReview(comment: CommentReview) {
+        if userCommentReviews.contains(where: { $0.id == comment.id}) {
+            userCommentReviews.removeAll(where: { $0.id == comment.id})
+        }
         userCommentReviews.append(comment)
         CloudKitUtility.add(item: comment) { result in
             switch result {
@@ -46,6 +49,11 @@ class ProfileViewModel: ObservableObject {
                 print("error trying to save CommentReview: ", error.localizedDescription)
             }
         }
+    }
+    
+    func deleteCommentReview(comment: CommentReview) {
+        userCommentReviews.removeAll(where: { $0.id == comment.id})
+        CloudKitUtility.delete(item: comment)
     }
 }
 
