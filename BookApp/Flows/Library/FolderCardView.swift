@@ -52,7 +52,7 @@ struct FolderCardView: View {
                             ForEach(folderViewModel.books) { book in
                                 BookResearchedCover(book: book)
                             }
-                            .padding(.top, 20)
+                            .padding(.top, 33)
                         }
                         
                     }
@@ -84,8 +84,8 @@ struct FolderCardView: View {
                     .padding(.bottom)
                 }
                 .alert("Tem certeza que deseja apagar essa pasta?", isPresented: $isPresented) {
-                    Button("Cancelar",action: {})
-                    Button("Apagar",action: {
+                    Button("Cancelar", role: .cancel, action: {})
+                    Button("Apagar", role: .destructive,action: {
                         CloudKitUtility.delete(item: folder)
                         userManager.fetchFolders()
                         dismiss()
@@ -94,15 +94,8 @@ struct FolderCardView: View {
                     Text("Essa ação não poderá ser desfeita.")
                 }
             }
-
-            // apagar aqui
-            
-            
-            
-            
         }
         .toolbar {
-            
             if onEdit {
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button {

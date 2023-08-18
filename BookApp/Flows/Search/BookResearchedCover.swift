@@ -11,12 +11,13 @@ struct BookResearchedCover: View {
             Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
                 .resizable()
                 .scaledToFill()
+                .frame(width: 95, height: 136)
+                .cornerRadius(8)
                 .onTapGesture {
                     startConfirm.toggle()
                 }
         }
         .frame(width: 95, height: 136)
-        .cornerRadius(8)
         .navigationDestination(isPresented: $startConfirm, destination: { BookView(book: book) })
     }
 }

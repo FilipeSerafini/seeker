@@ -1,46 +1,94 @@
 import SwiftUI
 
 struct BookImageAction: View {
-    
+    @State private var isAnimated = false
+    @State private var isPresented: Bool = false
     @State private var startConfirm = false
-    @EnvironmentObject var userManager: UserManager
     @State var folder: Folder
+    @EnvironmentObject var userManager: UserManager
     let book: Book
+    
     var body: some View {
-        
         VStack{
             Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)
                 .resizable()
                 .scaledToFill()
+                .frame(width: 95, height: 136)
+                .cornerRadius(8)
                 .onTapGesture {
                     startConfirm.toggle()
                 }
-        }
-        .frame(width: 95, height: 136)
-        .cornerRadius(8)
-        .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible) {
-            Button("Remover dessa lista") {
-                print("antes: ", folder.books)
-                
-                folder.books.removeAll(where: { $0 == book.id })
-                
-                var folderToUpdate = folder
-                
-                folderToUpdate.record["books"] = folder.books
-                folderToUpdate.books = folder.books
-                
-                print(folderToUpdate.books)
-                
-                let folders: [Folder] = [folderToUpdate]
-                
-                userManager.updateFolders(folders: folders)
-                {
-//                    print("Deletou o livro livro")
-//                    userManager.fetchFolders()
-                }
+            
+            Button {
+                isPresented.toggle()
+            } label: {
+                Image(systemName: "minus.circle.fill")
+                    .resizable()
+                    .foregroundColor(Color("deleteBook"))
+                    .frame(width: 30, height: 30)
             }
-        } message: {
-            Text (book.authors[0])
+            .padding(.top, -155)
+            .padding(.leading, -60)
+            .alert("Remover livro da pasta", isPresented: $isPresented) {
+                Button("Cancelar", role: .cancel , action: {})
+                Button("Remover", role: .destructive, action: {
+                    print("antes: ", folder.books)
+
+                    folder.books.removeAll(where: { $0 == book.id })
+
+                    var folderToUpdate = folder
+
+                    folderToUpdate.record["books"] = folder.books
+                    folderToUpdate.books = folder.books
+
+                    print(folderToUpdate.books)
+
+                    let folders: [Folder] = [folderToUpdate]
+
+                    userManager.updateFolders(folders: folders)
+                    {
+    //                    print("Deletou o livro livro")
+    //                    userManager.fetchFolders()
+                    }
+                   // dismiss()
+                })
+            } message: {
+                Text("Tem certeza que deseja remover \(book.title) da pasta?")
+            }
         }
+        .padding()
+        .frame(width: 100, height: 170)
+        .rotationEffect(.degrees(isAnimated ? 2.5 : 0))
+        .animation(
+            .easeInOut(duration: 0.15)
+            .repeatForever(autoreverses: true), value: isAnimated)
+        .onAppear{
+            isAnimated.toggle()
+        }
+                
+//        .confirmationDialog(book.title, isPresented: $startConfirm, titleVisibility: .visible) {
+//            Button("Remover dessa lista") {
+//                print("antes: ", folder.books)
+//
+//                folder.books.removeAll(where: { $0 == book.id })
+//
+//                var folderToUpdate = folder
+//
+//                folderToUpdate.record["books"] = folder.books
+//                folderToUpdate.books = folder.books
+//
+//                print(folderToUpdate.books)
+//
+//                let folders: [Folder] = [folderToUpdate]
+//
+//                userManager.updateFolders(folders: folders)
+//                {
+////                    print("Deletou o livro livro")
+////                    userManager.fetchFolders()
+//                }
+//            }
+//        } message: {
+//            Text (book.authors[0])
+//        }
     }
 }
