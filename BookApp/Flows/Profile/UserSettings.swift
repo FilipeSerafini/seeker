@@ -38,10 +38,10 @@ struct UserSettings: View {
                     VStack{
                         TextField("Nome", text: $nameText)
                             .onChange(of: nameText) { newValue in
-                                let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'ˆ`˜áàãâéèêíìóòôõúùçÁÀÃÂÉÈÊÍÌÓÒÔÕÚÙÇ ")
-                                let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
-                                nameText = String(filteredText.prefix(25))
-                            }
+                                    let forbiddenCharacterSet = CharacterSet(charactersIn: "&$#@!%*()+=[]{}|;:'\",<>/?-_€£0123456789")
+                                    let filteredText = newValue.filter { !forbiddenCharacterSet.contains(UnicodeScalar(String($0))!)}
+                                    nameText = String(filteredText.prefix(25))
+                                }
 
                         Divider()
                             .padding(.bottom, 10)
