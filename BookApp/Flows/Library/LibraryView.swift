@@ -6,8 +6,8 @@ struct LibraryView: View {
     @State private var isPresented: Bool = false
     @State private var folderName: String = ""
     @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? ""
-    @Environment(\.colorScheme) var scheme
-    
+    @Environment (\.dismiss) var dismiss
+
     var body: some View {
         NavigationStack {
             VStack{
@@ -19,7 +19,7 @@ struct LibraryView: View {
                             .font(.system(size: 34, weight: .semibold, design: .serif))
                     }
                     Spacer()
-#warning("VER PORQUE NAO ESTA LIMITANDO NA CAIXA DE TEXTO")
+                    #warning("VER PORQUE NAO ESTA LIMITANDO NA CAIXA DE TEXTO")
                     Button {
                         isPresented.toggle()
                     } label: {
