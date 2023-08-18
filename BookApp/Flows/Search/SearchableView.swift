@@ -21,7 +21,7 @@ struct SearchableView: View {
                         //MARK: Search Bar
                         HStack {
                             HStack {
-                                TextField("Procure por livros, autores e gêneros", text: $searchText, onEditingChanged: { editing in
+                                TextField("Procure por livros, autores e ISBN", text: $searchText, onEditingChanged: { editing in
                                     isEditing = editing
                                     isShowingProgressView = false
                                 })
