@@ -6,8 +6,10 @@ struct FolderCardView: View {
     @State private var onEdit: Bool = false
     @Environment (\.dismiss) var dismiss
     @EnvironmentObject var userManager: UserManager
+    @State private var newFolderName: String = ""
+    @State private var showEditName: Bool = false
     
-    let folder: Folder
+    @State var folder: Folder
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -60,28 +62,74 @@ struct FolderCardView: View {
                 
             }
             if folder.description != "NaoApagar" && onEdit {
-                Button {
-                    isPresented.toggle()
-                } label: {
-                    ZStack {
-                        Rectangle()
-                            .fill(.clear)
-                            .cornerRadius(22)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(lineWidth: 1)
-                                    .fill(.red)
+                VStack {
+                    Button {
+                        showEditName.toggle()
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .fill(.clear)
+                                .cornerRadius(22)
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(lineWidth: 1)
+                                        .fill(Color("primary"))
+                                }
+                                .frame(width: 126, height: 36)
+                            HStack{
+                                Text("Alterar nome")
+                                    .font(.system(size: 13, weight: .regular))
+                                    .foregroundColor(Color("primary"))
                             }
-                            .frame(width: 126, height: 36)
-                        HStack{
-                            Image(systemName: "trash")
-                                .foregroundColor(.red)
-                            Text("Apagar pasta")
-                                .font(.system(size: 13, weight: .regular))
-                                .foregroundColor(Color("text"))
                         }
+                        .padding(.bottom)
                     }
-                    .padding(.bottom)
+                    .padding(.top, 20)
+                    .alert("Alterar nome da pasta", isPresented: $showEditName) {
+                        TextField("Novo nome", text: $newFolderName)
+                        Button("Cancelar",action: {})
+                        Button("Confirmar", action: {
+                            let folderToUpdate = folder
+                            folderToUpdate.record["name"] = newFolderName
+                            
+                            folder.name = newFolderName
+                            
+                            CloudKitUtility.update(item: folderToUpdate) { result in
+                                switch result {
+                                case .success(_):
+                                    print("atualizou nome")
+                                    userManager.fetchFolders()
+                                case .failure(let error):
+                                    print(error.localizedDescription)
+                                }
+                            }
+                        })
+                    } message: {
+                        Text("Defina um novo nome para a pasta.")
+                    }
+                    Button {
+                        isPresented.toggle()
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .fill(.clear)
+                                .cornerRadius(22)
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(lineWidth: 1)
+                                        .fill(.red)
+                                }
+                                .frame(width: 126, height: 36)
+                            HStack{
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                                Text("Apagar pasta")
+                                    .font(.system(size: 13, weight: .regular))
+                                    .foregroundColor(Color("text"))
+                            }
+                        }
+                        .padding(.bottom)
+                    }
                 }
                 .alert("Tem certeza que deseja apagar essa pasta?", isPresented: $isPresented) {
                     Button("Cancelar", role: .cancel, action: {})
