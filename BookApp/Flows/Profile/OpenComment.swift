@@ -6,9 +6,10 @@ struct OpenComment: View {
     @State private var titleReview = ""
     @State private var addReview = ""
     @State private var isPresented: Bool = false
+    @FocusState private var keyboardFocused: Bool
     @EnvironmentObject var profileViewModel: ProfileViewModel
     @Environment (\.dismiss) var dismiss
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -52,6 +53,12 @@ struct OpenComment: View {
                                 .textFieldStyle(.plain)
                                 .font(.system(size: 22, weight: .medium, design: .serif))
                                 .padding(.top, 4)
+                                .focused($keyboardFocused)
+                                    .onAppear {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                            keyboardFocused = true
+                                        }
+                                    }
                             TextField("", text: $comment.comment, axis: .vertical)
                                 .textFieldStyle(.plain)
                                 .font(.system(size: 17))
