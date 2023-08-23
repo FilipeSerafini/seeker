@@ -10,8 +10,6 @@ struct SearchableView: View {
     @State private var isShowingProgressView = false
     @State var isPresented = false
     @EnvironmentObject private var searchViewModel: SearchViewModel
-    @EnvironmentObject private var coordinator: Coordinator
-    @EnvironmentObject private var selectedGenres: SelectedGenres
     
     var body: some View {
         ChildSizeReader(size: $wholeSize) {
@@ -55,7 +53,7 @@ struct SearchableView: View {
                         }
                         .padding(.horizontal)
                         
-                        VStack{
+                        VStack {
                             HStack {
                                 Button(action: {
                                     selectedFilter = .title
@@ -113,7 +111,6 @@ struct SearchableView: View {
                             .padding(.top, 70)
                         } else if !isEditing && searchText == "" {
                             RecommendedView()
-                                .environmentObject(selectedGenres)
                         } else if !isEditing {
                             if searchViewModel.returnEmpty == true {
                                 VStack(alignment: .center){

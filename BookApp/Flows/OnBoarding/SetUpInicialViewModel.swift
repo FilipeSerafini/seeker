@@ -1,10 +1,3 @@
-//
-//  SetUpInicialViewModel.swift
-//  BookApp
-//
-//  Created by Waldyr Schneider on 15/08/23.
-//
-
 import Foundation
 import CloudKit
 

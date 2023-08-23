@@ -55,7 +55,7 @@ struct BookImageAction: View {
         .animation(
             .easeInOut(duration: 0.15)
             .repeatForever(autoreverses: true), value: isAnimated)
-        .onAppear{
+        .onAppear {
             isAnimated.toggle()
         }
     }
