@@ -37,6 +37,9 @@ class ProfileViewModel: ObservableObject {
     
     func saveUserCommentReview(comment: CommentReview) {
         if userCommentReviews.contains(where: { $0.id == comment.id}) {
+            var commentToUpdate = userCommentReviews.first(where: { $0.id == comment.id})!
+            commentToUpdate.record["comment"] = comment.comment
+            commentToUpdate.record["commentTitle"] = comment.commentTitle
             userCommentReviews.removeAll(where: { $0.id == comment.id})
         }
         userCommentReviews.append(comment)
