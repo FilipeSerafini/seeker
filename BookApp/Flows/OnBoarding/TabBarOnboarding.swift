@@ -19,7 +19,7 @@ struct TabBarOnboarding: View {
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if currentPageIndex != 2 {
-                        if userManager.userAlreadyOnCK == false {
+                        if !userManager.userAlreadyOnCK {
                             NavigationLink(destination: SetUpInicial(onboarding: $onboarding).navigationBarBackButtonHidden(true), label: {
                                 Text("Pular")
                                     .font(.system(size: 20))
@@ -28,7 +28,9 @@ struct TabBarOnboarding: View {
                                     .padding(.trailing)
                             })
                         } else {
-                            NavigationLink(destination: TabViewApp().navigationBarBackButtonHidden(true), label: {
+                            Button(action: {
+                                self.onboarding = false
+                            } ,label: {
                                 Text("Pular")
                                     .font(.system(size: 20))
                                     .foregroundColor(.gray)

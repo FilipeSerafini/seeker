@@ -20,7 +20,7 @@ struct OnBoarding3: View {
                     .padding()
                 
                 VStack{
-                    if userManager.userAlreadyOnCK == false {
+                    if !userManager.userAlreadyOnCK {
                         NavigationLink(destination: SetUpInicial(onboarding: $onboarding)
                             .navigationBarBackButtonHidden(true), label: {
                                 ZStack {
@@ -35,18 +35,19 @@ struct OnBoarding3: View {
                             })
                         .padding(.top, 60)
                     } else {
-                        NavigationLink(destination: TabViewApp()
-                            .navigationBarBackButtonHidden(true), label: {
-                                ZStack {
-                                    Rectangle()
-                                        .fill(Color("primary"))
-                                        .cornerRadius(22)
-                                        .frame(width: 125, height: 39)
-                                    Text("Começar")
-                                        .font(.system(size: 17, weight: .regular))
-                                        .foregroundColor(.white)
-                                }
-                            })
+                        Button(action: {
+                            self.onboarding = false
+                        } ,label: {
+                            ZStack {
+                                Rectangle()
+                                    .fill(Color("primary"))
+                                    .cornerRadius(22)
+                                    .frame(width: 125, height: 39)
+                                Text("Começar")
+                                    .font(.system(size: 17, weight: .regular))
+                                    .foregroundColor(.white)
+                            }
+                        })
                         .padding(.top, 60)
                     }
                 }
