@@ -34,6 +34,10 @@ struct FolderView: View {
                     }
                     .padding(.all, 10)
                     .frame(width: 350, height: 190, alignment: .bottomLeading)
+                    
+                    RoundedRectangle (cornerRadius: 20)
+                        .fill(.white.opacity(0.01))
+                        .frame(width: 358, height: 205)
                 }
             }
             .onAppear {
