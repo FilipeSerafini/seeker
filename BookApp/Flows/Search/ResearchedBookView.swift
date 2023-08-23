@@ -4,7 +4,6 @@ struct ResearchedBookView: View {
     @State private var startConfirm = false
     @State var book: Book
     @Environment(\.colorScheme) var scheme
-    @EnvironmentObject var ratingViewModel: RatingViewModel
     
     var body: some View {
         ZStack{

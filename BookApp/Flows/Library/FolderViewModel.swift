@@ -4,7 +4,6 @@ import Combine
 
 class FolderViewModel: ObservableObject {
     @Published var books: [Book] = []
-    @EnvironmentObject var userManager: UserManager
     private let bookService: BookService = BookService()
     private var subscriptions = Set<AnyCancellable>()
     var livro: Book = Book()

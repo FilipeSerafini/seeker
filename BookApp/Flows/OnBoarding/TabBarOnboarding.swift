@@ -6,7 +6,7 @@ struct TabBarOnboarding: View {
     @EnvironmentObject var userManager: UserManager
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             TabView(selection: $currentPageIndex){
                 OnBoarding1()
                     .tag(0)

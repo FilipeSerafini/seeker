@@ -2,7 +2,8 @@ import SwiftUI
 
 struct BookResearchedCover: View {
     @State private var startConfirm = false
-    let book: Book    
+    let book: Book
+    
     var body: some View {
         VStack{
             Image(uiImage: book.imageCover ?? UIImage(named: "bookImage")!)

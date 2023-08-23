@@ -13,11 +13,11 @@ extension UIImage {
 struct TabViewApp: View {
     @State private var selectedTab = 0
     @StateObject var searchViewModel: SearchViewModel = SearchViewModel()
-    @EnvironmentObject private var recommendedViewModel: RecommendedViewModel
-    @EnvironmentObject private var selectedGenres: SelectedGenres
     @StateObject var profileViewModel: ProfileViewModel = ProfileViewModel()
     @StateObject var ratingViewModel: RatingViewModel = RatingViewModel()
-    @EnvironmentObject var userManager: UserManager
+    @EnvironmentObject private var recommendedViewModel: RecommendedViewModel
+    @EnvironmentObject private var selectedGenres: SelectedGenres
+    @EnvironmentObject private var userManager: UserManager
     
     init() {
         // UITabBar configuration
