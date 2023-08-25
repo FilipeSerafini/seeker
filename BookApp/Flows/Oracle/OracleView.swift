@@ -9,9 +9,7 @@ struct OracleView: View {
     @State private var inputUsuario: String = ""
     @State private var oracleResponse: String?
     @State private var service: OracleService = OracleService()
-    
     @State private var isMovingUp = false
-
     
     var body: some View {
         NavigationStack {

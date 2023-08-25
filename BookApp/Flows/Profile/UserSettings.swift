@@ -90,9 +90,7 @@ struct UserSettings: View {
                     // UserDefaults.standard.set(usernameText, forKey: "username")
                     UserDefaults.standard.set(bioText, forKey: "bio")
                     var userToUpdate = User(name: nameText, bio: bioText, favoriteGenres: userManager.selectedGenresUser, image: image, favoriteGenresForAPI: userManager.selectedGenresForAPI)!
-                    
-                    user
-                    
+
                     userManager.updateUser(name: nameText, bio: bioText)
                     
                     myName = nameText
