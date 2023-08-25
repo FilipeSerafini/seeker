@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct OpenComment: View {
+    @State private var originalComment = ""
+    @State private var originalTitle = ""
     @State var comment: CommentReview
     @State private var onEdit: Bool = false
-    @State private var titleReview = ""
-    @State private var addReview = ""
     @State private var isPresented: Bool = false
     @FocusState private var keyboardFocused: Bool
     @EnvironmentObject var profileViewModel: ProfileViewModel
@@ -17,7 +17,6 @@ struct OpenComment: View {
                     VStack(alignment: .leading) {
                         HStack {
                             VStack {
-                                
                                 if let url = URL(string: comment.bookImageURL) {
                                     AsyncImage(url: url) { image in
                                         image
@@ -157,16 +156,24 @@ struct OpenComment: View {
             )
             .background(Color("backgroundColor"))
         }
+        .onAppear {
+            originalComment = comment.comment
+            originalTitle = comment.commentTitle
+        }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if onEdit {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         onEdit = false
+                        originalComment = comment.comment
+                        originalTitle = comment.commentTitle
                         profileViewModel.saveUserCommentReview(comment: comment)
                     } label: {
                         Image("saveFolder")
                     }
+                    .disabled(!((comment.comment == originalComment) || (comment.commentTitle == originalTitle)))
+                    .opacity((comment.comment != originalComment || comment.commentTitle != originalTitle) ? 1.0 : 0.6)
                 }
                 ToolbarItem(placement: .principal) {
                     VStack {
