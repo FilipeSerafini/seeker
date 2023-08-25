@@ -10,7 +10,7 @@ struct UserSettings: View {
     @Binding var myBio: String
     @EnvironmentObject var userManager: UserManager
     @Environment(\.dismiss) var dismiss
-    let characterLimitBio = 150
+    private let characterLimitBio = 150
     
     init(myName: Binding<String>, myBio: Binding<String>) {
         _myName = myName
@@ -45,7 +45,6 @@ struct UserSettings: View {
                             }
                         
                         Divider()
-                            .padding(.bottom, 10)
                         
                         //                        TextField("Username", text: $usernameText)
                         //                            .autocapitalization(.none)
@@ -101,6 +100,8 @@ struct UserSettings: View {
             label: {
                 Image("saveFolder")
             }
+            .disabled(!((myName == nameText) || (myBio == bioText) || (image != image)))
+            .opacity((myName != nameText || myBio != bioText || image != image) ? 1.0 : 0.6)
             }
         }
     }
