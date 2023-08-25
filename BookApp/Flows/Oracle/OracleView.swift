@@ -9,6 +9,7 @@ struct OracleView: View {
     @State private var inputUsuario: String = ""
     @State private var oracleResponse: String?
     @State private var service: OracleService = OracleService()
+    @State private var isMovingUp = false
     
     var body: some View {
         NavigationStack {
@@ -23,15 +24,23 @@ struct OracleView: View {
                     }
                     
                     if !isEditing && messages.isEmpty {
-                        Image("zoeChat")
-                            .resizable()
-                            .frame(width: 350, height: 261)
-                            .padding(.top, geometry.size.height/6)
-                        
-                        Text("Olá, eu sou Zoe, seu oráculo literário! Estou aqui para te ajudar a descobrir tudo que quer saber sobre o mundo da leitura. Você pode me perguntar qualquer coisa relacionada a livros!")
-                            .font(.system(size: 15))
-                            .multilineTextAlignment(.center)
-                            .frame(width: geometry.size.width/1.15)
+                        VStack{
+                            Spacer()
+                            Image("zoeChat")
+                                .resizable()
+                                .frame(width: 350, height: 261)
+                                .padding(.top, geometry.size.height/6)
+                                .offset(y: isMovingUp ? 20 : 0)
+                                .animation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: true), value: isMovingUp)
+                            
+                            Text("Olá, eu sou Zoe, seu oráculo literário! Estou aqui para te ajudar a descobrir tudo que quer saber sobre o mundo da leitura. Você pode me perguntar qualquer coisa relacionada a livros!")
+                                .font(.system(size: 15))
+                                .multilineTextAlignment(.center)
+                                .frame(width: geometry.size.width/1.15, height: geometry.size.height/8)
+                        }
+                        .onAppear() {
+                            self.isMovingUp.toggle()
+                        }
                     }
                     
                     ScrollView(.vertical, showsIndicators: false){

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct UserSettings: View {
     @State private var nameText = ""
+    @State private var image = ""
     //@State private var usernameText = ""
     @State private var bioText = ""
     @Binding var myName: String
@@ -88,8 +89,8 @@ struct UserSettings: View {
                     UserDefaults.standard.set(nameText, forKey: "name")
                     // UserDefaults.standard.set(usernameText, forKey: "username")
                     UserDefaults.standard.set(bioText, forKey: "bio")
-                    var userToUpdate = User(name: nameText, bio: bioText, favoriteGenres: userManager.selectedGenresUser, favoriteGenresForAPI: userManager.selectedGenresForAPI)!
-                    
+                    var userToUpdate = User(name: nameText, bio: bioText, favoriteGenres: userManager.selectedGenresUser, image: image, favoriteGenresForAPI: userManager.selectedGenresForAPI)!
+
                     userManager.updateUser(name: nameText, bio: bioText)
                     
                     myName = nameText
