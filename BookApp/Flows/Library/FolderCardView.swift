@@ -19,18 +19,18 @@ struct FolderCardView: View {
     var body: some View {
         VStack {
             if (folderViewModel.books.isEmpty) {
-                VStack {
-                    Image("emptyStateFolder")
-                        .resizable()
-                        .frame(width: 328, height: 269)
-                        .padding(.top, 150)
-                    
-                    Text("Ah não! Parece que não temos nenhum livro por aqui. Que tal começarmos a pesquisar alguns? Clique no ícone de busca abaixo e comece a explorar!")
-                        .font(.system(size: 15, weight: .regular))
-                        .multilineTextAlignment(.center)
-                        .padding()
+                GeometryReader { geometry in
+                    VStack {
+                        Image("emptyStateFolder")
+                            .resizable()
+                            .frame(width: 328, height: 269)
+                        Text("Ah não! Parece que não temos nenhum livro por aqui. Que tal começarmos a pesquisar alguns? Clique no ícone de busca abaixo e comece a explorar!")
+                            .font(.system(size: 15, weight: .regular))
+                            .multilineTextAlignment(.center)
+                            .padding()
+                    }
+                    .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                 }
-                Spacer()
             } else {
                 if onEdit {
                     VStack {

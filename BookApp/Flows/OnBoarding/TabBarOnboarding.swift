@@ -16,6 +16,7 @@ struct TabBarOnboarding: View {
                     .tag(2)
                     .environmentObject(userManager)
             }
+            .ignoresSafeArea()
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if currentPageIndex != 2 {
@@ -24,7 +25,7 @@ struct TabBarOnboarding: View {
                                 Text("Pular")
                                     .font(.system(size: 20))
                                     .foregroundColor(.gray)
-                                    .padding(.top, 50)
+                                    .padding(.top, 20)
                                     .padding(.trailing)
                             })
                         } else {
@@ -34,7 +35,7 @@ struct TabBarOnboarding: View {
                                 Text("Pular")
                                     .font(.system(size: 20))
                                     .foregroundColor(.gray)
-                                    .padding(.top, 50)
+                                    .padding(.top, 20)
                                     .padding(.trailing)
                             })
                         }
