@@ -33,9 +33,8 @@ struct User: CKProtocol {
        // username: String,
         bio: String,
         favoriteGenres: [String],
+        image: String,
         favoriteGenresForAPI: [String]
-       // image:,
-        
     ) {
         
         let record = CKRecord(recordType: "User")
@@ -46,6 +45,7 @@ struct User: CKProtocol {
         record["bio"] = bio
         record["favoriteGenres"] = favoriteGenres
         record["favoriteGenresForAPI"] = favoriteGenresForAPI
+        record["image"] = image
         
         self.init(record: record)
     }
@@ -59,6 +59,7 @@ struct User: CKProtocol {
         guard let bio = record["bio"] as? String else {return nil}
         guard let favoriteGenres = record["favoriteGenres"] as? [String] else {return nil}
         guard let favoriteGenresForAPI = record["favoriteGenresForAPI"] as? [String] else {return nil}
+        guard let image = record["image"] as? String else { return nil }
         
         self.id = id
         self.name = name
