@@ -4,7 +4,7 @@ struct RatingButton: View {
     @State private var activeButton: Int? = nil
     @Binding var book: Book
     @Binding var rating: Int
-    @StateObject var ratingViewModel: RatingViewModel
+    @EnvironmentObject var ratingViewModel: RatingViewModel
     
     var body: some View {
         VStack {
