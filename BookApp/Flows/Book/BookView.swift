@@ -5,7 +5,6 @@ struct BookView: View {
     @State var rating: Int = 0
     @State var showSheet: Bool = false
     @State private var startConfirm = false
-    @EnvironmentObject var ratingViewModel: RatingViewModel
     
     var body: some View {
         VStack{
@@ -30,7 +29,7 @@ struct BookView: View {
                     .font(.system(size: 22, weight: .medium, design: .serif))
                     .frame(alignment: .center)
                 
-                RatingButton(book: self.$book, rating: self.$rating, ratingViewModel: ratingViewModel)
+                RatingButton(book: self.$book, rating: self.$rating)
                     .padding(.top, 10)
                     .padding(.bottom, 10)
                 
