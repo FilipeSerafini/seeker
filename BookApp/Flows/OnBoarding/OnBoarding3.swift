@@ -6,38 +6,35 @@ struct OnBoarding3: View {
     
     var body: some View {
         VStack{
-            VStack{
-                Image("onb3")
-                    .resizable()
-                    .frame(width: 330, height: 400)
+            GeometryReader { geometry in
+                VStack {
+                    VStack{
+                        VStack{
+                            Image("onb3")
+                                .resizable()
+                                .frame(width: 330, height: 400)
+                        }
+                        .frame(height: 340)
+                        
+                        VStack{
+                            Text("Um universo inteiro: vá além da sua estante e com a ajuda da nossa Inteligência Artificial descubra coisas novas sobre as histórias que você gosta - ou até mesmo novas histórias!")
+                                .font(.system(size: 17, weight: .regular))
+                                .multilineTextAlignment(.center)
+                                .padding([.horizontal, .top])
+                        }
+                    }
+                    .padding(.top, 50)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    
+                }
+                .frame(width: geometry.size.width, height: geometry.size.height)
             }
-            .frame(height: 350)
             
+            //BOTAO
             VStack{
-                Text("Um universo inteiro: vá além da sua estante e com a ajuda da nossa Inteligência Artificial descubra coisas novas sobre as histórias que você gosta - ou até mesmo novas histórias!")
-                    .font(.system(size: 17, weight: .regular))
-                    .multilineTextAlignment(.center)
-                    .padding()
-                
-                VStack{
-                    if !userManager.userAlreadyOnCK {
-                        NavigationLink(destination: SetUpInicial(onboarding: $onboarding)
-                            .navigationBarBackButtonHidden(true), label: {
-                                ZStack {
-                                    Rectangle()
-                                        .fill(Color("primary"))
-                                        .cornerRadius(22)
-                                        .frame(width: 125, height: 39)
-                                    Text("Começar")
-                                        .font(.system(size: 17, weight: .regular))
-                                        .foregroundColor(.white)
-                                }
-                            })
-                        .padding(.top, 60)
-                    } else {
-                        Button(action: {
-                            self.onboarding = false
-                        } ,label: {
+                if !userManager.userAlreadyOnCK {
+                    NavigationLink(destination: SetUpInicial(onboarding: $onboarding)
+                        .navigationBarBackButtonHidden(true), label: {
                             ZStack {
                                 Rectangle()
                                     .fill(Color("primary"))
@@ -48,10 +45,23 @@ struct OnBoarding3: View {
                                     .foregroundColor(.white)
                             }
                         })
-                        .padding(.top, 60)
-                    }
+                } else {
+                    Button(action: {
+                        self.onboarding = false
+                    } ,label: {
+                        ZStack {
+                            Rectangle()
+                                .fill(Color("primary"))
+                                .cornerRadius(22)
+                                .frame(width: 125, height: 39)
+                            Text("Começar")
+                                .font(.system(size: 17, weight: .regular))
+                                .foregroundColor(.white)
+                        }
+                    })
                 }
             }
+            .padding(.bottom, 40)
         }
     }
 }
