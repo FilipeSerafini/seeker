@@ -24,8 +24,8 @@ struct SetUpInicial2: View {
             VStack {
                 GenreButtonOnboarding()
             }
-            .padding(.top, 100)
-            .padding(.bottom, 50)
+            .padding(.top, 75)
+            .padding(.bottom, 75)
             
             Button(action: {
                 self.onboarding = false
@@ -42,7 +42,7 @@ struct SetUpInicial2: View {
             })
             .disabled(selectedGenres.genres.count < 3)
             .opacity(selectedGenres.genres.count < 3 ? 0.6 : 1)
-            .padding(.top, 60)
+           // .padding(.top, 60)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
@@ -57,7 +57,7 @@ struct SetUpInicial2: View {
            // UserDefaults.standard.set(username, forKey: "username")
         }
         .onDisappear {
-            let user: User = User(name: name, bio: "", favoriteGenres: selectedGenres.genresUser, favoriteGenresForAPI: selectedGenres.genresAPI) ?? User(name: "NAO CRIOU", bio: "aa", favoriteGenres: [], favoriteGenresForAPI: [])!
+            let user: User = User(name: name, bio: "", favoriteGenres: selectedGenres.genresUser, image: "", favoriteGenresForAPI: selectedGenres.genresAPI) ?? User(name: "NAO CRIOU", bio: "aa", favoriteGenres: [], image: "", favoriteGenresForAPI: [])!
             
             CloudKitUtility.add(item: user) { result in
                 switch result {

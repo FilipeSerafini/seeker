@@ -8,14 +8,14 @@ struct SetUpInicial: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack{
+            VStack {
                 Text("Como você gostaria de ser chamado?")
                     .multilineTextAlignment(.center)
                     .font(.system(size: 17, weight: .regular))
                     .padding([.top, .bottom])
                     .padding(.top, 50)
                 
-                HStack{
+                HStack {
                     VStack(alignment: .leading) {
                         Text("Nome")
                             .padding([.top, .bottom])
@@ -25,7 +25,7 @@ struct SetUpInicial: View {
                     }
                     .foregroundColor(.gray)
                     
-                    VStack{
+                    VStack {
                         TextField("Nome", text: $name)
                         .padding(.top)
                         .onChange(of: name) { newValue in
@@ -66,7 +66,6 @@ struct SetUpInicial: View {
                             Text("Continuar")
                                 .foregroundColor(.white)
                         }
-                        .padding(.top, 40)
                     })
                 .disabled(name == "")
                 .opacity(name == "" ? 0.6 : 1)
