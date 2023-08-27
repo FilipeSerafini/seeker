@@ -23,7 +23,7 @@ struct OnBoarding3: View {
                                 .padding([.horizontal, .top])
                         }
                     }
-                    .padding(.top, 50)
+                    .padding(.top, 30)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     
                 }
