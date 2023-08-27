@@ -48,7 +48,7 @@ struct OpenComment: View {
                             .padding(.horizontal)
                         
                         VStack(alignment: .leading) {
-                            TextField("", text: $comment.commentTitle)
+                            TextField("Título da nota", text: $comment.commentTitle)
                                 .textFieldStyle(.plain)
                                 .font(.system(size: 22, weight: .medium, design: .serif))
                                 .padding(.top, 4)
@@ -58,7 +58,7 @@ struct OpenComment: View {
                                             keyboardFocused = true
                                         }
                                     }
-                            TextField("", text: $comment.comment, axis: .vertical)
+                            TextField("Adicione uma nota para salvar a alteração", text: $comment.comment, axis: .vertical)
                                 .textFieldStyle(.plain)
                                 .font(.system(size: 17))
                                 .padding(.top,5)
@@ -136,10 +136,18 @@ struct OpenComment: View {
                             .padding(.horizontal)
                         
                         VStack(alignment: .leading) {
-                            Text(comment.commentTitle)
-                                .font(.system(size: 22, weight: .medium, design: .serif))
-                                .padding(.vertical, 5)
-                                .multilineTextAlignment(.leading)
+                            if comment.commentTitle == "" {
+                                Text("Nota sem título")
+                                    .font(.system(size: 22, weight: .medium, design: .serif))
+                                    .padding(.vertical, 5)
+                                    .foregroundColor(Color("textNote"))
+                                    .multilineTextAlignment(.leading)
+                            } else {
+                                Text(comment.commentTitle)
+                                    .font(.system(size: 22, weight: .medium, design: .serif))
+                                    .padding(.vertical, 5)
+                                    .multilineTextAlignment(.leading)
+                            }
                             Text(comment.comment)
                                 .font(.system(size: 17))
                             Spacer()
@@ -166,14 +174,15 @@ struct OpenComment: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         onEdit = false
+                        profileViewModel.saveUserCommentReview(comment: comment)
                         originalComment = comment.comment
                         originalTitle = comment.commentTitle
-                        profileViewModel.saveUserCommentReview(comment: comment)
+                            
                     } label: {
                         Image("saveFolder")
                     }
-                    .disabled(!((comment.comment == originalComment) || (comment.commentTitle == originalTitle)))
-                    .opacity((comment.comment != originalComment || comment.commentTitle != originalTitle) ? 1.0 : 0.6)
+                    .disabled(comment.comment == originalComment && comment.commentTitle == originalTitle || comment.comment == "")
+                    .opacity((comment.comment != originalComment || comment.commentTitle != originalTitle) && comment.comment != "" ? 1.0 : 0.6)
                 }
                 ToolbarItem(placement: .principal) {
                     VStack {
