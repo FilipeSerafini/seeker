@@ -7,7 +7,7 @@
 		<string>instagram-stories</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>O aplicativo precisa acessar a câmera para escanear o código de barras do livro e obter informações sobre ele.</string>
+	<string>Este aplicativo requer acesso à câmera para que você possa criar ou alterar sua foto de perfil.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

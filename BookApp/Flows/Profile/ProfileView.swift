@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @AppStorage("profileIcon") var profileIcon : Data = .init(count: 0)
+    @AppStorage("profilePhoto") var profilePhoto: Data = .init()
     @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? ""
-    //@State private var myUsername = UserDefaults.standard.value(forKey: "username") as? String ?? "username"
     @State private var myBio = UserDefaults.standard.value(forKey: "bio") as? String ?? ""
+    //@State private var myUsername = UserDefaults.standard.value(forKey: "username") as? String ?? "username"
     @EnvironmentObject var profileViewModel: ProfileViewModel
     @EnvironmentObject var ratingViewModel: RatingViewModel
     var combinedReviews: [AnyReview] = []
@@ -17,7 +17,7 @@ struct ProfileView: View {
         NavigationStack {
             VStack {
                 VStack(spacing: 5) {
-                    Image(uiImage: UIImage(data: self.profileIcon) ?? UIImage(named: "person")!)
+                    Image(uiImage: UIImage(data: self.profilePhoto) ?? UIImage(named: "person")!)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 110, height: 110)
