@@ -43,6 +43,7 @@ class UserManager: ObservableObject {
             case .success(let folders):
                 DispatchQueue.main.async {
                     self.folders = folders
+                    self.folders = self.sortFolders(folders: self.folders)
                 }
             case .failure(let failure):
                 print(failure.localizedDescription)
@@ -79,6 +80,9 @@ class UserManager: ObservableObject {
             CloudKitUtility.add(item: updatedFolder) { result in
                 switch result {
                 case .success(_):
+                    DispatchQueue.main.async {
+                        self.folders = self.sortFolders(folders: self.folders)
+                    }
                     break
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -153,5 +157,40 @@ class UserManager: ObservableObject {
                 print(failure.localizedDescription)
             }
         }
+    }
+    
+    private func sortFolders(folders: [Folder]) -> [Folder] {
+        let desiredOrder = ["Lendo agora", "Livros que quero ler", "Leituras realizadas"]
+        
+        var firstThreeFolders: [Folder] = []
+        var remainingFolders: [Folder] = []
+        for folder in folders {
+            if let index = desiredOrder.firstIndex(of: folder.name) {
+                if index < 3 {
+                    firstThreeFolders.append(folder)
+                } else {
+                    remainingFolders.append(folder)
+                }
+            } else {
+                remainingFolders.append(folder)
+            }
+        }
+        
+        firstThreeFolders.sort { folder1, folder2 in
+            guard let index1 = desiredOrder.firstIndex(of: folder1.name),
+                  let index2 = desiredOrder.firstIndex(of: folder2.name) else {
+                return false
+            }
+            return index1 < index2
+        }
+
+        remainingFolders.sort { folder1, folder2 in
+            if let date1 = folder1.record.creationDate, let date2 = folder2.record.creationDate {
+                return date1.compare(date2) == .orderedAscending
+            }
+            return false
+        }
+        
+        return firstThreeFolders + remainingFolders
     }
 }
