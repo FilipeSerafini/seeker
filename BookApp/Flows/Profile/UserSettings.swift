@@ -1,25 +1,15 @@
 import SwiftUI
 
 struct UserSettings: View {
-    @State private var nameText = ""
-    @State private var image = ""
-    //@State private var usernameText = ""
-    @State private var bioText = ""
+    private let characterLimitBio: Int = 150
+    
     @Binding var myName: String
-    //@Binding var myUsername: String
     @Binding var myBio: String
+    //@Binding var myUsername: String
+    @State private var originalName = ""
+    @State private var originalBio = ""
     @EnvironmentObject var userManager: UserManager
     @Environment(\.dismiss) var dismiss
-    let characterLimitBio = 150
-    
-    init(myName: Binding<String>, myBio: Binding<String>) {
-        _myName = myName
-        _nameText = State(initialValue: myName.wrappedValue)
-        // _myUsername = myUsername
-        // _usernameText = State(initialValue: myUsername.wrappedValue)
-        _myBio = myBio
-        _bioText = State(initialValue: myBio.wrappedValue)
-    }
     
     var body: some View {
         NavigationView {
@@ -37,15 +27,14 @@ struct UserSettings: View {
                     }
                     
                     VStack {
-                        TextField("Nome", text: $nameText)
-                            .onChange(of: nameText) { newValue in
+                        TextField("Nome", text: $myName)
+                            .onChange(of: myName) { newValue in
                                 let forbiddenCharacterSet = CharacterSet(charactersIn: "&$#@!%*()+=[]{}|;:'\",<>/?-_€£0123456789")
                                 let filteredText = newValue.filter { !forbiddenCharacterSet.contains(UnicodeScalar(String($0))!)}
-                                nameText = String(filteredText.prefix(25))
+                                myName = String(filteredText.prefix(25))
                             }
                         
                         Divider()
-                            .padding(.bottom, 10)
                         
                         //                        TextField("Username", text: $usernameText)
                         //                            .autocapitalization(.none)
@@ -58,12 +47,12 @@ struct UserSettings: View {
                         //                        Divider()
                         //                            .padding(.top, 5)
                         
-                        TextField("Bio", text: $bioText, axis: .vertical)
+                        TextField("Bio", text: $myBio, axis: .vertical)
                             .lineLimit(2)
                             .frame(maxHeight: 40)
-                            .onChange(of: bioText) { newValue in
+                            .onChange(of: myBio) { newValue in
                                 if newValue.count > characterLimitBio {
-                                    bioText = String(newValue.prefix(characterLimitBio))
+                                    myBio = String(newValue.prefix(characterLimitBio))
                                 }
                             }
                         Divider()
@@ -72,7 +61,7 @@ struct UserSettings: View {
                 }
                 HStack {
                     Spacer()
-                    Text("\(characterLimitBio - bioText.count)")
+                    Text("\(characterLimitBio - myBio.count)")
                         .font(.system(size: 15))
                         .foregroundColor(Color("textNote"))
                         .multilineTextAlignment(.trailing)
@@ -83,24 +72,26 @@ struct UserSettings: View {
             .padding([.leading, .trailing, .bottom])
             .font(.system(size: 17))
         }
+        .onAppear {
+            originalName = myName
+            originalBio = myBio
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    UserDefaults.standard.set(nameText, forKey: "name")
+                    UserDefaults.standard.set(myName, forKey: "name")
+                    UserDefaults.standard.set(myBio, forKey: "bio")
                     // UserDefaults.standard.set(usernameText, forKey: "username")
-                    UserDefaults.standard.set(bioText, forKey: "bio")
-                    var userToUpdate = User(name: nameText, bio: bioText, favoriteGenres: userManager.selectedGenresUser, image: image, favoriteGenresForAPI: userManager.selectedGenresForAPI)!
-
-                    userManager.updateUser(name: nameText, bio: bioText)
                     
-                    myName = nameText
-                    // myUsername = usernameText
-                    myBio = bioText
+                    userManager.updateUser(name: myName, bio: myBio)
+
                     dismiss()
                 }
             label: {
                 Image("saveFolder")
             }
+            .disabled(myName == originalName && myBio == originalBio)
+            .opacity((myName != originalName || myBio != originalBio) ? 1.0 : 0.6)
             }
         }
     }

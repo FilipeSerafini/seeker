@@ -16,6 +16,7 @@ struct TabBarOnboarding: View {
                     .tag(2)
                     .environmentObject(userManager)
             }
+            .padding(.vertical)
             .ignoresSafeArea()
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {

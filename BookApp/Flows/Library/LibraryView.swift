@@ -3,7 +3,7 @@ import SwiftUI
 struct LibraryView: View {
     @State private var isPresented: Bool = false
     @State private var folderName: String = ""
-    @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? ""
+    private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? ""
     @EnvironmentObject private var userManager: UserManager
     @Environment (\.dismiss) var dismiss
     

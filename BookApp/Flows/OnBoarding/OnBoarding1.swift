@@ -22,6 +22,6 @@ struct OnBoarding1: View {
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
             }
         }
-        .padding(.bottom, 90)
+        .padding(.bottom, 110)
     }
 }

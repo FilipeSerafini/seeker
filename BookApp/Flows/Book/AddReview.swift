@@ -71,6 +71,8 @@ struct AddReview: View {
             label: {
                 Image("saveFolder")
             }
+            .disabled(addReview == "")
+            .opacity(addReview == "" ? 0.6 : 1)
             }
         }
     }
