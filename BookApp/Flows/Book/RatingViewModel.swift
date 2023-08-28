@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 import CloudKit
+import Combine
 
 class RatingViewModel: ObservableObject {
     @Published var book: Book = Book()
@@ -9,6 +10,9 @@ class RatingViewModel: ObservableObject {
     @Published var userRateReviews: [RateReview] = []
     @Published var currentReview: Int = 0
     @Published var requestAlreadyMade: Bool = false
+    @Published var userRatingBooks: [Book] = []
+    private let bookService: BookService = BookService()
+    private var subscriptions = Set<AnyCancellable>()
     
     func fetchRateReviews() {
         CloudKitUtility.fetchUserRecordID { (result: Result<CKRecord.ID, Error>) in
@@ -32,6 +36,7 @@ class RatingViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.requestAlreadyMade = true
                     self.userRateReviews = userRateReviews
+                    self.fetchBooks()
                     self.fetchRateReviewsSemaphore.signal()
                 }
             case .failure(let failure):
@@ -42,47 +47,33 @@ class RatingViewModel: ObservableObject {
     }
     
     private let fetchRateReviewsSemaphore: DispatchSemaphore = DispatchSemaphore(value: 0)
-    private let thread = DispatchQueue(label: "fetchRate", qos: .background)
     
     func getBookRate(bookID: String) {
-        thread.async {
-            self.fetchRateReviews()
-            self.fetchRateReviewsSemaphore.wait()
-            let rateReview = self.userRateReviews.first { rate in
-                rate.bookID == bookID
-            }
-            DispatchQueue.main.async {
-                self.currentReview = rateReview?.rate ?? 0
-            }
-        }
+        self.currentReview = self.userRateReviews.first(where: { $0.bookID == bookID })?.rate ?? 0
     }
     
-    func addOrUpdateRateReview(rate: Int, book: Book) {
+    func addOrUpdateRateReview(book: Book) {
         if userRateReviews.contains(where: { $0.bookID == book.id }) {
             var rateReviewToUpdate = userRateReviews.first(where: { $0.bookID == book.id})!
-            
-            rateReviewToUpdate.record["rate"] = rate
-            rateReviewToUpdate.rate = rate
-            
             userRateReviews.removeAll(where: { $0.bookID == book.id})
-            userRateReviews.append(rateReviewToUpdate)
             
-            CloudKitUtility.update(item: rateReviewToUpdate) { result in
-                switch result {
-                case .success(_):
-                    break
-                case .failure(let error):
-                    print("error trying to update RatingReview: ",error.localizedDescription)
-                }
+            if currentReview != 0 {
+                rateReviewToUpdate.record["rate"] = self.currentReview
+                rateReviewToUpdate.rate = self.currentReview
+                userRateReviews.append(rateReviewToUpdate)
+                self.addRateReviewToCk(rateReview: rateReviewToUpdate)
+            } else {
+                self.deleteRateReviewFromCk(rateReview: rateReviewToUpdate)
             }
         } else {
-            guard let newRateReview = RateReview(rate: rate, bookID: book.id, bookTitle: book.title) else { return }
+            fetchBook(bookId: book.id)
+            guard let newRateReview = RateReview(rate: self.currentReview, bookID: book.id, bookTitle: book.title) else { return }
             userRateReviews.append(newRateReview)
-            addBookToCK(rateReview: newRateReview)
+            self.addRateReviewToCk(rateReview: newRateReview)
         }
     }
     
-    private func addBookToCK(rateReview: RateReview) {
+    private func addRateReviewToCk(rateReview: RateReview) {
         CloudKitUtility.add(item: rateReview) { result in
             switch result {
             case .success(_):
@@ -91,5 +82,54 @@ class RatingViewModel: ObservableObject {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    private func deleteRateReviewFromCk(rateReview: RateReview) {
+        CloudKitUtility.delete(item: rateReview)
+    }
+    
+    private func fetchBooks() {
+        for userRateReview in userRateReviews {
+            if userRateReview.rate == 0 {
+                print("deletando rate review == 0")
+                self.deleteRateReviewFromCk(rateReview: userRateReview)
+            }
+            
+            if userRateReview.bookID != " " {
+                bookService.fetchBookById(bookId: userRateReview.bookID)
+                    .mapAPIBookToBook()
+                    .setBookImages(withService: bookService)
+                    .sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .failure(let error):
+                            print(error)
+                        case .finished:
+                            return
+                        }
+                    }, receiveValue: { book in
+                        self.userRatingBooks.append(book)
+                    })
+                    .store(in: &subscriptions)
+            } else {
+                print("BookId é vazio")
+            }
+        }
+    }
+    
+    private func fetchBook(bookId: String) {
+        bookService.fetchBookById(bookId: bookId)
+            .mapAPIBookToBook()
+            .setBookImages(withService: bookService)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    return
+                }
+            }, receiveValue: { book in
+                self.userRatingBooks.append(book)
+            })
+            .store(in: &subscriptions)
     }
 }

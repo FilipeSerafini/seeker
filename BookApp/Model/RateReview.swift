@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 
-struct RateReview: CKProtocol, Identifiable {
+struct RateReview: CKProtocol, Identifiable, Equatable {
     
     var record: CKRecord
     var id: String = UUID().uuidString

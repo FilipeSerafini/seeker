@@ -2,12 +2,13 @@ import SwiftUI
 
 struct ProfileView: View {
     @AppStorage("profilePhoto") var profilePhoto: Data = .init()
-    @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? ""
     @State private var myBio = UserDefaults.standard.value(forKey: "bio") as? String ?? ""
+    @State private var myName = UserDefaults.standard.value(forKey: "name") as? String ?? ""
     //@State private var myUsername = UserDefaults.standard.value(forKey: "username") as? String ?? "username"
+    @State private var combinedReviews: [AnyReview] = []
+    @State private var alreadyShuffled = false
     @EnvironmentObject var profileViewModel: ProfileViewModel
     @EnvironmentObject var ratingViewModel: RatingViewModel
-    var combinedReviews: [AnyReview] = []
     
     var body: some View {
         let columns = [
@@ -22,10 +23,10 @@ struct ProfileView: View {
                         .scaledToFill()
                         .frame(width: 110, height: 110)
                         .clipShape(Circle())
-//                                        Text ("@\(myUsername)")
-//                                            .font(.system(size: 15))
-//                                            .autocapitalization(.none)
-//                                            .padding(.top, 5)
+                    //                                        Text ("@\(myUsername)")
+                    //                                            .font(.system(size: 15))
+                    //                                            .autocapitalization(.none)
+                    //                                            .padding(.top, 5)
                     Text (myName)
                         .font(.system(size: 22, design: .serif))
                         .padding(.top, 5)
@@ -36,11 +37,6 @@ struct ProfileView: View {
                         .padding(.bottom, 10)
                 }
                 ScrollView(showsIndicators: false) {
-                    var combinedReviews: [AnyReview] {
-                        let rateReviews = ratingViewModel.userRateReviews.map(AnyReview.rate)
-                        let commentReviews = profileViewModel.userCommentReviews.map(AnyReview.comment)
-                        return (rateReviews + commentReviews).shuffled()
-                    }
                     LazyVGrid(columns: columns, spacing: 10) {
                         ForEach(combinedReviews) { review in
                             switch review {
@@ -72,13 +68,22 @@ struct ProfileView: View {
             )
             .background(Color("backgroundColor"))
             .onAppear {
-                if !profileViewModel.requestAlreadyMade {
-                    profileViewModel.fetchUserData()
+                if !alreadyShuffled {
+                    let rateReviews = ratingViewModel.userRateReviews.map(AnyReview.rate)
+                    let commentReviews = profileViewModel.userCommentReviews.map(AnyReview.comment)
+                    combinedReviews = (rateReviews + commentReviews).shuffled()
+                    self.alreadyShuffled = true
                 }
-                
-                if !ratingViewModel.requestAlreadyMade {
-                    ratingViewModel.fetchRateReviews()
-                }
+            }
+            .onChange(of: ratingViewModel.userRateReviews) { value in
+                let rateReviews = ratingViewModel.userRateReviews.map(AnyReview.rate)
+                let commentReviews = profileViewModel.userCommentReviews.map(AnyReview.comment)
+                combinedReviews = (rateReviews + commentReviews).shuffled()
+            }
+            .onChange(of: profileViewModel.userCommentReviews) { value in
+                let rateReviews = ratingViewModel.userRateReviews.map(AnyReview.rate)
+                let commentReviews = profileViewModel.userCommentReviews.map(AnyReview.comment)
+                combinedReviews = (rateReviews + commentReviews).shuffled()
             }
         }
     }
