@@ -65,6 +65,7 @@ struct OracleView: View {
                                         .clipShape(ChatBubble(corners: [.topLeft, .topRight, .bottomRight]))
                                         .padding(.horizontal, 16)
                                         .padding(.bottom, 10)
+                                        .textSelection(.enabled)
                                     Spacer()
                                 }
                             }

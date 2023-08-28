@@ -1,7 +1,7 @@
 import Foundation
 import CloudKit
 
-struct CommentReview: CKProtocol, Identifiable {
+struct CommentReview: CKProtocol, Identifiable, Equatable {
     
     var record: CKRecord
     var id: String = UUID().uuidString

@@ -23,11 +23,13 @@ struct BookView: View {
                     .font(.system(size: 15, weight: .regular))
                     .padding(.top)
                     .padding(.bottom, 5)
+                    .textSelection(.enabled)
                 
                 Text (book.title)
                     .multilineTextAlignment(.center)
                     .font(.system(size: 22, weight: .medium, design: .serif))
                     .frame(alignment: .center)
+                    .textSelection(.enabled)
                 
                 RatingButton(book: self.$book, rating: self.$rating)
                     .padding(.top, 10)

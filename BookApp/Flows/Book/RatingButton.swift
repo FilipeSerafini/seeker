@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RatingButton: View {
     @State private var activeButton: Int? = nil
+    @State private var currentReviewRate: Int = 0
     @Binding var book: Book
     @Binding var rating: Int
     @EnvironmentObject var ratingViewModel: RatingViewModel
@@ -39,11 +40,14 @@ struct RatingButton: View {
         .onAppear(perform: {
             Task {
                 self.ratingViewModel.getBookRate(bookID: book.id)
+                currentReviewRate = self.ratingViewModel.currentReview
             }
         })
         .onDisappear(perform: {
-            if self.ratingViewModel.currentReview != 0 || self.ratingViewModel.currentReview == 0 {
-                self.ratingViewModel.addOrUpdateRateReview(rate: self.ratingViewModel.currentReview, book: self.book)
+            if self.ratingViewModel.currentReview != 0 || self.ratingViewModel.userRateReviews.contains(where: { $0.bookID == book.id}) {
+                if self.ratingViewModel.currentReview != currentReviewRate {
+                    self.ratingViewModel.addOrUpdateRateReview(book: self.book)
+                }
             }
         })
     }

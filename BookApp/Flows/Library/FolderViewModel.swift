@@ -6,7 +6,7 @@ class FolderViewModel: ObservableObject {
     @Published var books: [Book] = []
     private let bookService: BookService = BookService()
     private var subscriptions = Set<AnyCancellable>()
-    var livro: Book = Book()
+    private var book: Book = Book()
     
     func fetchOneBook(bookID: String) -> Book {
         bookService.fetchBookById(bookId: bookID)
@@ -20,10 +20,10 @@ class FolderViewModel: ObservableObject {
                     return
                 }
             }, receiveValue: { book in
-                self.livro = book
+                self.book = book
             })
             .store(in: &subscriptions)
-        return self.livro
+        return self.book
     }
     
     func fetchBooks(bookIDs: [String]) {
