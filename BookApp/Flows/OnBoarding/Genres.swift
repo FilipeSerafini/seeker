@@ -43,7 +43,7 @@ enum Genre: String {
         case .selfHelp: return "Autoajuda"
         case .nonFiction: return "Não ficção"
         case .fantasy: return "Fantasia"
-        case .thriller: return "Suspese"
+        case .thriller: return "Suspense"
         case .biography: return "Biografia"
         case .religion: return "Religião"
         case .philosophy: return "Filosofia"
