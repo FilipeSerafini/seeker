@@ -2,7 +2,6 @@ import SwiftUI
 
 struct UserSettings: View {
     private let characterLimitBio: Int = 150
-    
     @Binding var myName: String
     @Binding var myBio: String
     //@Binding var myUsername: String
