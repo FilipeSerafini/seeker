@@ -27,9 +27,9 @@ struct CustomButtonGenre: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(Color("text"))
-            .font(.system(size: 17))
+            .scaledFont(size: 17) //para utilizar com dynamic type
             .padding(.horizontal, 25)
-            .frame(maxHeight: 36)
+            .padding(.vertical, 10)
             .background(
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(Color("genreButton"), lineWidth: 3)

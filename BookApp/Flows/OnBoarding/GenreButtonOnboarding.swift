@@ -14,6 +14,7 @@ struct ButtonData: Identifiable {
 }
 
 struct GenreButtonOnboarding: View {
+    @Environment(\.dynamicTypeSize) var size
     @EnvironmentObject private var selectedGenres: SelectedGenres
     @State private var buttons: [ButtonData] = [
         ButtonData(id: 0, title: "Fantasia", isSelected: false, genre: .fantasy),
@@ -29,89 +30,112 @@ struct GenreButtonOnboarding: View {
         ButtonData(id: 10, title: "Filosofia", isSelected: false, genre: .philosophy),
         ButtonData(id: 11, title: "Religião", isSelected: false, genre: .religion)
     ]
+    
     var body: some View {
-        VStack {
-            HStack {
-                Button(action: {
-                    toggleButtonSelection(button: buttons[0])
-                }) {
-                    Text(buttons[0].title)
-                }
-                .buttonStyle(CustomButtonGenre(isSelected: buttons[0].isSelected))
-            }
-            .padding(.leading, -50)
-            
-            HStack {
-                ForEach(buttons.dropFirst(1).prefix(2)) { button in
+        if size > .xxxLarge {
+            VStack {
+                ForEach(buttons) { button in
                     Button(action: {
                         toggleButtonSelection(button: button)
                     }) {
                         Text(button.title)
+                            .accessibilityLabel(button.isSelected ? button.title + ". Selecionado" : button.title)
                     }
                     .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
                 }
+                .padding(.bottom)
             }
-            .padding(.leading, -60)
-            
-            HStack {
-                ForEach(buttons.dropFirst(3).prefix(2)) { button in
+        } else {
+            VStack {
+                HStack {
                     Button(action: {
-                        toggleButtonSelection(button: button)
+                        toggleButtonSelection(button: buttons[0])
                     }) {
-                        Text(button.title)
+                        Text(buttons[0].title)
+                            .accessibilityLabel(buttons[0].isSelected ? buttons[0].title + ". Selecionado" : buttons[0].title)
                     }
-                    .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
+                    .buttonStyle(CustomButtonGenre(isSelected: buttons[0].isSelected))
                 }
-            }
-            .padding(.leading, 50)
-            
-            HStack {
-                ForEach(buttons.dropFirst(5).prefix(2)) { button in
+                .padding(.leading, -50)
+                
+                HStack {
+                    ForEach(buttons.dropFirst(1).prefix(2)) { button in
+                        Button(action: {
+                            toggleButtonSelection(button: button)
+                        }) {
+                            Text(button.title)
+                                .accessibilityLabel(button.isSelected ? button.title + ". Selecionado" : button.title)
+                        }
+                        .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
+                    }
+                }
+                .padding(.leading, -60)
+                
+                HStack {
+                    ForEach(buttons.dropFirst(3).prefix(2)) { button in
+                        Button(action: {
+                            toggleButtonSelection(button: button)
+                        }) {
+                            Text(button.title)
+                                .accessibilityLabel(button.isSelected ? button.title + ". Selecionado" : button.title)
+                        }
+                        .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
+                    }
+                }
+                .padding(.leading, 50)
+                
+                HStack {
+                    ForEach(buttons.dropFirst(5).prefix(2)) { button in
+                        Button(action: {
+                            toggleButtonSelection(button: button)
+                        }) {
+                            Text(button.title)
+                                .accessibilityLabel(button.isSelected ? button.title + ". Selecionado" : button.title)
+                        }
+                        .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
+                    }
+                }
+                .padding(.leading, 5)
+                
+                HStack {
+                    ForEach(buttons.dropFirst(7).prefix(2)) { button in
+                        Button(action: {
+                            toggleButtonSelection(button: button)
+                        }) {
+                            Text(button.title)
+                                .accessibilityLabel(button.isSelected ? button.title + ". Selecionado" : button.title)
+                        }
+                        .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
+                    }
+                }
+                .padding(.leading, -20)
+                
+                HStack {
+                    ForEach(buttons.dropFirst(9).prefix(2)) { button in
+                        Button(action: {
+                            toggleButtonSelection(button: button)
+                        }) {
+                            Text(button.title)
+                                .accessibilityLabel(button.isSelected ? button.title + ". Selecionado" : button.title + "")
+                        }
+                        .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
+                    }
+                }
+                .padding(.leading, 50)
+                
+                HStack {
                     Button(action: {
-                        toggleButtonSelection(button: button)
+                        toggleButtonSelection(button: buttons[11])
                     }) {
-                        Text(button.title)
+                        Text(buttons[11].title)
+                            .accessibilityLabel(buttons[11].isSelected ? buttons[11].title + ". Selecionado" : buttons[11].title)
                     }
-                    .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
+                    .buttonStyle(CustomButtonGenre(isSelected: buttons[11].isSelected))
                 }
+                .padding(.leading, 20)
             }
             .padding(.leading, 5)
-            
-            HStack {
-                ForEach(buttons.dropFirst(7).prefix(2)) { button in
-                    Button(action: {
-                        toggleButtonSelection(button: button)
-                    }) {
-                        Text(button.title)
-                    }
-                    .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
-                }
-            }
-            .padding(.leading, -20)
-            
-            HStack {
-                ForEach(buttons.dropFirst(9).prefix(2)) { button in
-                    Button(action: {
-                        toggleButtonSelection(button: button)
-                    }) {
-                        Text(button.title)
-                    }
-                    .buttonStyle(CustomButtonGenre(isSelected: button.isSelected))
-                }
-            }
-            .padding(.leading, 50)
-            
-            HStack {
-                Button(action: {
-                    toggleButtonSelection(button: buttons[11])
-                }) {
-                    Text(buttons[11].title)
-                }
-                .buttonStyle(CustomButtonGenre(isSelected: buttons[11].isSelected))
-            }
-            .padding(.leading, 20)
         }
-        .padding(.leading, 5)
     }
     
     private func toggleButtonSelection(button: ButtonData) {
