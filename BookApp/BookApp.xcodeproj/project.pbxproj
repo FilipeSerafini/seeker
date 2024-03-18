@@ -60,6 +60,7 @@
 		7C4245E42A7AE98800241A98 /* CustomButtonFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4245E32A7AE98800241A98 /* CustomButtonFilter.swift */; };
 		7C6ADEAB2A82C14900C43005 /* AddReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6ADEAA2A82C14900C43005 /* AddReview.swift */; };
 		7C7DB2AC2A82E37F0036FCD5 /* RatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7DB2AB2A82E37F0036FCD5 /* RatingButton.swift */; };
+		7CA020892BA4E31A007D37D2 /* FontScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA020882BA4E31A007D37D2 /* FontScale.swift */; };
 		7CB884112A8A9CEE0081798D /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB884102A8A9CEE0081798D /* PhotoPicker.swift */; };
 		7CB884132A8A9DC20081798D /* ProfilePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB884122A8A9DC20081798D /* ProfilePhoto.swift */; };
 		B108B8052A7193EF006D6F1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B108B8042A7193EF006D6F1C /* User.swift */; };
@@ -142,6 +143,7 @@
 		7C4245E32A7AE98800241A98 /* CustomButtonFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonFilter.swift; sourceTree = "<group>"; };
 		7C6ADEAA2A82C14900C43005 /* AddReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReview.swift; sourceTree = "<group>"; };
 		7C7DB2AB2A82E37F0036FCD5 /* RatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingButton.swift; sourceTree = "<group>"; };
+		7CA020882BA4E31A007D37D2 /* FontScale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontScale.swift; sourceTree = "<group>"; };
 		7CB884102A8A9CEE0081798D /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		7CB884122A8A9DC20081798D /* ProfilePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhoto.swift; sourceTree = "<group>"; };
 		B108B8042A7193EF006D6F1C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				42DA6EB32A84037400330888 /* BookServiceExtension.swift */,
+				7CA020882BA4E31A007D37D2 /* FontScale.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				4C4FD44C2A827F0E00503219 /* SmallCommentButton.swift in Sources */,
 				B1D861D52A7045AF00CAD142 /* BookApp.xcdatamodeld in Sources */,
 				B1D5C0E52A7C139F007CA7C7 /* AddToFolderView.swift in Sources */,
+				7CA020892BA4E31A007D37D2 /* FontScale.swift in Sources */,
 				4CDD3BB22A7308CD001519C3 /* FolderViewModel.swift in Sources */,
 				428ECC5F2A815EE500DA4B66 /* OracleService.swift in Sources */,
 				B108B8102A71943F006D6F1C /* Folder.swift in Sources */,
