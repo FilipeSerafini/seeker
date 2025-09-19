@@ -111,12 +111,12 @@ class UserManager: ObservableObject {
         }
     }
     
-    func fetchUserWith(recordID: CKRecord.ID, completion: @escaping (_ user: User) -> ()) {
+    func fetchUserWith(recordID: CKRecord.ID, completion: @escaping (_ user: UserOld) -> ()) {
         let reference = CKRecord.Reference(recordID: recordID, action: .none)
         let predicate = NSPredicate(format: "creatorUserRecordID == %@", reference)
         let recordType = "User"
         
-        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[User], Error>) in
+        CloudKitUtility.fetch(predicate: predicate, recordType: recordType) { (result: Result<[UserOld], Error>) in
             switch result {
             case .success(let users):
                 DispatchQueue.main.async {
