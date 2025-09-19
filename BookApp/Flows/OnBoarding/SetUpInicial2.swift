@@ -68,7 +68,7 @@ struct SetUpInicial2: View {
             // UserDefaults.standard.set(username, forKey: "username")
         }
         .onDisappear {
-            let user: User = User(name: name, bio: "", favoriteGenres: selectedGenres.genresUser, image: "", favoriteGenresForAPI: selectedGenres.genresAPI)!
+            let user: UserOld = UserOld(name: name, bio: "", favoriteGenres: selectedGenres.genresUser, image: "", favoriteGenresForAPI: selectedGenres.genresAPI)!
             
             CloudKitUtility.add(item: user) { result in
                 switch result {

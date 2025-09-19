@@ -2,9 +2,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject private var auth: AuthService
+    
     @State var onboarding: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     @State private var firstTimeHere: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     @State private var isActive = false
+    
     @StateObject private var selectedGenres = SelectedGenres()
     @StateObject private var recommendedViewModel = RecommendedViewModel()
     @StateObject private var userCrud = UserCRUD()
@@ -13,10 +16,19 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if self.isActive {
-                if onboarding {
-                    TabBarOnboarding(onboarding: $onboarding)
-                } else {
-                    TabViewApp()
+                switch auth.phase {
+                case .unknown:
+                    Preview()
+                case .signedOut:
+                    NavigationStack {
+                        AuthView()
+                    }
+                case .signedIn(let authDataResultModel):
+                    if onboarding {
+                        TabBarOnboarding(onboarding: $onboarding)
+                    } else {
+                        TabViewApp()
+                    }
                 }
             } else {
                 Preview()

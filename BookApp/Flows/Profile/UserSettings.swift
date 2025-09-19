@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct UserSettings: View {
+    @EnvironmentObject private var auth: AuthService
     private let characterLimitBio: Int = 150
     @Binding var myName: String
     @Binding var myBio: String
@@ -59,7 +60,14 @@ struct UserSettings: View {
                     .padding([.leading, .trailing])
                 }
                 HStack {
-                    Spacer()
+                    Button("Desconectar") {
+                        do {
+                            try auth.signOut()
+                        } catch {
+                            print("Error signing out: \(error)")
+                        }
+                    }
+
                     Text("\(characterLimitBio - myBio.count)")
                         .font(.system(size: 15))
                         .foregroundColor(Color("textNote"))
@@ -95,3 +103,4 @@ struct UserSettings: View {
         }
     }
 }
+
