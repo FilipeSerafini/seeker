@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct OnBoarding3: View {
-    @Binding var onboarding: Bool
     @EnvironmentObject var userManager: UserManager
+    @AppStorage("firstTimeHere") private var showOnboarding = true
     
     var body: some View {
         VStack{
@@ -33,7 +33,7 @@ struct OnBoarding3: View {
             //BOTAO
             VStack{
                 if !userManager.userAlreadyOnCK {
-                    NavigationLink(destination: SetUpInicial(onboarding: $onboarding)
+                    NavigationLink(destination: SetUpInicial()
                         .navigationBarBackButtonHidden(true), label: {
                             ZStack {
                                 Rectangle()
@@ -47,7 +47,7 @@ struct OnBoarding3: View {
                         })
                 } else {
                     Button(action: {
-                        self.onboarding = false
+                        showOnboarding = false
                     } ,label: {
                         ZStack {
                             Rectangle()

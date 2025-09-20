@@ -89,6 +89,9 @@
 		B1D861D02A7045AF00CAD142 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1D861CF2A7045AF00CAD142 /* Preview Assets.xcassets */; };
 		B1D861D22A7045AF00CAD142 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D861D12A7045AF00CAD142 /* Persistence.swift */; };
 		B1D861D52A7045AF00CAD142 /* BookApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B1D861D32A7045AF00CAD142 /* BookApp.xcdatamodeld */; };
+		B1D8C6AA2E7E535B0097505A /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8C6A92E7E535B0097505A /* AuthError.swift */; };
+		B1D8C6B02E7E60D00097505A /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8C6AF2E7E60D00097505A /* AuthServiceProtocol.swift */; };
+		B1D8C6B22E7E61030097505A /* AuthEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8C6B12E7E61030097505A /* AuthEmailViewModel.swift */; };
 		B1D8D1C82A85429400F96F32 /* RatingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8D1C72A85429400F96F32 /* RatingViewModel.swift */; };
 		B1EECEA02E7CC39F0065C439 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B1EECE9F2E7CC39F0065C439 /* FirebaseAnalytics */; };
 		B1EECEA22E7CC39F0065C439 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = B1EECEA12E7CC39F0065C439 /* FirebaseAnalyticsCore */; };
@@ -184,6 +187,9 @@
 		B1D861D12A7045AF00CAD142 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B1D861D42A7045AF00CAD142 /* BookApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookApp.xcdatamodel; sourceTree = "<group>"; };
 		B1D861DD2A705F4400CAD142 /* BookApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookApp.entitlements; sourceTree = "<group>"; };
+		B1D8C6A92E7E535B0097505A /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		B1D8C6AF2E7E60D00097505A /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
+		B1D8C6B12E7E61030097505A /* AuthEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEmailViewModel.swift; sourceTree = "<group>"; };
 		B1D8D1C72A85429400F96F32 /* RatingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewModel.swift; sourceTree = "<group>"; };
 		B1EECEAE2E7CD52F0065C439 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -463,6 +469,41 @@
 			path = Flows;
 			sourceTree = "<group>";
 		};
+		B1D8C6AB2E7E57CB0097505A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B1CD4DEB2E7CF454006BEB6D /* AuthService.swift */,
+				B1D8C6AF2E7E60D00097505A /* AuthServiceProtocol.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		B1D8C6AC2E7E57D10097505A /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				B1D8C6A92E7E535B0097505A /* AuthError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		B1D8C6AD2E7E57DD0097505A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B1EECEAE2E7CD52F0065C439 /* AuthView.swift */,
+				B1CD4DED2E7CFA11006BEB6D /* SignUpWithEmailView.swift */,
+				B1CD4DE62E7CD8B7006BEB6D /* SignInWithEmailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B1D8C6B32E7E61080097505A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B1D8C6B12E7E61030097505A /* AuthEmailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B1EECEA92E7CC8A10065C439 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,10 +514,10 @@
 		B1EECEAD2E7CD5000065C439 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				B1EECEAE2E7CD52F0065C439 /* AuthView.swift */,
-				B1CD4DED2E7CFA11006BEB6D /* SignUpWithEmailView.swift */,
-				B1CD4DE62E7CD8B7006BEB6D /* SignInWithEmailView.swift */,
-				B1CD4DEB2E7CF454006BEB6D /* AuthService.swift */,
+				B1D8C6B32E7E61080097505A /* ViewModel */,
+				B1D8C6AD2E7E57DD0097505A /* View */,
+				B1D8C6AC2E7E57D10097505A /* Error */,
+				B1D8C6AB2E7E57CB0097505A /* Service */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -573,6 +614,7 @@
 				B108B80C2A71942A006D6F1C /* CommentReview.swift in Sources */,
 				7C281A912A743F3A00A58E96 /* ContentCoreData.swift in Sources */,
 				7C31DBA32A7F63A3002FB8F8 /* Loading.swift in Sources */,
+				B1D8C6B02E7E60D00097505A /* AuthServiceProtocol.swift in Sources */,
 				7C002BBD2A843BEF00B872CB /* Genres.swift in Sources */,
 				4CDD3BBF2A730931001519C3 /* ProfileViewModel.swift in Sources */,
 				428ECC612A815F1000DA4B66 /* Oracle.swift in Sources */,
@@ -607,6 +649,7 @@
 				42633AE42A7443EE00401B5F /* BookService.swift in Sources */,
 				7C281AB72A78312B00A58E96 /* SearchableView.swift in Sources */,
 				4CDD3BB72A7308FD001519C3 /* OracleView.swift in Sources */,
+				B1D8C6B22E7E61030097505A /* AuthEmailViewModel.swift in Sources */,
 				4CCB790F2A8D408E00FAAC2C /* BookImageAction.swift in Sources */,
 				B1D861D22A7045AF00CAD142 /* Persistence.swift in Sources */,
 				4C5F48292A82CDA000011EF5 /* UserSettings.swift in Sources */,
@@ -625,6 +668,7 @@
 				4CDD3BB02A7308C7001519C3 /* LibraryView.swift in Sources */,
 				7C7DB2AC2A82E37F0036FCD5 /* RatingButton.swift in Sources */,
 				B1CD4DEE2E7CFA11006BEB6D /* SignUpWithEmailView.swift in Sources */,
+				B1D8C6AA2E7E535B0097505A /* AuthError.swift in Sources */,
 				426045462A8C3F9F00775124 /* SetUpInicialViewModel.swift in Sources */,
 				7C31DBD42A81D109002FB8F8 /* BarCodeScanner.swift in Sources */,
 				4CDD3BC12A730938001519C3 /* ProfileView.swift in Sources */,

@@ -60,13 +60,7 @@ struct UserSettings: View {
                     .padding([.leading, .trailing])
                 }
                 HStack {
-                    Button("Desconectar") {
-                        do {
-                            try auth.signOut()
-                        } catch {
-                            print("Error signing out: \(error)")
-                        }
-                    }
+                    Spacer()
 
                     Text("\(characterLimitBio - myBio.count)")
                         .font(.system(size: 15))
@@ -75,6 +69,26 @@ struct UserSettings: View {
                 }
                 .padding(.trailing)
                 Spacer()
+                
+                HStack {
+                    Button("Desconectar") {
+                        do {
+                            try auth.signOut()
+                        } catch {
+                            print("Error signing out: \(error)")
+                        }
+                    }
+                    Button("Trocar senha") {
+                        Task {
+                            do {
+                                try await auth.resetPassword(email: auth.getCurrentUserEmail()) // maybe concurrency problem
+                            } catch {
+                                print("Error signing out: \(error)")
+                            }
+                        }
+                    }
+                }
+                .padding(.trailing)
             }
             .padding([.leading, .trailing, .bottom])
             .font(.system(size: 17))

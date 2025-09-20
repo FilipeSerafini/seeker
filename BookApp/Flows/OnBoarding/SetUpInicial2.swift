@@ -1,10 +1,9 @@
 import SwiftUI
 
 struct SetUpInicial2: View {
-    // @Binding var username: String
     @State private var isEditing: Bool = false
     @Binding var name: String
-    @Binding var onboarding: Bool
+    @AppStorage("firstTimeHere") private var showOnboarding = true
     @EnvironmentObject var userManager: UserManager
     @EnvironmentObject private var selectedGenres: SelectedGenres
     @Environment(\.dynamicTypeSize) var size
@@ -29,7 +28,7 @@ struct SetUpInicial2: View {
                         .padding(.vertical, 70)
                     
                     Button(action: {
-                        self.onboarding = false
+                        showOnboarding = false
                     } ,label: {
                         Text("Tudo pronto!")
                             .foregroundColor(.white)

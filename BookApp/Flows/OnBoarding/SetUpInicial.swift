@@ -2,9 +2,7 @@ import SwiftUI
 
 struct SetUpInicial: View {
     @State var name = ""
-    @Binding var onboarding: Bool
-    // @State var username = ""
-    // @State var usernameAvailable: Bool = false
+    @AppStorage("firstTimeHere") private var showOnboarding = true
     
     var body: some View {
         GeometryReader { geometry in
@@ -19,9 +17,6 @@ struct SetUpInicial: View {
                     VStack(alignment: .leading) {
                         Text("Nome")
                             .padding([.top, .bottom])
-//                        Text("Username")
-//                            .padding(.top, 10)
-//                            .padding(.bottom, 10)
                     }
                     .foregroundColor(.gray)
                     
@@ -34,16 +29,6 @@ struct SetUpInicial: View {
                                 name = String(filteredText.prefix(25))
                             }
                         Divider()
-                        
-//                        TextField("Username", text: $username)
-//                        .padding(.top)
-//                        .autocapitalization(.none)
-//                        .onChange(of: username) { newValue in
-//                            let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.-")
-//                            let filteredText = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
-//                            username = String(filteredText.prefix(30))
-//                        }
-//                        Divider()
                     }
                     .padding([.leading, .trailing])
                 }
@@ -56,8 +41,7 @@ struct SetUpInicial: View {
                     .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.5)
                     .padding(.bottom, 15)
             
-                //NavigationLink(destination: SetUpInicial2(username: $username, name: $name, onboarding:
-                NavigationLink(destination: SetUpInicial2(name: $name, onboarding: $onboarding).navigationBarBackButtonHidden(true), label: {
+                NavigationLink(destination: SetUpInicial2(name: $name).navigationBarBackButtonHidden(true), label: {
                         ZStack {
                             Rectangle()
                                 .fill(Color("primary"))
@@ -69,8 +53,6 @@ struct SetUpInicial: View {
                     })
                 .disabled(name == "")
                 .opacity(name == "" ? 0.6 : 1)
-                //.disabled(username == "")
-                //.opacity(username == "" ? 0.6 : 1)
             }
             .font(.system(size: 17))
         }
